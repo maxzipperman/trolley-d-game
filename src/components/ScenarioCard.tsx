@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import type { Scenario } from "@/utils/scoring";
+import { usePersonas } from "@/hooks/usePersonas";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -8,11 +9,25 @@ interface ScenarioCardProps {
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
+  const { personas } = usePersonas();
+
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
-    const shuffled = [...r].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 3);
-  }, [scenario]);
+    const fromScenario = [...r].sort(() => Math.random() - 0.5).slice(0, 3);
+    if (fromScenario.length > 0) return fromScenario;
+
+    const p = personas ?? [];
+    if (p.length === 0) return [];
+    const picked = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
+    return picked.map((per) => ({
+      name: per.name,
+      choice: Math.random() < 0.5 ? "A" : "B",
+      rationale:
+        per.example_lines?.[
+          Math.floor(Math.random() * (per.example_lines?.length ?? 0))
+        ],
+    }));
+  }, [scenario, personas]);
 
   return (
     <article className="space-y-6">
@@ -46,7 +61,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
       {samples.length > 0 && (
         <div className="pt-2">
           <button
-            className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground"
+            className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
             onClick={() => setShowNPC(v => !v)}
             aria-expanded={showNPC}
           >
