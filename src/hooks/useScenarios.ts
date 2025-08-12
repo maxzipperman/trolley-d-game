@@ -9,7 +9,13 @@ export function useScenarios() {
     const url = new URL("../../data/scenarios.json", import.meta.url);
     fetch(url)
       .then(r => r.json())
-      .then((json: Scenario[]) => setScenarios(json))
+      .then((json: unknown) => {
+        if (Array.isArray(json) && json.every(item => typeof item === 'object' && item !== null && 'id' in (item as any) && 'title' in (item as any))) {
+          setScenarios(json as Scenario[]);
+        } else {
+          setScenarios([]);
+        }
+      })
       .catch(() => setError("Failed to load scenarios"));
   }, []);
 
