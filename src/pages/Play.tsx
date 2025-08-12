@@ -85,21 +85,44 @@ const Play = () => {
 
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
-      <section className="space-y-3">
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>Q {index + 1} of {total}</span>
-          <button onClick={() => navigate("/results")} className="underline underline-offset-4">End & See Results</button>
+      <section className="space-y-4 animate-fade-in">
+        <div className="flex items-center justify-between">
+          <div className="text-sm text-muted-foreground font-medium">
+            Question {index + 1} of {total}
+          </div>
+          <button 
+            onClick={() => navigate("/results")} 
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+          >
+            End & See Results
+          </button>
         </div>
-        <Progress value={progress} />
+        <div className="space-y-2">
+          <div className="h-2 animate-scale-in">
+            <Progress value={progress * 100} />
+          </div>
+          <div className="flex justify-between text-xs text-muted-foreground">
+            <span>Start</span>
+            <span>{Math.round(progress * 100)}% Complete</span>
+            <span>Finish</span>
+          </div>
+        </div>
       </section>
 
       {s && (
         <ScenarioCard scenario={s} onPick={pick} />
       )}
 
-      <div className="flex items-center justify-between pt-2">
-        <button onClick={skip} className="text-sm underline underline-offset-4">Skip</button>
-        <div className="text-xs text-muted-foreground">Shortcuts: ← A · → B · S Skip</div>
+      <div className="flex items-center justify-between pt-4">
+        <button 
+          onClick={skip} 
+          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+        >
+          Skip this scenario
+        </button>
+        <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
+          Shortcuts: ← A · → B · S Skip
+        </div>
       </div>
     </main>
   );

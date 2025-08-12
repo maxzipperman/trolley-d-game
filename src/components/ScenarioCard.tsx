@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
+import NPCAvatar from "./NPCAvatar";
+import TrolleyDiagram from "./TrolleyDiagram";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -20,7 +22,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
     if (p.length === 0) return [];
     const picked = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
     return picked.map((per) => ({
-      name: per.name,
+      avatar: per.name,
       choice: Math.random() < 0.5 ? "A" : "B",
       rationale:
         per.example_lines?.[
@@ -41,22 +43,31 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         )}
       </header>
 
+      {/* Trolley Diagram */}
+      <div className="py-4">
+        <TrolleyDiagram 
+          trackALabel="A" 
+          trackBLabel="B"
+          className="animate-fade-in"
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
-          className="w-full py-4 px-4 rounded-md border border-border bg-card hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-ring text-left"
+          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
           onClick={() => onPick("A")}
           aria-label="Choose Track A"
         >
-          <div className="font-semibold mb-1">Track A</div>
-          <div className="text-sm text-muted-foreground">{scenario.track_a}</div>
+          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
+          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
         </button>
         <button
-          className="w-full py-4 px-4 rounded-md border border-border bg-card hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-ring text-left"
+          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
           onClick={() => onPick("B")}
           aria-label="Choose Track B"
         >
-          <div className="font-semibold mb-1">Track B</div>
-          <div className="text-sm text-muted-foreground">{scenario.track_b}</div>
+          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
+          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
         </button>
       </div>
 
@@ -70,21 +81,33 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             {showNPC ? "Hide" : "See"} sample NPC takes
           </button>
           {showNPC && (
-            <ul className="mt-3 space-y-2">
+            <div className="mt-4 space-y-3 animate-fade-in">
               {samples.map((r, i) => (
-                <li key={i} className="flex items-start gap-3 p-3 rounded-md border border-border">
-                  <div className="h-8 w-8 rounded-full bg-muted grid place-items-center text-sm font-semibold select-none">
-                    {(r.avatar?.[0] ?? "N").toUpperCase()}
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-sm font-medium">{r.avatar ?? "NPC"} · chose {r.choice ?? "?"}</div>
+                <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
+                  <NPCAvatar 
+                    name={r.avatar ?? "NPC"} 
+                    size="md"
+                    className="mt-0.5"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
+                      <span className="text-xs text-muted-foreground">•</span>
+                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                        r.choice === "A" 
+                          ? "bg-primary/10 text-primary" 
+                          : "bg-secondary/50 text-secondary-foreground"
+                      }`}>
+                        Track {r.choice ?? "?"}
+                      </span>
+                    </div>
                     {r.rationale && (
-                      <p className="text-sm text-muted-foreground">{r.rationale}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
                     )}
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </div>
       )}
