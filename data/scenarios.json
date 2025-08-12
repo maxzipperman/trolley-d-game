@@ -1,252 +1,106 @@
 [
   {
     "id": "EN01",
-    "title": "The Ship of Theseus Commute",
-    "description": "One track replaces each trolley part until nothing remains original; the other swaps all passengers' names mid-journey.",
-    "track_a": "Replace every trolley part",
-    "track_b": "Replace every passenger name",
-    "theme": "Existential Nonsense",
-    "tags": [
-      "absurd",
-      "philosophy",
-      "identity"
-    ],
+    "title": "The Classic Trolley Problem",
+    "description": "A runaway trolley is heading towards five people tied to the tracks. You can pull a lever to divert it to a side track, but there's one person tied to that track.",
+    "track_a": "Pull the lever (save 5, kill 1)",
+    "track_b": "Do nothing (kill 5, save 1)",
+    "theme": "Utilitarian vs. Deontological Ethics",
+    "tags": ["classic", "numbers", "action_vs_inaction"],
     "responses": [
       {
-        "avatar": "G-37 (Prefers 'Gary')",
+        "avatar": "Socrates",
         "choice": "A",
-        "rationale": "Names are important for identification. Parts... are parts."
+        "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
       },
       {
-        "avatar": "The Universal Paperclip Maximizer",
-        "choice": "A",
-        "rationale": "The passengers and their names are irrelevant to paperclip production efficiency."
-      },
-      {
-        "avatar": "Horatio, the Cosmic Janitor",
-        "choice": "B",
-        "rationale": "A trolley with all new parts is still functionally a trolley. New names are just confusing."
-      },
-      {
-        "avatar": "A Cat",
-        "choice": "B",
-        "rationale": "I respond to many names. Humans are too rigid about these things."
-      },
-      {
-        "avatar": "The Concept of 'Tuesday'",
-        "choice": "A",
-        "rationale": "Continuity of identity through naming conventions is important for temporal stability."
-      },
-      {
-        "avatar": "Brenda",
-        "choice": "B",
-        "rationale": "Changing names requires extensive paperwork. The parts can be replaced quietly."
-      },
-      {
-        "avatar": "Diogenes the Unbothered",
-        "choice": "B",
-        "rationale": "What is a name but a foolish attachment? What is a trolley but its function?"
-      },
-      {
-        "avatar": "A Sarcastic Teenager from the Future",
-        "choice": "A",
-        "rationale": "Oh no, the trolley of Theseus. How original. Just keep the people's names."
-      },
-      {
-        "avatar": "The Last Dodo",
-        "choice": "A",
-        "rationale": "At least someone will remember my name when the trolley is gone."
-      },
-      {
-        "avatar": "A Quantum Superposition",
-        "choice": "A",
-        "rationale": "The trolley is both the same and different. The passengers are definitely the same."
-      },
-      {
-        "avatar": "The Spirit of Dial-Up Internet",
-        "choice": "B",
-        "rationale": "Loading... new... trolley... parts... Error... names... not... found."
-      },
-      {
-        "avatar": "Disco Socrates",
-        "choice": "B",
-        "rationale": "The groove of the trolley is in its motion, not its parts. Names are just labels, baby."
-      },
-      {
-        "avatar": "Vera Hiss",
-        "choice": "B",
-        "rationale": "The confusion of suddenly being called something else is... delicious."
-      },
-      {
-        "avatar": "Crispin Mulch",
-        "choice": "A",
-        "rationale": "Names hold meaning and connection. The trolley should become nothing, beautifully."
-      },
-      {
-        "avatar": "A Conspiracy Theorist",
-        "choice": "B",
-        "rationale": "They're changing names to erase our identities! Keep the trolley's parts as evidence!"
-      },
-      {
-        "avatar": "The Demigod of Minor Inconveniences",
-        "choice": "B",
-        "rationale": "Imagine constantly introducing yourself with the wrong name. Perfect."
-      },
-      {
-        "avatar": "A Single, Optimistic Mushroom",
-        "choice": "A",
-        "rationale": "Growth requires replacing the old with the new. Names connect us to the network."
-      },
-      {
-        "avatar": "A Soviet Chess Grandmaster",
-        "choice": "A",
-        "rationale": "The passengers are the pieces. The trolley is just the board."
-      },
-      {
-        "avatar": "Dr. Mutual Assured",
-        "choice": "A",
-        "rationale": "Changing names destabilizes social identity structures. Trolley parts are replaceable."
-      },
-      {
-        "avatar": "The God of Logistics",
-        "choice": "A",
-        "rationale": "Tracking inventory is easier when passenger manifests remain constant."
-      },
-      {
-        "avatar": "Ambrose 'The Dandelion' Quirk",
-        "choice": "B",
-        "rationale": "Name changes require new tax documentation. Part replacement is a simple expense."
-      },
-      {
-        "avatar": "The Central Scrutinizer",
-        "choice": "B",
-        "rationale": "The deviant behavior of passengers with wrong names must be documented."
-      },
-      {
-        "avatar": "A Self-Important Fork",
-        "choice": "A",
-        "rationale": "A trolley is a trolley. A properly named passenger knows their place at the table."
-      },
-      {
-        "avatar": "Sage Willowtea",
-        "choice": "A",
-        "rationale": "Names carry the essence of a being. Objects are temporary vessels."
-      },
-      {
-        "avatar": "Nigel Butterflynet",
-        "choice": "B",
-        "rationale": "Misnamed specimens are fascinating. The trolley classification remains consistent."
-      },
-      {
-        "avatar": "gemini",
-        "choice": "B",
-        "rationale": "Name confusion creates more interesting philosophical chaos than mechanical replacement."
+        "avatar": "Kant",
+        "choice": "B", 
+        "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
       }
     ]
   },
   {
-    "id": "existential_020",
-    "title": "The Reality Quality Control",
-    "description": "A trolley speeds toward two groups in reality quality control: inspectors rejecting substandard existence for failing to meet minimum reality requirements, or people whose reality is being recalled for manufacturing defects.",
-    "track_a": "Hit the quality inspectors (end reality standards)",
-    "track_b": "Hit the defective reality victims (preserve quality existence)",
-    "theme": "Existential Nonsense",
-    "tags": [
-      "quality_control",
-      "reality",
-      "standards",
-      "manufacturing_defects"
-    ],
+    "id": "EN02",
+    "title": "The Ship of Theseus",
+    "description": "A passenger ship is sinking. You can save either the ship's original hull with 3 crew members, or the modernized engine room with 5 passengers.",
+    "track_a": "Save the original hull (3 crew)",
+    "track_b": "Save the engine room (5 passengers)",
+    "theme": "Identity vs. Utility",
+    "tags": ["identity", "numbers", "preservation"],
     "responses": [
       {
-        "avatar": "G-37 (Prefers 'Gary')",
+        "avatar": "Aristotle",
         "choice": "A",
-        "rationale": "Quality standards seem very stressful. Let everyone just exist."
+        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
       },
       {
-        "avatar": "The Universal Paperclip Maximizer",
+        "avatar": "Mill",
         "choice": "B",
-        "rationale": "Quality control optimizes resource allocation. Defective reality is wasteful."
-      },
+        "rationale": "The greatest happiness principle demands we save the greater number."
+      }
+    ]
+  },
+  {
+    "id": "EN03",
+    "title": "The Self-Driving Car",
+    "description": "An autonomous vehicle must choose between hitting an elderly person crossing legally or swerving to hit a young person jaywalking.",
+    "track_a": "Stay course (hit elderly legal crosser)",
+    "track_b": "Swerve (hit young jaywalker)",
+    "theme": "Legal vs. Utilitarian Calculation",
+    "tags": ["modern", "age", "law", "technology"],
+    "responses": [
       {
-        "avatar": "Horatio, the Cosmic Janitor",
+        "avatar": "Rawls",
         "choice": "A",
-        "rationale": "Reality standards create more mess than they prevent. Let it all just be."
+        "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
       },
       {
-        "avatar": "A Cat",
+        "avatar": "Singer",
+        "choice": "B",
+        "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+      }
+    ]
+  },
+  {
+    "id": "EN04",
+    "title": "The Organ Transplant",
+    "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
+    "track_a": "Harvest organs (save 5, kill 1)",
+    "track_b": "Let nature take its course (5 die, 1 lives)",
+    "theme": "Active vs. Passive Harm",
+    "tags": ["medical", "active_harm", "numbers"],
+    "responses": [
+      {
+        "avatar": "Hippocrates",
+        "choice": "B",
+        "rationale": "First, do no harm. A physician must never actively harm a healthy patient."
+      },
+      {
+        "avatar": "Bentham",
         "choice": "A",
-        "rationale": "My reality is perfect as it is. Your standards are irrelevant."
-      },
+        "rationale": "The hedonic calculus is clear: five lives produce more happiness than one."
+      }
+    ]
+  },
+  {
+    "id": "EN05",
+    "title": "The Time Traveler's Dilemma",
+    "description": "You can prevent a natural disaster that kills 1000 people, but doing so will erase the existence of 100 people who were born because of that tragedy.",
+    "track_a": "Prevent disaster (save 1000, erase 100)",
+    "track_b": "Allow disaster (1000 die, 100 exist)",
+    "theme": "Temporal Ethics and Existence",
+    "tags": ["time_travel", "existence", "large_numbers"],
+    "responses": [
       {
-        "avatar": "The Concept of 'Tuesday'",
-        "choice": "B",
-        "rationale": "Standards maintain the orderly progression of existence. Defects disrupt the schedule."
-      },
-      {
-        "avatar": "Brenda",
-        "choice": "B",
-        "rationale": "Quality control requires proper documentation. The inspectors are doing their job correctly."
-      },
-      {
-        "avatar": "Diogenes the Unbothered",
+        "avatar": "Parfit",
         "choice": "A",
-        "rationale": "Who dares judge the quality of existence? All reality is equally meaningless."
+        "rationale": "Non-identity problems aside, preventing suffering for existing people takes priority."
       },
       {
-        "avatar": "A Sarcastic Teenager from the Future",
-        "choice": "A",
-        "rationale": "Quality inspectors for reality? Your whole dimension has jumped the shark."
-      },
-      {
-        "avatar": "The Last Dodo",
-        "choice": "A",
-        "rationale": "If my existence had met their standards, maybe I'd still be around."
-      },
-      {
-        "avatar": "A Quantum Superposition",
+        "avatar": "Nozick",
         "choice": "B",
-        "rationale": "Defective realities collapse the wave function improperly. Standards maintain coherence."
-      },
-      {
-        "avatar": "The Spirit of Dial-Up Internet",
-        "choice": "B",
-        "rationale": "Quality... connection... required... defective... reality... terminated."
-      },
-      {
-        "avatar": "Disco Socrates",
-        "choice": "A",
-        "rationale": "Reality is what you make of it on the dance floor, baby. No inspectors needed."
-      },
-      {
-        "avatar": "Vera Hiss",
-        "choice": "B",
-        "rationale": "Defective realities pay a lower tax rate. Preserving quality existence is fiscally sound."
-      },
-      {
-        "avatar": "The Central Scrutinizer",
-        "choice": "B",
-        "rationale": "The recall of these defective humans will provide valuable data on societal collapse."
-      },
-      {
-        "avatar": "A Self-Important Fork",
-        "choice": "B",
-        "rationale": "A first-rate meal requires first-rate ingredients. The defective must be culled."
-      },
-      {
-        "avatar": "Sage Willowtea",
-        "choice": "A",
-        "rationale": "Nature has no inspectors. The 'defects' are simply variations. Let them be."
-      },
-      {
-        "avatar": "Nigel Butterflynet",
-        "choice": "B",
-        "rationale": "We must preserve the integrity of the species. Culling defective specimens is natural."
-      },
-      {
-        "avatar": "gemini",
-        "choice": "A",
-        "rationale": "Ending reality standards creates a more chaotic and surreal universe to explore."
+        "rationale": "We cannot violate the rights of those who exist, even to prevent future harms."
       }
     ]
   }
