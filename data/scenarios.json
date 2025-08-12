@@ -1,134 +1,253 @@
 [
   {
-    "id":"EN01",
-    "title":"The Ship of Theseus Commute",
-    "description":"One track replaces each trolley part until nothing remains original; the other swaps all passengers' names mid-journey.",
-    "track_a":"Replace every trolley part",
-    "track_b":"Replace every passenger name",
-    "theme":"Existential Nonsense",
-    "tags":[
+    "id": "EN01",
+    "title": "The Ship of Theseus Commute",
+    "description": "One track replaces each trolley part until nothing remains original; the other swaps all passengers' names mid-journey.",
+    "track_a": "Replace every trolley part",
+    "track_b": "Replace every passenger name",
+    "theme": "Existential Nonsense",
+    "tags": [
       "absurd",
       "philosophy",
       "identity"
+    ],
+    "responses": [
+      {
+        "avatar": "G-37 (Prefers 'Gary')",
+        "choice": "A",
+        "rationale": "Names are important for identification. Parts... are parts."
+      },
+      {
+        "avatar": "The Universal Paperclip Maximizer",
+        "choice": "A",
+        "rationale": "The passengers and their names are irrelevant to paperclip production efficiency."
+      },
+      {
+        "avatar": "Horatio, the Cosmic Janitor",
+        "choice": "B",
+        "rationale": "A trolley with all new parts is still functionally a trolley. New names are just confusing."
+      },
+      {
+        "avatar": "A Cat",
+        "choice": "B",
+        "rationale": "I respond to many names. Humans are too rigid about these things."
+      },
+      {
+        "avatar": "The Concept of 'Tuesday'",
+        "choice": "A",
+        "rationale": "Continuity of identity through naming conventions is important for temporal stability."
+      },
+      {
+        "avatar": "Brenda",
+        "choice": "B",
+        "rationale": "Changing names requires extensive paperwork. The parts can be replaced quietly."
+      },
+      {
+        "avatar": "Diogenes the Unbothered",
+        "choice": "B",
+        "rationale": "What is a name but a foolish attachment? What is a trolley but its function?"
+      },
+      {
+        "avatar": "A Sarcastic Teenager from the Future",
+        "choice": "A",
+        "rationale": "Oh no, the trolley of Theseus. How original. Just keep the people's names."
+      },
+      {
+        "avatar": "The Last Dodo",
+        "choice": "A",
+        "rationale": "At least someone will remember my name when the trolley is gone."
+      },
+      {
+        "avatar": "A Quantum Superposition",
+        "choice": "A",
+        "rationale": "The trolley is both the same and different. The passengers are definitely the same."
+      },
+      {
+        "avatar": "The Spirit of Dial-Up Internet",
+        "choice": "B",
+        "rationale": "Loading... new... trolley... parts... Error... names... not... found."
+      },
+      {
+        "avatar": "Disco Socrates",
+        "choice": "B",
+        "rationale": "The groove of the trolley is in its motion, not its parts. Names are just labels, baby."
+      },
+      {
+        "avatar": "Vera Hiss",
+        "choice": "B",
+        "rationale": "The confusion of suddenly being called something else is... delicious."
+      },
+      {
+        "avatar": "Crispin Mulch",
+        "choice": "A",
+        "rationale": "Names hold meaning and connection. The trolley should become nothing, beautifully."
+      },
+      {
+        "avatar": "A Conspiracy Theorist",
+        "choice": "B",
+        "rationale": "They're changing names to erase our identities! Keep the trolley's parts as evidence!"
+      },
+      {
+        "avatar": "The Demigod of Minor Inconveniences",
+        "choice": "B",
+        "rationale": "Imagine constantly introducing yourself with the wrong name. Perfect."
+      },
+      {
+        "avatar": "A Single, Optimistic Mushroom",
+        "choice": "A",
+        "rationale": "Growth requires replacing the old with the new. Names connect us to the network."
+      },
+      {
+        "avatar": "A Soviet Chess Grandmaster",
+        "choice": "A",
+        "rationale": "The passengers are the pieces. The trolley is just the board."
+      },
+      {
+        "avatar": "Dr. Mutual Assured",
+        "choice": "A",
+        "rationale": "Changing names destabilizes social identity structures. Trolley parts are replaceable."
+      },
+      {
+        "avatar": "The God of Logistics",
+        "choice": "A",
+        "rationale": "Tracking inventory is easier when passenger manifests remain constant."
+      },
+      {
+        "avatar": "Ambrose 'The Dandelion' Quirk",
+        "choice": "B",
+        "rationale": "Name changes require new tax documentation. Part replacement is a simple expense."
+      },
+      {
+        "avatar": "The Central Scrutinizer",
+        "choice": "B",
+        "rationale": "The deviant behavior of passengers with wrong names must be documented."
+      },
+      {
+        "avatar": "A Self-Important Fork",
+        "choice": "A",
+        "rationale": "A trolley is a trolley. A properly named passenger knows their place at the table."
+      },
+      {
+        "avatar": "Sage Willowtea",
+        "choice": "A",
+        "rationale": "Names carry the essence of a being. Objects are temporary vessels."
+      },
+      {
+        "avatar": "Nigel Butterflynet",
+        "choice": "B",
+        "rationale": "Misnamed specimens are fascinating. The trolley classification remains consistent."
+      },
+      {
+        "avatar": "gemini",
+        "choice": "B",
+        "rationale": "Name confusion creates more interesting philosophical chaos than mechanical replacement."
+      }
     ]
   },
   {
-    "id":"EN17",
-    "title":"Trolley Identity Swap",
-    "description":"One track makes the trolley think it's the passengers; the other makes passengers think they're the trolley.",
-    "track_a":"Trolley thinks it's people",
-    "track_b":"People think they're trolley",
-    "theme":"Existential Nonsense",
-    "tags":[
-      "absurd",
-      "identity",
-      "paradox"
-    ]
-  },
-  {
-    "id":"IL03",
-    "title":"Alien Parking Violation",
-    "description":"One track tows a UFO from a no-landing zone; the other replaces its parking permit with a banana peel.",
-    "track_a":"Tow the UFO",
-    "track_b":"Replace permit with banana peel",
-    "theme":"Intergalactic Law",
-    "tags":[
-      "absurd",
-      "space",
-      "parking"
-    ]
-  },
-  {
-    "id":"EN14",
-    "title":"Existence Refund Policy",
-    "description":"One track issues refunds to anyone dissatisfied with existence; the other denies all claims on principle.",
-    "track_a":"Approve existence refunds",
-    "track_b":"Deny all existence refunds",
-    "theme":"Existential Nonsense",
-    "tags":[
-      "absurd",
-      "philosophy",
-      "bureaucracy"
-    ]
-  },
-  {
-    "id":"EN09",
-    "title":"Meaning of Lunch",
-    "description":"One track decides lunch is meaningless; the other insists lunch is the only meaning.",
-    "track_a":"Erase lunch's meaning",
-    "track_b":"Declare lunch ultimate purpose",
-    "theme":"Existential Nonsense",
-    "tags":[
-      "absurd",
-      "food",
-      "existential"
-    ]
-  },
-  {
-    "id":"EN13",
-    "title":"The Omnipresent Queue",
-    "description":"One track joins you to a queue in all possible universes; the other removes all queues but makes everyone wait anyway.",
-    "track_a":"Join infinite queues",
-    "track_b":"Wait without queues",
-    "theme":"Existential Nonsense",
-    "tags":[
-      "absurd",
-      "infinite",
-      "waiting"
-    ]
-  },
-  {
-    "id":"IL07",
-    "title":"Time Travel Visa Denial",
-    "description":"One track denies a time traveler's reentry; the other forces them to live only in Tuesdays.",
-    "track_a":"Deny reentry",
-    "track_b":"Confine to Tuesdays",
-    "theme":"Intergalactic Law",
-    "tags":[
-      "absurd",
-      "space",
-      "time"
-    ]
-  },
-  {
-    "id":"existential_004",
-    "title":"The Reality Subscription Service",
-    "description":"Existence becomes a paid subscription model. A trolley speeds toward two groups: people who can't afford premium reality and experience life in low resolution, or those with unlimited existence plans who can't handle high-definition awareness.",
-    "track_a":"Hit the low-res existers (end pixelated consciousness)",
-    "track_b":"Hit the HD awareness victims (prevent existential overload)",
-    "theme":"Existential Nonsense",
-    "tags":[
-      "subscription",
-      "reality",
-      "consciousness",
-      "premium_existence"
-    ]
-  },
-  {
-    "id":"EN03",
-    "title":"The Self-Referential Trolley",
-    "description":"One track hits a trolley that only runs over itself; the other hits a trolley that only runs over other trolleys.",
-    "track_a":"Hit the self-harming trolley",
-    "track_b":"Hit the trolley-harming trolley",
-    "theme":"Existential Nonsense",
-    "tags":[
-      "absurd",
-      "logic",
-      "paradox"
-    ]
-  },
-  {
-    "id":"existential_020",
-    "title":"The Reality Quality Control",
-    "description":"A trolley speeds toward two groups in reality quality control: inspectors rejecting substandard existence for failing to meet minimum reality requirements, or people whose reality is being recalled for manufacturing defects.",
-    "track_a":"Hit the quality inspectors (end reality standards)",
-    "track_b":"Hit the defective reality victims (preserve quality existence)",
-    "theme":"Existential Nonsense",
-    "tags":[
+    "id": "existential_020",
+    "title": "The Reality Quality Control",
+    "description": "A trolley speeds toward two groups in reality quality control: inspectors rejecting substandard existence for failing to meet minimum reality requirements, or people whose reality is being recalled for manufacturing defects.",
+    "track_a": "Hit the quality inspectors (end reality standards)",
+    "track_b": "Hit the defective reality victims (preserve quality existence)",
+    "theme": "Existential Nonsense",
+    "tags": [
       "quality_control",
       "reality",
       "standards",
       "manufacturing_defects"
+    ],
+    "responses": [
+      {
+        "avatar": "G-37 (Prefers 'Gary')",
+        "choice": "A",
+        "rationale": "Quality standards seem very stressful. Let everyone just exist."
+      },
+      {
+        "avatar": "The Universal Paperclip Maximizer",
+        "choice": "B",
+        "rationale": "Quality control optimizes resource allocation. Defective reality is wasteful."
+      },
+      {
+        "avatar": "Horatio, the Cosmic Janitor",
+        "choice": "A",
+        "rationale": "Reality standards create more mess than they prevent. Let it all just be."
+      },
+      {
+        "avatar": "A Cat",
+        "choice": "A",
+        "rationale": "My reality is perfect as it is. Your standards are irrelevant."
+      },
+      {
+        "avatar": "The Concept of 'Tuesday'",
+        "choice": "B",
+        "rationale": "Standards maintain the orderly progression of existence. Defects disrupt the schedule."
+      },
+      {
+        "avatar": "Brenda",
+        "choice": "B",
+        "rationale": "Quality control requires proper documentation. The inspectors are doing their job correctly."
+      },
+      {
+        "avatar": "Diogenes the Unbothered",
+        "choice": "A",
+        "rationale": "Who dares judge the quality of existence? All reality is equally meaningless."
+      },
+      {
+        "avatar": "A Sarcastic Teenager from the Future",
+        "choice": "A",
+        "rationale": "Quality inspectors for reality? Your whole dimension has jumped the shark."
+      },
+      {
+        "avatar": "The Last Dodo",
+        "choice": "A",
+        "rationale": "If my existence had met their standards, maybe I'd still be around."
+      },
+      {
+        "avatar": "A Quantum Superposition",
+        "choice": "B",
+        "rationale": "Defective realities collapse the wave function improperly. Standards maintain coherence."
+      },
+      {
+        "avatar": "The Spirit of Dial-Up Internet",
+        "choice": "B",
+        "rationale": "Quality... connection... required... defective... reality... terminated."
+      },
+      {
+        "avatar": "Disco Socrates",
+        "choice": "A",
+        "rationale": "Reality is what you make of it on the dance floor, baby. No inspectors needed."
+      },
+      {
+        "avatar": "Vera Hiss",
+        "choice": "B",
+        "rationale": "Defective realities pay a lower tax rate. Preserving quality existence is fiscally sound."
+      },
+      {
+        "avatar": "The Central Scrutinizer",
+        "choice": "B",
+        "rationale": "The recall of these defective humans will provide valuable data on societal collapse."
+      },
+      {
+        "avatar": "A Self-Important Fork",
+        "choice": "B",
+        "rationale": "A first-rate meal requires first-rate ingredients. The defective must be culled."
+      },
+      {
+        "avatar": "Sage Willowtea",
+        "choice": "A",
+        "rationale": "Nature has no inspectors. The 'defects' are simply variations. Let them be."
+      },
+      {
+        "avatar": "Nigel Butterflynet",
+        "choice": "B",
+        "rationale": "We must preserve the integrity of the species. Culling defective specimens is natural."
+      },
+      {
+        "avatar": "gemini",
+        "choice": "A",
+        "rationale": "Ending reality standards creates a more chaotic and surreal universe to explore."
+      }
     ]
   }
 ]

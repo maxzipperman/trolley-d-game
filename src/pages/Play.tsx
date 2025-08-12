@@ -4,7 +4,8 @@ import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import type { Choice, Scenario } from "@/utils/scoring";
+import type { Scenario } from "@/types";
+import type { Choice } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
 

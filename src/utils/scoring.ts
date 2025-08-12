@@ -1,69 +1,61 @@
-export type Choice = "A" | "B" | "skip";
+import type { Scenario } from "@/types";
 
-export interface TrackOption {
-  description?: string;
-  [k: string]: unknown;
+export function countAB(answers: Record<string, "A"|"B"|"skip">) {
+  return Object.values(answers).reduce(
+    (acc, v) => {
+      if (v === "A") acc.A += 1;
+      if (v === "B") acc.B += 1;
+      return acc;
+    },
+    { A: 0, B: 0 }
+  );
 }
 
-export interface Scenario {
-  id: string;
-  title: string;
-  theme?: string;
-  description?: string;
-  tags?: string[];
-  trackA?: TrackOption;
-  trackB?: TrackOption;
-  options?: { A?: TrackOption; B?: TrackOption };
-  responses?: Array<{ name?: string; choice?: "A" | "B"; rationale?: string }>;
-  [k: string]: unknown;
-}
+const ORDER = new Set(["bureaucracy", "standards", "logistics"]);
+const CHAOS = new Set(["absurd", "paradox", "infinite"]);
+const MATERIAL = new Set(["reality", "manufacturing_defects", "quality_control", "space"]);
+const SOCIAL = new Set(["identity", "meaning", "workers_rights", "existential"]);
 
-const KEYWORDS_MISCHIEF = ["deny", "tow", "hit", "erase"];
+const MISCHIEF_WORDS = ["hit", "tow", "deny", "erase", "confine", "condemn", "break"];
 
-function getTrackText(s: Scenario, choice: "A" | "B"): string {
-  const opt = choice === "A" ? s.trackA ?? s.options?.A : s.trackB ?? s.options?.B;
-  const text = (opt as TrackOption | undefined)?.description
-    ?? (choice === "A" ? (s as any)?.A : (s as any)?.B)
-    ?? "";
-  return typeof text === "string" ? text : "";
-}
-
-export function computeBaseCounts(answers: Record<string, Choice>) {
-  let scoreA = 0, scoreB = 0;
-  for (const v of Object.values(answers)) {
-    if (v === "A") scoreA++;
-    if (v === "B") scoreB++;
-  }
-  return { scoreA, scoreB };
-}
-
-export function computeAxes(scenarios: Scenario[], answers: Record<string, Choice>) {
-  let order = 0, chaos = 0;
-  let material = 0, social = 0;
-  let mercy = 0, mischief = 0;
+export function computeAxes(
+  answers: Record<string, "A"|"B"|"skip">,
+  scenarios: Scenario[]
+) {
+  let order = 0, chaos = 0, material = 0, social = 0, mercy = 0, mischief = 0;
 
   for (const s of scenarios) {
-    const tags = s.tags ?? [];
-    // Order vs Chaos tags
-    if (tags.some(t => ["bureaucracy","standards","logistics"].includes(t))) order++;
-    if (tags.some(t => ["absurd","paradox","infinite"].includes(t))) chaos++;
+    // Order/Chaos from tags
+    if (s.tags?.some(t => ORDER.has(t))) order++;
+    if (s.tags?.some(t => CHAOS.has(t))) chaos++;
+    if (s.tags?.some(t => MATERIAL.has(t))) material++;
+    if (s.tags?.some(t => SOCIAL.has(t))) social++;
 
-    // Material vs Social tags
-    if (tags.some(t => ["reality","manufacturing_defects","quality_control","space"].includes(t))) material++;
-    if (tags.some(t => ["identity","meaning","workers_rights","existential"].includes(t))) social++;
+    const pick = answers[s.id];
+    if (!pick || pick === "skip") continue;
 
-    const choice = answers[s.id];
-    if (choice === "A" || choice === "B") {
-      const text = getTrackText(s, choice).toLowerCase();
-      const isMischief = KEYWORDS_MISCHIEF.some(k => text.includes(k));
-      if (isMischief) mischief++; else mercy++;
-    }
+    const text = (pick === "A" ? s.track_a : s.track_b).toLowerCase();
+    const isMischief = MISCHIEF_WORDS.some(w => text.includes(w));
+    if (isMischief) mischief++; else mercy++;
   }
 
+  return { order, chaos, material, social, mercy, mischief };
+}
+
+// Legacy compatibility functions
+export type Choice = "A" | "B" | "skip";
+
+export function computeBaseCounts(answers: Record<string, Choice>) {
+  const counts = countAB(answers);
+  return { scoreA: counts.A, scoreB: counts.B };
+}
+
+export function computeAxes_legacy(scenarios: Scenario[], answers: Record<string, Choice>) {
+  const raw = computeAxes(answers, scenarios);
   const clamp = (n: number) => Math.max(-10, Math.min(10, n));
   return {
-    orderChaos: clamp(order - chaos),
-    materialSocial: clamp(material - social),
-    mercyMischief: clamp(mercy - mischief),
+    orderChaos: clamp(raw.order - raw.chaos),
+    materialSocial: clamp(raw.material - raw.social),
+    mercyMischief: clamp(raw.mercy - raw.mischief),
   };
 }

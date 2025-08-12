@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import type { Scenario } from "@/utils/scoring";
+import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 
 interface ScenarioCardProps {
@@ -43,18 +43,20 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
-          className="w-full py-4 px-4 rounded-md border border-border bg-card hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-ring"
+          className="w-full py-4 px-4 rounded-md border border-border bg-card hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-ring text-left"
           onClick={() => onPick("A")}
           aria-label="Choose Track A"
         >
-          Track A
+          <div className="font-semibold mb-1">Track A</div>
+          <div className="text-sm text-muted-foreground">{scenario.track_a}</div>
         </button>
         <button
-          className="w-full py-4 px-4 rounded-md border border-border bg-card hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-ring"
+          className="w-full py-4 px-4 rounded-md border border-border bg-card hover:bg-accent transition focus:outline-none focus:ring-2 focus:ring-ring text-left"
           onClick={() => onPick("B")}
           aria-label="Choose Track B"
         >
-          Track B
+          <div className="font-semibold mb-1">Track B</div>
+          <div className="text-sm text-muted-foreground">{scenario.track_b}</div>
         </button>
       </div>
 
@@ -72,10 +74,10 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
               {samples.map((r, i) => (
                 <li key={i} className="flex items-start gap-3 p-3 rounded-md border border-border">
                   <div className="h-8 w-8 rounded-full bg-muted grid place-items-center text-sm font-semibold select-none">
-                    {(r.name?.[0] ?? "N").toUpperCase()}
+                    {(r.avatar?.[0] ?? "N").toUpperCase()}
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm font-medium">{r.name ?? "NPC"} · chose {r.choice ?? "?"}</div>
+                    <div className="text-sm font-medium">{r.avatar ?? "NPC"} · chose {r.choice ?? "?"}</div>
                     {r.rationale && (
                       <p className="text-sm text-muted-foreground">{r.rationale}</p>
                     )}

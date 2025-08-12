@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AxisBar from "@/components/AxisBar";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import { Choice, computeAxes, computeBaseCounts } from "@/utils/scoring";
+import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
