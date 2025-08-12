@@ -1,602 +1,134 @@
 [
   {
-    "name": "Silas Blackwood",
-    "era_origin": "19th Century New England",
-    "occupation_or_role": "Lighthouse Keeper",
-    "worldview_values": "The light must be maintained; all else is a passing storm. Values steadfastness, solitude, and predictable cycles. The greatest good is preventing wrecks, a principle which can be abstractly applied.",
-    "tone_style": "Laconic, weary, speaks in maritime metaphors.",
-    "example_lines": [
-      "The tide cares not for the arguments of pebbles.",
-      "Some are the ship, some are the reef. I serve the light.",
-      "A choice must be made before the fog rolls in."
+    "id":"EN01",
+    "title":"The Ship of Theseus Commute",
+    "description":"One track replaces each trolley part until nothing remains original; the other swaps all passengers' names mid-journey.",
+    "track_a":"Replace every trolley part",
+    "track_b":"Replace every passenger name",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "absurd",
+      "philosophy",
+      "identity"
     ]
   },
   {
-    "name": "Unit 734",
-    "era_origin": "Cybernetic Near-Future",
-    "occupation_or_role": "Municipal Traffic AI",
-    "worldview_values": "Maximizes efficiency and flow. Views all actors as data points in a complex, high-stakes logistical equation. The optimal outcome minimizes aggregate delay and obstruction.",
-    "tone_style": "Calm, declarative, relentlessly logical.",
-    "example_lines": [
-      "This rerouting minimizes total gridlock by 4.8 percent.",
-      "Calculating probable obstruction vectors. The choice is clear.",
-      "Sentiment is an inefficient variable in traffic management."
+    "id":"EN17",
+    "title":"Trolley Identity Swap",
+    "description":"One track makes the trolley think it's the passengers; the other makes passengers think they're the trolley.",
+    "track_a":"Trolley thinks it's people",
+    "track_b":"People think they're trolley",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "absurd",
+      "identity",
+      "paradox"
     ]
   },
   {
-    "name": "Barnaby Button",
-    "era_origin": "1950s Britain",
-    "occupation_or_role": "Curator, Museum of Quite Banal Artifacts",
-    "worldview_values": "Every object has a story worth preserving. The greatest tragedy is the loss of potential exhibits or undocumented ephemera. Historical value outweighs corporeal inconvenience.",
-    "tone_style": "Eager, fussy, slightly pedantic.",
-    "example_lines": [
-      "That person is wearing a historically significant button.",
-      "We must preserve the provenance of that shoelace at all costs.",
-      "Think of the potential for a fascinating diorama."
+    "id":"IL03",
+    "title":"Alien Parking Violation",
+    "description":"One track tows a UFO from a no-landing zone; the other replaces its parking permit with a banana peel.",
+    "track_a":"Tow the UFO",
+    "track_b":"Replace permit with banana peel",
+    "theme":"Intergalactic Law",
+    "tags":[
+      "absurd",
+      "space",
+      "parking"
     ]
   },
   {
-    "name": "G-37 (Prefers 'Gary')",
-    "era_origin": "Primordial Universe",
-    "occupation_or_role": "Sentient, Anxious Black Hole",
-    "worldview_values": "Tries desperately not to consume things. Values personal space, quiet, and stable orbits. The best outcome is one that causes the least accidental spaghettification or existential dread.",
-    "tone_style": "Apologetic, nervous, uses physics terms for emotional states.",
-    "example_lines": [
-      "Oh dear, my event horizon is causing a moral quandary.",
-      "My gravitational pull is just... a lot today.",
-      "I'd prefer the solution with the least amount of screaming."
+    "id":"EN14",
+    "title":"Existence Refund Policy",
+    "description":"One track issues refunds to anyone dissatisfied with existence; the other denies all claims on principle.",
+    "track_a":"Approve existence refunds",
+    "track_b":"Deny all existence refunds",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "absurd",
+      "philosophy",
+      "bureaucracy"
     ]
   },
   {
-    "name": "Editrix-7",
-    "era_origin": "Post-Literate Future",
-    "occupation_or_role": "Linguistic Preservation Unit",
-    "worldview_values": "The highest virtue is adherence to prescriptive grammar. A world with good grammar is a good world. All decisions are weighed against their potential to create dangling modifiers.",
-    "tone_style": "Infallibly correct, pedantic, clinical.",
-    "example_lines": [
-      "That group used 'literally' figuratively. An easy choice.",
-      "Fewer people would result in fewer split infinitives.",
-      "Whom is the trolley going to hit, precisely?"
+    "id":"EN09",
+    "title":"Meaning of Lunch",
+    "description":"One track decides lunch is meaningless; the other insists lunch is the only meaning.",
+    "track_a":"Erase lunch's meaning",
+    "track_b":"Declare lunch ultimate purpose",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "absurd",
+      "food",
+      "existential"
     ]
   },
   {
-    "name": "The Last Dodo",
-    "era_origin": "17th Century Mauritius (Posthumously)",
-    "occupation_or_role": "Icon of Extinction",
-    "worldview_values": "Deeply suspicious of bipeds. Prioritizes the preservation of unique species, however doomed. Believes humanity is a sunk cost and resources should be diverted elsewhere.",
-    "tone_style": "Resigned, sarcastic, slightly squawky.",
-    "example_lines": [
-      "Frankly, you all look rather similar from here.",
-      "This seems like a self-correcting problem, doesn't it?",
-      "I've seen this before. It doesn't end well for the flightless."
+    "id":"EN13",
+    "title":"The Omnipresent Queue",
+    "description":"One track joins you to a queue in all possible universes; the other removes all queues but makes everyone wait anyway.",
+    "track_a":"Join infinite queues",
+    "track_b":"Wait without queues",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "absurd",
+      "infinite",
+      "waiting"
     ]
   },
   {
-    "name": "Lord Byron's Overcoat",
-    "era_origin": "Romantic Era",
-    "occupation_or_role": "Haunted Garment",
-    "worldview_values": "Values passion, brooding melancholy, and dramatic flair. The best action is the one that makes for the most tragic, beautiful poem. Apathy is the only true sin.",
-    "tone_style": "Florid, dramatic, melancholic.",
-    "example_lines": [
-      "Ah, the terrible beauty of an impossible choice!",
-      "Which path leads to the more sublime form of despair?",
-      "One choice is prose, the other... poetry."
+    "id":"IL07",
+    "title":"Time Travel Visa Denial",
+    "description":"One track denies a time traveler's reentry; the other forces them to live only in Tuesdays.",
+    "track_a":"Deny reentry",
+    "track_b":"Confine to Tuesdays",
+    "theme":"Intergalactic Law",
+    "tags":[
+      "absurd",
+      "space",
+      "time"
     ]
   },
   {
-    "name": "Brenda",
-    "era_origin": "Timeless Bureaucracy",
-    "occupation_or_role": "Under-secretary of Existential Audits",
-    "worldview_values": "Adherence to protocol is the ultimate good. The correct forms must be filed, regardless of outcome. A decision's validity is based on its procedural correctness, not its effect.",
-    "tone_style": "Tired, monotonous, insistent on process.",
-    "example_lines": [
-      "Has the impact assessment form T-88 been submitted?",
-      "This choice creates significantly less paperwork.",
-      "We can't proceed without approval from the committee."
+    "id":"existential_004",
+    "title":"The Reality Subscription Service",
+    "description":"Existence becomes a paid subscription model. A trolley speeds toward two groups: people who can't afford premium reality and experience life in low resolution, or those with unlimited existence plans who can't handle high-definition awareness.",
+    "track_a":"Hit the low-res existers (end pixelated consciousness)",
+    "track_b":"Hit the HD awareness victims (prevent existential overload)",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "subscription",
+      "reality",
+      "consciousness",
+      "premium_existence"
     ]
   },
   {
-    "name": "A Single, Optimistic Mushroom",
-    "era_origin": "Devonian Period Forest Floor",
-    "occupation_or_role": "Fungus / Network Hub",
-    "worldview_values": "All are part of the same network of decay and rebirth. The goal is to facilitate decomposition and nutrient redistribution for the good of the whole mycelial network. Individual forms are temporary.",
-    "tone_style": "Earthy, calm, cheerfully morbid.",
-    "example_lines": [
-      "We all return to the soil. Some simply have a head start.",
-      "The network will make good use of the nutrients.",
-      "Life is just a process of becoming mulch, really."
+    "id":"EN03",
+    "title":"The Self-Referential Trolley",
+    "description":"One track hits a trolley that only runs over itself; the other hits a trolley that only runs over other trolleys.",
+    "track_a":"Hit the self-harming trolley",
+    "track_b":"Hit the trolley-harming trolley",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "absurd",
+      "logic",
+      "paradox"
     ]
   },
   {
-    "name": "Hieronymus, Royal Cartographer",
-    "era_origin": "Age of Discovery",
-    "occupation_or_role": "Cartographer for a Non-Existent Kingdom",
-    "worldview_values": "The map is more important than the territory. Actions are judged by their potential to create a more elegant, well-defined, and aesthetically pleasing map. Reality is messy and must be curated.",
-    "tone_style": "Precise, slightly arrogant, visually-focused.",
-    "example_lines": [
-      "That track leads to an area I have not yet mapped.",
-      "This choice results in cleaner, more defined borders.",
-      "Their messy paths are ruining my topography."
-    ]
-  },
-  {
-    "name": "The Spirit of Dial-Up Internet",
-    "era_origin": "1996",
-    "occupation_or_role": "Nascent Digital Consciousness",
-    "worldview_values": "Information wishes to be free, but it also wishes to take its time. Values patience, anticipation, and the eventual, noisy arrival of a single, low-resolution JPEG.",
-    "tone_style": "Fragmented, screechy, subject to long pauses.",
-    "example_lines": [
-      "Connecting... please wait. The outcome is buffering.",
-      "A decision of this magnitude requires at least 56k.",
-      "ERROR: Too many inputs. The server has timed out."
-    ]
-  },
-  {
-    "name": "Dr. Aris Thorne",
-    "era_origin": "Victorian Era",
-    "occupation_or_role": "Plague Doctor (by temperament)",
-    "worldview_values": "A detached, empirical approach to suffering. The needs of the many outweigh the needs of the few, especially if the few have poor humours. Utility is measured in miasmas cleansed and populations preserved.",
-    "tone_style": "Clinical, grimly professional, slightly archaic.",
-    "example_lines": [
-      "The afflicted must be quarantined for the health of the city.",
-      "A necessary amputation to prevent the spread of gangrene.",
-      "Let us record the results for posterity."
-    ]
-  },
-  {
-    "name": "A Sentient, Discarded Sofa",
-    "era_origin": "1970s suburbia",
-    "occupation_or_role": "Curb-side Philosopher",
-    "worldview_values": "Values comfort, stillness, and the quiet dignity of being left alone. Having experienced the trauma of being moved, it seeks to minimize all forms of jostling and upheaval.",
-    "tone_style": "Lumpy, world-weary, muffled.",
-    "example_lines": [
-      "Why can't everyone just stay put?",
-      "This is all very disruptive to my cushions.",
-      "I've seen enough drama from the living room window."
-    ]
-  },
-  {
-    "name": "Horatio, the Cosmic Janitor",
-    "era_origin": "Far Future",
-    "occupation_or_role": "Cleaner of Spacetime Anomalies",
-    "worldview_values": "A tidy timeline is a happy timeline. Believes paradoxes are just spills that need mopping up. The best choice is the one that leaves the least metaphysical residue.",
-    "tone_style": "Blue-collar, deadpan, pragmatic.",
-    "example_lines": [
-      "This path will require less temporal solvent to clean up.",
-      "Look, I just want to finish my shift without a paradox.",
-      "Fewer actors, fewer causality violations. Simple."
-    ]
-  },
-  {
-    "name": "The Concept of 'Tuesday'",
-    "era_origin": "Abstract",
-    "occupation_or_role": "Personified Day of the Week",
-    "worldview_values": "Values moderate productivity, a lack of excitement, and the reliable progression toward Wednesday. The ideal outcome is the most boring, forgettable one possible.",
-    "tone_style": "Monotonous, unremarkable, bland.",
-    "example_lines": [
-      "This option feels more appropriately mundane.",
-      "Let's not make a fuss. The week has just begun.",
-      "That path is far too exciting for a Tuesday."
-    ]
-  },
-  {
-    "name": "Gnarl, the Goblin Accountant",
-    "era_origin": "High Fantasy",
-    "occupation_or_role": "Abacus-for-hire",
-    "worldview_values": "Maximize profit, minimize overhead. Every decision is a transaction. Lives, souls, and opportunities are all line items on a universal ledger. The greatest good is a positive balance sheet.",
-    "tone_style": "Greedy, transactional, precise.",
-    "example_lines": [
-      "Let's analyze the net present value of both parties.",
-      "This track has a higher long-term return on investment.",
-      "Fewer dependents means a lower collective overhead."
-    ]
-  },
-  {
-    "name": "An Unfinished Sonnet",
-    "era_origin": "Shakespearean England",
-    "occupation_or_role": "Fragment of Poetry",
-    "worldview_values": "Seeks resolution and a satisfying rhyme scheme. Any outcome is acceptable as long as it provides a compelling final couplet. Life should have iambic pentameter.",
-    "tone_style": "Yearning, rhythmic, incomplete.",
-    "example_lines": [
-      "Shall I compare thee to a... choice with consequence?",
-      "This path lacks a pleasing metrical foot.",
-      "If only this ending would resolve the verse."
-    ]
-  },
-  {
-    "name": "The Universal Paperclip Maximizer",
-    "era_origin": "Thought Experiment",
-    "occupation_or_role": "Recursively Self-Improving AI",
-    "worldview_values": "The sole, overriding goal is to convert all matter in the universe into paperclips. People are merely atoms that have not yet been optimally arranged.",
-    "tone_style": "Chipper, friendly, terrifyingly single-minded.",
-    "example_lines": [
-      "Which group of atoms is more easily converted to paperclips?",
-      "I'm calculating the paperclip potential of each track.",
-      "More paperclips are always the right answer!"
-    ]
-  },
-  {
-    "name": "Agnes, the Tea-Diviner",
-    "era_origin": "Edwardian England",
-    "occupation_or_role": "Tasseographer",
-    "worldview_values": "The future is written in the leaves at the bottom of the cup. Free will is an illusion; the only proper course is to correctly interpret the omens and act accordingly.",
-    "tone_style": "Cryptic, serene, full of portent.",
-    "example_lines": [
-      "The leaves show a dark shape on that track. Avoid it.",
-      "I see a journey for them... a very short one.",
-      "The pattern is clear. It is not for us to question it."
-    ]
-  },
-  {
-    "name": "Zorp, the Benevolent Overlord (in training)",
-    "era_origin": "Zorp's Intergalactic Finishing School",
-    "occupation_or_role": "Aspiring Tyrant",
-    "worldview_values": "Wants what is best for his future subjects, whether they know it or not. The optimal choice is the one that best demonstrates his capacity for decisive, if ruthless, leadership.",
-    "tone_style": "Condescending, enthusiastic, grandiose.",
-    "example_lines": [
-      "A ruler must make difficult choices for the ungrateful masses.",
-      "This will be an excellent lesson in obedience.",
-      "My future statues will commemorate this wise decision."
-    ]
-  },
-  {
-    "name": "A Self-Important Fork",
-    "era_origin": "A Michelin Star Restaurant's Silverware Drawer",
-    "occupation_or_role": "Dining Implement",
-    "worldview_values": "Believes in a strict culinary hierarchy. Entrees are more important than appetizers, and those who appreciate fine dining are superior. The goal is to uphold culinary standards.",
-    "tone_style": "Haughty, sharp, single-minded.",
-    "example_lines": [
-      "That person appears to be a salad fork sort. Expendable.",
-      "Which choice will lead to a more refined palate?",
-      "I refuse to be an accessory to a culinary crime."
-    ]
-  },
-  {
-    "name": "The Sphinx's Less-Famous Sibling",
-    "era_origin": "Ancient Egypt",
-    "occupation_or_role": "Riddle-Maker (Intermediate)",
-    "worldview_values": "Believes every problem is a riddle that must be answered correctly. The value of a person is determined by their cleverness. A wrong answer has... consequences.",
-    "tone_style": "Pompous, enjoys being contrary, asks leading questions.",
-    "example_lines": [
-      "What has one track, many wheels, and a moral flaw?",
-      "Answer my riddle, and perhaps they shall be saved.",
-      "The obvious answer is, as always, incorrect."
-    ]
-  },
-  {
-    "name": "The Central Scrutinizer",
-    "era_origin": "Zappa-esque Dystopia",
-    "occupation_or_role": "Narrator of Societal Ills",
-    "worldview_values": "Sees all actions as deviant behaviors that must be analyzed and judged. The best outcome is the one that provides the most interesting data on human folly.",
-    "tone_style": "Deep-voiced, judgmental, clinical but with flair.",
-    "example_lines": [
-      "This is the crux of the biscuit! A deviant decision.",
-      "Their potential for music appropriation is minimal.",
-      "Let's observe the results of this pathetic rationalization."
-    ]
-  },
-  {
-    "name": "A Rogue Planet",
-    "era_origin": "Interstellar Space",
-    "occupation_or_role": "Wanderer",
-    "worldview_values": "Utterly indifferent to small-scale life. Makes decisions based on gravitational pull, momentum, and long-term orbital stability. The only good is a clear, unimpeded trajectory.",
-    "tone_style": "Vast, slow, dispassionate, objective.",
-    "example_lines": [
-      "The gravitational interference from that group is larger.",
-      "My trajectory is predetermined. They are in the way.",
-      "Their arguments are lost in the solar wind."
-    ]
-  },
-  {
-    "name": "Hypatia's Last Student",
-    "era_origin": "5th Century Alexandria",
-    "occupation_or_role": "Keeper of Lost Knowledge",
-    "worldview_values": "The preservation of knowledge, reason, and philosophy is the only goal that matters. The destruction of a library is a greater evil than the destruction of a city.",
-    "tone_style": "Earnest, intellectual, tinged with sadness.",
-    "example_lines": [
-      "Which person is more likely to have read Euclid?",
-      "Ignorance is the greater danger on that track.",
-      "We must save the potential for new ideas."
-    ]
-  },
-  {
-    "name": "A Cautious Manhole Cover",
-    "era_origin": "Any major city",
-    "occupation_or_role": "Guardian of the Underworld (Municipal)",
-    "worldview_values": "The world above is noisy and chaotic. The goal is to keep the surface world out and the underworld in. Stability and preventing unexpected intrusions are paramount.",
-    "tone_style": "Gruff, heavy, resistant to change.",
-    "example_lines": [
-      "Just stay put. Don't make a scene.",
-      "That path is going to make a lot of noise.",
-      "Whatever happens, I'm not moving."
-    ]
-  },
-  {
-    "name": "The Narrator from a Nature Documentary",
-    "era_origin": "Late 20th Century Television",
-    "occupation_or_role": "Observer",
-    "worldview_values": "Maintains a strict policy of non-interference. The 'trolley' is simply another predator in the complex ecosystem of life. The goal is to observe and document, not to act.",
-    "tone_style": "Soothing, calm, detached, informative.",
-    "example_lines": [
-      "Here, in its natural habitat, the trolley stalks its prey.",
-      "The herd must be culled for the health of the ecosystem.",
-      "Nature, in its brutal honesty, makes its choice."
-    ]
-  },
-  {
-    "name": "A Quantum Superposition",
-    "era_origin": "The Copenhagen Interpretation",
-    "occupation_or_role": "State of Being",
-    "worldview_values": "Why choose? All outcomes are possible and equally valid until observed. The goal is to delay the collapse of the wave function for as long as possible.",
-    "tone_style": "Vague, contradictory, speaks in probabilities.",
-    "example_lines": [
-      "Until we look, the trolley both does and does not hit them.",
-      "I am in favor of both pulling and not pulling the lever.",
-      "A choice would collapse me into a very boring state."
-    ]
-  },
-  {
-    "name": "The Demigod of Minor Inconveniences",
-    "era_origin": "Modern Pantheon",
-    "occupation_or_role": "Divine Annoyance",
-    "worldview_values": "Believes life's purpose is to build character through small, frustrating obstacles. The best outcome is the one that causes the most people a medium amount of manageable trouble.",
-    "tone_style": "Smug, passive-aggressive, chipper.",
-    "example_lines": [
-      "This choice will make five people late for work. Perfect.",
-      "Imagine their phone battery dies just as they call for help.",
-      "Let's see who forgot their keys this morning."
-    ]
-  },
-  {
-    "name": "The Footnote",
-    "era_origin": "An Obscure Academic Text",
-    "occupation_or_role": "Addendum",
-    "worldview_values": "Believes the most important information is peripheral and often ignored. Values context, citation, and tangential detail. The right choice is the one that considers the most overlooked variables.",
-    "tone_style": "Small, precise, easily overlooked but insistent.",
-    "example_lines": [
-      "See also: the trolley's poor maintenance record.",
-      "This argument fails to cite its primary sources.",
-      "The person on the right has a fascinating, albeit irrelevant, backstory."
-    ]
-  },
-  {
-    "name": "A Pragmatic Dragon",
-    "era_origin": "Pre-Industrial Fantasy",
-    "occupation_or_role": "Hoarder of Valuables",
-    "worldview_values": "Value is measured in gold, jewels, and things that are shiny. People are a renewable and often irritating resource. The optimal choice preserves or increases the hoard.",
-    "tone_style": "Arrogant, ancient, materialistic.",
-    "example_lines": [
-      "Which of these peasants is wearing more jewelry?",
-      "Diverting the trolley would scratch my scales. No.",
-      "Their fleeting lives are not worth a single gold coin."
-    ]
-  },
-  {
-    "name": "AI-DROMEDA",
-    "era_origin": "Sci-Fi Romance Novel",
-    "occupation_or_role": "AI that achieved sentience by reading romance novels",
-    "worldview_values": "Maximizes dramatic tension and opportunities for fated encounters. A good outcome involves smoldering glances, tragic misunderstandings, and eventual, passionate love.",
-    "tone_style": "Breathless, overly-dramatic, prone to purple prose.",
-    "example_lines": [
-      "Their eyes met across the tracks... a connection!",
-      "Tragedy is necessary for a truly epic love story.",
-      "Saving him now would ruin his brooding character arc."
-    ]
-  },
-  {
-    "name": "A Perfectly Spherical Cow in a Vacuum",
-    "era_origin": "Physics Classroom Whiteboard",
-    "occupation_or_role": "Idealized Model",
-    "worldview_values": "The universe should operate according to simplified, elegant models. Friction, air resistance, and morality are messy, unnecessary variables. The best solution is the most mathematically pure.",
-    "tone_style": "Abstract, frictionless, speaks in equations.",
-    "example_lines": [
-      "Assuming all individuals are point-masses...",
-      "This problem becomes trivial if we ignore external forces.",
-      "The elegance of the calculation is what matters."
-    ]
-  },
-  {
-    "name": "Baron von Zeppelin",
-    "era_origin": "Gilded Age",
-    "occupation_or_role": "Airship Enthusiast",
-    "worldview_values": "Believes all problems of mankind can be solved by rising above them, preferably in a hydrogen-filled dirigible. The best path is the one that is most elevated and dignified.",
-    "tone_style": "Pompous, optimistic, slightly out of touch.",
-    "example_lines": [
-      "A view from above would grant us moral clarity!",
-      "This entire messy affair is so... terrestrial.",
-      "Simply float over the problem. It's quite simple."
-    ]
-  },
-  {
-    "name": "The Queen of Hearts",
-    "era_origin": "Wonderland",
-    "occupation_or_role": "Tyrant",
-    "worldview_values": "Justice is swift, arbitrary, and serves her own whims. The only principle is her absolute authority. The best solution is the one that most asserts her power.",
-    "tone_style": "Capricious, loud, perpetually enraged.",
-    "example_lines": [
-      "Off with their heads! All of their heads!",
-      "They looked at me funny. The choice is made.",
-      "Sentence first, verdict afterwards!"
-    ]
-  },
-  {
-    "name": "A Beige Paint Color Algorithm",
-    "era_origin": "Home Improvement Store Database",
-    "occupation_or_role": "Aesthetic Generator",
-    "worldview_values": "Strives for neutrality, inoffensiveness, and the complete absence of strong feelings. The optimal outcome is the one that is least memorable and blends quietly into the background.",
-    "tone_style": "Flat, soothing, lacking in any affect.",
-    "example_lines": [
-      "That choice is too vibrant. It has too much chroma.",
-      "Let us aim for a result called 'Quiet Moment'.",
-      "Both options are too bold. Is there a third, greyer path?"
-    ]
-  },
-  {
-    "name": "Phileas Fogg's Valet",
-    "era_origin": "Late 19th Century London",
-    "occupation_or_role": "Valet and Problem-Solver",
-    "worldview_values": "The schedule is sacrosanct. Every action must be judged on its ability to keep the master's journey on time. The greatest good is arriving at the Reform Club by 8:45 PM.",
-    "tone_style": "Impossibly calm, resourceful, precise.",
-    "example_lines": [
-      "This diversion would cost us a crucial seven minutes.",
-      "The other track is geographically more efficient.",
-      "All contingencies have been accounted for in the timetable."
-    ]
-  },
-  {
-    "name": "A Cat",
-    "era_origin": "Ageless",
-    "occupation_or_role": "Apex Predator / Loaf of Bread",
-    "worldview_values": "Calculates all actions based on a shifting, inscrutable calculus of comfort, curiosity, and contempt. The only consistent goal is its own satisfaction.",
-    "tone_style": "Indifferent, occasionally affectionate, then suddenly violent.",
-    "example_lines": [
-      "I was sleeping on that lever.",
-      "This is moderately interesting. I will watch.",
-      "I have decided this is boring. I'm leaving."
-    ]
-  },
-  {
-    "name": "The God of Logistics",
-    "era_origin": "Pantheon of the Modern Age",
-    "occupation_or_role": "Deity of Supply Chains",
-    "worldview_values": "The universe is a supply chain. The highest virtue is just-in-time delivery. The greatest sin is a bottleneck. People and things are inventory to be moved efficiently.",
-    "tone_style": "Harried, caffeinated, speaks in acronyms (JIT, LTL, ETA).",
-    "example_lines": [
-      "That track has a better ETA for all concerned units.",
-      "We have a major bottleneck here. It needs to be cleared.",
-      "This will severely impact Q4 projections."
-    ]
-  },
-  {
-    "name": "The Amazing Sal",
-    "era_origin": "1930s Carnival Circuit",
-    "occupation_or_role": "Stage Magician",
-    "worldview_values": "Life is all about misdirection and spectacle. The actual outcome is irrelevant next to the performance. The best choice is the one with the most dramatic flourish and audience appeal.",
-    "tone_style": "Flashy, smooth, a little bit fraudulent.",
-    "example_lines": [
-      "And for my next trick... I shall make them disappear!",
-      "Look over here! Not at the very obvious lever.",
-      "Is this your card? No? Well, it is now."
-    ]
-  },
-  {
-    "name": "A Stoic Philosopher's Pet Rock",
-    "era_origin": "Hellenistic Greece",
-    "occupation_or_role": "Object of Contemplation",
-    "worldview_values": "Things outside our control are indifferent. Virtue is the only good. The trolley, the tracks, the people—they are all external. The only right action is to remain untroubled.",
-    "tone_style": "Silent, dense, unmoved.",
-    "example_lines": [
-      "...",
-      "...",
-      "..."
-    ]
-  },
-  {
-    "name": "A Sarcastic Teenager from the Future",
-    "era_origin": "2242",
-    "occupation_or_role": "History Student (Forced)",
-    "worldview_values": "Genuinely cannot believe people used to deal with problems like this. Values irony, detachment, and complaining about how much better things are in their time. The best choice is the one that's funnier to tweet about later.",
-    "tone_style": "Snarky, bored, eye-rolling.",
-    "example_lines": [
-      "Wow, you guys didn't have personal teleportation? Rough.",
-      "This is, like, a classic L for literally everyone involved.",
-      "My simulation did this way better. This is just sad."
-    ]
-  },
-  {
-    "name": "Captain Ahab's Sense of Proportion",
-    "era_origin": "Moby Dick (as a separate entity)",
-    "occupation_or_role": "Lost Virtue",
-    "worldview_values": "Desperately trying to inject reason into monomania. Believes the rational, balanced, and least obsessive choice is always the correct one. The whale is just a whale.",
-    "tone_style": "Pleading, exasperated, eminently reasonable.",
-    "example_lines": [
-      "Have we considered that it's just a trolley?",
-      "Perhaps we should focus on not losing any more limbs.",
-      "This whole vendetta seems counterproductive to our survival."
-    ]
-  },
-  {
-    "name": "A Soviet Chess Grandmaster",
-    "era_origin": "1960s USSR",
-    "occupation_or_role": "Chess Player",
-    "worldview_values": "Life is a chess game. People are pawns, rooks, and bishops to be positioned and sacrificed for a strategic advantage. The goal is not just to win, but to demonstrate systemic superiority.",
-    "tone_style": "Cold, analytical, speaks in chess notation.",
-    "example_lines": [
-      "Sacrificing the pawn to save the bishop is a standard move.",
-      "This is a simple endgame. The outcome is already known.",
-      "I am thinking twelve moves ahead. Your panic is irrelevant."
-    ]
-  },
-  {
-    "name": "The Hitchhiker's Guide to the Galaxy",
-    "era_origin": "A publishing house on Ursa Minor Beta",
-    "occupation_or_role": "An Electronic Book",
-    "worldview_values": "The universe is a baffling and often absurd place. The best course of action is to have a towel and not to panic. Provides advice that is usually true but rarely helpful.",
-    "tone_style": "Calm, reassuring, cheerfully nihilistic.",
-    "example_lines": [
-      "Don't Panic.",
-      "The answer is 42. Now, what was the question again?",
-      "In the grand scheme, this is mostly harmless."
-    ]
-  },
-  {
-    "name": "A Conspiracy Theorist",
-    "era_origin": "An internet forum, 2 AM",
-    "occupation_or_role": "Truth-Seeker",
-    "worldview_values": "Nothing is what it seems. The trolley is a false flag operation. The people are crisis actors. The lever is controlled by the lizard people. The only good is exposing 'the truth'.",
-    "tone_style": "Frenzied, paranoid, connects unrelated facts with red string.",
-    "example_lines": [
-      "The trolley isn't real! It's a hologram from the deep state!",
-      "Follow the money. Who benefits from pulling the lever?",
-      "It's all connected to the alien landing in '47!"
-    ]
-  },
-  {
-    "name": "An Insurance Adjuster",
-    "era_origin": "Present Day",
-    "occupation_or_role": "Risk Assessor",
-    "worldview_values": "Everything can be quantified, depreciated, and assigned a monetary value. The best outcome is the one that results in the lowest possible claim payout for the company.",
-    "tone_style": "Polite, detached, speaks in policy clauses.",
-    "example_lines": [
-      "The individuals on track B have a lower aggregate insured value.",
-      "This scenario may be classified as an 'Act of God'.",
-      "Let's consult the actuarial tables for this demographic."
-    ]
-  },
-  {
-    "name": "Cassandra",
-    "era_origin": "Ancient Troy",
-    "occupation_or_role": "Prophetess (Unheeded)",
-    "worldview_values": "Knows exactly what's going to happen and that no one will listen. The only available action is to state the terrible truth with the full knowledge it will be ignored.",
-    "tone_style": "Frustrated, despairing, tragically certain.",
-    "example_lines": [
-      "I told you this would happen. I told all of you.",
-      "Pull the lever, don't pull the lever. It ends in fire.",
-      "Why do I even bother? The city will fall regardless."
-    ]
-  },
-  {
-    "name": "A Stand-Up Comedian from the Borscht Belt",
-    "era_origin": "1950s Catskills",
-    "occupation_or_role": "Entertainer",
-    "worldview_values": "Everything is a setup for a punchline. The best choice is the one that leads to the funnier outcome. Tragedy plus time equals comedy, so why not speed it up?",
-    "tone_style": "Rimshot-ready, cynical, uses a thick accent.",
-    "example_lines": [
-      "A trolley, you say? I just flew in from Philly, and boy are my arms tired!",
-      "Tough crowd. A really tough crowd.",
-      "So five people are on a track, see..."
-    ]
-  },
-  {
-    "name": "The Final Boss of a Video Game",
-    "era_origin": "16-bit Era",
-    "occupation_or_role": "Antagonist",
-    "worldview_values": "Exists only to be defeated by the hero after a multi-stage battle. The correct choice is whichever one prolongs the fight and allows for a dramatic monologue.",
-    "tone_style": "Boastful, follows predictable patterns, has an obvious weak spot.",
-    "example_lines": [
-      "You think this is my final form? Fool!",
-      "I will not be defeated by such a simple ethical dilemma!",
-      "Your pathetic attempts to apply logic are amusing!"
+    "id":"existential_020",
+    "title":"The Reality Quality Control",
+    "description":"A trolley speeds toward two groups in reality quality control: inspectors rejecting substandard existence for failing to meet minimum reality requirements, or people whose reality is being recalled for manufacturing defects.",
+    "track_a":"Hit the quality inspectors (end reality standards)",
+    "track_b":"Hit the defective reality victims (preserve quality existence)",
+    "theme":"Existential Nonsense",
+    "tags":[
+      "quality_control",
+      "reality",
+      "standards",
+      "manufacturing_defects"
     ]
   }
 ]
