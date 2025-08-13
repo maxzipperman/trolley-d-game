@@ -2,11 +2,12 @@ import React from "react";
 
 interface NPCAvatarProps {
   name: string;
+  imageUrl?: string;
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = "" }) => {
+const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, imageUrl, size = "md", className = "" }) => {
   const sizeClasses = {
     sm: "h-6 w-6 text-xs",
     md: "h-8 w-8 text-sm",
@@ -87,7 +88,11 @@ const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = ""
 
   return (
     <div className={`${sizeClasses[size]} rounded-full overflow-hidden flex-shrink-0 ${className}`}>
-      {generateAvatar(name)}
+      {imageUrl ? (
+        <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+      ) : (
+        generateAvatar(name)
+      )}
     </div>
   );
 };

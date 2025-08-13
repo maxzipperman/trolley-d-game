@@ -7,6 +7,7 @@
     "track_b": "Do nothing (kill 5, save 1)",
     "theme": "Utilitarian vs. Deontological Ethics",
     "tags": ["classic", "numbers", "action_vs_inaction"],
+    "illustration": "/illustrations/classic-trolley.svg",
     "responses": [
       {
         "avatar": "Socrates",
@@ -28,6 +29,7 @@
     "track_b": "Save the engine room (5 passengers)",
     "theme": "Identity vs. Utility",
     "tags": ["identity", "numbers", "preservation"],
+    "illustration": "/illustrations/ship-of-theseus.svg",
     "responses": [
       {
         "avatar": "Aristotle",
@@ -49,6 +51,7 @@
     "track_b": "Swerve (hit young jaywalker)",
     "theme": "Legal vs. Utilitarian Calculation",
     "tags": ["modern", "age", "law", "technology"],
+    "illustration": "/illustrations/self-driving-car.svg",
     "responses": [
       {
         "avatar": "Rawls",
@@ -70,6 +73,7 @@
     "track_b": "Let nature take its course (5 die, 1 lives)",
     "theme": "Active vs. Passive Harm",
     "tags": ["medical", "active_harm", "numbers"],
+    "illustration": "/illustrations/organ-transplant.svg",
     "responses": [
       {
         "avatar": "Hippocrates",
@@ -91,6 +95,7 @@
     "track_b": "Allow disaster (1000 die, 100 exist)",
     "theme": "Temporal Ethics and Existence",
     "tags": ["time_travel", "existence", "large_numbers"],
+    "illustration": "/illustrations/time-travel-dilemma.svg",
     "responses": [
       {
         "avatar": "Parfit",

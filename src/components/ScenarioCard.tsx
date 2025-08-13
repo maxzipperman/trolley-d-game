@@ -23,6 +23,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
     const picked = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
     return picked.map((per) => ({
       avatar: per.name,
+      imageUrl: per.image,
       choice: Math.random() < 0.5 ? "A" : "B",
       rationale:
         per.example_lines?.[
@@ -40,6 +41,13 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         )}
         {scenario.description && (
           <p className="text-base text-foreground/90">{scenario.description}</p>
+        )}
+        {scenario.illustration && (
+          <img
+            src={scenario.illustration}
+            alt="Scenario illustration"
+            className="w-full rounded-lg border border-border"
+          />
         )}
       </header>
 
@@ -84,8 +92,9 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             <div className="mt-4 space-y-3 animate-fade-in">
               {samples.map((r, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
+                  <NPCAvatar
+                    name={r.avatar ?? "NPC"}
+                    imageUrl={r.imageUrl}
                     size="md"
                     className="mt-0.5"
                   />

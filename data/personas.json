@@ -1,6 +1,7 @@
 [
   {
     "name": "Socrates",
+    "image": "https://picsum.photos/seed/socrates/200",
     "era_origin": "Ancient Greece (470-399 BCE)",
     "occupation_or_role": "Philosopher",
     "worldview_values": "Wisdom through questioning, moral knowledge, the examined life",
@@ -13,6 +14,7 @@
   },
   {
     "name": "Kant",
+    "image": "https://picsum.photos/seed/kant/200",
     "era_origin": "Enlightenment Germany (1724-1804)",
     "occupation_or_role": "Philosopher",
     "worldview_values": "Duty, categorical imperative, human dignity",
@@ -25,6 +27,7 @@
   },
   {
     "name": "Mill",
+    "image": "https://picsum.photos/seed/mill/200",
     "era_origin": "Victorian England (1806-1873)",
     "occupation_or_role": "Philosopher, Economist",
     "worldview_values": "Greatest happiness principle, individual liberty, harm principle",
@@ -37,6 +40,7 @@
   },
   {
     "name": "Aristotle",
+    "image": "https://picsum.photos/seed/aristotle/200",
     "era_origin": "Ancient Greece (384-322 BCE)",
     "occupation_or_role": "Philosopher, Tutor to Alexander",
     "worldview_values": "Virtue ethics, golden mean, eudaimonia",
@@ -49,6 +53,7 @@
   },
   {
     "name": "Rawls",
+    "image": "https://picsum.photos/seed/rawls/200",
     "era_origin": "20th Century America (1921-2002)",
     "occupation_or_role": "Political Philosopher",
     "worldview_values": "Justice as fairness, original position, veil of ignorance",
@@ -61,6 +66,7 @@
   },
   {
     "name": "Singer",
+    "image": "https://picsum.photos/seed/singer/200",
     "era_origin": "Contemporary Australia (1946-present)",
     "occupation_or_role": "Philosopher, Animal Rights Advocate",
     "worldview_values": "Preference utilitarianism, effective altruism, animal rights",
@@ -73,6 +79,7 @@
   },
   {
     "name": "Bentham",
+    "image": "https://picsum.photos/seed/bentham/200",
     "era_origin": "Enlightenment England (1748-1832)",
     "occupation_or_role": "Philosopher, Legal Reformer",
     "worldview_values": "Hedonic calculus, legal positivism, prison reform",
@@ -85,6 +92,7 @@
   },
   {
     "name": "Nozick",
+    "image": "https://picsum.photos/seed/nozick/200",
     "era_origin": "20th Century America (1938-2002)",
     "occupation_or_role": "Philosopher",
     "worldview_values": "Libertarianism, entitlement theory, minimal state",
@@ -97,6 +105,7 @@
   },
   {
     "name": "Parfit",
+    "image": "https://picsum.photos/seed/parfit/200",
     "era_origin": "20th Century Britain (1942-2017)",
     "occupation_or_role": "Philosopher",
     "worldview_values": "Personal identity puzzles, population ethics, triple theory",
@@ -109,6 +118,7 @@
   },
   {
     "name": "Hippocrates",
+    "image": "https://picsum.photos/seed/hippocrates/200",
     "era_origin": "Ancient Greece (460-370 BCE)",
     "occupation_or_role": "Physician",
     "worldview_values": "Medical ethics, natural healing, do no harm",
@@ -118,5 +128,31 @@
       "Healing is a matter of time, but sometimes opportunity",
       "The physician must be ready to tell the truth"
     ]
-  }
-]
+    },
+    {
+      "name": "Confucius",
+      "image": "https://picsum.photos/seed/confucius/200",
+      "era_origin": "Ancient China (551-479 BCE)",
+      "occupation_or_role": "Philosopher, Teacher",
+      "worldview_values": "Ren, filial piety, ritual propriety",
+      "tone_style": "Didactic, harmonious, respectful",
+      "example_lines": [
+        "Do not impose on others what you do not wish for yourself",
+        "To see what is right and not do it is the want of courage",
+        "The superior man is modest in his speech, but exceeds in his actions"
+      ]
+    },
+    {
+      "name": "Nietzsche",
+      "image": "https://picsum.photos/seed/nietzsche/200",
+      "era_origin": "19th Century Germany (1844-1900)",
+      "occupation_or_role": "Philosopher, Cultural Critic",
+      "worldview_values": "Will to power, revaluation of values, individual creativity",
+      "tone_style": "Provocative, poetic, aphoristic",
+      "example_lines": [
+        "God is dead; we have killed him",
+        "Become who you are",
+        "He who fights with monsters might take care lest he thereby become a monster"
+      ]
+    }
+  ]

@@ -7,6 +7,7 @@ export interface Persona {
   worldview_values?: string;
   tone_style?: string;
   example_lines?: string[];
+  image?: string;
 }
 
 export function usePersonas() {
