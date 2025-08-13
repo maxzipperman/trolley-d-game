@@ -5,6 +5,8 @@ import TrolleyDiagram from "@/components/TrolleyDiagram";
 import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { toast } from "@/components/ui/use-toast";
+import { shareResults } from "@/utils/share";
 import { usePersonas } from "@/hooks/usePersonas";
 import { Choice, computeAxes_legacy, computeBaseCounts } from "@/utils/scoring";
 import { fetchOverallStats, type ScenarioStats } from "@/lib/api";
@@ -21,7 +23,10 @@ const Results = () => {
 
   const navigate = useNavigate();
   const { scenarios, error, loading, retry } = useScenarios();
-  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(
+    ANSWERS_KEY,
+    {}
+  );
   const [avatarIds] = useLocalStorage<string[]>(AVATARS_KEY, []);
   const { personas } = usePersonas();
   const selectedPersonas = useMemo(
@@ -46,6 +51,14 @@ const Results = () => {
       </main>
     );
   }
+
+  const handleShare = async () => {
+    const result = await shareResults(scoreA, scoreB);
+    toast({
+      description:
+        result === "shared" ? "Share dialog opened" : "Results copied to clipboard",
+    });
+  };
 
   if (loading || !scenarios) return (
     <main className="min-h-screen container py-10" />
@@ -84,6 +97,20 @@ const Results = () => {
                 </span>
               </div>
             )}
+          </div>
+          <div className="mt-6 flex gap-3">
+            <button
+              onClick={() => navigate("/play")}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >
+              Play Again
+            </button>
+            <button
+              onClick={handleShare}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >
+              Share Results
+            </button>
           </div>
         </div>
 
@@ -139,7 +166,12 @@ const Results = () => {
             return (
               <li key={s.id} className="flex items-center justify-between gap-3 border-b border-border/60 py-2">
                 <div className="flex-1">
-                  <Link to={`/play?jump=${s.id}`} className="underline underline-offset-4">{s.title}</Link>
+                  <Link
+                    to={`/play?jump=${s.id}`}
+                    className="underline underline-offset-4"
+                  >
+                    {s.title}
+                  </Link>
                   {userChoice?.rationale && (
                     <p className="text-xs text-muted-foreground mt-1">{userChoice.rationale}</p>
                   )}
