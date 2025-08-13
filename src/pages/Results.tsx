@@ -4,6 +4,8 @@ import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { toast } from "@/components/ui/use-toast";
+import { shareResults } from "@/utils/share";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -16,6 +18,14 @@ const Results = () => {
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+
+  const handleShare = async () => {
+    const result = await shareResults(scoreA, scoreB);
+    toast({
+      description:
+        result === "shared" ? "Share dialog opened" : "Results copied to clipboard",
+    });
+  };
 
   if (!scenarios) return (
     <main className="min-h-screen container py-10" />
@@ -54,6 +64,10 @@ const Results = () => {
               onClick={() => navigate("/play")}
               className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
             >Play Again</button>
+            <button
+              onClick={handleShare}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >Share Results</button>
           </div>
         </article>
 
