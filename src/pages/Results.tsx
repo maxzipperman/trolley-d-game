@@ -12,10 +12,16 @@ const Results = () => {
   useEffect(() => { document.title = "Trolley’d · Results"; }, []);
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
-  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [answers, setAnswers, { recordHistory }] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+
+  useEffect(() => {
+    if (Object.keys(answers).length > 0) {
+      recordHistory(answers);
+    }
+  }, [answers, recordHistory]);
 
   if (!scenarios) return (
     <main className="min-h-screen container py-10" />
@@ -100,6 +106,10 @@ const Results = () => {
             onClick={() => { localStorage.removeItem(ANSWERS_KEY); setAnswers({}); navigate("/play"); }}
             className="px-4 py-2 rounded-md border border-border hover:bg-accent"
           >Reset game</button>
+          <Link
+            to="/history"
+            className="px-4 py-2 rounded-md border border-border hover:bg-accent"
+          >View History</Link>
         </div>
       </section>
     </main>
