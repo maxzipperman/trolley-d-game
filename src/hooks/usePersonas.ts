@@ -1,36 +1,33 @@
-import { useCallback, useEffect, useState } from "react";
-import { PersonaSchema, type Persona } from "@/types";
-import { fetchWithRetry } from "@/utils/fetchWithRetry";
+import { useEffect, useState } from "react";
+import type { Persona } from "@/types";
+import { personaSchema } from "@/utils/tags.schema";
 
 export function usePersonas() {
   const [personas, setPersonas] = useState<Persona[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const url = new URL("../../data/personas.json", import.meta.url);
-      const json = await fetchWithRetry(url.href);
-      const parsed = PersonaSchema.array().safeParse(json);
-      if (parsed.success) {
-        setPersonas(parsed.data);
-      } else {
-        console.warn("Persona schema validation failed", parsed.error);
-        setError("Failed to load personas");
-      }
-    } catch (err) {
-      console.warn("Failed to fetch personas", err);
-      setError("Failed to load personas");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
 
   useEffect(() => {
-    load();
-  }, [load]);
+    const url = new URL("../../data/personas.json", import.meta.url);
+    fetch(url)
+      .then((r) => r.json())
+      .then((json: unknown) => {
+        if (Array.isArray(json)) {
+          const valid: Persona[] = [];
+          for (const raw of json) {
+            const parsed = personaSchema.safeParse(raw);
+            if (parsed.success) {
+              valid.push(parsed.data);
+            } else if (import.meta.env.DEV) {
+              console.error(`Invalid persona: ${parsed.error.message}`);
+            }
+          }
+          setPersonas(valid);
+        } else {
+          setPersonas([]);
+        }
+      })
+      .catch(() => setError("Failed to load personas"));
+  }, []);
 
-  return { personas, error, loading, retry: load };
+  return { personas, error, loading: personas === null && !error };
 }
