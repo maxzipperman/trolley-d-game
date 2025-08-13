@@ -15,6 +15,7 @@ const Play = () => {
   const { scenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
+  const hasSkipped = useMemo(() => Object.values(answers).includes("skip"), [answers]);
 
   const index = useMemo(() => {
     if (!scenarios) return 0;
@@ -83,6 +84,12 @@ const Play = () => {
     advance();
   }
 
+  function reviewSkipped() {
+    if (!scenarios) return;
+    const first = scenarios.find(sc => answers[sc.id] === "skip");
+    if (first) navigate(`/play?jump=${first.id}`);
+  }
+
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
       <section className="space-y-4 animate-fade-in">
@@ -114,12 +121,22 @@ const Play = () => {
       )}
 
       <div className="flex items-center justify-between pt-4">
-        <button 
-          onClick={skip} 
-          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-        >
-          Skip this scenario
-        </button>
+        <div className="space-x-4">
+          <button
+            onClick={skip}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+          >
+            Skip this scenario
+          </button>
+          {hasSkipped && (
+            <button
+              onClick={reviewSkipped}
+              className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              Review skipped
+            </button>
+          )}
+        </div>
         <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
           Shortcuts: ← A · → B · S Skip
         </div>
