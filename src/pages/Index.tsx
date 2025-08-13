@@ -30,6 +30,14 @@ const Index = () => {
         >
           Begin Your Journey
         </button>
+        <div className="mt-4">
+          <button
+            onClick={() => navigate("/settings")}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4"
+          >
+            Settings
+          </button>
+        </div>
       </div>
     </main>
   );
