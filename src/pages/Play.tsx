@@ -2,8 +2,10 @@ import { useEffect, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
+import { toast } from "@/components/ui/sonner";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { submitChoice, fetchScenarioStats } from "@/lib/api";
 import type { Scenario } from "@/types";
 import type { Choice } from "@/utils/scoring";
 
@@ -71,16 +73,25 @@ const Play = () => {
     }
   }
 
-  function pick(choice: "A" | "B") {
+  async function record(choice: Choice) {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
+    await submitChoice(s.id, choice);
+    try {
+      const stats = await fetchScenarioStats(s.id);
+      toast(`Global choices – A ${stats.percentA}% · B ${stats.percentB}%`);
+    } catch (err) {
+      console.error(err);
+    }
     advance();
   }
 
+  function pick(choice: "A" | "B") {
+    void record(choice);
+  }
+
   function skip() {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: "skip" });
-    advance();
+    void record("skip");
   }
 
   return (
