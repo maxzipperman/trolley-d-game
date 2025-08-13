@@ -32,6 +32,14 @@ const Index = () => {
 
         <div className="space-y-4">
           <button
+            onClick={() => navigate("/avatars")}
+            className="px-8 py-4 w-full rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring transform hover:scale-105 active:scale-95 font-medium text-lg"
+            aria-label="Select avatar before playing"
+          >
+            Select Avatar & Play
+          </button>
+
+          <button
             onClick={() => navigate("/play")}
             className="px-8 py-4 w-full rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring transform hover:scale-105 active:scale-95 font-medium text-lg"
             aria-label="Start playing Trolley'd"

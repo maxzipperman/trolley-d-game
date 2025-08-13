@@ -5,11 +5,13 @@ import TrolleyDiagram from "@/components/TrolleyDiagram";
 import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { usePersonas } from "@/hooks/usePersonas";
 import { Choice, computeAxes_legacy, computeBaseCounts } from "@/utils/scoring";
 import { fetchOverallStats, type ScenarioStats } from "@/lib/api";
 import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const AVATARS_KEY = "trolleyd-selected-avatars";
 
 const Results = () => {
   useEffect(() => {
@@ -20,6 +22,12 @@ const Results = () => {
   const navigate = useNavigate();
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [avatarIds] = useLocalStorage<string[]>(AVATARS_KEY, []);
+  const { personas } = usePersonas();
+  const selectedPersonas = useMemo(
+    () => (personas ?? []).filter((p) => avatarIds.includes(p.name)),
+    [personas, avatarIds]
+  );
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
@@ -104,6 +112,23 @@ const Results = () => {
         </div>
       </div>
 
+      {selectedPersonas.length > 0 && (
+        <section className="p-4 rounded-lg border border-border bg-card">
+          <h2 className="font-semibold mb-3">Your Selected Avatars</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {selectedPersonas.map((p) => (
+              <div key={p.name} className="p-3 rounded-lg bg-muted/50">
+                <h3 className="font-medium text-sm mb-1">{p.name}</h3>
+                <p className="text-xs text-muted-foreground mb-2">{p.description}</p>
+                {p.tone_style && (
+                  <p className="text-sm text-muted-foreground">{p.tone_style}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="p-4 rounded-lg border border-border bg-card">
         <h2 className="font-semibold mb-3">Your Run</h2>
         <ul className="space-y-2">
@@ -126,7 +151,7 @@ const Results = () => {
         </ul>
         <div className="mt-4 flex gap-2">
           <button
-            onClick={() => { localStorage.removeItem(ANSWERS_KEY); localStorage.removeItem('userChoices'); setAnswers({}); navigate("/play"); }}
+            onClick={() => { localStorage.removeItem(ANSWERS_KEY); localStorage.removeItem('userChoices'); localStorage.removeItem(AVATARS_KEY); setAnswers({}); navigate("/play"); }}
             className="px-4 py-2 rounded-md border border-border hover:bg-accent"
           >
             Reset Game
