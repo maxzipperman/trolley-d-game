@@ -2,22 +2,36 @@ import { useEffect, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
+import { toast } from "@/components/ui/sonner";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { submitChoice, fetchScenarioStats } from "@/lib/api";
 import type { Scenario } from "@/types";
 import type { Choice } from "@/utils/scoring";
+import { getDailyScenario, recordCompletion } from "@/utils/challenge";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
 const Play = () => {
   useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
-  const { scenarios, loading } = useScenarios();
+  const { scenarios: allScenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
+  const daily = params.get("daily") != null;
+
+  const scenarios = useMemo(() => {
+    if (!allScenarios) return null;
+    if (daily) {
+      const s = getDailyScenario(allScenarios);
+      return s ? [s] : [];
+    }
+    return allScenarios;
+  }, [allScenarios, daily]);
 
   const index = useMemo(() => {
     if (!scenarios) return 0;
+    if (daily) return 0;
     const jump = params.get("jump");
     if (jump) {
       const i = scenarios.findIndex(s => s.id === jump);
@@ -26,7 +40,7 @@ const Play = () => {
     // find first unanswered
     const i = scenarios.findIndex(s => answers[s.id] == null);
     return i >= 0 ? i : 0;
-  }, [scenarios, params, answers]);
+  }, [scenarios, params, answers, daily]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -60,6 +74,11 @@ const Play = () => {
   const progress = (index + 1) / total;
 
   function advance() {
+    if (daily) {
+      recordCompletion();
+      navigate("/results");
+      return;
+    }
     // next unanswered or end
     const nextIdx = scenarios.findIndex((sc, i) => i > index && answers[sc.id] == null);
     if (nextIdx >= 0) {
@@ -71,16 +90,25 @@ const Play = () => {
     }
   }
 
-  function pick(choice: "A" | "B") {
+  async function record(choice: Choice) {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
+    await submitChoice(s.id, choice);
+    try {
+      const stats = await fetchScenarioStats(s.id);
+      toast(`Global choices – A ${stats.percentA}% · B ${stats.percentB}%`);
+    } catch (err) {
+      console.error(err);
+    }
     advance();
   }
 
+  function pick(choice: "A" | "B") {
+    void record(choice);
+  }
+
   function skip() {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: "skip" });
-    advance();
+    void record("skip");
   }
 
   return (
@@ -99,7 +127,7 @@ const Play = () => {
         </div>
         <div className="space-y-2">
           <div className="h-2 animate-scale-in">
-            <Progress value={progress * 100} />
+            <Progress value={progress} />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
             <span>Start</span>
@@ -129,3 +157,4 @@ const Play = () => {
 };
 
 export default Play;
+
