@@ -1,68 +1,48 @@
-[{
-  "id": "EN01",
-  "title": "The Classic Trolley Problem",
-  "description": "A runaway trolley is heading towards five people tied to the tracks. You can pull a lever to divert it to a side track, but there's one person tied to that track.",
-  "track_a": "Pull the lever (save 5, kill 1)",
-  "track_b": "Do nothing (kill 5, save 1)",
-  "theme": "Utilitarian vs. Deontological Ethics",
-  "tags": ["logistics"],
-  "responses": [
-    {
-      "avatar": "Socrates",
-      "choice": "A",
-      "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
-    },
-    {
-      "avatar": "Kant",
-      "choice": "B",
-      "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
-    }
-  ]
-},
-{
-  "id": "EN02",
-  "title": "The Ship of Theseus",
-  "description": "A passenger ship is sinking. You can save either the ship's original hull with 3 crew members, or the modernized engine room with 5 passengers.",
-  "track_a": "Save the original hull (3 crew)",
-  "track_b": "Save the engine room (5 passengers)",
-  "theme": "Identity vs. Utility",
-  "tags": ["identity"],
-  "responses": [
-    {
-      "avatar": "Aristotle",
-      "choice": "A",
-      "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
-    },
-    {
-      "avatar": "Mill",
-      "choice": "B",
-      "rationale": "The greatest happiness principle demands we save the greater number."
-    }
-  ]
-},
-{
-  "id": "EN03",
-  "title": "The Self-Driving Car",
-  "description": "An autonomous vehicle must choose between hitting an elderly person crossing legally or swerving to hit a young person jaywalking.",
-  "track_a": "Stay course (hit elderly legal crosser)",
-  "track_b": "Swerve (hit young jaywalker)",
-  "theme": "Legal vs. Utilitarian Calculation",
-  "tags": ["standards"],
-  "responses": [
-    {
-      "avatar": "Rawls",
-      "choice": "A",
-      "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
-    },
-    {
-      "avatar": "Singer",
-      "choice": "B",
-      "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
-    }
-  ]
-},
-{
-  "id": "EN04",
-  "title": "The Organ Transplant",
-  "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
-  "track_a": "Harvest organs (save 5, kill 1)"
+[
+  {
+    "id": "EN01",
+    "title": "The Classic Trolley Problem",
+    "description": "A runaway trolley is heading towards five people tied to the tracks. You can pull a lever to divert it to a side track, but there's one person tied to that track.",
+    "track_a": "Pull the lever (save 5, kill 1)",
+    "track_b": "Do nothing (kill 5, save 1)",
+    "theme": "Utilitarian vs. Deontological Ethics",
+    "tags": ["logistics"]
+  },
+  {
+    "id": "EN02",
+    "title": "The Ship of Theseus",
+    "description": "A passenger ship is sinking. You can save either the ship's original hull with 3 crew members, or the modernized engine room with 5 passengers.",
+    "track_a": "Save the original hull (3 crew)",
+    "track_b": "Save the engine room (5 passengers)",
+    "theme": "Identity vs. Utility",
+    "tags": ["identity"]
+  },
+  {
+    "id": "EN03",
+    "title": "The Self-Driving Car",
+    "description": "An autonomous vehicle must choose between hitting an elderly person crossing legally or swerving to hit a young person jaywalking.",
+    "track_a": "Stay course (hit elderly legal crosser)",
+    "track_b": "Swerve (hit young jaywalker)",
+    "theme": "Legal vs. Utilitarian Calculation",
+    "tags": ["standards"]
+  },
+  {
+    "id": "EN04",
+    "title": "The Organ Transplant",
+    "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
+    "track_a": "Harvest organs (save 5, kill 1)",
+    "track_b": "Do nothing (kill 5, save 1)",
+    "theme": "Medical Ethics vs. Utilitarianism",
+    "tags": ["medical"]
+  },
+  {
+    "id": "EN05",
+    "title": "The Preemptive Arrest",
+    "description": "A predictive system identifies one person as certain to commit a violent crime. Authorities can detain them now without due process to prevent future harm, or respect their rights and risk the crime occurring.",
+    "track_a": "Detain the suspect (prevent harm, violate rights)",
+    "track_b": "Respect due process (risk future harm)",
+    "theme": "Security vs. Civil Liberties",
+    "tags": ["rights"]
+  }
+]
+
