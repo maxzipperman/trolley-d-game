@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import type { Persona } from "@/types";
 import { personaSchema } from "@/utils/tags.schema";
@@ -6,7 +7,9 @@ export function usePersonas() {
   const [personas, setPersonas] = useState<Persona[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const load = () => {
+    setError(null);
+    setPersonas(null);
     const url = new URL("../../data/personas.json", import.meta.url);
     fetch(url)
       .then((r) => r.json())
@@ -27,7 +30,11 @@ export function usePersonas() {
         }
       })
       .catch(() => setError("Failed to load personas"));
+  };
+
+  useEffect(() => {
+    load();
   }, []);
 
-  return { personas, error, loading: personas === null && !error };
+  return { personas, error, loading: personas === null && !error, retry: load };
 }

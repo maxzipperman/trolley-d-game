@@ -1,9 +1,10 @@
+
 import { useCallback, useEffect, useState } from "react";
-import { ScenarioResponseSchema, type ScenarioResponse } from "@/types";
 import { fetchWithRetry } from "@/utils/fetchWithRetry";
+import { decisionSchema, type Decision } from "@/utils/decisions.schema";
 
 export function useDecisions() {
-  const [decisions, setDecisions] = useState<ScenarioResponse[] | null>(null);
+  const [decisions, setDecisions] = useState<Decision[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +14,7 @@ export function useDecisions() {
     try {
       const url = new URL("../../data/decisions.json", import.meta.url);
       const json = await fetchWithRetry(url.href);
-      const parsed = ScenarioResponseSchema.array().safeParse(json);
+      const parsed = decisionSchema.array().safeParse(json);
       if (parsed.success) {
         setDecisions(parsed.data);
       } else {

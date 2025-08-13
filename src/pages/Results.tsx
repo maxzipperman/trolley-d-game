@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
@@ -57,21 +58,27 @@ const Results = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Ethical Profile</h2>
           <div className="space-y-4">
             <AxisVisualization 
-              label="Utilitarian vs Deontological" 
-              value={axes.utilitarian} 
+              label="Order vs Chaos" 
+              value={axes.orderChaos}
+              leftLabel="Chaos"
+              rightLabel="Order"
             />
             <AxisVisualization 
-              label="Individual vs Collective" 
-              value={axes.individual} 
+              label="Material vs Social" 
+              value={axes.materialSocial}
+              leftLabel="Social"
+              rightLabel="Material"
             />
             <AxisVisualization 
-              label="Action vs Inaction" 
-              value={axes.action} 
+              label="Mercy vs Mischief" 
+              value={axes.mercyMischief}
+              leftLabel="Mischief"
+              rightLabel="Mercy"
             />
           </div>
         </div>
