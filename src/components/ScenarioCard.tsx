@@ -5,6 +5,8 @@ import { usePersonas } from "@/hooks/usePersonas";
 import { useDecisions } from "@/hooks/useDecisions";
 import NPCAvatar from "./NPCAvatar";
 import InlineError from "./InlineError";
+import { Lever } from "./Lever";
+import { Slider } from "@/components/ui/slider";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -18,19 +20,20 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
   const [showNPC, setShowNPC] = useState(false);
   const [copied, setCopied] = useState(false);
   const [rationale, setRationale] = useState("");
+  const [rating, setRating] = useState<number[]>([3]);
   const { personas, error: personasError } = usePersonas();
   const { decisions, error: decisionsError, retry: retryDecisions } = useDecisions();
   const [picked, setPicked] = useState<"A" | "B" | null>(null);
 
   const scenarioResponses = decisions?.filter(d => d.scenarioId === scenario.id) ?? [];
 
-  const handlePick = (choicePicked: "A" | "B") => {
+  const handlePick = (choicePicked: "A" | "B", rationaleFromLever?: string) => {
     setPicked(choicePicked);
     
     // Save choice with rationale to localStorage
     const choiceWithRationale = {
       choice: choicePicked,
-      rationale: rationale.trim() || undefined
+      rationale: rationaleFromLever || rationale.trim() || undefined
     };
     
     const existingChoices = JSON.parse(localStorage.getItem('userChoices') || '{}');
@@ -99,30 +102,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
       {/* Removed TrolleyDiagram pending prop alignment */}
 
       {!choice ? (
-        <div className="space-y-4">
-          <div className="space-y-3">
-            <label className="block text-sm font-medium">Your rationale (optional):</label>
-            <textarea
-              value={rationale}
-              onChange={(e) => setRationale(e.target.value)}
-              placeholder="Why would you make this choice?"
-              className="w-full p-3 border rounded-lg bg-background min-h-[100px] resize-none"
-            />
-          </div>
-          <div className="flex gap-3">
-            <button
-              onClick={() => handlePick("A")}
-              className="flex-1 px-4 py-3 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
-            >
-              Choose Track A
-            </button>
-            <button
-              onClick={() => handlePick("B")}
-              className="flex-1 px-4 py-3 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
-            >
-              Choose Track B
-            </button>
-          </div>
+        <div className="space-y-6">
+          <Lever onChoice={handlePick} />
         </div>
       ) : (
         <>
@@ -200,6 +181,32 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
           )}
 
           <div className="space-y-4">
+            {/* Rating Slider */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-center">How much did you like this scenario?</label>
+              <div className="px-4">
+                <Slider
+                  value={rating}
+                  onValueChange={(value) => {
+                    setRating(value);
+                    // Save rating to localStorage
+                    const ratings = JSON.parse(localStorage.getItem('scenarioRatings') || '{}');
+                    ratings[scenario.id] = value[0];
+                    localStorage.setItem('scenarioRatings', JSON.stringify(ratings));
+                  }}
+                  max={5}
+                  min={1}
+                  step={1}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                  <span>1 - Boring</span>
+                  <span>3 - Okay</span>
+                  <span>5 - Fascinating</span>
+                </div>
+              </div>
+            </div>
+            
             {stats && (
               <p className="text-sm text-muted-foreground text-center">
                 {stats.A}% chose Track A · {stats.B}% chose Track B

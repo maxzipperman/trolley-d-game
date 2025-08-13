@@ -1,0 +1,50 @@
+[
+  {
+    "id": "utilitarian",
+    "text": "Because I'm optimizing for the greater good... obviously.",
+    "nihilism": 1,
+    "category": "utilitarian"
+  },
+  {
+    "id": "random",
+    "text": "Meh, they're all doomed anyway. Might as well pick randomly.",
+    "nihilism": 3,
+    "category": "nihilistic"
+  },
+  {
+    "id": "heat_death",
+    "text": "Nothing matters in the heat death of the universe, but this felt right.",
+    "nihilism": 4,
+    "category": "cosmic"
+  },
+  {
+    "id": "free_will",
+    "text": "I flipped a mental coin. Free will is an illusion anyway.",
+    "nihilism": 5,
+    "category": "deterministic"
+  },
+  {
+    "id": "trolley_wisdom",
+    "text": "The trolley knows what it wants. Who am I to interfere?",
+    "nihilism": 3,
+    "category": "absurdist"
+  },
+  {
+    "id": "moral_uncertainty",
+    "text": "Every choice is wrong, so I picked the most aesthetically pleasing option.",
+    "nihilism": 4,
+    "category": "aesthetic"
+  },
+  {
+    "id": "butterfly_effect",
+    "text": "This will probably cause a butterfly effect that destroys reality. Cool.",
+    "nihilism": 5,
+    "category": "chaos"
+  },
+  {
+    "id": "empathy",
+    "text": "I tried to minimize suffering, though we're all suffering anyway.",
+    "nihilism": 2,
+    "category": "empathetic"
+  }
+]

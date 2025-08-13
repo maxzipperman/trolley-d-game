@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 import History from "./pages/History";
 import NotFound from "./pages/NotFound";
 import SettingsDialog from "@/components/SettingsDialog";
+import { Layout } from "@/components/Layout";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useEffect, useState } from "react";
 
@@ -48,16 +49,18 @@ const App = () => {
             reducedMotion={reducedMotion}
             setReducedMotion={handleSetReducedMotion}
           />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/avatars" element={<AvatarSelect />} />
-            <Route path="/play" element={<Play />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/history" element={<History />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/avatars" element={<AvatarSelect />} />
+              <Route path="/play" element={<Play />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/history" element={<History />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
