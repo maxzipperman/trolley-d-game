@@ -71,7 +71,12 @@ const Play = () => {
     );
   }
   const s = scenarios[index] as Scenario;
-  const progress = (index + 1) / total;
+  const progress = ((index + 1) / total) * 100;
+
+  const values = Object.values(answers);
+  const skipped = values.filter(v => v === "skip").length;
+  const answeredCount = values.filter(v => v !== "skip").length;
+  const left = total - answeredCount;
 
   function advance() {
     if (daily) {
@@ -111,6 +116,13 @@ const Play = () => {
     void record("skip");
   }
 
+  function reviewSkipped() {
+    const next = scenarios.find(sc => answers[sc.id] === "skip");
+    if (next) {
+      navigate(`/play?jump=${next.id}`);
+    }
+  }
+
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
       <section className="space-y-4 animate-fade-in">
@@ -118,22 +130,34 @@ const Play = () => {
           <div className="text-sm text-muted-foreground font-medium">
             Question {index + 1} of {total}
           </div>
-          <button 
-            onClick={() => navigate("/results")} 
-            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-          >
-            End & See Results
-          </button>
+          <div className="flex items-center gap-4">
+            {skipped > 0 && (
+              <button
+                onClick={reviewSkipped}
+                className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+              >
+                Review skipped
+              </button>
+            )}
+            <button
+              onClick={() => navigate("/results")}
+              className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              End & See Results
+            </button>
+          </div>
         </div>
         <div className="space-y-2">
           <div className="h-2 animate-scale-in">
             <Progress value={progress} />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Start</span>
-            <span>{Math.round(progress * 100)}% Complete</span>
-            <span>Finish</span>
+            <span>{skipped} skipped</span>
+            <span>{Math.round(progress)}% complete · {left} left</span>
           </div>
+        </div>
+        <div aria-live="polite" className="sr-only">
+          {`Question ${index + 1} of ${total}. ${skipped} skipped. ${left} left.`}
         </div>
       </section>
 
