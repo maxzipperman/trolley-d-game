@@ -1,68 +1,87 @@
-[{
-  "id": "EN01",
-  "title": "The Classic Trolley Problem",
-  "description": "A runaway trolley is heading towards five people tied to the tracks. You can pull a lever to divert it to a side track, but there's one person tied to that track.",
-  "track_a": "Pull the lever (save 5, kill 1)",
-  "track_b": "Do nothing (kill 5, save 1)",
-  "theme": "Utilitarian vs. Deontological Ethics",
-  "tags": ["logistics"],
-  "responses": [
-    {
-      "avatar": "Socrates",
-      "choice": "A",
-      "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
-    },
-    {
-      "avatar": "Kant",
-      "choice": "B",
-      "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
-    }
-  ]
-},
-{
-  "id": "EN02",
-  "title": "The Ship of Theseus",
-  "description": "A passenger ship is sinking. You can save either the ship's original hull with 3 crew members, or the modernized engine room with 5 passengers.",
-  "track_a": "Save the original hull (3 crew)",
-  "track_b": "Save the engine room (5 passengers)",
-  "theme": "Identity vs. Utility",
-  "tags": ["identity"],
-  "responses": [
-    {
-      "avatar": "Aristotle",
-      "choice": "A",
-      "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
-    },
-    {
-      "avatar": "Mill",
-      "choice": "B",
-      "rationale": "The greatest happiness principle demands we save the greater number."
-    }
-  ]
-},
-{
-  "id": "EN03",
-  "title": "The Self-Driving Car",
-  "description": "An autonomous vehicle must choose between hitting an elderly person crossing legally or swerving to hit a young person jaywalking.",
-  "track_a": "Stay course (hit elderly legal crosser)",
-  "track_b": "Swerve (hit young jaywalker)",
-  "theme": "Legal vs. Utilitarian Calculation",
-  "tags": ["standards"],
-  "responses": [
-    {
-      "avatar": "Rawls",
-      "choice": "A",
-      "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
-    },
-    {
-      "avatar": "Singer",
-      "choice": "B",
-      "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
-    }
-  ]
-},
-{
-  "id": "EN04",
-  "title": "The Organ Transplant",
-  "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
-  "track_a": "Harvest organs (save 5, kill 1)"
+[
+  {
+    "id": "EN01",
+    "title": "The Classic Trolley Problem",
+    "description": "A runaway trolley is heading towards five people tied to the tracks. You can pull a lever to divert it to a side track, but there's one person tied to that track.",
+    "track_a": "Pull the lever (save 5, kill 1)",
+    "track_b": "Do nothing (kill 5, save 1)",
+    "theme": "Utilitarian vs. Deontological Ethics",
+    "tags": ["logistics"],
+    "responses": [
+      {
+        "avatar": "Bentham",
+        "choice": "A",
+        "rationale": "The greatest good for the greatest number demands we pull the lever."
+      },
+      {
+        "avatar": "Kant",
+        "choice": "B",
+        "rationale": "We cannot use one person as a mere means to save others."
+      }
+    ]
+  },
+  {
+    "id": "EN12",
+    "title": "The Reality Revelation",
+    "description": "Scientists can prove reality is a simulation, but unveiling the truth may plunge society into existential despair.",
+    "track_a": "Reveal the simulated nature of reality",
+    "track_b": "Keep the discovery secret",
+    "theme": "Truth vs Existential Dread",
+    "tags": ["reality", "existential"],
+    "responses": [
+      {
+        "avatar": "Descartes",
+        "choice": "A",
+        "rationale": "Even a disturbing truth brings us closer to certainty."
+      }
+    ]
+  },
+  {
+    "id": "EN13",
+    "title": "The Absurd Permit",
+    "description": "City hall requires a permit to apply for a permit for a harmless street performance.",
+    "track_a": "Obey the bureaucracy and file the preliminary permit",
+    "track_b": "Perform without any permits",
+    "theme": "Procedure vs Spontaneity",
+    "tags": ["bureaucracy", "absurd"],
+    "responses": [
+      {
+        "avatar": "Kafka",
+        "choice": "A",
+        "rationale": "Submitting to the system is the only path through it."
+      }
+    ]
+  },
+  {
+    "id": "EN14",
+    "title": "The Classification Conundrum",
+    "description": "A library's new universal system demands that a book be shelved in two contradictory sections, creating a cataloging paradox.",
+    "track_a": "Adopt the new standards despite the paradox",
+    "track_b": "Keep the old system and let librarians assign meaning freely",
+    "theme": "Order vs Interpretive Freedom",
+    "tags": ["standards", "paradox", "meaning"],
+    "responses": [
+      {
+        "avatar": "Foucault",
+        "choice": "B",
+        "rationale": "Knowledge thrives in the spaces between rigid structures."
+      }
+    ]
+  },
+  {
+    "id": "EN15",
+    "title": "The Stowaway Dilemma",
+    "description": "A cargo rocket to a space station has room for either critical spare parts or an unregistered stowaway who insists they are the station's forgotten commander.",
+    "track_a": "Transport the stowaway and leave the parts",
+    "track_b": "Deliver the parts and expel the stowaway",
+    "theme": "Logistics vs Personal Identity",
+    "tags": ["logistics", "space", "identity"],
+    "responses": [
+      {
+        "avatar": "NASA Official",
+        "choice": "B",
+        "rationale": "Mission logistics must take precedence over an unverifiable claim."
+      }
+    ]
+  }
+]
