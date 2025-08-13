@@ -7,5 +7,3 @@ export const decisionSchema = z.object({
   choice: z.enum(["A", "B"]),
   rationale: z.string().optional(),
 });
-
-export type Decision = z.infer<typeof decisionSchema>;
