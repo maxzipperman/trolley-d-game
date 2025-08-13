@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
@@ -15,6 +15,8 @@ const Play = () => {
   const { scenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
+  const [currentChoice, setCurrentChoice] = useState<"A" | "B" | null>(null);
+  const [stats, setStats] = useState<{ A: number; B: number } | null>(null);
 
   const index = useMemo(() => {
     if (!scenarios) return 0;
@@ -30,13 +32,14 @@ const Play = () => {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (currentChoice != null) return;
       if (e.key === "ArrowLeft") { pick("A"); }
       if (e.key === "ArrowRight") { pick("B"); }
       if (e.key.toLowerCase() === "s") { skip(); }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  });
+  }, [currentChoice]);
 
   if (loading || !scenarios) {
     return (
@@ -71,9 +74,24 @@ const Play = () => {
     }
   }
 
-  function pick(choice: "A" | "B") {
+  async function pick(choice: "A" | "B") {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
+    setCurrentChoice(choice);
+    try {
+      const res = await fetch(`/api/analytics?scenario=${s.id}&choice=${choice}`);
+      if (res.ok) {
+        const data = await res.json();
+        setStats({ A: data.percentA, B: data.percentB });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function next() {
+    setCurrentChoice(null);
+    setStats(null);
     advance();
   }
 
@@ -110,20 +128,28 @@ const Play = () => {
       </section>
 
       {s && (
-        <ScenarioCard scenario={s} onPick={pick} />
+        <ScenarioCard
+          scenario={s}
+          onPick={pick}
+          choice={currentChoice}
+          stats={stats}
+          onNext={next}
+        />
       )}
 
-      <div className="flex items-center justify-between pt-4">
-        <button 
-          onClick={skip} 
-          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-        >
-          Skip this scenario
-        </button>
-        <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
-          Shortcuts: ← A · → B · S Skip
+      {currentChoice == null && (
+        <div className="flex items-center justify-between pt-4">
+          <button
+            onClick={skip}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+          >
+            Skip this scenario
+          </button>
+          <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
+            Shortcuts: ← A · → B · S Skip
+          </div>
         </div>
-      </div>
+      )}
     </main>
   );
 };
