@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { tagsSchema } from "@/utils/tags.schema";
+
 /**
  * SCENARIO ID GUIDANCE:
  * Use format: [LANGUAGE_CODE][SEQUENCE_NUMBER]
@@ -24,6 +25,8 @@ export const ScenarioSchema = z.object({
   // Optional image URL for scenario visualization
   // Should be a valid URL pointing to scenario-related imagery
   imageUrl: z.string().url().optional(),
+  // @deprecated - responses are now handled separately via useDecisions hook
+  // This field is optional but unused - use useDecisions instead
   responses: z
     .array(
       z.object({
@@ -34,6 +37,7 @@ export const ScenarioSchema = z.object({
     )
     .optional(),
 });
+
 export type Scenario = z.infer<typeof ScenarioSchema>;
 
 /**
@@ -61,7 +65,31 @@ export const PersonaSchema = z.object({
   imageUrl: z.string().url().optional(),
   example_lines: z.array(z.string()).optional(),
 });
+
 export type Persona = z.infer<typeof PersonaSchema>;
+
+/**
+ * SCENARIO RESPONSE SCHEMA
+ * Represents philosopher responses to scenarios (now stored in decisions.json)
+ */
+export const ScenarioResponseSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string().optional(),
+  track_a: z.string(),
+  track_b: z.string(),
+  theme: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  responses: z.array(
+    z.object({
+      avatar: z.string(),
+      choice: z.enum(["A", "B"]),
+      rationale: z.string().optional(),
+    })
+  ).optional(),
+});
+
+export type ScenarioResponse = z.infer<typeof ScenarioResponseSchema>;
 
 /**
  * DECISION TYPE SCHEMA
@@ -75,4 +103,5 @@ export const DecisionSchema = z.object({
   rationale: z.string().optional(),
   userId: z.string().optional(),
 });
+
 export type Decision = z.infer<typeof DecisionSchema>;
