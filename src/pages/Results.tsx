@@ -20,7 +20,7 @@ const Results = () => {
   const navigate = useNavigate();
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
-  
+
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
   const [overallStats, setOverallStats] = useState<ScenarioStats | null>(null);
@@ -103,6 +103,36 @@ const Results = () => {
           </div>
         </div>
       </div>
+
+      <section className="p-4 rounded-lg border border-border bg-card">
+        <h2 className="font-semibold mb-3">Your Run</h2>
+        <ul className="space-y-2">
+          {scenarios.map((s) => {
+            const choice = answers[s.id];
+            const userChoice = JSON.parse(localStorage.getItem('userChoices') || '{}')[s.id];
+            const pick = typeof choice === 'string' ? choice : choice?.pick ?? "—";
+            return (
+              <li key={s.id} className="flex items-center justify-between gap-3 border-b border-border/60 py-2">
+                <div className="flex-1">
+                  <Link to={`/play?jump=${s.id}`} className="underline underline-offset-4">{s.title}</Link>
+                  {userChoice?.rationale && (
+                    <p className="text-xs text-muted-foreground mt-1">{userChoice.rationale}</p>
+                  )}
+                </div>
+                <span className="text-sm text-muted-foreground">{pick}</span>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="mt-4 flex gap-2">
+          <button
+            onClick={() => { localStorage.removeItem(ANSWERS_KEY); localStorage.removeItem('userChoices'); setAnswers({}); navigate("/play"); }}
+            className="px-4 py-2 rounded-md border border-border hover:bg-accent"
+          >
+            Reset Game
+          </button>
+        </div>
+      </section>
 
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Visual Breakdown</h2>

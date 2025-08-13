@@ -30,13 +30,13 @@ export function computeAxes(
     if (s.tags?.some(t => CHAOS.has(t))) chaos++;
     if (s.tags?.some(t => MATERIAL.has(t))) material++;
     if (s.tags?.some(t => SOCIAL.has(t))) social++;
-    
+
     // Add mercy/mischief scoring based on choice text analysis
     const choice = answers[s.id];
     if (choice === "A" || choice === "B") {
       const choiceText = choice === "A" ? s.track_a : s.track_b;
       const lowerText = choiceText.toLowerCase();
-      
+
       if (MERCY_WORDS.some(word => lowerText.includes(word))) mercy++;
       if (MISCHIEF_WORDS.some(word => lowerText.includes(word))) mischief++;
     }

@@ -6,17 +6,20 @@ import ScenarioCard from "@/components/ScenarioCard";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "@/components/ui/use-toast";
 import { submitChoice, fetchScenarioStats } from "@/lib/api";
-import type { Choice } from "@/types";
 
 const Play = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const jump = searchParams.get("jump");
-  
+
   const { scenarios, loading } = useScenarios();
   const { answers, setAnswers } = useAnswers();
 
   const [progressAnnouncement, setProgressAnnouncement] = useState("");
+
+  useEffect(() => {
+    document.title = "Trolley'd · Play";
+  }, []);
 
   const total = scenarios?.length || 0;
   const answered = Object.keys(answers).length;
@@ -72,6 +75,12 @@ const Play = () => {
       e.preventDefault();
       skip();
     }
+    if (e.key === "ArrowLeft") {
+      pick("A");
+    }
+    if (e.key === "ArrowRight") {
+      pick("B");
+    }
   }, []);
 
   useEffect(() => {
@@ -95,7 +104,7 @@ const Play = () => {
     );
   }
 
-  const pick = (choice: Choice) => {
+  const pick = (choice: "A" | "B") => {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
 
@@ -131,7 +140,7 @@ const Play = () => {
       <div aria-live="polite" className="sr-only" data-testid="progress-announcer">
         {progressAnnouncement}
       </div>
-      
+
       <section className="space-y-4 animate-fade-in">
         <div className="flex items-center justify-between">
           <div
@@ -147,7 +156,7 @@ const Play = () => {
             View Progress
           </button>
         </div>
-        
+
         <div className="space-y-2">
           <div className="h-2 animate-scale-in">
             <Progress value={progress * 100} />
@@ -181,7 +190,7 @@ const Play = () => {
         >
           Skip this scenario
         </button>
-        
+
         {skippedScenarios.length > 0 && (
           <button
             onClick={reviewSkipped}
