@@ -1,0 +1,62 @@
+[
+  {
+    "scenarioId": "EN01",
+    "persona": "Socrates",
+    "choice": "A",
+    "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
+  },
+  {
+    "scenarioId": "EN01",
+    "persona": "Kant",
+    "choice": "B",
+    "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
+  },
+  {
+    "scenarioId": "EN02",
+    "persona": "Aristotle",
+    "choice": "A",
+    "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
+  },
+  {
+    "scenarioId": "EN02",
+    "persona": "Mill",
+    "choice": "B",
+    "rationale": "The greatest happiness principle demands we save the greater number."
+  },
+  {
+    "scenarioId": "EN03",
+    "persona": "Rawls",
+    "choice": "A",
+    "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
+  },
+  {
+    "scenarioId": "EN03",
+    "persona": "Singer",
+    "choice": "B",
+    "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+  },
+  {
+    "scenarioId": "EN04",
+    "persona": "Hippocrates",
+    "choice": "B",
+    "rationale": "First, do no harm. A physician must never actively harm a healthy patient."
+  },
+  {
+    "scenarioId": "EN04",
+    "persona": "Bentham",
+    "choice": "A",
+    "rationale": "The hedonic calculus is clear: five lives produce more happiness than one."
+  },
+  {
+    "scenarioId": "EN05",
+    "persona": "Parfit",
+    "choice": "A",
+    "rationale": "Non-identity problems aside, preventing suffering for existing people takes priority."
+  },
+  {
+    "scenarioId": "EN05",
+    "persona": "Nozick",
+    "choice": "B",
+    "rationale": "We cannot violate the rights of those who exist, even to prevent future harms."
+  }
+]

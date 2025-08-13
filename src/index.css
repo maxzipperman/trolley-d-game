@@ -121,6 +121,24 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .high-contrast {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --trolley-track: 0 0% 0%;
+    --trolley-body: 0 0% 0%;
+    --choice-hover: 0 0% 90%;
+    --progress-fill: 0 0% 0%;
+  }
+
+  .dark.high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --trolley-track: 0 0% 100%;
+    --trolley-body: 0 0% 100%;
+    --choice-hover: 0 0% 20%;
+    --progress-fill: 0 0% 100%;
+  }
 }
 
 @layer base {
