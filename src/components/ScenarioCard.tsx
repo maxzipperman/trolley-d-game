@@ -6,6 +6,7 @@ import { useDecisions } from "@/hooks/useDecisions";
 import NPCAvatar from "./NPCAvatar";
 import InlineError from "./InlineError";
 import { Lever } from "./Lever";
+import ProceduralTrackImage from "./procedural/ProceduralTrackImage";
 import { Slider } from "@/components/ui/slider";
 
 interface ScenarioCardProps {
@@ -99,7 +100,16 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
         <p className="text-muted-foreground leading-relaxed">{scenario.description}</p>
       </div>
 
-      {/* Removed TrolleyDiagram pending prop alignment */}
+      <div className="grid grid-cols-2 gap-6 pt-4">
+        <div className="flex flex-col items-center text-center space-y-2">
+          <ProceduralTrackImage tags={scenario.tags ?? []} seed={1} />
+          <p className="text-sm text-muted-foreground">{scenario.track_a}</p>
+        </div>
+        <div className="flex flex-col items-center text-center space-y-2">
+          <ProceduralTrackImage tags={scenario.tags ?? []} seed={2} />
+          <p className="text-sm text-muted-foreground">{scenario.track_b}</p>
+        </div>
+      </div>
 
       {!choice ? (
         <div className="space-y-6">
