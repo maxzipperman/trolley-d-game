@@ -1,5 +1,11 @@
 import type { Tag } from "@/utils/tags.schema";
 
+export interface Response {
+  avatar: string;
+  choice: "A" | "B";
+  rationale?: string;
+}
+
 export interface Scenario {
   id: string;
   title: string;
@@ -7,10 +13,14 @@ export interface Scenario {
   track_a: string;
   track_b: string;
   theme?: string;
-  tags?: Tag[];
+  tags?: string[];
   responses?: Array<{
     avatar: string;
     choice: "A" | "B";
     rationale?: string;
   }>;
+}
+
+export interface Decision extends Scenario {
+  responses: Response[];
 }
