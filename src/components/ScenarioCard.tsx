@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
+import { useDecisions } from "@/hooks/useDecisions";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
 
@@ -12,9 +13,11 @@ interface ScenarioCardProps {
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
   const { personas } = usePersonas();
+  const { decisions } = useDecisions();
 
   const samples = useMemo(() => {
-    const r = scenario.responses ?? [];
+    const decision = decisions?.find(d => d.id === scenario.id);
+    const r = decision?.responses ?? [];
     const fromScenario = [...r].sort(() => Math.random() - 0.5).slice(0, 3);
     if (fromScenario.length > 0) return fromScenario;
 
@@ -29,7 +32,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           Math.floor(Math.random() * (per.example_lines?.length ?? 0))
         ],
     }));
-  }, [scenario, personas]);
+  }, [scenario.id, decisions, personas]);
 
   return (
     <article className="space-y-6">
