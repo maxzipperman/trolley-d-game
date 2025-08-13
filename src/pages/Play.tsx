@@ -87,12 +87,15 @@ const Play = () => {
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
       <section className="space-y-4 animate-fade-in">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-muted-foreground font-medium">
+          <div
+            className="text-sm text-muted-foreground font-medium"
+            aria-live="polite"
+          >
             Question {index + 1} of {total}
           </div>
-          <button 
-            onClick={() => navigate("/results")} 
-            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+          <button
+            onClick={() => navigate("/results")}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
           >
             End & See Results
           </button>
@@ -101,7 +104,10 @@ const Play = () => {
           <div className="h-2 animate-scale-in">
             <Progress value={progress * 100} />
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div
+            className="flex justify-between text-xs text-muted-foreground"
+            aria-live="polite"
+          >
             <span>Start</span>
             <span>{Math.round(progress * 100)}% Complete</span>
             <span>Finish</span>
@@ -114,9 +120,10 @@ const Play = () => {
       )}
 
       <div className="flex items-center justify-between pt-4">
-        <button 
-          onClick={skip} 
-          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+        <button
+          onClick={skip}
+          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
+          aria-keyshortcuts="s"
         >
           Skip this scenario
         </button>
@@ -129,3 +136,4 @@ const Play = () => {
 };
 
 export default Play;
+

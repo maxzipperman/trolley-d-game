@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 
 interface TrolleyDiagramProps {
   trackALabel?: string;
@@ -11,14 +11,20 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
   trackBLabel = "Track B",
   className = ""
 }) => {
+  const titleId = useId();
+  const descId = useId();
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
-      <svg 
-        viewBox="0 0 300 200" 
+      <svg
+        viewBox="0 0 300 200"
         className="w-full h-auto"
         role="img"
-        aria-label="Trolley track diagram showing choice between two paths"
+        aria-labelledby={`${titleId} ${descId}`}
       >
+        <title id={titleId}>Trolley track diagram</title>
+        <desc id={descId}>
+          Trolley track diagram showing choice between two paths
+        </desc>
         {/* Track base */}
         <path
           d="M20 100 L120 100"
