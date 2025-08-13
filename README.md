@@ -71,3 +71,17 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Edge Function: generate-scenario
+
+Deploy the function:
+
+```sh
+supabase functions deploy generate-scenario
+```
+
+Invoke it using the Supabase CLI:
+
+```sh
+supabase functions invoke generate-scenario --body '{"seed":"demo","tags":["ethics"],"style":"classic"}'
+```
