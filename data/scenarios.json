@@ -10,6 +10,18 @@
       "classic",
       "numbers",
       "action_vs_inaction"
+    ],
+    "responses": [
+      {
+        "avatar": "Socrates",
+        "choice": "A",
+        "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
+      },
+      {
+        "avatar": "Kant",
+        "choice": "B",
+        "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
+      }
     ]
   },
   {
@@ -23,6 +35,18 @@
       "identity",
       "numbers",
       "preservation"
+    ],
+    "responses": [
+      {
+        "avatar": "Aristotle",
+        "choice": "A",
+        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
+      },
+      {
+        "avatar": "Mill",
+        "choice": "B",
+        "rationale": "The greatest happiness principle demands we save the greater number."
+      }
     ]
   },
   {
@@ -37,32 +61,18 @@
       "age",
       "law",
       "technology"
-    ]
-  },
-  {
-    "id": "EN04",
-    "title": "The Organ Transplant",
-    "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
-    "track_a": "Harvest organs (save 5, kill 1)",
-    "track_b": "Let nature take its course (5 die, 1 lives)",
-    "theme": "Active vs. Passive Harm",
-    "tags": [
-      "medical",
-      "active_harm",
-      "numbers"
-    ]
-  },
-  {
-    "id": "EN05",
-    "title": "The Time Traveler's Dilemma",
-    "description": "You can prevent a natural disaster that kills 1000 people, but doing so will erase the existence of 100 people who were born because of that tragedy.",
-    "track_a": "Prevent disaster (save 1000, erase 100)",
-    "track_b": "Allow disaster (1000 die, 100 exist)",
-    "theme": "Temporal Ethics and Existence",
-    "tags": [
-      "time_travel",
-      "existence",
-      "large_numbers"
+    ],
+    "responses": [
+      {
+        "avatar": "Rawls",
+        "choice": "A",
+        "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
+      },
+      {
+        "avatar": "Singer",
+        "choice": "B",
+        "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+      }
     ]
   }
 ]

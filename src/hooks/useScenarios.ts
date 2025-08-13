@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Scenario } from "@/types";
+import { tagsSchema } from "@/utils/tags.schema";
 
 export function useScenarios() {
   const [scenarios, setScenarios] = useState<Scenario[] | null>(null);
@@ -11,7 +12,14 @@ export function useScenarios() {
       .then(r => r.json())
       .then((json: unknown) => {
         if (Array.isArray(json)) {
-          setScenarios(json as Scenario[]);
+          const parsed = json.map(s => {
+            const raw = s as Record<string, unknown>;
+            const tags = tagsSchema.safeParse(raw.tags).success
+              ? tagsSchema.parse(raw.tags)
+              : [];
+            return { ...(raw as Scenario), tags };
+          });
+          setScenarios(parsed as Scenario[]);
         } else {
           setScenarios([]);
         }
