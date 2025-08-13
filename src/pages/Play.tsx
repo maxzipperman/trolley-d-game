@@ -28,6 +28,21 @@ const Play = () => {
     return i >= 0 ? i : 0;
   }, [scenarios, params, answers]);
 
+  const total = scenarios?.length ?? 0;
+  const countSkipped = useMemo(
+    () => Object.values(answers).filter(a => a === "skip").length,
+    [answers]
+  );
+  const countLeft = useMemo(
+    () =>
+      scenarios ? scenarios.filter(sc => answers[sc.id] == null).length : 0,
+    [scenarios, answers]
+  );
+  const firstSkipped = useMemo(
+    () => scenarios?.find(sc => answers[sc.id] === "skip"),
+    [scenarios, answers]
+  );
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") { pick("A"); }
@@ -38,26 +53,25 @@ const Play = () => {
     return () => window.removeEventListener("keydown", onKey);
   });
 
-  if (loading || !scenarios) {
-    return (
-      <main className="min-h-screen container py-10">
-        <div className="h-2 w-full bg-muted rounded-md overflow-hidden">
-          <div className="h-full w-1/3 bg-foreground/60 animate-pulse" />
-        </div>
-      </main>
-    );
-  }
+    if (loading || !scenarios) {
+      return (
+        <main className="min-h-screen container py-10">
+          <div className="h-2 w-full bg-muted rounded-md overflow-hidden">
+            <div className="h-full w-1/3 bg-foreground/60 animate-pulse" />
+          </div>
+        </main>
+      );
+    }
 
-  const total = scenarios.length;
-  if (total === 0) {
-    return (
-      <main className="min-h-screen container max-w-2xl py-8">
-        <p className="text-muted-foreground">No scenarios available. Please add data/scenarios.json.</p>
-      </main>
-    );
-  }
-  const s = scenarios[index] as Scenario;
-  const progress = (index + 1) / total;
+    if (total === 0) {
+      return (
+        <main className="min-h-screen container max-w-2xl py-8">
+          <p className="text-muted-foreground">No scenarios available. Please add data/scenarios.json.</p>
+        </main>
+      );
+    }
+    const s = scenarios[index] as Scenario;
+    const progress = (index + 1) / total;
 
   function advance() {
     // next unanswered or end
@@ -102,6 +116,10 @@ const Play = () => {
             <Progress value={progress * 100} />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">
+            <span>{countSkipped} skipped</span>
+            <span>{countLeft} left</span>
+          </div>
+          <div className="flex justify-between text-xs text-muted-foreground">
             <span>Start</span>
             <span>{Math.round(progress * 100)}% Complete</span>
             <span>Finish</span>
@@ -114,12 +132,23 @@ const Play = () => {
       )}
 
       <div className="flex items-center justify-between pt-4">
-        <button 
-          onClick={skip} 
-          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-        >
-          Skip this scenario
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={skip}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+          >
+            Skip this scenario
+          </button>
+          {countSkipped > 0 && firstSkipped && (
+            <button
+              onClick={() => navigate(`/play?jump=${firstSkipped.id}`)}
+              className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+              aria-label="Review skipped scenarios"
+            >
+              Review skipped
+            </button>
+          )}
+        </div>
         <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
           Shortcuts: ← A · → B · S Skip
         </div>
