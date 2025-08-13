@@ -7,14 +7,107 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
-  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "13.0.4"
   }
   public: {
     Tables: {
-      [_ in never]: never
+      answers: {
+        Row: {
+          id: number
+          user_id: string | null
+          scenario_id: string | null
+          choice: string | null
+          rationale: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: number
+          user_id?: string | null
+          scenario_id?: string | null
+          choice?: string | null
+          rationale?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: number
+          user_id?: string | null
+          scenario_id?: string | null
+          choice?: string | null
+          rationale?: string | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "answers_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+            referencedSchema?: "auth"
+          }
+        ]
+      }
+      profiles: {
+        Row: {
+          id: string
+          username: string | null
+          avatar_url: string | null
+          is_public: boolean | null
+        }
+        Insert: {
+          id: string
+          username?: string | null
+          avatar_url?: string | null
+          is_public?: boolean | null
+        }
+        Update: {
+          id?: string
+          username?: string | null
+          avatar_url?: string | null
+          is_public?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+            referencedSchema?: "auth"
+          }
+        ]
+      }
+      ratings: {
+        Row: {
+          id: number
+          user_id: string | null
+          scenario_id: string | null
+          rating: number | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: number
+          user_id?: string | null
+          scenario_id?: string | null
+          rating?: number | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: number
+          user_id?: string | null
+          scenario_id?: string | null
+          rating?: number | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ratings_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+            referencedSchema?: "auth"
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
