@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
-
-export interface Persona {
-  name: string;
-  era_origin?: string;
-  occupation_or_role?: string;
-  worldview_values?: string;
-  tone_style?: string;
-  example_lines?: string[];
-}
+import type { Persona } from "@/types";
+import { personaSchema } from "@/utils/tags.schema";
 
 export function usePersonas() {
   const [personas, setPersonas] = useState<Persona[] | null>(null);
@@ -18,16 +11,17 @@ export function usePersonas() {
     fetch(url)
       .then((r) => r.json())
       .then((json: unknown) => {
-        if (
-          Array.isArray(json) &&
-          json.every(
-            (item) =>
-              typeof item === "object" &&
-              item !== null &&
-              typeof (item as any).name === "string"
-          )
-        ) {
-          setPersonas(json as Persona[]);
+        if (Array.isArray(json)) {
+          const valid: Persona[] = [];
+          for (const raw of json) {
+            const parsed = personaSchema.safeParse(raw);
+            if (parsed.success) {
+              valid.push(parsed.data);
+            } else if (import.meta.env.DEV) {
+              console.error(`Invalid persona: ${parsed.error.message}`);
+            }
+          }
+          setPersonas(valid);
         } else {
           setPersonas([]);
         }

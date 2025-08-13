@@ -1,6 +1,9 @@
 import type { Scenario } from "@/types";
+import { ORDER, CHAOS, MATERIAL, SOCIAL } from "./tags";
 
-export function countAB(answers: Record<string, "A"|"B"|"skip">) {
+export type Choice = "A" | "B" | "skip";
+
+export function countAB(answers: Record<string, Choice>) {
   return Object.values(answers).reduce(
     (acc, v) => {
       if (v === "A") acc.A += 1;
@@ -11,15 +14,10 @@ export function countAB(answers: Record<string, "A"|"B"|"skip">) {
   );
 }
 
-const ORDER = new Set(["bureaucracy", "standards", "logistics"]);
-const CHAOS = new Set(["absurd", "paradox", "infinite"]);
-const MATERIAL = new Set(["reality", "manufacturing_defects", "quality_control", "space"]);
-const SOCIAL = new Set(["identity", "meaning", "workers_rights", "existential"]);
-
 const MISCHIEF_WORDS = ["hit", "tow", "deny", "erase", "confine", "condemn", "break"];
 
 export function computeAxes(
-  answers: Record<string, "A"|"B"|"skip">,
+  answers: Record<string, Choice>,
   scenarios: Scenario[]
 ) {
   let order = 0, chaos = 0, material = 0, social = 0, mercy = 0, mischief = 0;
@@ -41,9 +39,6 @@ export function computeAxes(
 
   return { order, chaos, material, social, mercy, mischief };
 }
-
-// Legacy compatibility functions
-export type Choice = "A" | "B" | "skip";
 
 export function computeBaseCounts(answers: Record<string, Choice>) {
   const counts = countAB(answers);

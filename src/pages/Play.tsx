@@ -12,7 +12,7 @@ const ANSWERS_KEY = "trolleyd-answers";
 const Play = () => {
   useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
-  const { scenarios, loading } = useScenarios();
+  const { scenarios, loading, error, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
 
@@ -48,6 +48,20 @@ const Play = () => {
     );
   }
 
+  if (error) {
+    return (
+      <main className="min-h-screen container max-w-2xl py-8 space-y-4">
+        <p className="text-destructive">{error}</p>
+        <button
+          onClick={retry}
+          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+        >
+          Retry
+        </button>
+      </main>
+    );
+  }
+
   const total = scenarios.length;
   if (total === 0) {
     return (
@@ -58,6 +72,10 @@ const Play = () => {
   }
   const s = scenarios[index] as Scenario;
   const progress = (index + 1) / total;
+  const skipped = scenarios.filter(sc => answers[sc.id] === "skip").length;
+  const remaining = scenarios.filter(sc => answers[sc.id] == null).length;
+  const firstSkipped = scenarios.find(sc => answers[sc.id] === "skip");
+  const progressAnnouncement = `Question ${index + 1} of ${total}. ${remaining} remaining. ${skipped} skipped.`;
 
   function advance() {
     // next unanswered or end
@@ -83,8 +101,16 @@ const Play = () => {
     advance();
   }
 
+  function reviewSkipped() {
+    if (!firstSkipped) return;
+    navigate(`/play?jump=${firstSkipped.id}`);
+  }
+
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
+      <div aria-live="polite" className="sr-only" data-testid="progress-announcer">
+        {progressAnnouncement}
+      </div>
       <section className="space-y-4 animate-fade-in">
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground font-medium">
@@ -106,6 +132,18 @@ const Play = () => {
             <span>{Math.round(progress * 100)}% Complete</span>
             <span>Finish</span>
           </div>
+          <div className="flex justify-between text-xs text-muted-foreground">
+            <span>Skipped {skipped}</span>
+            <span>Remaining {remaining}</span>
+          </div>
+          {skipped > 0 && (
+            <button
+              onClick={reviewSkipped}
+              className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              Review skipped
+            </button>
+          )}
         </div>
       </section>
 
