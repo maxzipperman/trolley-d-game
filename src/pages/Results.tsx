@@ -1,95 +1,149 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
+import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
+import { usePersonas } from "@/hooks/usePersonas";
+import { Choice, computeAxes_legacy, computeBaseCounts } from "@/utils/scoring";
+import { fetchOverallStats, type ScenarioStats } from "@/lib/api";
+import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const AVATARS_KEY = "trolleyd-selected-avatars";
 
 const Results = () => {
-  useEffect(() => { document.title = "Trolley’d · Results"; }, []);
+  useEffect(() => {
+    document.title = "Trolley'd · Results";
+    results_viewed();
+  }, []);
+
   const navigate = useNavigate();
-  const { scenarios } = useScenarios();
+  const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [avatarIds] = useLocalStorage<string[]>(AVATARS_KEY, []);
+  const { personas } = usePersonas();
+  const selectedPersonas = useMemo(
+    () => (personas ?? []).filter((p) => avatarIds.includes(p.name)),
+    [personas, avatarIds]
+  );
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
-  const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+  const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
+  const [overallStats, setOverallStats] = useState<ScenarioStats | null>(null);
 
-  if (!scenarios) return (
+  useEffect(() => {
+    fetchOverallStats()
+      .then(setOverallStats)
+      .catch(() => {});
+  }, []);
+
+  if (error) {
+    return (
+      <main className="min-h-screen container py-10">
+        <InlineError message={error} onRetry={retry} />
+      </main>
+    );
+  }
+
+  if (loading || !scenarios) return (
     <main className="min-h-screen container py-10" />
   );
 
   return (
     <main className="min-h-screen container max-w-3xl py-8 space-y-8">
-      <header>
-        <h1 className="text-3xl font-bold">Your Results</h1>
+      <header className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">Your Results</h1>
+        <p className="text-muted-foreground">
+          Based on your responses to {Object.keys(answers).length} scenarios
+        </p>
       </header>
 
-      <div className="mb-8 animate-fade-in">
-        <TrolleyDiagram 
-          trackALabel="Your Journey" 
-          trackBLabel="Complete"
-          className="opacity-60"
-        />
-      </div>
-
-      <section className="grid gap-6 lg:grid-cols-2">
-        <article className="p-6 rounded-lg border border-border bg-card animate-scale-in">
-          <h2 className="font-semibold mb-2">Your Choices</h2>
-          <p className="text-sm text-muted-foreground mb-4">Track A vs Track B selections</p>
-          <div className="grid grid-cols-2 gap-4 text-center">
-            <div className="p-4 rounded-lg bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20">
-              <div className="text-xs text-muted-foreground uppercase tracking-wide">Track A</div>
-              <div className="text-3xl font-bold text-primary mt-1">{scoreA}</div>
+      <div className="grid gap-8 md:grid-cols-2">
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold">Choice Distribution</h2>
+          <div className="space-y-2">
+            <div className="flex justify-between">
+              <span>Choice A: {scoreA}</span>
+              <span>
+                {scoreA + scoreB > 0 ? Math.round((scoreA / (scoreA + scoreB)) * 100) : 0}%
+              </span>
             </div>
-            <div className="p-4 rounded-lg bg-gradient-to-br from-secondary/5 to-secondary/10 border border-secondary/20">
-              <div className="text-xs text-muted-foreground uppercase tracking-wide">Track B</div>
-              <div className="text-3xl font-bold text-secondary-foreground mt-1">{scoreB}</div>
+            <div className="flex justify-between">
+              <span>Choice B: {scoreB}</span>
+              <span>
+                {scoreA + scoreB > 0 ? Math.round((scoreB / (scoreA + scoreB)) * 100) : 0}%
+              </span>
             </div>
+            {overallStats && (
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Global Average</span>
+                <span>
+                  A {Math.round(overallStats.percentA)}% · B {Math.round(overallStats.percentB)}%
+                </span>
+              </div>
+            )}
           </div>
-          <div className="mt-6 flex gap-3">
-            <button
-              onClick={() => navigate("/play")}
-              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
-            >Play Again</button>
-          </div>
-        </article>
+        </div>
 
-        <article className="p-6 rounded-lg border border-border bg-card">
-          <h2 className="font-semibold mb-4">Your Philosophical Position</h2>
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold">Ethical Profile</h2>
           <div className="space-y-4">
-            <AxisVisualization 
-              label="Order ↔ Chaos" 
+            <AxisVisualization
+              label="Order vs Chaos"
               value={axes.orderChaos}
-              leftLabel="Order" 
+              leftLabel="Order"
               rightLabel="Chaos"
             />
-            <AxisVisualization 
-              label="Material ↔ Social" 
+            <AxisVisualization
+              label="Material vs Social"
               value={axes.materialSocial}
-              leftLabel="Material" 
+              leftLabel="Material"
               rightLabel="Social"
             />
-            <AxisVisualization 
-              label="Mercy ↔ Mischief" 
+            <AxisVisualization
+              label="Mercy vs Mischief"
               value={axes.mercyMischief}
-              leftLabel="Mercy" 
+              leftLabel="Mercy"
               rightLabel="Mischief"
             />
           </div>
-        </article>
-      </section>
+        </div>
+      </div>
+
+      {selectedPersonas.length > 0 && (
+        <section className="p-4 rounded-lg border border-border bg-card">
+          <h2 className="font-semibold mb-3">Your Selected Avatars</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {selectedPersonas.map((p) => (
+              <div key={p.name} className="p-3 rounded-lg bg-muted/50">
+                <h3 className="font-medium text-sm mb-1">{p.name}</h3>
+                <p className="text-xs text-muted-foreground mb-2">{p.description}</p>
+                {p.tone_style && (
+                  <p className="text-sm text-muted-foreground">{p.tone_style}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="p-4 rounded-lg border border-border bg-card">
-        <h2 className="font-semibold mb-3">Your run</h2>
+        <h2 className="font-semibold mb-3">Your Run</h2>
         <ul className="space-y-2">
           {scenarios.map((s) => {
-            const pick = answers[s.id] ?? "—";
+            const choice = answers[s.id];
+            const userChoice = JSON.parse(localStorage.getItem('userChoices') || '{}')[s.id];
+            const pick = typeof choice === 'string' ? choice : choice?.pick ?? "—";
             return (
               <li key={s.id} className="flex items-center justify-between gap-3 border-b border-border/60 py-2">
-                <Link to={`/play?jump=${s.id}`} className="underline underline-offset-4">{s.title}</Link>
+                <div className="flex-1">
+                  <Link to={`/play?jump=${s.id}`} className="underline underline-offset-4">{s.title}</Link>
+                  {userChoice?.rationale && (
+                    <p className="text-xs text-muted-foreground mt-1">{userChoice.rationale}</p>
+                  )}
+                </div>
                 <span className="text-sm text-muted-foreground">{pick}</span>
               </li>
             );
@@ -97,11 +151,26 @@ const Results = () => {
         </ul>
         <div className="mt-4 flex gap-2">
           <button
-            onClick={() => { localStorage.removeItem(ANSWERS_KEY); setAnswers({}); navigate("/play"); }}
+            onClick={() => { localStorage.removeItem(ANSWERS_KEY); localStorage.removeItem('userChoices'); localStorage.removeItem(AVATARS_KEY); setAnswers({}); navigate("/play"); }}
             className="px-4 py-2 rounded-md border border-border hover:bg-accent"
-          >Reset game</button>
+          >
+            Reset Game
+          </button>
         </div>
       </section>
+
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Visual Breakdown</h2>
+        <TrolleyDiagram />
+        <div className="text-center">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium rounded-md px-6 py-2 hover:bg-primary/90 transition-colors"
+          >
+            Start Over
+          </Link>
+        </div>
+      </div>
     </main>
   );
 };

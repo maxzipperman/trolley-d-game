@@ -18,3 +18,6 @@ export interface Settings {
   haptics: boolean;
   animations: boolean;
 }
+
+export type { Scenario, Persona, Tag } from "./utils/tags.schema";
+export type { Decision } from "./utils/decisions.schema";
