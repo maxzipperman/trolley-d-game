@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { tagsSchema } from "@/utils/tags.schema";
-
 /**
  * SCENARIO ID GUIDANCE:
  * Use format: [LANGUAGE_CODE][SEQUENCE_NUMBER]
@@ -35,7 +34,6 @@ export const ScenarioSchema = z.object({
     )
     .optional(),
 });
-
 export type Scenario = z.infer<typeof ScenarioSchema>;
 
 /**
@@ -63,5 +61,18 @@ export const PersonaSchema = z.object({
   imageUrl: z.string().url().optional(),
   example_lines: z.array(z.string()).optional(),
 });
-
 export type Persona = z.infer<typeof PersonaSchema>;
+
+/**
+ * DECISION TYPE SCHEMA
+ * Represents a user's decision in the trolley problem game
+ */
+export const DecisionSchema = z.object({
+  id: z.string(),
+  scenarioId: z.string(),
+  choice: z.enum(["A", "B"]),
+  timestamp: z.date(),
+  rationale: z.string().optional(),
+  userId: z.string().optional(),
+});
+export type Decision = z.infer<typeof DecisionSchema>;
