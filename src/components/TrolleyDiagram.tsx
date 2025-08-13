@@ -1,4 +1,5 @@
 import React, { useId } from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface TrolleyDiagramProps {
   trackALabel?: string;
@@ -6,13 +7,15 @@ interface TrolleyDiagramProps {
   className?: string;
 }
 
-const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({ 
-  trackALabel = "Track A", 
+const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
+  trackALabel = "Track A",
   trackBLabel = "Track B",
   className = ""
 }) => {
   const titleId = useId();
   const descId = useId();
+  const reduced = useReducedMotion();
+
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
       <svg
@@ -50,37 +53,46 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
         />
         
         {/* Trolley */}
-        <g className="animate-trolley-move">
+        <g>
           <rect
             x="40"
-            y="88"
-            width="32"
-            height="24"
+            y="90"
+            width="40"
+            height="20"
             rx="4"
-            fill="hsl(var(--trolley-body))"
+            fill="hsl(var(--trolley-primary))"
+            stroke="hsl(var(--trolley-stroke))"
+            strokeWidth="1"
           />
-          {/* Wheels */}
-          <circle cx="48" cy="116" r="4" fill="hsl(var(--trolley-track))" />
-          <circle cx="64" cy="116" r="4" fill="hsl(var(--trolley-track))" />
+          
+          {/* Front window */}
+          <rect
+            x="68"
+            y="94"
+            width="8"
+            height="8"
+            rx="1"
+            fill="hsl(var(--trolley-window))"
+          />
+          
+          {/* Side windows */}
+          <rect
+            x="48"
+            y="94"
+            width="6"
+            height="6"
+            rx="1"
+            fill="hsl(var(--trolley-window))"
+          />
+          <rect
+            x="58"
+            y="94"
+            width="6"
+            height="6"
+            rx="1"
+            fill="hsl(var(--trolley-window))"
+          />
         </g>
-        
-        {/* Track labels */}
-        <text
-          x="200"
-          y="50"
-          className="text-xs fill-muted-foreground"
-          textAnchor="middle"
-        >
-          {trackALabel}
-        </text>
-        <text
-          x="200"
-          y="155"
-          className="text-xs fill-muted-foreground"
-          textAnchor="middle"
-        >
-          {trackBLabel}
-        </text>
       </svg>
     </div>
   );
