@@ -42,6 +42,19 @@ export function computeAxes(
   return { order, chaos, material, social, mercy, mischief };
 }
 
+export function mapScenarioToDecisionParams(scenario: Scenario) {
+  return {
+    axes: {
+      order: scenario.tags?.some(t => ORDER.has(t)) ? 1 : 0,
+      chaos: scenario.tags?.some(t => CHAOS.has(t)) ? 1 : 0,
+      material: scenario.tags?.some(t => MATERIAL.has(t)) ? 1 : 0,
+      social: scenario.tags?.some(t => SOCIAL.has(t)) ? 1 : 0,
+    },
+    mischiefA: MISCHIEF_WORDS.some(w => scenario.track_a.toLowerCase().includes(w)),
+    mischiefB: MISCHIEF_WORDS.some(w => scenario.track_b.toLowerCase().includes(w)),
+  };
+}
+
 // Legacy compatibility functions
 export type Choice = "A" | "B" | "skip";
 
