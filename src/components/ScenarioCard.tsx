@@ -7,11 +7,43 @@ import TrolleyDiagram from "./TrolleyDiagram";
 interface ScenarioCardProps {
   scenario: Scenario;
   onPick: (choice: "A" | "B") => void;
+  onNext: () => void;
+  choice: "A" | "B" | null;
+  stats: { A: number; B: number } | null;
 }
 
-const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
+const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, choice, stats }) => {
   const [showNPC, setShowNPC] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { personas } = usePersonas();
+
+  const shareUrl = useMemo(() => {
+    if (!choice) return "";
+    const url = new URL(window.location.href);
+    url.pathname = "/play";
+    url.search = `?jump=${scenario.id}&choice=${choice}`;
+    return url.toString();
+  }, [scenario.id, choice]);
+
+  async function share() {
+    if (!choice) return;
+    const data = {
+      title: scenario.title,
+      text: `I chose Track ${choice} in "${scenario.title}". What would you pick?`,
+      url: shareUrl,
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        await navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -45,69 +77,98 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
       {/* Trolley Diagram */}
       <div className="py-4">
-        <TrolleyDiagram 
-          trackALabel="A" 
+        <TrolleyDiagram
+          trackALabel="A"
           trackBLabel="B"
           className="animate-fade-in"
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
-          aria-label="Choose Track A"
-        >
-          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
-          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
-        </button>
-        <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
-          aria-label="Choose Track B"
-        >
-          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
-          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
-        </button>
-      </div>
+      {choice == null ? (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button
+              className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => onPick("A")}
+              aria-label="Choose Track A"
+            >
+              <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
+              <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
+            </button>
+            <button
+              className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => onPick("B")}
+              aria-label="Choose Track B"
+            >
+              <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
+              <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
+            </button>
+          </div>
 
-      {samples.length > 0 && (
-        <div className="pt-2">
-          <button
-            className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
-            onClick={() => setShowNPC(v => !v)}
-            aria-expanded={showNPC}
-          >
-            {showNPC ? "Hide" : "See"} sample NPC takes
-          </button>
-          {showNPC && (
-            <div className="mt-4 space-y-3 animate-fade-in">
-              {samples.map((r, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
-                    size="md"
-                    className="mt-0.5"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
-                      <span className="text-xs text-muted-foreground">•</span>
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        r.choice === "A" 
-                          ? "bg-primary/10 text-primary" 
-                          : "bg-secondary/50 text-secondary-foreground"
-                      }`}>
-                        Track {r.choice ?? "?"}
-                      </span>
+          {samples.length > 0 && (
+            <div className="pt-2">
+              <button
+                className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
+                onClick={() => setShowNPC(v => !v)}
+                aria-expanded={showNPC}
+              >
+                {showNPC ? "Hide" : "See"} sample NPC takes
+              </button>
+              {showNPC && (
+                <div className="mt-4 space-y-3 animate-fade-in">
+                  {samples.map((r, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
+                      <NPCAvatar
+                        name={r.avatar ?? "NPC"}
+                        size="md"
+                        className="mt-0.5"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                            r.choice === "A"
+                              ? "bg-primary/10 text-primary"
+                              : "bg-secondary/50 text-secondary-foreground"
+                          }`}>
+                            Track {r.choice ?? "?"}
+                          </span>
+                        </div>
+                        {r.rationale && (
+                          <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
+                        )}
+                      </div>
                     </div>
-                    {r.rationale && (
-                      <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
-                    )}
-                  </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
+          )}
+        </>
+      ) : (
+        <div className="space-y-4">
+          {stats && (
+            <p className="text-sm text-muted-foreground">
+              {stats.A}% chose Track A · {stats.B}% chose Track B
+            </p>
+          )}
+          <div className="flex gap-3">
+            <button
+              onClick={share}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >
+              Share
+            </button>
+            <button
+              onClick={onNext}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >
+              Next
+            </button>
+          </div>
+          {copied && (
+            <p className="text-xs text-muted-foreground">Link copied!</p>
           )}
         </div>
       )}

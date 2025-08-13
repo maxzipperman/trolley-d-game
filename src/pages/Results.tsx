@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
@@ -13,6 +13,22 @@ const Results = () => {
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [copied, setCopied] = useState(false);
+
+  async function shareResults() {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "Check out my Trolley’d results", url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
@@ -54,7 +70,14 @@ const Results = () => {
               onClick={() => navigate("/play")}
               className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
             >Play Again</button>
+            <button
+              onClick={shareResults}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >Share Results</button>
           </div>
+          {copied && (
+            <p className="mt-2 text-xs text-muted-foreground">Link copied!</p>
+          )}
         </article>
 
         <article className="p-6 rounded-lg border border-border bg-card">
