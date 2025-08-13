@@ -7,6 +7,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import type { Scenario } from "@/types";
 import type { Choice } from "@/utils/scoring";
+import { scenario_shown, choice_made } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
@@ -43,6 +44,13 @@ const Play = () => {
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  const s = scenarios?.[index] as Scenario | undefined;
+  const progress = total ? (index + 1) / total : 0;
+
+  useEffect(() => {
+    if (s) scenario_shown(s.id);
+  }, [s]);
+
   if (error) {
     return (
       <main className="min-h-screen container py-10">
@@ -69,11 +77,12 @@ const Play = () => {
 
   const current = scenarios[index];
   const hasAnswered = answers[current.id] != null;
-  const progress = Object.keys(answers).length;
+  const progressCount = Object.keys(answers).length;
   const isLast = index === total - 1;
 
   const onPick = (choice: Choice) => {
     setAnswers({ ...answers, [current.id]: choice });
+    choice_made(current.id, choice);
     if (isLast) {
       navigate("/results");
     } else {
@@ -89,9 +98,9 @@ const Play = () => {
   return (
     <main className="min-h-screen container max-w-2xl py-8">
       <div className="space-y-8">
-        <Progress current={progress} total={total} />
+        <Progress current={progressCount} total={total} />
         <ScenarioCard scenario={current} onPick={onPick} />
-        
+
         {/* Navigation */}
         <div className="flex justify-between pt-4">
           <button
@@ -106,7 +115,7 @@ const Play = () => {
           >
             Previous
           </button>
-          
+
           <div className="flex gap-4">
             <button
               onClick={() => onPick("A")}
@@ -129,7 +138,7 @@ const Play = () => {
               Choice B
             </button>
           </div>
-          
+
           <button
             onClick={() => {
               if (index < total - 1) {

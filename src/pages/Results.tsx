@@ -6,11 +6,15 @@ import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
+import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
 const Results = () => {
-  useEffect(() => { document.title = "Trolley'd · Results"; }, []);
+  useEffect(() => {
+    document.title = "Trolley'd · Results";
+    results_viewed();
+  }, []);
   const navigate = useNavigate();
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
@@ -55,13 +59,18 @@ const Results = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold">Ethical Axes</h2>
+          <h2 className="text-2xl font-semibold">Ethical Profile</h2>
           <AxisVisualization axes={axes} />
         </div>
       </div>
 
-      <div className="text-center space-y-4">
-        <Link to="/play" className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90">
+      <div className="space-y-4">
+        <h2 className="text-2xl font-semibold">Visual Summary</h2>
+        <TrolleyDiagram />
+      </div>
+
+      <div className="flex justify-center space-x-4">
+        <Link to="/play" className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90">
           Play Again
         </Link>
         <button
@@ -69,9 +78,9 @@ const Results = () => {
             setAnswers({});
             navigate("/play");
           }}
-          className="ml-4 px-6 py-2 border rounded hover:bg-accent"
+          className="px-6 py-2 border rounded hover:bg-accent"
         >
-          Reset & Start Over
+          Reset & Play Again
         </button>
       </div>
     </main>
