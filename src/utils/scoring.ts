@@ -1,4 +1,5 @@
-import type { Scenario } from "@/types";
+
+import type { Scenario, Tag } from "@/types";
 import { ORDER, CHAOS, MATERIAL, SOCIAL } from "./tags";
 
 export type Choice = "A" | "B" | "skip";
@@ -26,10 +27,10 @@ export function computeAxes(
 
   // Count scenarios by their tags (not dependent on user choices)
   for (const s of scenarios) {
-    if (s.tags?.some(t => ORDER.has(t))) order++;
-    if (s.tags?.some(t => CHAOS.has(t))) chaos++;
-    if (s.tags?.some(t => MATERIAL.has(t))) material++;
-    if (s.tags?.some(t => SOCIAL.has(t))) social++;
+    if (s.tags?.some(t => ORDER.has(t as Tag))) order++;
+    if (s.tags?.some(t => CHAOS.has(t as Tag))) chaos++;
+    if (s.tags?.some(t => MATERIAL.has(t as Tag))) material++;
+    if (s.tags?.some(t => SOCIAL.has(t as Tag))) social++;
 
     // Add mercy/mischief scoring based on choice text analysis
     const choice = answers[s.id];

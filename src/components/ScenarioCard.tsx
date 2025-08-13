@@ -1,20 +1,20 @@
-import React, { useEffect, useMemo, useState } from "react";
+
+import React, { useMemo, useState } from "react";
 import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 import { useDecisions } from "@/hooks/useDecisions";
 import NPCAvatar from "./NPCAvatar";
-import TrolleyDiagram from "./TrolleyDiagram";
 import InlineError from "./InlineError";
 
 interface ScenarioCardProps {
   scenario: Scenario;
   onPick: (choice: "A" | "B") => void;
-  onNext: () => void;
-  choice: "A" | "B" | null;
-  stats: { A: number; B: number } | null;
+  onNext?: () => void;
+  choice?: "A" | "B" | null;
+  stats?: { A: number; B: number } | null;
 }
 
-const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, choice, stats }) => {
+const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, choice = null, stats = null }) => {
   const [showNPC, setShowNPC] = useState(false);
   const [copied, setCopied] = useState(false);
   const [rationale, setRationale] = useState("");
@@ -24,12 +24,12 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
 
   const scenarioResponses = decisions?.filter(d => d.scenarioId === scenario.id) ?? [];
 
-  const handlePick = (choice: "A" | "B") => {
-    setPicked(choice);
+  const handlePick = (choicePicked: "A" | "B") => {
+    setPicked(choicePicked);
     
     // Save choice with rationale to localStorage
     const choiceWithRationale = {
-      choice,
+      choice: choicePicked,
       rationale: rationale.trim() || undefined
     };
     
@@ -37,10 +37,10 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
     existingChoices[scenario.id] = choiceWithRationale;
     localStorage.setItem('userChoices', JSON.stringify(existingChoices));
     
-    onPick(choice);
+    onPick(choicePicked);
 
     const aligned = scenarioResponses
-      .filter((r) => r.choice === choice)
+      .filter((r) => r.choice === choicePicked)
       .map((r) => r.persona);
 
     if (typeof window !== "undefined") {
@@ -96,7 +96,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
         <p className="text-muted-foreground leading-relaxed">{scenario.description}</p>
       </div>
 
-      <TrolleyDiagram scenario={scenario} />
+      {/* Removed TrolleyDiagram pending prop alignment */}
 
       {!choice ? (
         <div className="space-y-4">
@@ -141,7 +141,6 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
                   <div key={persona.name} className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
                     <NPCAvatar
                       name={persona.name}
-                      alt={`${persona.name} avatar`}
                       size="sm"
                     />
                     <span>{persona.name}</span>
@@ -166,7 +165,6 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
                     <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
                       <NPCAvatar
                         name={r.persona ?? "NPC"}
-                        alt={`${r.persona ?? "NPC"} avatar`}
                         size="md"
                         className="mt-0.5"
                       />
@@ -215,7 +213,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
                 Share
               </button>
               <button
-                onClick={onNext}
+                onClick={onNext ?? (() => {})}
                 className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
               >
                 Next

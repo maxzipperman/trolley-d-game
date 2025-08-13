@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import type { Scenario } from "@/types";
 import { scenarioSchema } from "@/utils/tags.schema";
@@ -21,7 +22,7 @@ export function useScenarios() {
             const obj = raw as Record<string, unknown>;
             const id = typeof obj.id === "string" ? obj.id : undefined;
             const tags = Array.isArray(obj.tags)
-              ? toCanonicalTags(obj.tags as string[], id)
+              ? toCanonicalTags(obj.tags as string[])
               : undefined;
             const withCanonical = { ...obj, tags };
             const parsed = scenarioSchema.safeParse(withCanonical);
