@@ -1,10 +1,22 @@
 import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Award } from "lucide-react";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
+import { Badge } from "@/components/ui/badge";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
+import {
+  Choice,
+  computeAxes_legacy as computeAxes,
+  computeBaseCounts,
+} from "@/utils/scoring";
+import {
+  ACHIEVEMENTS_KEY,
+  achievements,
+  computeAchievements,
+  type AchievementId,
+} from "@/utils/achievements";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
@@ -13,9 +25,14 @@ const Results = () => {
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [earned, setEarned] = useLocalStorage<AchievementId[]>(ACHIEVEMENTS_KEY, []);
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+
+  useEffect(() => {
+    setEarned(computeAchievements(answers));
+  }, [answers, setEarned]);
 
   if (!scenarios) return (
     <main className="min-h-screen container py-10" />
@@ -84,6 +101,23 @@ const Results = () => {
 
       <section className="p-4 rounded-lg border border-border bg-card">
         <h2 className="font-semibold mb-3">Your run</h2>
+        {earned.length > 0 && (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {earned.map((id) => {
+              const info = achievements.find((a) => a.id === id);
+              if (!info) return null;
+              return (
+                <Badge
+                  key={id}
+                  variant="secondary"
+                  className="flex items-center gap-1"
+                >
+                  <Award className="h-3 w-3" /> {info.label}
+                </Badge>
+              );
+            })}
+          </div>
+        )}
         <ul className="space-y-2">
           {scenarios.map((s) => {
             const pick = answers[s.id] ?? "—";
@@ -97,7 +131,13 @@ const Results = () => {
         </ul>
         <div className="mt-4 flex gap-2">
           <button
-            onClick={() => { localStorage.removeItem(ANSWERS_KEY); setAnswers({}); navigate("/play"); }}
+            onClick={() => {
+              localStorage.removeItem(ANSWERS_KEY);
+              localStorage.removeItem(ACHIEVEMENTS_KEY);
+              setAnswers({});
+              setEarned([]);
+              navigate("/play");
+            }}
             className="px-4 py-2 rounded-md border border-border hover:bg-accent"
           >Reset game</button>
         </div>
