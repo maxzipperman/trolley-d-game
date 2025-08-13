@@ -21,7 +21,7 @@ export function useScenarios() {
         setError("Failed to load scenarios");
       }
     } catch (err) {
-      console.warn("Failed to fetch scenarios", err);
+      console.error("Failed to load scenarios", err);
       setError("Failed to load scenarios");
     } finally {
       setLoading(false);
@@ -32,5 +32,11 @@ export function useScenarios() {
     load();
   }, [load]);
 
-  return { scenarios, error, loading, retry: load };
+  const reload = useCallback(() => {
+    setError(null);
+    setScenarios(null);
+    load();
+  }, [load]);
+
+  return { scenarios, error, loading: scenarios === null && !error, reload, retry: reload };
 }

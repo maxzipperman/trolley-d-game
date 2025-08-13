@@ -21,7 +21,7 @@ export function usePersonas() {
         setError("Failed to load personas");
       }
     } catch (err) {
-      console.warn("Failed to fetch personas", err);
+      console.error("Failed to load personas", err);
       setError("Failed to load personas");
     } finally {
       setLoading(false);
@@ -32,5 +32,11 @@ export function usePersonas() {
     load();
   }, [load]);
 
-  return { personas, error, loading, retry: load };
+  const reload = useCallback(() => {
+    setError(null);
+    setPersonas(null);
+    load();
+  }, [load]);
+
+  return { personas, error, loading: personas === null && !error, reload, retry: reload };
 }

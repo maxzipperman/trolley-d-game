@@ -26,12 +26,12 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const handlePick = (choice: "A" | "B") => {
     setPicked(choice);
     onPick(choice);
-    
+
     // Update alignment counts using responses from useDecisions
     const aligned = scenarioResponses
       .filter((r) => r.choice === choice)
       .map((r) => r.avatar);
-      
+
     if (typeof window !== "undefined") {
       let counts: Record<string, number> = {};
       try {
@@ -57,29 +57,22 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   }, [picked, scenarioResponses, personas]);
 
   const samples = useMemo(() => {
-    // Use responses from useDecisions instead of embedded responses
-    const fromScenario = [...scenarioResponses].sort(() => Math.random() - 0.5).slice(0, 3);
+    const r = scenario.responses ?? [];
+    const fromScenario = [...r].sort(() => Math.random() - 0.5).slice(0, 3);
     if (fromScenario.length > 0) return fromScenario;
-    
-    // Fallback to random personas if no scenario responses available
+
     const p = personas ?? [];
     if (p.length === 0) return [];
-    const pickedPersonas = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
-    return pickedPersonas.map((per) => ({
+    const picked = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
+    return picked.map((per) => ({
       avatar: per.name,
-      choice: Math.random() < 0.5 ? "A" : "B" as const,
+      choice: Math.random() < 0.5 ? "A" : "B",
       rationale:
         per.example_lines?.[
           Math.floor(Math.random() * (per.example_lines?.length ?? 0))
         ],
     }));
-  }, [scenarioResponses, personas]);
-
-  const error = personasError || decisionsError;
-  const retry = () => {
-    retryPersonas();
-    retryDecisions();
-  };
+  }, [scenario, personas]);
 
   return (
     <article className="space-y-6">
@@ -88,22 +81,18 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         {scenario.theme && (
           <p className="text-sm uppercase tracking-wide text-muted-foreground">{scenario.theme}</p>
         )}
-        {scenario.description && (
-          <p className="text-base text-foreground/90">{scenario.description}</p>
-        )}
       </header>
-      
-      {error && <InlineError message={error} onRetry={retry} />}
-      
-      {/* Trolley Diagram */}
-      <div className="py-4">
+
+      <div className="p-6 rounded-lg border bg-card">
+        <p className="text-lg mb-6 leading-relaxed">{scenario.description}</p>
+        
         <TrolleyDiagram
-          trackALabel="A"
+          trackALabel="A" 
           trackBLabel="B"
           className="animate-fade-in"
         />
       </div>
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
@@ -122,22 +111,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
         </button>
       </div>
-      
-      {picked && alignedPersonas.length > 0 && (
-        <div className="mt-4">
-          <h3 className="text-sm font-medium mb-2">Philosophers aligned with you</h3>
-          <div className="flex flex-wrap gap-4">
-            {alignedPersonas.map((p) => (
-              <div className="flex items-center gap-2" key={p.name}>
-                <NPCAvatar name={p.name} size="sm" />
-                <span className="text-sm">{p.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      
-      {samples.length > 0 && (
+
+      {samples.length > 0 ? (
         <div className="pt-2">
           <button
             className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
@@ -149,7 +124,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           {showNPC && (
             <div className="mt-4 space-y-3 animate-fade-in">
               {samples.map((r, i) => (
-                <div className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50" key={i}>
+                <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
                   <NPCAvatar
                     name={r.avatar ?? "NPC"}
                     size="md"
@@ -176,6 +151,36 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             </div>
           )}
         </div>
+      ) : (
+        personasError && (
+          <p className="pt-2 text-sm text-destructive">{personasError}</p>
+        )
+      )}
+
+      {picked && alignedPersonas.length > 0 && (
+        <div className="mt-6 p-4 rounded-lg bg-[hsl(var(--alignment-bg))] border border-border/50">
+          <h3 className="text-sm font-semibold mb-3 text-foreground/90">
+            You're aligned with:
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {alignedPersonas.map((persona) => (
+              <div key={persona.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
+                <NPCAvatar name={persona.name} size="sm" />
+                <span className="text-sm font-medium text-primary">{persona.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {(personasError || decisionsError) && (
+        <InlineError 
+          message={personasError || decisionsError || "An error occurred"}
+          onRetry={() => {
+            if (personasError && retryPersonas) retryPersonas();
+            if (decisionsError && retryDecisions) retryDecisions();
+          }}
+        />
       )}
     </article>
   );
