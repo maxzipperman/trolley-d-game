@@ -13,6 +13,7 @@ const ANSWERS_KEY = "trolleyd-answers";
 
 const Play = () => {
   useEffect(() => { document.title = "Trolley'd · Play"; }, []);
+
   const navigate = useNavigate();
   const { scenarios, loading, error, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
@@ -98,9 +99,8 @@ const Play = () => {
   return (
     <main className="min-h-screen container max-w-2xl py-8">
       <div className="space-y-8">
-        <Progress current={progressCount} total={total} />
-        <ScenarioCard scenario={current} onPick={onPick} />
-
+        <Progress value={(progressCount / total) * 100} />
+        <ScenarioCard onPick={onPick} scenario={current} />
         {/* Navigation */}
         <div className="flex justify-between pt-4">
           <button
@@ -115,7 +115,6 @@ const Play = () => {
           >
             Previous
           </button>
-
           <div className="flex gap-4">
             <button
               onClick={() => onPick("A")}
@@ -138,7 +137,6 @@ const Play = () => {
               Choice B
             </button>
           </div>
-
           <button
             onClick={() => {
               if (index < total - 1) {
