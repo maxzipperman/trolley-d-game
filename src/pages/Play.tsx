@@ -10,7 +10,7 @@ import type { Choice } from "@/utils/scoring";
 const ANSWERS_KEY = "trolleyd-answers";
 
 const Play = () => {
-  useEffect(() => { document.title = "Trolley’d · Play"; }, []);
+    useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
   const { scenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
@@ -28,15 +28,15 @@ const Play = () => {
     return i >= 0 ? i : 0;
   }, [scenarios, params, answers]);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { pick("A"); }
-      if (e.key === "ArrowRight") { pick("B"); }
-      if (e.key.toLowerCase() === "s") { skip(); }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  });
+    useEffect(() => {
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "ArrowLeft") { pick({ pick: "A" }); }
+        if (e.key === "ArrowRight") { pick({ pick: "B" }); }
+        if (e.key.toLowerCase() === "s") { skip(); }
+      };
+      window.addEventListener("keydown", onKey);
+      return () => window.removeEventListener("keydown", onKey);
+    });
 
   if (loading || !scenarios) {
     return (
@@ -71,17 +71,17 @@ const Play = () => {
     }
   }
 
-  function pick(choice: "A" | "B") {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: choice });
-    advance();
-  }
+    function pick(choice: Choice) {
+      if (!s) return;
+      setAnswers({ ...answers, [s.id]: choice });
+      advance();
+    }
 
-  function skip() {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: "skip" });
-    advance();
-  }
+    function skip() {
+      if (!s) return;
+      setAnswers({ ...answers, [s.id]: { pick: "skip" } });
+      advance();
+    }
 
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">

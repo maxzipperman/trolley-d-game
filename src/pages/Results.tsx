@@ -84,17 +84,23 @@ const Results = () => {
 
       <section className="p-4 rounded-lg border border-border bg-card">
         <h2 className="font-semibold mb-3">Your run</h2>
-        <ul className="space-y-2">
-          {scenarios.map((s) => {
-            const pick = answers[s.id] ?? "—";
-            return (
-              <li key={s.id} className="flex items-center justify-between gap-3 border-b border-border/60 py-2">
-                <Link to={`/play?jump=${s.id}`} className="underline underline-offset-4">{s.title}</Link>
-                <span className="text-sm text-muted-foreground">{pick}</span>
-              </li>
-            );
-          })}
-        </ul>
+          <ul className="space-y-2">
+            {scenarios.map((s) => {
+              const choice = answers[s.id];
+              const pick = choice?.pick ?? "—";
+              return (
+                <li key={s.id} className="flex items-center justify-between gap-3 border-b border-border/60 py-2">
+                  <div className="flex-1">
+                    <Link to={`/play?jump=${s.id}`} className="underline underline-offset-4">{s.title}</Link>
+                    {choice?.rationale && (
+                      <p className="text-xs text-muted-foreground mt-1">{choice.rationale}</p>
+                    )}
+                  </div>
+                  <span className="text-sm text-muted-foreground">{pick}</span>
+                </li>
+              );
+            })}
+          </ul>
         <div className="mt-4 flex gap-2">
           <button
             onClick={() => { localStorage.removeItem(ANSWERS_KEY); setAnswers({}); navigate("/play"); }}

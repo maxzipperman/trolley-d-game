@@ -1,17 +1,23 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
+import type { Choice } from "@/utils/scoring";
 
 interface ScenarioCardProps {
   scenario: Scenario;
-  onPick: (choice: "A" | "B") => void;
+  onPick: (choice: Choice) => void;
 }
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
+  const [rationale, setRationale] = useState("");
   const { personas } = usePersonas();
+
+  useEffect(() => {
+    setRationale("");
+  }, [scenario.id]);
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -55,7 +61,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
+          onClick={() => onPick({ pick: "A", rationale })}
           aria-label="Choose Track A"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
@@ -63,13 +69,21 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         </button>
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
+          onClick={() => onPick({ pick: "B", rationale })}
           aria-label="Choose Track B"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
         </button>
       </div>
+
+      <textarea
+        value={rationale}
+        onChange={e => setRationale(e.target.value)}
+        placeholder="Why did you choose?"
+        className="w-full rounded-md border border-input bg-background p-2 text-sm"
+        rows={3}
+      />
 
       {samples.length > 0 && (
         <div className="pt-2">
