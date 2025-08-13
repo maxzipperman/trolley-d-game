@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
@@ -6,7 +5,7 @@ import TrolleyDiagram from "@/components/TrolleyDiagram";
 import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
+import { Choice, computeAxes_legacy, computeBaseCounts } from "@/utils/scoring";
 import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -21,7 +20,7 @@ const Results = () => {
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
-  const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+  const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
 
   if (error) {
     return (
@@ -62,49 +61,39 @@ const Results = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Ethical Profile</h2>
           <div className="space-y-4">
-            <AxisVisualization 
-              label="Order vs Chaos" 
+            <AxisVisualization
+              label="Order vs Chaos"
               value={axes.orderChaos}
-              leftLabel="Chaos"
-              rightLabel="Order"
+              leftLabel="Order"
+              rightLabel="Chaos"
             />
-            <AxisVisualization 
-              label="Material vs Social" 
+            <AxisVisualization
+              label="Material vs Social"
               value={axes.materialSocial}
-              leftLabel="Social"
-              rightLabel="Material"
+              leftLabel="Material"
+              rightLabel="Social"
             />
-            <AxisVisualization 
-              label="Mercy vs Mischief" 
+            <AxisVisualization
+              label="Mercy vs Mischief"
               value={axes.mercyMischief}
-              leftLabel="Mischief"
-              rightLabel="Mercy"
+              leftLabel="Mercy"
+              rightLabel="Mischief"
             />
           </div>
         </div>
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Visual Summary</h2>
+        <h2 className="text-2xl font-semibold">Visual Breakdown</h2>
         <TrolleyDiagram />
-      </div>
-
-      <div className="flex justify-center space-x-4">
-        <Link 
-          className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90" 
-          to="/play"
-        >
-          Play Again
-        </Link>
-        <button
-          onClick={() => {
-            setAnswers({});
-            navigate("/play");
-          }}
-          className="px-6 py-2 border rounded hover:bg-accent"
-        >
-          Reset & Play Again
-        </button>
+        <div className="text-center">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium rounded-md px-6 py-2 hover:bg-primary/90 transition-colors"
+          >
+            Start Over
+          </Link>
+        </div>
       </div>
     </main>
   );
