@@ -1,4 +1,4 @@
-import type { Scenario } from "@/types";
+import type { Scenario, LLMResponse } from "@/types";
 
 export function countAB(answers: Record<string, "A"|"B"|"skip">) {
   return Object.values(answers).reduce(
@@ -42,12 +42,38 @@ export function computeAxes(
   return { order, chaos, material, social, mercy, mischief };
 }
 
+export function computeAgreement(
+  answers: Record<string, "A"|"B"|"skip">,
+  llmResponses: LLMResponse[]
+) {
+  const result: Record<string, { matches: number; total: number; percentage: number }> = {};
+
+  for (const r of llmResponses) {
+    const model = r.modelName;
+    if (!result[model]) {
+      result[model] = { matches: 0, total: 0, percentage: 0 };
+    }
+    result[model].total += 1;
+    if (answers[r.scenarioId] === r.choice) {
+      result[model].matches += 1;
+    }
+  }
+
+  for (const model of Object.keys(result)) {
+    const { matches, total } = result[model];
+    result[model].percentage = total ? matches / total : 0;
+  }
+
+  return result;
+}
+
 // Legacy compatibility functions
 export type Choice = "A" | "B" | "skip";
 
-export function computeBaseCounts(answers: Record<string, Choice>) {
+export function computeBaseCounts(answers: Record<string, Choice>, llmResponses?: LLMResponse[]) {
   const counts = countAB(answers);
-  return { scoreA: counts.A, scoreB: counts.B };
+  const agreement = llmResponses ? computeAgreement(answers, llmResponses) : undefined;
+  return { scoreA: counts.A, scoreB: counts.B, agreement };
 }
 
 export function computeAxes_legacy(scenarios: Scenario[], answers: Record<string, Choice>) {
