@@ -18,7 +18,7 @@ const AxisVisualization: React.FC<AxisVisualizationProps> = ({
   const isNeutral = Math.abs(clamped) <= 1;
   
   return (
-    <div className="space-y-3 animate-fade-in">
+    <div className="space-y-3 motion-safe:animate-fade-in">
       <div className="flex justify-between items-center">
         <span className="text-sm font-medium">{label}</span>
         <span className="text-xs text-muted-foreground">
@@ -36,11 +36,11 @@ const AxisVisualization: React.FC<AxisVisualizationProps> = ({
         
         {/* Position indicator */}
         <div 
-          className={`absolute top-1 bottom-1 w-2 rounded-sm transition-all duration-500 ${
-            isNeutral 
-              ? 'bg-muted-foreground' 
-              : clamped < 0 
-                ? 'bg-red-500' 
+          className={`absolute top-1 bottom-1 w-2 rounded-sm motion-safe:transition-all motion-safe:duration-500 ${
+            isNeutral
+              ? 'bg-muted-foreground'
+              : clamped < 0
+                ? 'bg-red-500'
                 : 'bg-green-500'
           }`}
           style={{ 

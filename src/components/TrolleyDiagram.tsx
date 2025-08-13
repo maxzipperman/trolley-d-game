@@ -14,7 +14,7 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
 }) => {
   const titleId = useId();
   const descId = useId();
-  const reduced = useReducedMotion();
+  const [reducedMotion] = useReducedMotion();
 
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
@@ -53,7 +53,7 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
         />
         
         {/* Trolley */}
-        <g>
+        <g className="motion-safe:animate-trolley-move">
           <rect
             x="40"
             y="90"
@@ -93,6 +93,24 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
             fill="hsl(var(--trolley-window))"
           />
         </g>
+        
+        {/* Track labels */}
+        <text
+          x="200"
+          y="50"
+          textAnchor="middle"
+          className="text-xs fill-current text-muted-foreground"
+        >
+          {trackALabel}
+        </text>
+        <text
+          x="200"
+          y="155"
+          textAnchor="middle"
+          className="text-xs fill-current text-muted-foreground"
+        >
+          {trackBLabel}
+        </text>
       </svg>
     </div>
   );

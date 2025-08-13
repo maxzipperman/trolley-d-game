@@ -48,8 +48,8 @@ All colors MUST be HSL.
     --npc-bg: 210 40% 96%;
     
     /* Animation timing */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-smooth: none;
+    --transition-spring: none;
 
     --sidebar-background: 0 0% 98%;
 
@@ -66,6 +66,13 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not(.reduce-motion) {
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
   }
 
   .dark {
@@ -142,4 +149,11 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  transition: none !important;
+  animation: none !important;
 }

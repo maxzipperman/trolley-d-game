@@ -19,7 +19,7 @@ const Progress: React.FC<ProgressProps> = ({ value, className }) => {
       aria-valuemax={100}
     >
       <div
-        className="h-full bg-foreground/80 transition-all"
+        className="h-full bg-foreground/80 motion-safe:transition-all"
         style={{ width: `${pct}%` }}
       />
     </div>
