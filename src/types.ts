@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { tagsSchema } from "@/utils/tags.schema";
 
 export const ScenarioSchema = z.object({
   id: z.string(),
@@ -7,7 +8,7 @@ export const ScenarioSchema = z.object({
   track_a: z.string(),
   track_b: z.string(),
   theme: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  tags: tagsSchema.optional(),
   responses: z
     .array(
       z.object({
@@ -18,6 +19,7 @@ export const ScenarioSchema = z.object({
     )
     .optional(),
 });
+
 export type Scenario = z.infer<typeof ScenarioSchema>;
 
 export const PersonaSchema = z.object({
@@ -28,4 +30,5 @@ export const PersonaSchema = z.object({
   tone_style: z.string().optional(),
   example_lines: z.array(z.string()).optional(),
 });
+
 export type Persona = z.infer<typeof PersonaSchema>;
