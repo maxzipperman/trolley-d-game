@@ -5,11 +5,15 @@ import TrolleyDiagram from "@/components/TrolleyDiagram";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
+import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
 const Results = () => {
-  useEffect(() => { document.title = "Trolley’d · Results"; }, []);
+  useEffect(() => {
+    document.title = "Trolley’d · Results";
+    results_viewed();
+  }, []);
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});

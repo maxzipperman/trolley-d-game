@@ -6,6 +6,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import type { Scenario } from "@/types";
 import type { Choice } from "@/utils/scoring";
+import { scenario_shown, choice_made } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
 
@@ -38,6 +39,14 @@ const Play = () => {
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  const total = scenarios?.length ?? 0;
+  const s = scenarios?.[index] as Scenario | undefined;
+  const progress = total ? (index + 1) / total : 0;
+
+  useEffect(() => {
+    if (s) scenario_shown(s.id);
+  }, [s]);
+
   if (loading || !scenarios) {
     return (
       <main className="min-h-screen container py-10">
@@ -48,7 +57,6 @@ const Play = () => {
     );
   }
 
-  const total = scenarios.length;
   if (total === 0) {
     return (
       <main className="min-h-screen container max-w-2xl py-8">
@@ -56,8 +64,6 @@ const Play = () => {
       </main>
     );
   }
-  const s = scenarios[index] as Scenario;
-  const progress = (index + 1) / total;
 
   function advance() {
     // next unanswered or end
@@ -74,12 +80,14 @@ const Play = () => {
   function pick(choice: "A" | "B") {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
+    choice_made(s.id, choice);
     advance();
   }
 
   function skip() {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: "skip" });
+    choice_made(s.id, "skip");
     advance();
   }
 
