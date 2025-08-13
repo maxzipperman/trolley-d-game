@@ -15,10 +15,10 @@ const Results = () => {
     document.title = "Trolley'd · Results";
     results_viewed();
   }, []);
+
   const navigate = useNavigate();
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
-
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
 
@@ -57,10 +57,23 @@ const Results = () => {
             </div>
           </div>
         </div>
-
+        
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Ethical Profile</h2>
-          <AxisVisualization axes={axes} />
+          <div className="space-y-4">
+            <AxisVisualization 
+              label="Utilitarian vs Deontological" 
+              value={axes.utilitarian} 
+            />
+            <AxisVisualization 
+              label="Individual vs Collective" 
+              value={axes.individual} 
+            />
+            <AxisVisualization 
+              label="Action vs Inaction" 
+              value={axes.action} 
+            />
+          </div>
         </div>
       </div>
 
@@ -70,7 +83,10 @@ const Results = () => {
       </div>
 
       <div className="flex justify-center space-x-4">
-        <Link to="/play" className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90">
+        <Link 
+          className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90" 
+          to="/play"
+        >
           Play Again
         </Link>
         <button
