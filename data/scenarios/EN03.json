@@ -1,0 +1,26 @@
+{
+  "id": "EN03",
+  "title": "The Self-Driving Car",
+  "description": "An autonomous vehicle must choose between hitting an elderly person crossing legally or swerving to hit a young person jaywalking.",
+  "track_a": "Stay course (hit elderly legal crosser)",
+  "track_b": "Swerve (hit young jaywalker)",
+  "theme": "Legal vs. Utilitarian Calculation",
+  "tags": [
+    "modern",
+    "age",
+    "law",
+    "technology"
+  ],
+  "responses": [
+    {
+      "avatar": "Rawls",
+      "choice": "A",
+      "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
+    },
+    {
+      "avatar": "Singer",
+      "choice": "B",
+      "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+    }
+  ]
+}

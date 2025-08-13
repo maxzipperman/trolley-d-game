@@ -6,17 +6,16 @@ export function useScenarios() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const url = new URL("../../data/scenarios.json", import.meta.url);
-    fetch(url)
-      .then(r => r.json())
-      .then((json: unknown) => {
-        if (Array.isArray(json)) {
-          setScenarios(json as Scenario[]);
-        } else {
-          setScenarios([]);
-        }
-      })
-      .catch(() => setError("Failed to load scenarios"));
+    try {
+      const modules = import.meta.glob<Scenario>("../../data/scenarios/*.json", {
+        eager: true,
+        import: "default",
+      });
+      const loaded = Object.values(modules);
+      setScenarios(loaded);
+    } catch {
+      setError("Failed to load scenarios");
+    }
   }, []);
 
   return { scenarios, error, loading: scenarios === null && !error };
