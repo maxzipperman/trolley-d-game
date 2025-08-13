@@ -21,13 +21,14 @@ export function usePersonas() {
         if (
           Array.isArray(json) &&
           json.every(
-            (item) =>
+            (item): item is Persona =>
               typeof item === "object" &&
               item !== null &&
-              typeof (item as any).name === "string"
+              "name" in item &&
+              typeof (item as { name: unknown }).name === "string"
           )
         ) {
-          setPersonas(json as Persona[]);
+          setPersonas(json);
         } else {
           setPersonas([]);
         }

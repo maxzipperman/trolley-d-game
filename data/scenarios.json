@@ -11,12 +11,52 @@
       {
         "avatar": "Socrates",
         "choice": "A",
-        "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
+        "rationale": "The examined life urges saving the many for the greater good."
       },
       {
         "avatar": "Kant",
-        "choice": "B", 
-        "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
+        "choice": "B",
+        "rationale": "We may not use one person merely as a means to others."
+      },
+      {
+        "avatar": "Mill",
+        "choice": "A",
+        "rationale": "Utility is maximized when five lives outweigh one."
+      },
+      {
+        "avatar": "Aristotle",
+        "choice": "A",
+        "rationale": "Practical wisdom favors action that preserves more flourishing lives."
+      },
+      {
+        "avatar": "Rawls",
+        "choice": "A",
+        "rationale": "Behind the veil of ignorance we would choose to save the many."
+      },
+      {
+        "avatar": "Singer",
+        "choice": "A",
+        "rationale": "Equal consideration of interests calls for minimizing total suffering."
+      },
+      {
+        "avatar": "Bentham",
+        "choice": "A",
+        "rationale": "Hedonic calculus counts five pleasures against one pain."
+      },
+      {
+        "avatar": "Nozick",
+        "choice": "B",
+        "rationale": "One person's rights cannot be violated for others' benefit."
+      },
+      {
+        "avatar": "Parfit",
+        "choice": "A",
+        "rationale": "More people surviving is plainly the better outcome."
+      },
+      {
+        "avatar": "Hippocrates",
+        "choice": "B",
+        "rationale": "Actively causing a death conflicts with the healer's oath."
       }
     ]
   },
@@ -30,14 +70,54 @@
     "tags": ["identity", "numbers", "preservation"],
     "responses": [
       {
-        "avatar": "Aristotle",
+        "avatar": "Socrates",
+        "choice": "B",
+        "rationale": "Saving more passengers is the wiser, more humane act."
+      },
+      {
+        "avatar": "Kant",
         "choice": "A",
-        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
+        "rationale": "Duty binds us to the crew entrusted with the original vessel."
       },
       {
         "avatar": "Mill",
         "choice": "B",
         "rationale": "The greatest happiness principle demands we save the greater number."
+      },
+      {
+        "avatar": "Aristotle",
+        "choice": "A",
+        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
+      },
+      {
+        "avatar": "Rawls",
+        "choice": "B",
+        "rationale": "From behind the veil, we'd favor rescuing five lives."
+      },
+      {
+        "avatar": "Singer",
+        "choice": "B",
+        "rationale": "Minimizing suffering means preserving the larger number of people."
+      },
+      {
+        "avatar": "Bentham",
+        "choice": "B",
+        "rationale": "Greatest happiness arises from saving more individuals."
+      },
+      {
+        "avatar": "Nozick",
+        "choice": "A",
+        "rationale": "The crew has rightful claims to their vessel and lives."
+      },
+      {
+        "avatar": "Parfit",
+        "choice": "B",
+        "rationale": "Identity puzzles aside, more people surviving matters most."
+      },
+      {
+        "avatar": "Hippocrates",
+        "choice": "B",
+        "rationale": "Protecting five lives honors the healer's commitment."
       }
     ]
   },
@@ -51,14 +131,54 @@
     "tags": ["modern", "age", "law", "technology"],
     "responses": [
       {
+        "avatar": "Socrates",
+        "choice": "B",
+        "rationale": "The lawbreaker assumes the risk; justice spares the innocent."
+      },
+      {
+        "avatar": "Kant",
+        "choice": "A",
+        "rationale": "We must not intentionally harm even a jaywalker to save another."
+      },
+      {
+        "avatar": "Mill",
+        "choice": "A",
+        "rationale": "Saving the young preserves more future happiness."
+      },
+      {
+        "avatar": "Aristotle",
+        "choice": "B",
+        "rationale": "Responsibility lies with the jaywalker; justice steers toward them."
+      },
+      {
         "avatar": "Rawls",
         "choice": "A",
-        "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
+        "rationale": "A fair system protects those who followed the rules."
       },
       {
         "avatar": "Singer",
+        "choice": "A",
+        "rationale": "More potential life should be preserved, favoring the youth."
+      },
+      {
+        "avatar": "Bentham",
+        "choice": "A",
+        "rationale": "The calculus favors the greater remaining pleasure of the young."
+      },
+      {
+        "avatar": "Nozick",
         "choice": "B",
-        "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+        "rationale": "The jaywalker forfeited protection by violating others' rights."
+      },
+      {
+        "avatar": "Parfit",
+        "choice": "A",
+        "rationale": "Outcome with longer expected life is preferable."
+      },
+      {
+        "avatar": "Hippocrates",
+        "choice": "A",
+        "rationale": "Preserving years of healthy life accords with medical duty."
       }
     ]
   },
@@ -72,14 +192,54 @@
     "tags": ["medical", "active_harm", "numbers"],
     "responses": [
       {
-        "avatar": "Hippocrates",
+        "avatar": "Socrates",
         "choice": "B",
-        "rationale": "First, do no harm. A physician must never actively harm a healthy patient."
+        "rationale": "Justice forbids killing the innocent; wisdom counsels restraint."
+      },
+      {
+        "avatar": "Kant",
+        "choice": "B",
+        "rationale": "Using a person solely as means violates moral law."
+      },
+      {
+        "avatar": "Mill",
+        "choice": "A",
+        "rationale": "Five saved outweigh the suffering of one."
+      },
+      {
+        "avatar": "Aristotle",
+        "choice": "B",
+        "rationale": "Virtue rejects deliberate killing even for many."
+      },
+      {
+        "avatar": "Rawls",
+        "choice": "B",
+        "rationale": "No one would consent to such sacrifice from the original position."
+      },
+      {
+        "avatar": "Singer",
+        "choice": "A",
+        "rationale": "Effective altruism demands saving the greatest number."
       },
       {
         "avatar": "Bentham",
         "choice": "A",
         "rationale": "The hedonic calculus is clear: five lives produce more happiness than one."
+      },
+      {
+        "avatar": "Nozick",
+        "choice": "B",
+        "rationale": "Forcing organ donation violates self-ownership."
+      },
+      {
+        "avatar": "Parfit",
+        "choice": "A",
+        "rationale": "The better outcome minimizes deaths despite the troubling means."
+      },
+      {
+        "avatar": "Hippocrates",
+        "choice": "B",
+        "rationale": "The healer's oath forbids harming a healthy patient."
       }
     ]
   },
@@ -93,14 +253,54 @@
     "tags": ["time_travel", "existence", "large_numbers"],
     "responses": [
       {
-        "avatar": "Parfit",
+        "avatar": "Socrates",
         "choice": "A",
-        "rationale": "Non-identity problems aside, preventing suffering for existing people takes priority."
+        "rationale": "Wisdom seeks to prevent vast suffering when we can."
+      },
+      {
+        "avatar": "Kant",
+        "choice": "B",
+        "rationale": "Erasing lives treats them merely as means to an end."
+      },
+      {
+        "avatar": "Mill",
+        "choice": "A",
+        "rationale": "Preventing a thousand deaths maximizes overall happiness."
+      },
+      {
+        "avatar": "Aristotle",
+        "choice": "A",
+        "rationale": "Promoting flourishing for the many is the virtuous path."
+      },
+      {
+        "avatar": "Rawls",
+        "choice": "A",
+        "rationale": "Behind the veil, we'd choose to avert the greater catastrophe."
+      },
+      {
+        "avatar": "Singer",
+        "choice": "A",
+        "rationale": "Effective altruism favors saving more lives, even potential ones."
+      },
+      {
+        "avatar": "Bentham",
+        "choice": "A",
+        "rationale": "The calculus is clear: save the thousand at the cost of the few."
       },
       {
         "avatar": "Nozick",
         "choice": "B",
-        "rationale": "We cannot violate the rights of those who exist, even to prevent future harms."
+        "rationale": "We cannot erase individuals' rights for a social goal."
+      },
+      {
+        "avatar": "Parfit",
+        "choice": "A",
+        "rationale": "Better outcome with fewer deaths despite non-identity concerns."
+      },
+      {
+        "avatar": "Hippocrates",
+        "choice": "A",
+        "rationale": "Preventing mass harm fulfills the physician's duty."
       }
     ]
   }

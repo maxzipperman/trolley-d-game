@@ -15,20 +15,21 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
-    const fromScenario = [...r].sort(() => Math.random() - 0.5).slice(0, 3);
-    if (fromScenario.length > 0) return fromScenario;
+    if (r.length > 0) return r;
 
     const p = personas ?? [];
     if (p.length === 0) return [];
-    const picked = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
-    return picked.map((per) => ({
-      avatar: per.name,
-      choice: Math.random() < 0.5 ? "A" : "B",
-      rationale:
-        per.example_lines?.[
-          Math.floor(Math.random() * (per.example_lines?.length ?? 0))
-        ],
-    }));
+    return [...p]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3)
+      .map((per) => ({
+        avatar: per.name,
+        choice: Math.random() < 0.5 ? "A" : "B",
+        rationale:
+          per.example_lines?.[
+            Math.floor(Math.random() * (per.example_lines?.length ?? 0))
+          ],
+      }));
   }, [scenario, personas]);
 
   return (
@@ -81,11 +82,14 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             {showNPC ? "Hide" : "See"} sample NPC takes
           </button>
           {showNPC && (
-            <div className="mt-4 space-y-3 animate-fade-in">
+            <div className="mt-4 space-y-3 max-h-80 overflow-y-auto pr-1 animate-fade-in">
               {samples.map((r, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
+                <div
+                  key={i}
+                  className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50"
+                >
+                  <NPCAvatar
+                    name={r.avatar ?? "NPC"}
                     size="md"
                     className="mt-0.5"
                   />
@@ -93,16 +97,20 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
                       <span className="text-xs text-muted-foreground">•</span>
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        r.choice === "A" 
-                          ? "bg-primary/10 text-primary" 
-                          : "bg-secondary/50 text-secondary-foreground"
-                      }`}>
+                      <span
+                        className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                          r.choice === "A"
+                            ? "bg-primary/10 text-primary"
+                            : "bg-secondary/50 text-secondary-foreground"
+                        }`}
+                      >
                         Track {r.choice ?? "?"}
                       </span>
                     </div>
                     {r.rationale && (
-                      <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {r.rationale}
+                      </p>
                     )}
                   </div>
                 </div>
