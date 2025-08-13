@@ -301,7 +301,329 @@
     "theme": "Economic Policy",
     "title": "The Work Obsolescence Scenario",
     "description": "UBI supporters and traditional employment advocates disagree about automation's impact on human purpose.",
-    "track_a": "Hit the UBI[
+    "track_a": "Hit the UBI[supporters (preserve work dignity)",
+    "track_b": "Hit the employment advocates (embrace post-work society)"
+  },
+  {
+    "id": "quantum_internet_security",
+    "theme": "Cybersecurity",
+    "title": "The Unhackable Network Paradox",
+    "description": "Quantum encryption developers and traditional hackers face obsolescence versus evolution in digital security.",
+    "track_a": "Hit the quantum developers (preserve hacking culture)",
+    "track_b": "Hit the traditional hackers (achieve perfect security)"
+  },
+  {
+    "id": "digital_twin_privacy",
+    "theme": "Virtual Identity",
+    "title": "The Perfect Simulation Rights",
+    "description": "Digital twin creators and identity protection advocates disagree about personal data modeling consent.",
+    "track_a": "Hit the twin creators (protect identity ownership)",
+    "track_b": "Hit the privacy advocates (enable predictive modeling)"
+  },
+  {
+    "id": "time_banking_economy",
+    "theme": "Alternative Currency",
+    "title": "The Hour Exchange System",
+    "description": "Time bank participants and traditional wage workers represent conflicting approaches to labor value.",
+    "track_a": "Hit the time bankers (preserve monetary systems)",
+    "track_b": "Hit the wage workers (democratize time value)"
+  },
+  {
+    "id": "synthetic_biology_ethics",
+    "theme": "Bioengineering",
+    "title": "The Artificial Life Creation",
+    "description": "Synthetic biology researchers and natural evolution purists debate acceptable limits of life manipulation.",
+    "track_a": "Hit the researchers (preserve natural evolution)",
+    "track_b": "Hit the purists (accelerate biological innovation)"
+  },
+  {
+    "id": "holographic_entertainment",
+    "theme": "Immersive Media",
+    "title": "The Reality Replacement Industry",
+    "description": "Hologram entertainment producers and reality preservation advocates compete for audience attention allocation.",
+    "track_a": "Hit the hologram producers (maintain reality connection)",
+    "track_b": "Hit the reality advocates (embrace escapism)"
+  },
+  {
+    "id": "ocean_plastic_cleanup",
+    "theme": "Environmental Technology",
+    "title": "The Marine Debris Solution",
+    "description": "Ocean cleanup technology operators and marine ecosystem preservationists disagree about intervention methods.",
+    "track_a": "Hit the cleanup operators (preserve natural processes)",
+    "track_b": "Hit the preservationists (remove human pollution)"
+  },
+  {
+    "id": "asteroid_mining_rights",
+    "theme": "Space Resource Extraction",
+    "title": "The Celestial Property Claim",
+    "description": "Asteroid mining corporations and space heritage conservationists dispute rights to cosmic resource extraction.",
+    "track_a": "Hit the mining corporations (preserve space heritage)",
+    "track_b": "Hit the conservationists (enable resource acquisition)"
+  },
+  {
+    "id": "digital_consciousness_backup",
+    "theme": "Mind Uploading",
+    "title": "The Consciousness Preservation Project",
+    "description": "Mind uploading volunteers and biological existence advocates represent opposing views on death transcendence.",
+    "track_a": "Hit the upload volunteers (accept mortality)",
+    "track_b": "Hit the biological advocates (achieve digital immortality)"
+  },
+  {
+    "id": "weather_modification_ethics",
+    "theme": "Climate Engineering",
+    "title": "The Atmospheric Control System",
+    "description": "Geoengineering scientists and natural climate advocates debate acceptable levels of weather manipulation.",
+    "track_a": "Hit the geoengineers (preserve natural weather)",
+    "track_b": "Hit the climate advocates (control atmospheric chaos)"
+  },
+  {
+    "id": "robotic_companion_regulation",
+    "theme": "Artificial Relationships",
+    "title": "The Emotional AI Licensing",
+    "description": "Robot companion manufacturers and human relationship purists require regulation of artificial emotional bonds.",
+    "track_a": "Hit the robot manufacturers (preserve human connection)",
+    "track_b": "Hit the relationship purists (reduce loneliness epidemic)"
+  },
+  {
+    "id": "cellular_regeneration_therapy",
+    "theme": "Life Extension",
+    "title": "The Age Reversal Treatment",
+    "description": "Longevity treatment recipients and natural aging advocates represent conflicting approaches to human lifespan.",
+    "track_a": "Hit the treatment recipients (accept natural aging)",
+    "track_b": "Hit the aging advocates (eliminate age-related suffering)"
+  },
+  {
+    "id": "smart_city_surveillance",
+    "theme": "Urban Monitoring",
+    "title": "The Optimized Municipality",
+    "description": "Smart city developers and urban privacy advocates disagree about acceptable levels of citizen monitoring.",
+    "track_a": "Hit the city developers (preserve urban anonymity)",
+    "track_b": "Hit the privacy advocates (optimize city services)"
+  },
+  {
+    "id": "lab_grown_organs",
+    "theme": "Medical Technology",
+    "title": "The Organ Printing Ethics",
+    "description": "Bioprinted organ recipients and donor system advocates represent competing approaches to organ scarcity.",
+    "track_a": "Hit the bioprint recipients (preserve donation culture)",
+    "track_b": "Hit the donor advocates (eliminate organ waiting lists)"
+  },
+  {
+    "id": "telepathic_network_protocol",
+    "theme": "Direct Neural Communication",
+    "title": "The Mind-to-Mind Internet",
+    "description": "Telepathic network early adopters and mental privacy defenders debate implementation of direct thought sharing.",
+    "track_a": "Hit the telepathic adopters (preserve mental privacy)",
+    "track_b": "Hit the privacy defenders (eliminate communication barriers)"
+  },
+  {
+    "id": "gravity_manipulation_technology",
+    "theme": "Physics Exploitation",
+    "title": "The Artificial Gravity Generator",
+    "description": "Gravity control researchers and natural physics purists compete for control over fundamental force manipulation.",
+    "track_a": "Hit the gravity researchers (preserve natural physics)",
+    "track_b": "Hit the physics purists (transcend physical limitations)"
+  },
+  {
+    "id": "memory_editing_clinic",
+    "theme": "Cognitive Modification",
+    "title": "The Traumatic Experience Deletion",
+    "description": "Memory modification patients and authentic experience advocates debate acceptable levels of mental editing.",
+    "track_a": "Hit the modification patients (preserve authentic memory)",
+    "track_b": "Hit the experience advocates (eliminate psychological suffering)"
+  },
+  {
+    "id": "dimensional_portal_tourism",
+    "theme": "Parallel Universe Travel",
+    "title": "The Multiverse Vacation Package",
+    "description": "Interdimensional tourists and reality stability inspectors represent conflicting priorities in parallel universe visitation.",
+    "track_a": "Hit the dimensional tourists (preserve reality stability)",
+    "track_b": "Hit the stability inspectors (enable multiverse exploration)"
+  },
+  {
+    "id": "photosynthetic_human_enhancement",
+    "theme": "Biological Augmentation",
+    "title": "The Solar-Powered Human Project",
+    "description": "Chlorophyll enhancement volunteers and dietary tradition advocates disagree about plant-based energy absorption modification.",
+    "track_a": "Hit the enhancement volunteers (preserve traditional nutrition)",
+    "track_b": "Hit the tradition advocates (eliminate food scarcity)"
+  },
+  {
+    "id": "time_loop_escape_protocol",
+    "theme": "Temporal Mechanics",
+    "title": "The Infinite Tuesday Problem",
+    "description": "Time loop prisoners and temporal stability agents compete for control over causality loop resolution.",
+    "track_a": "Hit the loop prisoners (preserve temporal stability)",
+    "track_b": "Hit the stability agents (break infinite recursion)"
+  },
+  {
+    "id": "emoji_communication_mandate",
+    "theme": "Language Evolution",
+    "title": "The Universal Symbol System",
+    "description": "Emoji-only communicators and traditional language preservationists represent opposing views on written expression.",
+    "track_a": "Hit the emoji communicators (preserve linguistic complexity)",
+    "track_b": "Hit the language preservationists (embrace visual efficiency)"
+  },
+  {
+    "id": "sweat_equity_cryptocurrency",
+    "theme": "Biometric Currency",
+    "title": "The Exercise-Based Economy",
+    "description": "Fitness miners and sedentary lifestyle advocates compete in economy where physical exertion generates digital currency.",
+    "track_a": "Hit the fitness miners (preserve lifestyle diversity)",
+    "track_b": "Hit the sedentary advocates (eliminate obesity epidemic)"
+  },
+  {
+    "id": "dream_sharing_network",
+    "theme": "Subconscious Communication",
+    "title": "The Collective Unconscious Platform",
+    "description": "Dream sharing participants and sleep privacy defenders debate implementation of shared subconscious experiences.",
+    "track_a": "Hit the dream sharers (preserve sleep privacy)",
+    "track_b": "Hit the privacy defenders (enable subconscious collaboration)"
+  },
+  {
+    "id": "bacteria_computing_system",
+    "theme": "Biological Technology",
+    "title": "The Living Computer Network",
+    "description": "Bacterial computer programmers and sterile technology advocates represent opposing approaches to biological computing.",
+    "track_a": "Hit the bacterial programmers (maintain sterile computing)",
+    "track_b": "Hit the sterile advocates (embrace biological processing)"
+  },
+  {
+    "id": "scent_based_internet",
+    "theme": "Olfactory Communication",
+    "title": "The Aromatic Information Highway",
+    "description": "Smell-based data transmission developers and traditional visual interface users compete for sensory communication dominance.",
+    "track_a": "Hit the scent developers (preserve visual interfaces)",
+    "track_b": "Hit the visual users (embrace olfactory data)"
+  },
+  {
+    "id": "gravity_battery_storage",
+    "theme": "Energy Innovation",
+    "title": "The Gravitational Power Bank",
+    "description": "Gravity battery operators and traditional energy storage advocates represent competing approaches to renewable power retention.",
+    "track_a": "Hit the gravity operators (preserve battery technology)",
+    "track_b": "Hit the traditional advocates (harness gravitational energy)"
+  },
+  {
+    "id": "insect_protein_mandate",
+    "theme": "Sustainable Nutrition",
+    "title": "The Cricket Flour Regulation",
+    "description": "Entomophagy advocates and traditional protein consumers require policy intervention regarding insect-based nutrition.",
+    "track_a": "Hit the insect advocates (preserve traditional protein)",
+    "track_b": "Hit the traditional consumers (mandate sustainable nutrition)"
+  },
+  {
+    "id": "telepresence_robot_workers",
+    "theme": "Remote Labor",
+    "title": "The Robotic Employee Program",
+    "description": "Telepresence robot operators and in-person work advocates compete for control over physical workplace presence.",
+    "track_a": "Hit the robot operators (require physical presence)",
+    "track_b": "Hit the presence advocates (enable total remote work)"
+  },
+  {
+    "id": "sound_wave_healing",
+    "theme": "Vibrational Medicine",
+    "title": "The Frequency Therapy Clinic",
+    "description": "Sound healing practitioners and evidence-based medicine advocates represent conflicting approaches to acoustic treatment.",
+    "track_a": "Hit the sound healers (preserve scientific medicine)",
+    "track_b": "Hit the evidence advocates (embrace vibrational therapy)"
+  },
+  {
+    "id": "synthetic_spider_silk",
+    "theme": "Biomimetic Materials",
+    "title": "The Artificial Web Factory",
+    "description": "Synthetic silk manufacturers and natural fiber advocates compete for control over high-strength material production.",
+    "track_a": "Hit the synthetic manufacturers (preserve natural fibers)",
+    "track_b": "Hit the natural advocates (maximize material strength)"
+  },
+  {
+    "id": "mushroom_internet_network",
+    "theme": "Biological Communication",
+    "title": "The Mycelial Data Transfer",
+    "description": "Fungal network developers and electronic communication purists represent opposing views on biological information systems.",
+    "track_a": "Hit the fungal developers (preserve electronic systems)",
+    "track_b": "Hit the electronic purists (embrace biological networks)"
+  },
+  {
+    "id": "carbon_capture_fashion",
+    "theme": "Climate Apparel",
+    "title": "The CO2-Absorbing Clothing Line",
+    "description": "Carbon-capturing garment wearers and traditional fashion consumers debate implementation of climate-active clothing.",
+    "track_a": "Hit the carbon wearers (preserve fashion freedom)",
+    "track_b": "Hit the traditional consumers (mandate climate apparel)"
+  },
+  {
+    "id": "bioluminescent_street_lighting",
+    "theme": "Living Infrastructure",
+    "title": "The Glowing Tree Initiative",
+    "description": "Bioluminescent lighting advocates and electric grid operators compete for control over urban illumination systems.",
+    "track_a": "Hit the bio-lighting advocates (preserve electric grid)",
+    "track_b": "Hit the grid operators (embrace living light sources)"
+  },
+  {
+    "id": "fermented_building_materials",
+    "theme": "Biological Construction",
+    "title": "The Living Architecture Project",
+    "description": "Fermented construction material users and traditional building advocates represent opposing approaches to structural development.",
+    "track_a": "Hit the fermented builders (preserve traditional construction)",
+    "track_b": "Hit the traditional advocates (embrace biological buildings)"
+  },
+  {
+    "id": "thought_controlled_vehicles",
+    "theme": "Neural Transportation",
+    "title": "The Mind-Driven Transit System",
+    "description": "Brain-controlled vehicle operators and manual driving purists compete for control over transportation interface methods.",
+    "track_a": "Hit the mind drivers (preserve manual control)",
+    "track_b": "Hit the manual purists (eliminate driving errors)"
+  },
+  {
+    "id": "algae_oxygen_bars",
+    "theme": "Atmospheric Enhancement",
+    "title": "The Photosynthetic Breathing Lounge",
+    "description": "Algae oxygen bar patrons and natural air breathing advocates represent conflicting approaches to respiratory enhancement.",
+    "track_a": "Hit the algae patrons (preserve natural breathing)",
+    "track_b": "Hit the natural breathers (optimize oxygen intake)"
+  },
+  {
+    "id": "crystalline_data_storage",
+    "theme": "Geological Computing",
+    "title": "The Mineral Memory Bank",
+    "description": "Crystal storage developers and silicon chip manufacturers compete for control over long-term data preservation technology.",
+    "track_a": "Hit the crystal developers (preserve silicon industry)",
+    "track_b": "Hit the chip manufacturers (achieve eternal storage)"
+  },
+  {
+    "id": "swarm_intelligence_democracy",
+    "theme": "Collective Decision Making",
+    "title": "The Hive Mind Voting System",
+    "description": "Swarm democracy participants and individual voting advocates represent opposing approaches to collective decision processes.",
+    "track_a": "Hit the swarm participants (preserve individual choice)",
+    "track_b": "Hit the individual voters (optimize collective intelligence)"
+  },
+  {
+    "id": "magnetic_levitation_furniture",
+    "theme": "Floating Household Items",
+    "title": "The Anti-Gravity Living Room",
+    "description": "Levitating furniture users and traditional ground-based advocates compete for control over domestic spatial arrangements.",
+    "track_a": "Hit the levitation users (preserve gravitational furniture)",
+    "track_b": "Hit the ground advocates (embrace spatial freedom)"
+  },
+  {
+    "id": "dna_based_computing",
+    "theme": "Genetic Information Processing",
+    "title": "The Biological Processor Array",
+    "description": "DNA computer programmers and silicon processing purists represent conflicting approaches to computational substrate selection.",
+    "track_a": "Hit the DNA programmers (preserve silicon computing)",
+    "track_b": "Hit the silicon purists (embrace biological processing)"
+  },
+  {
+    "id": "plant_communication_translation",
+    "theme": "Botanical Linguistics",
+    "title": "The Chlorophyll Conversation Device",
+    "description": "Plant-human translators and anthropocentric communication advocates debate implementation of botanical dialogue systems.",
+    "track_a": "Hit the plant translators (preserve human-only communication)",
+    "track_b": "Hit the anthropocentrists (enable botanical conversations)"
+  },
   {
     "id": "CC01",
     "theme": "Culinary Catastrophes",
