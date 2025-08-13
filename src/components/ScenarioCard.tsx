@@ -3,6 +3,7 @@ import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
+import Lever from "./Lever";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -12,6 +13,7 @@ interface ScenarioCardProps {
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
   const { personas } = usePersonas();
+  const [leverPos, setLeverPos] = useState<"up" | "down" | null>(null);
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -45,30 +47,32 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
       {/* Trolley Diagram */}
       <div className="py-4">
-        <TrolleyDiagram 
-          trackALabel="A" 
+        <TrolleyDiagram
+          trackALabel="A"
           trackBLabel="B"
           className="animate-fade-in"
+          choice={leverPos == null ? undefined : leverPos === "up" ? "A" : "B"}
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
-          aria-label="Choose Track A"
-        >
-          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
-          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
-        </button>
-        <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
-          aria-label="Choose Track B"
-        >
-          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
-          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
-        </button>
+        <div className="w-full py-4 px-4 rounded-lg border border-border bg-card text-left">
+          <div className="font-semibold mb-2 text-primary">Track A</div>
+          <div className="text-sm text-muted-foreground">{scenario.track_a}</div>
+        </div>
+        <div className="w-full py-4 px-4 rounded-lg border border-border bg-card text-left">
+          <div className="font-semibold mb-2 text-primary">Track B</div>
+          <div className="text-sm text-muted-foreground">{scenario.track_b}</div>
+        </div>
+      </div>
+
+      <div className="flex justify-center pt-4">
+        <Lever
+          onChange={(dir) => {
+            setLeverPos(dir);
+            onPick(dir === "up" ? "A" : "B");
+          }}
+        />
       </div>
 
       {samples.length > 0 && (

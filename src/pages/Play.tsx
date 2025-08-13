@@ -30,8 +30,8 @@ const Play = () => {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { pick("A"); }
-      if (e.key === "ArrowRight") { pick("B"); }
+      if (e.key === "ArrowUp") { pick("A"); }
+      if (e.key === "ArrowDown") { pick("B"); }
       if (e.key.toLowerCase() === "s") { skip(); }
     };
     window.addEventListener("keydown", onKey);
@@ -121,7 +121,7 @@ const Play = () => {
           Skip this scenario
         </button>
         <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
-          Shortcuts: ← A · → B · S Skip
+          Shortcuts: ↑ A · ↓ B · S Skip
         </div>
       </div>
     </main>
