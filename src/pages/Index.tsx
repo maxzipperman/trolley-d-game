@@ -13,7 +13,7 @@ export default function Index() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button asChild size="lg">
-            <Link to="/avatar">Start Playing</Link>
+            <Link to="/avatars">Start Playing</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link to="/results">View Results</Link>
