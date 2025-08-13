@@ -6,11 +6,7 @@
     "track_a": "Pull the lever (save 5, kill 1)",
     "track_b": "Do nothing (kill 5, save 1)",
     "theme": "Utilitarian vs. Deontological Ethics",
-    "tags": [
-      "classic",
-      "numbers",
-      "action_vs_inaction"
-    ],
+    "tags": ["classic", "numbers", "action_vs_inaction"],
     "responses": [
       {
         "avatar": "Socrates",
@@ -19,7 +15,7 @@
       },
       {
         "avatar": "Kant",
-        "choice": "B",
+        "choice": "B", 
         "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
       }
     ]
@@ -31,11 +27,7 @@
     "track_a": "Save the original hull (3 crew)",
     "track_b": "Save the engine room (5 passengers)",
     "theme": "Identity vs. Utility",
-    "tags": [
-      "identity",
-      "numbers",
-      "preservation"
-    ],
+    "tags": ["identity", "numbers", "preservation"],
     "responses": [
       {
         "avatar": "Aristotle",
@@ -56,12 +48,7 @@
     "track_a": "Stay course (hit elderly legal crosser)",
     "track_b": "Swerve (hit young jaywalker)",
     "theme": "Legal vs. Utilitarian Calculation",
-    "tags": [
-      "modern",
-      "age",
-      "law",
-      "technology"
-    ],
+    "tags": ["modern", "age", "law", "technology"],
     "responses": [
       {
         "avatar": "Rawls",
@@ -72,6 +59,48 @@
         "avatar": "Singer",
         "choice": "B",
         "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+      }
+    ]
+  },
+  {
+    "id": "EN04",
+    "title": "The Organ Transplant",
+    "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
+    "track_a": "Harvest organs (save 5, kill 1)",
+    "track_b": "Let nature take its course (5 die, 1 lives)",
+    "theme": "Active vs. Passive Harm",
+    "tags": ["medical", "active_harm", "numbers"],
+    "responses": [
+      {
+        "avatar": "Hippocrates",
+        "choice": "B",
+        "rationale": "First, do no harm. A physician must never actively harm a healthy patient."
+      },
+      {
+        "avatar": "Bentham",
+        "choice": "A",
+        "rationale": "The hedonic calculus is clear: five lives produce more happiness than one."
+      }
+    ]
+  },
+  {
+    "id": "EN05",
+    "title": "The Time Traveler's Dilemma",
+    "description": "You can prevent a natural disaster that kills 1000 people, but doing so will erase the existence of 100 people who were born because of that tragedy.",
+    "track_a": "Prevent disaster (save 1000, erase 100)",
+    "track_b": "Allow disaster (1000 die, 100 exist)",
+    "theme": "Temporal Ethics and Existence",
+    "tags": ["time_travel", "existence", "large_numbers"],
+    "responses": [
+      {
+        "avatar": "Parfit",
+        "choice": "A",
+        "rationale": "Non-identity problems aside, preventing suffering for existing people takes priority."
+      },
+      {
+        "avatar": "Nozick",
+        "choice": "B",
+        "rationale": "We cannot violate the rights of those who exist, even to prevent future harms."
       }
     ]
   }

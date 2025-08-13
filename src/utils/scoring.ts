@@ -1,4 +1,5 @@
 import type { Scenario } from "@/types";
+import { canonicalTags } from "@/utils/tags.schema";
 
 export function countAB(answers: Record<string, "A"|"B"|"skip">) {
   return Object.values(answers).reduce(
@@ -11,10 +12,10 @@ export function countAB(answers: Record<string, "A"|"B"|"skip">) {
   );
 }
 
-const ORDER = new Set(["bureaucracy", "standards", "logistics"]);
-const CHAOS = new Set(["absurd", "paradox", "infinite"]);
-const MATERIAL = new Set(["reality", "manufacturing_defects", "quality_control", "space"]);
-const SOCIAL = new Set(["identity", "meaning", "workers_rights", "existential"]);
+const ORDER = new Set(canonicalTags.ORDER);
+const CHAOS = new Set(canonicalTags.CHAOS);
+const MATERIAL = new Set(canonicalTags.MATERIAL);
+const SOCIAL = new Set(canonicalTags.SOCIAL);
 
 const MISCHIEF_WORDS = ["hit", "tow", "deny", "erase", "confine", "condemn", "break"];
 
