@@ -12,3 +12,10 @@ export interface Scenario {
     rationale?: string;
   }>;
 }
+
+export interface LLMResponse {
+  scenarioId: string;
+  modelName: string;
+  choice: "A" | "B";
+  rationale?: string;
+}

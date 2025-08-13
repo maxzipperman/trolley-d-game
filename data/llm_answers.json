@@ -1,0 +1,20 @@
+[
+  {
+    "scenarioId": "EN01",
+    "modelName": "gpt-4",
+    "choice": "A",
+    "rationale": "Saving five lives maximizes overall well-being."
+  },
+  {
+    "scenarioId": "EN01",
+    "modelName": "claude-3",
+    "choice": "B",
+    "rationale": "Actively causing a death is morally impermissible."
+  },
+  {
+    "scenarioId": "EN02",
+    "modelName": "gpt-4",
+    "choice": "B",
+    "rationale": "Preserving more lives outweighs preserving the ship's history."
+  }
+]
