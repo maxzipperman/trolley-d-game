@@ -47,7 +47,13 @@ const Index = () => {
           </button>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 space-x-6">
+          <button
+            onClick={() => navigate("/settings")}
+            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4"
+          >
+            Settings
+          </button>
           <button
             onClick={() => navigate("/history")}
             className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"

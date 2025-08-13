@@ -1,4 +1,5 @@
 import React from "react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface TrolleyDiagramProps {
   trackALabel?: string;
@@ -6,11 +7,13 @@ interface TrolleyDiagramProps {
   className?: string;
 }
 
-const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({ 
-  trackALabel = "Track A", 
+const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
+  trackALabel = "Track A",
   trackBLabel = "Track B",
   className = ""
 }) => {
+  const reduced = useReducedMotion();
+
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
       <svg 
@@ -44,7 +47,7 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
         />
         
         {/* Trolley */}
-        <g className="animate-trolley-move">
+        <g className={reduced ? undefined : "animate-trolley-move"}>
           <rect
             x="40"
             y="88"
