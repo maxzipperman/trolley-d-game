@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
+import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import { fetchOverallStats } from "@/lib/api";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -12,103 +12,68 @@ const ANSWERS_KEY = "trolleyd-answers";
 const Results = () => {
   useEffect(() => { document.title = "Trolley'd · Results"; }, []);
   const navigate = useNavigate();
-  const { scenarios } = useScenarios();
-  
-  const [answers, setAnswers, { recordHistory }] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
-  const [global, setGlobal] = useState<{ percentA: number; percentB: number } | null>(null);
+  const { scenarios, error, loading, retry } = useScenarios();
+  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
 
-  useEffect(() => {
-    if (Object.keys(answers).length > 0) {
-      recordHistory(answers);
-    }
-  }, [answers, recordHistory]);
+  if (error) {
+    return (
+      <main className="min-h-screen container py-10">
+        <InlineError message={error} onRetry={retry} />
+      </main>
+    );
+  }
 
-  useEffect(() => {
-    fetchOverallStats()
-      .then(setGlobal)
-      .catch(() => setGlobal(null));
-  }, []);
-
-  const totalAnswers = scoreA + scoreB;
-  const percentA = totalAnswers ? Math.round((scoreA / totalAnswers) * 100) : 0;
-  const percentB = totalAnswers ? 100 - percentA : 0;
-
-  if (!scenarios) return (
+  if (loading || !scenarios) return (
     <main className="min-h-screen container py-10" />
   );
 
   return (
     <main className="min-h-screen container max-w-3xl py-8 space-y-8">
-      <header>
-        <h1 className="text-3xl font-bold">Your Results</h1>
+      <header className="text-center space-y-4">
+        <h1 className="text-4xl font-bold">Your Results</h1>
+        <p className="text-muted-foreground">
+          Based on your responses to {Object.keys(answers).length} scenarios
+        </p>
       </header>
 
-      <div className="mb-8 animate-fade-in">
-        <TrolleyDiagram 
-          trackALabel="Your Journey" 
-          trackBLabel="Complete"
-          className="opacity-60"
-        />
-      </div>
-
-      <section className="grid gap-6 lg:grid-cols-2">
-        <article className="p-6 rounded-lg border border-border bg-card animate-scale-in">
-          <h2 className="text-xl font-semibold mb-4">Personal Score</h2>
+      <div className="grid gap-8 md:grid-cols-2">
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold">Choice Distribution</h2>
           <div className="space-y-2">
-            <div className="flex justify-between items-center">
-              <span>Track A choices</span>
-              <span className="font-mono">{scoreA} ({percentA}%)</span>
+            <div className="flex justify-between">
+              <span>Choice A: {scoreA}</span>
+              <span>{scoreA + scoreB > 0 ? Math.round((scoreA / (scoreA + scoreB)) * 100) : 0}%</span>
             </div>
-            <div className="flex justify-between items-center">
-              <span>Track B choices</span>
-              <span className="font-mono">{scoreB} ({percentB}%)</span>
+            <div className="flex justify-between">
+              <span>Choice B: {scoreB}</span>
+              <span>{scoreA + scoreB > 0 ? Math.round((scoreB / (scoreA + scoreB)) * 100) : 0}%</span>
             </div>
           </div>
-        </article>
+        </div>
 
-        {global && (
-          <article className="p-6 rounded-lg border border-border bg-card animate-scale-in">
-            <h2 className="text-xl font-semibold mb-4">Global Stats</h2>
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span>Track A (global)</span>
-                <span className="font-mono">{global.percentA}%</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span>Track B (global)</span>
-                <span className="font-mono">{global.percentB}%</span>
-              </div>
-            </div>
-          </article>
-        )}
-      </section>
-
-      {axes && (
-        <section className="animate-fade-in">
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold">Ethical Axes</h2>
           <AxisVisualization axes={axes} />
-        </section>
-      )}
+        </div>
+      </div>
 
-      <footer className="flex gap-4 justify-center">
+      <div className="text-center space-y-4">
+        <Link to="/play" className="inline-block px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90">
+          Play Again
+        </Link>
         <button
           onClick={() => {
             setAnswers({});
-            navigate("/");
+            navigate("/play");
           }}
-          className="px-6 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring"
+          className="ml-4 px-6 py-2 border rounded hover:bg-accent"
         >
-          Play Again
+          Reset & Start Over
         </button>
-        <Link
-          to="/history"
-          className="px-6 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring inline-flex items-center"
-        >
-          View History
-        </Link>
-      </footer>
+      </div>
     </main>
   );
 };
