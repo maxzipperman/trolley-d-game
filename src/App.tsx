@@ -12,11 +12,32 @@ import History from "./pages/History";
 import NotFound from "./pages/NotFound";
 import SettingsDialog from "@/components/SettingsDialog";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useEffect, useState } from "react";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [reducedMotion, setReducedMotion] = useReducedMotion();
+  // Treat the hook as returning a boolean (not a tuple)
+  const reducedMotionFromHook = useReducedMotion();
+  const [reducedMotion, setReducedMotion] = useState<boolean>(!!reducedMotionFromHook);
+
+  // Sync local state when hook value changes
+  useEffect(() => {
+    setReducedMotion(!!reducedMotionFromHook);
+  }, [reducedMotionFromHook]);
+
+  // Provide a setter compatible with SettingsDialog that also keeps DOM/localStorage in sync
+  const handleSetReducedMotion = (val: boolean) => {
+    setReducedMotion(val);
+    const rootEl = document.documentElement;
+    if (val) {
+      rootEl.classList.add("reduced-motion");
+    } else {
+      rootEl.classList.remove("reduced-motion");
+    }
+    localStorage.setItem("trolleyd-reduced-motion", String(val));
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -25,7 +46,7 @@ const App = () => {
         <BrowserRouter>
           <SettingsDialog
             reducedMotion={reducedMotion}
-            setReducedMotion={setReducedMotion}
+            setReducedMotion={handleSetReducedMotion}
           />
           <Routes>
             <Route path="/" element={<Index />} />

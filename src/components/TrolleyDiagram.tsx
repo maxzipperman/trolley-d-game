@@ -1,3 +1,4 @@
+
 import React, { useId } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -14,7 +15,7 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
 }) => {
   const titleId = useId();
   const descId = useId();
-  const [reducedMotion] = useReducedMotion();
+  const reducedMotion = useReducedMotion();
 
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
@@ -53,7 +54,7 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
         />
         
         {/* Trolley */}
-        <g className="motion-safe:animate-trolley-move">
+        <g className={!reducedMotion ? "motion-safe:animate-trolley-move" : undefined}>
           <rect
             x="40"
             y="90"
