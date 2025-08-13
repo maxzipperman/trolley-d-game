@@ -14,19 +14,15 @@ interface ScenarioCardProps {
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
-  const { personas, error: personasError, retry: retryPersonas } = usePersonas();
+  const { personas, error: personasError } = usePersonas();
   const { decisions, error: decisionsError, retry: retryDecisions } = useDecisions();
   const [picked, setPicked] = useState<"A" | "B" | null>(null);
 
-  // Build responses for this scenario from decisions.json (persona -> avatar mapping)
-  const scenarioResponses = useMemo(() => {
-    const filtered = (decisions ?? []).filter(d => d.scenarioId === scenario.id);
-    return filtered.map(d => ({
-      avatar: d.persona,
-      choice: d.choice,
-      rationale: d.rationale,
-    }));
-  }, [decisions, scenario.id]);
+  // Build responses for this scenario from decisions.json
+  const scenarioResponses = useMemo(
+    () => decisions?.filter((d) => d.scenarioId === scenario.id) ?? [],
+    [decisions, scenario.id]
+  );
 
   const handlePick = (choice: "A" | "B") => {
     setPicked(choice);
@@ -34,7 +30,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
     const aligned = scenarioResponses
       .filter((r) => r.choice === choice)
-      .map((r) => r.avatar);
+      .map((r) => r.persona);
 
     if (typeof window !== "undefined") {
       let counts: Record<string, number> = {};
@@ -54,7 +50,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
     if (!picked) return [];
     const alignedNames = scenarioResponses
       .filter((r) => r.choice === picked)
-      .map((r) => r.avatar);
+      .map((r) => r.persona);
     return (personas ?? []).filter((p) => alignedNames.includes(p.name));
   }, [picked, scenarioResponses, personas]);
 
@@ -66,7 +62,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
     if (p.length === 0) return [];
     const pickedPersonas = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
     return pickedPersonas.map((per) => ({
-      avatar: per.name,
+      persona: per.name,
       choice: (Math.random() < 0.5 ? "A" : "B") as const,
       rationale:
         per.example_lines?.[
@@ -77,7 +73,6 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
   const error = personasError || decisionsError;
   const retry = () => {
-    retryPersonas();
     retryDecisions();
   };
 
@@ -151,13 +146,13 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
               {samples.map((r, i) => (
                 <div className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50" key={i}>
                   <NPCAvatar
-                    name={r.avatar ?? "NPC"}
+                    name={r.persona ?? "NPC"}
                     size="md"
                     className="mt-0.5"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
+                      <span className="text-sm font-medium truncate">{r.persona ?? "NPC"}</span>
                       <span className="text-xs text-muted-foreground">•</span>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                         r.choice === "A"
