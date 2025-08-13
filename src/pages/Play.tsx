@@ -8,13 +8,20 @@ import type { Scenario } from "@/types";
 import type { Choice } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const SLOT_KEY = "trolleyd-current-slot";
 
 const Play = () => {
   useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
   const { scenarios, loading } = useScenarios();
-  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [slot] = useLocalStorage<string | null>(SLOT_KEY, null);
+  const answerKey = slot ? `${slot}-${ANSWERS_KEY}` : ANSWERS_KEY;
+  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(answerKey, {});
   const [params] = useSearchParams();
+
+  useEffect(() => {
+    if (!slot) navigate("/slots");
+  }, [slot, navigate]);
 
   const index = useMemo(() => {
     if (!scenarios) return 0;

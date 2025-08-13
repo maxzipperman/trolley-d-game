@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Play from "./pages/Play";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
+import SaveSlots from "./pages/SaveSlots";
 
 const queryClient = new QueryClient();
 
@@ -15,15 +16,16 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/play" element={<Play />} />
-          <Route path="/results" element={<Results />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/slots" element={<SaveSlots />} />
+            <Route path="/play" element={<Play />} />
+            <Route path="/results" element={<Results />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );

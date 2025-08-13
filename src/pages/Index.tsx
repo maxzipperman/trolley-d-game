@@ -23,13 +23,13 @@ const Index = () => {
           />
         </div>
         
-        <button
-          onClick={() => navigate("/play")}
-          className="px-8 py-4 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring transform hover:scale-105 active:scale-95 font-medium text-lg"
-          aria-label="Start playing Trolley'd"
-        >
-          Begin Your Journey
-        </button>
+          <button
+            onClick={() => navigate("/slots")}
+            className="px-8 py-4 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring transform hover:scale-105 active:scale-95 font-medium text-lg"
+            aria-label="Start playing Trolley'd"
+          >
+            Begin Your Journey
+          </button>
       </div>
     </main>
   );

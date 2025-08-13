@@ -7,15 +7,22 @@ import { useScenarios } from "@/hooks/useScenarios";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const SLOT_KEY = "trolleyd-current-slot";
 
 const Results = () => {
   useEffect(() => { document.title = "Trolley’d · Results"; }, []);
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
-  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [slot] = useLocalStorage<string | null>(SLOT_KEY, null);
+  const answerKey = slot ? `${slot}-${ANSWERS_KEY}` : ANSWERS_KEY;
+  const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(answerKey, {});
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+
+  useEffect(() => {
+    if (!slot) navigate("/slots");
+  }, [slot, navigate]);
 
   if (!scenarios) return (
     <main className="min-h-screen container py-10" />
@@ -97,7 +104,7 @@ const Results = () => {
         </ul>
         <div className="mt-4 flex gap-2">
           <button
-            onClick={() => { localStorage.removeItem(ANSWERS_KEY); setAnswers({}); navigate("/play"); }}
+            onClick={() => { localStorage.removeItem(answerKey); setAnswers({}); navigate("/play"); }}
             className="px-4 py-2 rounded-md border border-border hover:bg-accent"
           >Reset game</button>
         </div>
