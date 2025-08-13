@@ -4,15 +4,23 @@ import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { usePersonas } from "@/hooks/usePersonas";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const AVATARS_KEY = "trolleyd-selected-avatars";
 
 const Results = () => {
   useEffect(() => { document.title = "Trolley’d · Results"; }, []);
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [avatarIds] = useLocalStorage<string[]>(AVATARS_KEY, []);
+  const { personas } = usePersonas();
+  const selectedPersonas = useMemo(
+    () => (personas ?? []).filter((p) => avatarIds.includes(p.name)),
+    [personas, avatarIds]
+  );
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
@@ -80,10 +88,42 @@ const Results = () => {
             />
           </div>
         </article>
-      </section>
+        </section>
 
-      <section className="p-4 rounded-lg border border-border bg-card">
-        <h2 className="font-semibold mb-3">Your run</h2>
+        {selectedPersonas.length > 0 && (
+          <section className="p-4 rounded-lg border border-border bg-card">
+            <h2 className="font-semibold mb-3">Selected Avatars</h2>
+            <ul className="grid gap-4 md:grid-cols-2">
+              {selectedPersonas.map((p) => (
+                <li
+                  key={p.name}
+                  className="p-4 rounded-lg border border-border bg-background space-y-1"
+                >
+                  <h3 className="font-medium">{p.name}</h3>
+                  {p.occupation_or_role && (
+                    <p className="text-sm text-muted-foreground">
+                      {p.occupation_or_role}
+                    </p>
+                  )}
+                  {p.era_origin && (
+                    <p className="text-sm text-muted-foreground">{p.era_origin}</p>
+                  )}
+                  {p.worldview_values && (
+                    <p className="text-sm text-muted-foreground">
+                      {p.worldview_values}
+                    </p>
+                  )}
+                  {p.tone_style && (
+                    <p className="text-sm text-muted-foreground">{p.tone_style}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <section className="p-4 rounded-lg border border-border bg-card">
+          <h2 className="font-semibold mb-3">Your run</h2>
         <ul className="space-y-2">
           {scenarios.map((s) => {
             const pick = answers[s.id] ?? "—";
