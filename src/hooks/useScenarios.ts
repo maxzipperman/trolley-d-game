@@ -1,25 +1,31 @@
 import { useCallback, useEffect, useState } from "react";
-import type { Scenario } from "@/types";
+import { ScenarioSchema, type Scenario } from "@/types";
+import { fetchWithRetry } from "@/utils/fetchWithRetry";
 
 export function useScenarios() {
   const [scenarios, setScenarios] = useState<Scenario[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const load = useCallback(() => {
-    const url = new URL("../../data/scenarios.json", import.meta.url);
-    fetch(url)
-      .then(r => r.json())
-      .then((json: unknown) => {
-        if (Array.isArray(json)) {
-          setScenarios(json as Scenario[]);
-        } else {
-          setScenarios([]);
-        }
-      })
-      .catch(err => {
-        console.error("Failed to load scenarios", err);
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const url = new URL("../../data/scenarios.json", import.meta.url);
+      const json = await fetchWithRetry(url.href);
+      const parsed = ScenarioSchema.array().safeParse(json);
+      if (parsed.success) {
+        setScenarios(parsed.data);
+      } else {
+        console.warn("Scenario schema validation failed", parsed.error);
         setError("Failed to load scenarios");
-      });
+      }
+    } catch (err) {
+      console.error("Failed to load scenarios", err);
+      setError("Failed to load scenarios");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -32,5 +38,5 @@ export function useScenarios() {
     load();
   }, [load]);
 
-  return { scenarios, error, loading: scenarios === null && !error, reload };
+  return { scenarios, error, loading: scenarios === null && !error, reload, retry: reload };
 }

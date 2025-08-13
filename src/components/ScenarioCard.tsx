@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from "react";
 import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
+import { useDecisions } from "@/hooks/useDecisions";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
+import InlineError from "./InlineError";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -11,7 +13,48 @@ interface ScenarioCardProps {
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
-  const { personas, error: personasError } = usePersonas();
+  const { personas, error: personasError, retry: retryPersonas } = usePersonas();
+  const { decisions, error: decisionsError, retry: retryDecisions } = useDecisions();
+  const [picked, setPicked] = useState<"A" | "B" | null>(null);
+
+  // Find responses for this scenario from the decisions data
+  const scenarioResponses = useMemo(() => {
+    const scenarioData = decisions?.find(d => d.id === scenario.id);
+    return scenarioData?.responses ?? [];
+  }, [decisions, scenario.id]);
+
+  const handlePick = (choice: "A" | "B") => {
+    setPicked(choice);
+    onPick(choice);
+
+    // Update alignment counts using responses from useDecisions
+    const aligned = scenarioResponses
+      .filter((r) => r.choice === choice)
+      .map((r) => r.avatar);
+
+    if (typeof window !== "undefined") {
+      let counts: Record<string, number> = {};
+      try {
+        counts = JSON.parse(
+          window.localStorage.getItem("alignmentCounts") ?? "{}"
+        );
+      } catch {
+        counts = {};
+      }
+      aligned.forEach((name) => {
+        counts[name] = (counts[name] || 0) + 1;
+      });
+      window.localStorage.setItem("alignmentCounts", JSON.stringify(counts));
+    }
+  };
+
+  const alignedPersonas = useMemo(() => {
+    if (!picked) return [];
+    const alignedNames = scenarioResponses
+      .filter((r) => r.choice === picked)
+      .map((r) => r.avatar);
+    return (personas ?? []).filter((p) => alignedNames.includes(p.name));
+  }, [picked, scenarioResponses, personas]);
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -38,14 +81,12 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         {scenario.theme && (
           <p className="text-sm uppercase tracking-wide text-muted-foreground">{scenario.theme}</p>
         )}
-        {scenario.description && (
-          <p className="text-base text-foreground/90">{scenario.description}</p>
-        )}
       </header>
 
-      {/* Trolley Diagram */}
-      <div className="py-4">
-        <TrolleyDiagram 
+      <div className="p-6 rounded-lg border bg-card">
+        <p className="text-lg mb-6 leading-relaxed">{scenario.description}</p>
+        
+        <TrolleyDiagram
           trackALabel="A" 
           trackBLabel="B"
           className="animate-fade-in"
@@ -55,7 +96,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
+          onClick={() => handlePick("A")}
           aria-label="Choose Track A"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
@@ -63,7 +104,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         </button>
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
+          onClick={() => handlePick("B")}
           aria-label="Choose Track B"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
@@ -114,6 +155,32 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         personasError && (
           <p className="pt-2 text-sm text-destructive">{personasError}</p>
         )
+      )}
+
+      {picked && alignedPersonas.length > 0 && (
+        <div className="mt-6 p-4 rounded-lg bg-[hsl(var(--alignment-bg))] border border-border/50">
+          <h3 className="text-sm font-semibold mb-3 text-foreground/90">
+            You're aligned with:
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {alignedPersonas.map((persona) => (
+              <div key={persona.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20">
+                <NPCAvatar name={persona.name} size="sm" />
+                <span className="text-sm font-medium text-primary">{persona.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {(personasError || decisionsError) && (
+        <InlineError 
+          message={personasError || decisionsError || "An error occurred"}
+          onRetry={() => {
+            if (personasError && retryPersonas) retryPersonas();
+            if (decisionsError && retryDecisions) retryDecisions();
+          }}
+        />
       )}
     </article>
   );

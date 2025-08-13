@@ -1,41 +1,31 @@
 import { useCallback, useEffect, useState } from "react";
-
-export interface Persona {
-  name: string;
-  era_origin?: string;
-  occupation_or_role?: string;
-  worldview_values?: string;
-  tone_style?: string;
-  example_lines?: string[];
-}
+import { PersonaSchema, type Persona } from "@/types";
+import { fetchWithRetry } from "@/utils/fetchWithRetry";
 
 export function usePersonas() {
   const [personas, setPersonas] = useState<Persona[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const load = useCallback(() => {
-    const url = new URL("../../data/personas.json", import.meta.url);
-    fetch(url)
-      .then((r) => r.json())
-      .then((json: unknown) => {
-        if (
-          Array.isArray(json) &&
-          json.every(
-            (item) =>
-              typeof item === "object" &&
-              item !== null &&
-              typeof (item as { name?: unknown }).name === "string"
-          )
-        ) {
-          setPersonas(json as Persona[]);
-        } else {
-          setPersonas([]);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to load personas", err);
+  const load = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const url = new URL("../../data/personas.json", import.meta.url);
+      const json = await fetchWithRetry(url.href);
+      const parsed = PersonaSchema.array().safeParse(json);
+      if (parsed.success) {
+        setPersonas(parsed.data);
+      } else {
+        console.warn("Persona schema validation failed", parsed.error);
         setError("Failed to load personas");
-      });
+      }
+    } catch (err) {
+      console.error("Failed to load personas", err);
+      setError("Failed to load personas");
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -48,5 +38,5 @@ export function usePersonas() {
     load();
   }, [load]);
 
-  return { personas, error, loading: personas === null && !error, reload };
+  return { personas, error, loading: personas === null && !error, reload, retry: reload };
 }
