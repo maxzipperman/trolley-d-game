@@ -10,36 +10,48 @@ export function useScenarios() {
   const [error, setError] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const loadStatic = useCallback(() => {
+  const loadStatic = useCallback(async () => {
     setError(null);
     setStaticScenarios(null);
-    const url = "/data/scenarios.json"; // Use simple string path instead of URL object
-    fetch(url)
-      .then(r => r.json())
-      .then((json: unknown) => {
-        if (Array.isArray(json)) {
-          const valid: Scenario[] = [];
-          for (const raw of json) {
-            if (typeof raw !== "object" || raw === null) continue;
-            const obj = raw as Record<string, unknown>;
-            const id = typeof obj.id === "string" ? obj.id : undefined;
-            const tags = Array.isArray(obj.tags)
-              ? toCanonicalTags(obj.tags as string[])
-              : undefined;
-            const withCanonical = { ...obj, tags };
-            const parsed = scenarioSchema.safeParse(withCanonical);
-            if (parsed.success) {
-              valid.push(parsed.data);
-            } else if (import.meta.env.DEV && id) {
-              console.error(`Invalid scenario ${id}: ${parsed.error.message}`);
-            }
+    
+    try {
+      console.log('Attempting to load scenarios...');
+      const response = await fetch("/data/scenarios.json");
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      const json = await response.json();
+      console.log('Raw scenarios data:', json);
+      
+      if (Array.isArray(json)) {
+        const valid: Scenario[] = [];
+        for (const raw of json) {
+          if (typeof raw !== "object" || raw === null) continue;
+          const obj = raw as Record<string, unknown>;
+          const id = typeof obj.id === "string" ? obj.id : undefined;
+          const tags = Array.isArray(obj.tags)
+            ? toCanonicalTags(obj.tags as string[])
+            : undefined;
+          const withCanonical = { ...obj, tags };
+          const parsed = scenarioSchema.safeParse(withCanonical);
+          if (parsed.success) {
+            valid.push(parsed.data);
+          } else if (import.meta.env.DEV && id) {
+            console.error(`Invalid scenario ${id}:`, parsed.error.message);
           }
-          setStaticScenarios(valid);
-        } else {
-          setStaticScenarios([]);
         }
-      })
-      .catch(() => setError("Failed to load scenarios"));
+        console.log('Valid scenarios loaded:', valid.length);
+        setStaticScenarios(valid);
+      } else {
+        console.warn('Scenarios data is not an array:', json);
+        setStaticScenarios([]);
+      }
+    } catch (err) {
+      console.error('Failed to load scenarios:', err);
+      setError(`Failed to load scenarios: ${err instanceof Error ? err.message : String(err)}`);
+    }
   }, []);
 
   const loadGenerated = useCallback(() => {

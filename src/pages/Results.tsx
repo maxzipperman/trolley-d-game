@@ -2,6 +2,7 @@
 import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useScenarios } from "@/hooks/useScenarios";
+import InlineError from "@/components/InlineError";
 
 type UserChoice = {
   choice?: "A" | "B";
@@ -9,7 +10,7 @@ type UserChoice = {
 };
 
 const Results: React.FC = () => {
-  const { scenarios, loading, error } = useScenarios();
+  const { scenarios, loading, error, retry } = useScenarios();
 
   const userChoices: Record<string, UserChoice> = useMemo(() => {
     try {
@@ -31,7 +32,7 @@ const Results: React.FC = () => {
   if (error) {
     return (
       <div className="max-w-3xl mx-auto p-6">
-        <p className="text-destructive">Failed to load scenarios.</p>
+        <InlineError message={error} onRetry={retry} />
       </div>
     );
   }
@@ -45,7 +46,7 @@ const Results: React.FC = () => {
 
       {answered.length === 0 ? (
         <p className="text-muted-foreground">
-          You haven’t answered any scenarios yet.{" "}
+          You haven't answered any scenarios yet.{" "}
           <Link to="/play" className="underline underline-offset-4">Start playing</Link>.
         </p>
       ) : (
