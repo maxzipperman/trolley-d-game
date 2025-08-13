@@ -2,8 +2,10 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useScenarios } from "@/hooks/useScenarios";
 import { useAnswers } from "@/hooks/useAnswers";
-import { ScenarioCard } from "@/components/ScenarioCard";
+import ScenarioCard from "@/components/ScenarioCard";
 import { Progress } from "@/components/ui/progress";
+import { toast } from "@/components/ui/use-toast";
+import { submitChoice, fetchScenarioStats } from "@/lib/api";
 import type { Choice } from "@/types";
 
 const Play = () => {
@@ -96,7 +98,22 @@ const Play = () => {
   const pick = (choice: Choice) => {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
-    
+
+    // Send choice to backend and show aggregated stats. Errors are ignored so
+    // gameplay isn't blocked if the API is unreachable.
+    submitChoice(s.id, choice).catch(() => {});
+    if (choice !== "skip") {
+      fetchScenarioStats(s.id)
+        .then(stats => {
+          toast({
+            title: "Community choices",
+            description: `A ${Math.round(stats.percentA)}% · B ${Math.round(stats.percentB)}%`,
+            duration: 4000,
+          });
+        })
+        .catch(() => {});
+    }
+
     // Auto-advance to next scenario or results
     if (index < total - 1) {
       const nextId = scenarios[index + 1].id;
@@ -109,7 +126,10 @@ const Play = () => {
   const skip = () => {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: "skip" });
-    
+
+    // Still report skips so backend totals remain accurate.
+    submitChoice(s.id, "skip").catch(() => {});
+
     // Auto-advance to next scenario or results
     if (index < total - 1) {
       const nextId = scenarios[index + 1].id;
