@@ -24,7 +24,7 @@ export function usePersonas() {
             (item) =>
               typeof item === "object" &&
               item !== null &&
-              typeof (item as any).name === "string"
+              typeof (item as { name?: unknown }).name === "string"
           )
         ) {
           setPersonas(json as Persona[]);

@@ -6,6 +6,8 @@ export interface Scenario {
   track_b: string;
   theme?: string;
   tags?: string[];
+  image?: string;
+  imageAlt?: string;
   responses?: Array<{
     avatar: string;
     choice: "A" | "B";

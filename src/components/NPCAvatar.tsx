@@ -2,11 +2,18 @@ import React from "react";
 
 interface NPCAvatarProps {
   name: string;
+  /** Accessible description for the avatar */
+  alt?: string;
   size?: "sm" | "md" | "lg";
   className?: string;
 }
 
-const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = "" }) => {
+const NPCAvatar: React.FC<NPCAvatarProps> = ({
+  name,
+  alt = `${name} avatar`,
+  size = "md",
+  className = "",
+}) => {
   const sizeClasses = {
     sm: "h-6 w-6 text-xs",
     md: "h-8 w-8 text-sm",
@@ -20,7 +27,8 @@ const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = ""
     // Special cases for notable NPCs
     if (cleanName.includes("gary") || cleanName.includes("paperclip")) {
       return (
-        <svg viewBox="0 0 32 32" className="w-full h-full">
+        <svg viewBox="0 0 32 32" className="w-full h-full" role="img" aria-label={alt}>
+          <title>{alt}</title>
           {/* Robot head */}
           <rect x="8" y="6" width="16" height="12" rx="2" fill="hsl(var(--muted-foreground))" />
           {/* Eyes */}
@@ -35,7 +43,8 @@ const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = ""
     
     if (cleanName.includes("cat")) {
       return (
-        <svg viewBox="0 0 32 32" className="w-full h-full">
+        <svg viewBox="0 0 32 32" className="w-full h-full" role="img" aria-label={alt}>
+          <title>{alt}</title>
           {/* Cat head */}
           <circle cx="16" cy="18" r="8" fill="hsl(var(--muted-foreground))" />
           {/* Ears */}
@@ -52,7 +61,8 @@ const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = ""
     
     if (cleanName.includes("disco") || cleanName.includes("socrates")) {
       return (
-        <svg viewBox="0 0 32 32" className="w-full h-full">
+        <svg viewBox="0 0 32 32" className="w-full h-full" role="img" aria-label={alt}>
+          <title>{alt}</title>
           {/* Head with beard */}
           <circle cx="16" cy="16" r="10" fill="hsl(var(--muted-foreground))" />
           {/* Beard */}
@@ -68,7 +78,8 @@ const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = ""
     
     if (cleanName.includes("concept") || cleanName.includes("tuesday")) {
       return (
-        <svg viewBox="0 0 32 32" className="w-full h-full">
+        <svg viewBox="0 0 32 32" className="w-full h-full" role="img" aria-label={alt}>
+          <title>{alt}</title>
           {/* Abstract concept */}
           <circle cx="16" cy="16" r="6" fill="hsl(var(--muted-foreground))" opacity="0.3" />
           <circle cx="16" cy="16" r="4" fill="hsl(var(--accent))" opacity="0.5" />
@@ -86,7 +97,11 @@ const NPCAvatar: React.FC<NPCAvatarProps> = ({ name, size = "md", className = ""
   };
 
   return (
-    <div className={`${sizeClasses[size]} rounded-full overflow-hidden flex-shrink-0 ${className}`}>
+    <div
+      className={`${sizeClasses[size]} rounded-full overflow-hidden flex-shrink-0 ${className}`}
+      role="img"
+      aria-label={alt}
+    >
       {generateAvatar(name)}
     </div>
   );

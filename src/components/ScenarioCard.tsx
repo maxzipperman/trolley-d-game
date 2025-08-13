@@ -41,6 +41,13 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         {scenario.description && (
           <p className="text-base text-foreground/90">{scenario.description}</p>
         )}
+        {scenario.image && (
+          <img
+            src={scenario.image}
+            alt={scenario.imageAlt || scenario.title}
+            className="w-full rounded-md"
+          />
+        )}
       </header>
 
       {/* Trolley Diagram */}
@@ -84,8 +91,9 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             <div className="mt-4 space-y-3 animate-fade-in">
               {samples.map((r, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
+                  <NPCAvatar
+                    name={r.avatar ?? "NPC"}
+                    alt={`${r.avatar ?? "NPC"} avatar`}
                     size="md"
                     className="mt-0.5"
                   />
@@ -93,16 +101,24 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
                       <span className="text-xs text-muted-foreground">•</span>
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        r.choice === "A" 
-                          ? "bg-primary/10 text-primary" 
-                          : "bg-secondary/50 text-secondary-foreground"
-                      }`}>
+                      <span
+                        className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                          r.choice === "A"
+                            ? "bg-primary/10 text-primary"
+                            : "bg-secondary/50 text-secondary-foreground"
+                        }`}
+                        aria-live="polite"
+                      >
                         Track {r.choice ?? "?"}
                       </span>
                     </div>
                     {r.rationale && (
-                      <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
+                      <p
+                        className="text-sm text-muted-foreground leading-relaxed"
+                        aria-live="polite"
+                      >
+                        {r.rationale}
+                      </p>
                     )}
                   </div>
                 </div>

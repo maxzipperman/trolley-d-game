@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
@@ -15,6 +15,7 @@ const Play = () => {
   const { scenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
+  const [feedback, setFeedback] = useState("");
 
   const index = useMemo(() => {
     if (!scenarios) return 0;
@@ -73,6 +74,24 @@ const Play = () => {
 
   function pick(choice: "A" | "B") {
     if (!s) return;
+    // Haptic and audio feedback
+    try {
+      window.navigator?.vibrate?.(100);
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new AudioCtx();
+      const osc = ctx.createOscillator();
+      osc.type = "sine";
+      osc.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.1);
+    } catch (e) {
+      // ignore audio errors
+    }
+    const msg = choice === "A" ? "Lever pulled down" : "Lever left in place";
+    setFeedback(msg);
+    setTimeout(() => setFeedback(""), 1000);
     setAnswers({ ...answers, [s.id]: choice });
     advance();
   }
@@ -108,6 +127,10 @@ const Play = () => {
           </div>
         </div>
       </section>
+
+      <div aria-live="polite" className="text-sm text-center text-muted-foreground min-h-[1.5rem]">
+        {feedback}
+      </div>
 
       {s && (
         <ScenarioCard scenario={s} onPick={pick} />
