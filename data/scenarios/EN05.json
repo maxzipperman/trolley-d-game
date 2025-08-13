@@ -1,0 +1,13 @@
+{
+  "id": "EN05",
+  "title": "The Time Traveler's Dilemma",
+  "description": "You can prevent a natural disaster that kills 1000 people, but doing so will erase the existence of 100 people who were born because of that tragedy.",
+  "track_a": "Prevent disaster (save 1000, erase 100)",
+  "track_b": "Allow disaster (1000 die, 100 exist)",
+  "theme": "Temporal Ethics and Existence",
+  "tags": [
+    "time_travel",
+    "existence",
+    "large_numbers"
+  ]
+}

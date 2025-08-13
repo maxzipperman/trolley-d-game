@@ -6,7 +6,7 @@ export function useScenarios() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const url = new URL("../../data/scenarios.json", import.meta.url);
+    const url = new URL("../../data/answers.json", import.meta.url);
     fetch(url)
       .then(r => r.json())
       .then((json: unknown) => {
