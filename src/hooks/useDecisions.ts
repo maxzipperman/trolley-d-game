@@ -1,7 +1,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { fetchWithRetry } from "@/utils/fetchWithRetry";
-import { decisionSchema, type Decision } from "@/utils/decisions.schema";
+import { decisionSchema } from "@/utils/decisions.schema";
+import type { Decision } from "@/types";
 
 export function useDecisions() {
   const [decisions, setDecisions] = useState<Decision[] | null>(null);
