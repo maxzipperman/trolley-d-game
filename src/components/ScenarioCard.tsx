@@ -100,6 +100,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
           onClick={() => handlePick("A")}
           aria-label="Choose Track A"
+          aria-keyshortcuts="a"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
@@ -108,6 +109,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
           onClick={() => handlePick("B")}
           aria-label="Choose Track B"
+          aria-keyshortcuts="b"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>

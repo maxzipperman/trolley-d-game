@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface TrolleyDiagramProps {
@@ -12,16 +12,22 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
   trackBLabel = "Track B",
   className = ""
 }) => {
+  const titleId = useId();
+  const descId = useId();
   const reduced = useReducedMotion();
 
   return (
     <div className={`w-full max-w-md mx-auto ${className}`}>
-      <svg 
-        viewBox="0 0 300 200" 
+      <svg
+        viewBox="0 0 300 200"
         className="w-full h-auto"
         role="img"
-        aria-label="Trolley track diagram showing choice between two paths"
+        aria-labelledby={`${titleId} ${descId}`}
       >
+        <title id={titleId}>Trolley track diagram</title>
+        <desc id={descId}>
+          Trolley track diagram showing choice between two paths
+        </desc>
         {/* Track base */}
         <path
           d="M20 100 L120 100"
@@ -47,37 +53,46 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
         />
         
         {/* Trolley */}
-        <g className={reduced ? undefined : "animate-trolley-move"}>
+        <g>
           <rect
             x="40"
-            y="88"
-            width="32"
-            height="24"
+            y="90"
+            width="40"
+            height="20"
             rx="4"
-            fill="hsl(var(--trolley-body))"
+            fill="hsl(var(--trolley-primary))"
+            stroke="hsl(var(--trolley-stroke))"
+            strokeWidth="1"
           />
-          {/* Wheels */}
-          <circle cx="48" cy="116" r="4" fill="hsl(var(--trolley-track))" />
-          <circle cx="64" cy="116" r="4" fill="hsl(var(--trolley-track))" />
+          
+          {/* Front window */}
+          <rect
+            x="68"
+            y="94"
+            width="8"
+            height="8"
+            rx="1"
+            fill="hsl(var(--trolley-window))"
+          />
+          
+          {/* Side windows */}
+          <rect
+            x="48"
+            y="94"
+            width="6"
+            height="6"
+            rx="1"
+            fill="hsl(var(--trolley-window))"
+          />
+          <rect
+            x="58"
+            y="94"
+            width="6"
+            height="6"
+            rx="1"
+            fill="hsl(var(--trolley-window))"
+          />
         </g>
-        
-        {/* Track labels */}
-        <text
-          x="200"
-          y="50"
-          className="text-xs fill-muted-foreground"
-          textAnchor="middle"
-        >
-          {trackALabel}
-        </text>
-        <text
-          x="200"
-          y="155"
-          className="text-xs fill-muted-foreground"
-          textAnchor="middle"
-        >
-          {trackBLabel}
-        </text>
       </svg>
     </div>
   );
