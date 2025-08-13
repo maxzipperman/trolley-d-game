@@ -4,16 +4,19 @@ import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { useScores } from "@/hooks/useScores";
 import type { Scenario } from "@/types";
-import type { Choice } from "@/utils/scoring";
+import { Choice, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const PLAYER_NAME = "You";
 
 const Play = () => {
   useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
   const { scenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [scores, setScores] = useScores();
   const [params] = useSearchParams();
 
   const index = useMemo(() => {
@@ -73,13 +76,19 @@ const Play = () => {
 
   function pick(choice: "A" | "B") {
     if (!s) return;
-    setAnswers({ ...answers, [s.id]: choice });
+    const updated = { ...answers, [s.id]: choice };
+    setAnswers(updated);
+    const { scoreA, scoreB } = computeBaseCounts(updated);
+    setScores({ ...scores, [PLAYER_NAME]: { scoreA, scoreB } });
     advance();
   }
 
   function skip() {
     if (!s) return;
-    setAnswers({ ...answers, [s.id]: "skip" });
+    const updated = { ...answers, [s.id]: "skip" };
+    setAnswers(updated);
+    const { scoreA, scoreB } = computeBaseCounts(updated);
+    setScores({ ...scores, [PLAYER_NAME]: { scoreA, scoreB } });
     advance();
   }
 

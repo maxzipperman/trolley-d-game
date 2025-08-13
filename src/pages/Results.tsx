@@ -1,20 +1,39 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
+import Scorecard from "@/components/Scorecard";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { useScores } from "@/hooks/useScores";
+import { useFriends } from "@/hooks/useFriends";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
+const PLAYER_NAME = "You";
 
 const Results = () => {
   useEffect(() => { document.title = "Trolley’d · Results"; }, []);
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [scores, setScores] = useScores();
+  const { importFriend } = useFriends();
+  const competitorNames = Object.keys(scores);
+  const [active, setActive] = useState(competitorNames[0] ?? "");
+  useEffect(() => {
+    if (competitorNames.length && !competitorNames.includes(active)) {
+      setActive(competitorNames[0]);
+    }
+  }, [competitorNames, active]);
+  const [friendInput, setFriendInput] = useState("");
+  useEffect(() => {
+    if (!scores[PLAYER_NAME] && Object.keys(answers).length) {
+      const { scoreA, scoreB } = computeBaseCounts(answers);
+      setScores({ ...scores, [PLAYER_NAME]: { scoreA, scoreB } });
+    }
+  }, [scores, answers, setScores]);
 
-  const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
 
   if (!scenarios) return (
@@ -37,31 +56,52 @@ const Results = () => {
 
       <section className="grid gap-6 lg:grid-cols-2">
         <article className="p-6 rounded-lg border border-border bg-card animate-scale-in">
-          <h2 className="font-semibold mb-2">Your Choices</h2>
-          <p className="text-sm text-muted-foreground mb-4">Track A vs Track B selections</p>
-          <div className="grid grid-cols-2 gap-4 text-center">
-            <div className="p-4 rounded-lg bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20">
-              <div className="text-xs text-muted-foreground uppercase tracking-wide">Track A</div>
-              <div className="text-3xl font-bold text-primary mt-1">{scoreA}</div>
-            </div>
-            <div className="p-4 rounded-lg bg-gradient-to-br from-secondary/5 to-secondary/10 border border-secondary/20">
-              <div className="text-xs text-muted-foreground uppercase tracking-wide">Track B</div>
-              <div className="text-3xl font-bold text-secondary-foreground mt-1">{scoreB}</div>
-            </div>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold">Scores</h2>
+            {competitorNames.length > 1 && (
+              <select
+                value={active}
+                onChange={(e) => setActive(e.target.value)}
+                className="border rounded px-2 py-1 text-sm"
+              >
+                {competitorNames.map((name) => (
+                  <option key={name} value={name}>{name}</option>
+                ))}
+              </select>
+            )}
           </div>
+          {active && scores[active] && (
+            <Scorecard
+              name={active}
+              scoreA={scores[active].scoreA}
+              scoreB={scores[active].scoreB}
+            />
+          )}
           <div className="mt-6 flex gap-3">
             <button
               onClick={() => navigate("/play")}
               className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
             >Play Again</button>
           </div>
+          <div className="mt-4">
+            <textarea
+              value={friendInput}
+              onChange={(e) => setFriendInput(e.target.value)}
+              placeholder="Paste friend JSON"
+              className="w-full p-2 border border-border rounded mb-2 text-sm"
+            />
+            <button
+              onClick={() => { importFriend(friendInput); setFriendInput(""); }}
+              className="px-4 py-2 rounded-md border border-border hover:bg-accent text-sm"
+            >Import Friend</button>
+          </div>
         </article>
 
         <article className="p-6 rounded-lg border border-border bg-card">
           <h2 className="font-semibold mb-4">Your Philosophical Position</h2>
           <div className="space-y-4">
-            <AxisVisualization 
-              label="Order ↔ Chaos" 
+            <AxisVisualization
+              label="Order ↔ Chaos"
               value={axes.orderChaos}
               leftLabel="Order" 
               rightLabel="Chaos"
