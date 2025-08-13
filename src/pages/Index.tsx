@@ -30,6 +30,14 @@ const Index = () => {
         >
           Begin Your Journey
         </button>
+        <div className="mt-4">
+          <button
+            onClick={() => navigate("/avatar")}
+            className="text-sm text-muted-foreground underline"
+          >
+            Build an Avatar
+          </button>
+        </div>
       </div>
     </main>
   );
