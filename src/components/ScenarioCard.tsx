@@ -12,6 +12,39 @@ interface ScenarioCardProps {
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
   const { personas } = usePersonas();
+  const [picked, setPicked] = useState<"A" | "B" | null>(null);
+
+  const handlePick = (choice: "A" | "B") => {
+    setPicked(choice);
+    onPick(choice);
+
+    const aligned = (scenario.responses ?? [])
+      .filter((r) => r.choice === choice)
+      .map((r) => r.avatar);
+
+    if (typeof window !== "undefined") {
+      let counts: Record<string, number> = {};
+      try {
+        counts = JSON.parse(
+          window.localStorage.getItem("alignmentCounts") ?? "{}"
+        );
+      } catch {
+        counts = {};
+      }
+      aligned.forEach((name) => {
+        counts[name] = (counts[name] || 0) + 1;
+      });
+      window.localStorage.setItem("alignmentCounts", JSON.stringify(counts));
+    }
+  };
+
+  const alignedPersonas = useMemo(() => {
+    if (!picked) return [];
+    const alignedNames = (scenario.responses ?? [])
+      .filter((r) => r.choice === picked)
+      .map((r) => r.avatar);
+    return (personas ?? []).filter((p) => alignedNames.includes(p.name));
+  }, [picked, scenario, personas]);
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -55,7 +88,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
+          onClick={() => handlePick("A")}
           aria-label="Choose Track A"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
@@ -63,13 +96,27 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         </button>
         <button
           className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
+          onClick={() => handlePick("B")}
           aria-label="Choose Track B"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
         </button>
       </div>
+
+      {picked && alignedPersonas.length > 0 && (
+        <div className="mt-4">
+          <h3 className="text-sm font-medium mb-2">Philosophers aligned with you</h3>
+          <div className="flex flex-wrap gap-4">
+            {alignedPersonas.map((p) => (
+              <div key={p.name} className="flex items-center gap-2">
+                <NPCAvatar name={p.name} size="sm" />
+                <span className="text-sm">{p.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {samples.length > 0 && (
         <div className="pt-2">
