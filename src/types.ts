@@ -1,3 +1,5 @@
+import type { Tag } from "@/utils/tags.schema";
+
 export interface Scenario {
   id: string;
   title: string;
@@ -5,7 +7,7 @@ export interface Scenario {
   track_a: string;
   track_b: string;
   theme?: string;
-  tags?: string[];
+  tags?: Tag[];
   responses?: Array<{
     avatar: string;
     choice: "A" | "B";

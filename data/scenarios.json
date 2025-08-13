@@ -6,7 +6,7 @@
     "track_a": "Pull the lever (save 5, kill 1)",
     "track_b": "Do nothing (kill 5, save 1)",
     "theme": "Utilitarian vs. Deontological Ethics",
-    "tags": ["classic", "numbers", "action_vs_inaction"],
+    "tags": [],
     "responses": [
       {
         "avatar": "Socrates",
@@ -27,7 +27,7 @@
     "track_a": "Save the original hull (3 crew)",
     "track_b": "Save the engine room (5 passengers)",
     "theme": "Identity vs. Utility",
-    "tags": ["identity", "numbers", "preservation"],
+    "tags": ["identity"],
     "responses": [
       {
         "avatar": "Aristotle",
@@ -48,7 +48,7 @@
     "track_a": "Stay course (hit elderly legal crosser)",
     "track_b": "Swerve (hit young jaywalker)",
     "theme": "Legal vs. Utilitarian Calculation",
-    "tags": ["modern", "age", "law", "technology"],
+    "tags": ["law", "technology", "age"],
     "responses": [
       {
         "avatar": "Rawls",
@@ -69,7 +69,7 @@
     "track_a": "Harvest organs (save 5, kill 1)",
     "track_b": "Let nature take its course (5 die, 1 lives)",
     "theme": "Active vs. Passive Harm",
-    "tags": ["medical", "active_harm", "numbers"],
+    "tags": ["medical"],
     "responses": [
       {
         "avatar": "Hippocrates",
@@ -90,7 +90,7 @@
     "track_a": "Prevent disaster (save 1000, erase 100)",
     "track_b": "Allow disaster (1000 die, 100 exist)",
     "theme": "Temporal Ethics and Existence",
-    "tags": ["time_travel", "existence", "large_numbers"],
+    "tags": ["time_travel", "existence"],
     "responses": [
       {
         "avatar": "Parfit",
