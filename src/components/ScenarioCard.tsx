@@ -103,7 +103,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
 
       {!choice ? (
         <div className="space-y-6">
-          <Lever onChoice={handlePick} />
+          <Lever onChoice={handlePick} scenario={scenario} />
         </div>
       ) : (
         <>

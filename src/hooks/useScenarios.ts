@@ -7,6 +7,7 @@ import { toCanonicalTags } from "@/utils/tags";
 export function useScenarios() {
   const [scenarios, setScenarios] = useState<Scenario[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [customScenarios, setCustomScenarios] = useState<Scenario[]>([]);
 
   const load = () => {
     setError(null);
@@ -42,10 +43,33 @@ export function useScenarios() {
 
   useEffect(() => {
     load();
+    
+    // Load custom scenarios from localStorage
+    const loadCustomScenarios = () => {
+      try {
+        const custom = JSON.parse(localStorage.getItem('customScenarios') || '[]');
+        setCustomScenarios(custom);
+      } catch {
+        setCustomScenarios([]);
+      }
+    };
+    
+    loadCustomScenarios();
+    
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      loadCustomScenarios();
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
+  // Combine static and custom scenarios
+  const allScenarios = scenarios ? [...scenarios, ...customScenarios] : null;
+
   return {
-    scenarios,
+    scenarios: allScenarios,
     error,
     loading: scenarios === null && !error,
     retry: load,
