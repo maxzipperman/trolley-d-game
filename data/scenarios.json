@@ -6,7 +6,9 @@
     "track_a": "Pull the lever (save 5, kill 1)",
     "track_b": "Do nothing (kill 5, save 1)",
     "theme": "Utilitarian vs. Deontological Ethics",
-    "tags": ["logistics"],
+    "tags": [
+      "logistics"
+    ],
     "responses": [
       {
         "avatar": "Bentham",
@@ -27,7 +29,10 @@
     "track_a": "Reveal the simulated nature of reality",
     "track_b": "Keep the discovery secret",
     "theme": "Truth vs Existential Dread",
-    "tags": ["reality", "existential"],
+    "tags": [
+      "reality",
+      "existential"
+    ],
     "responses": [
       {
         "avatar": "Descartes",
@@ -43,7 +48,10 @@
     "track_a": "Obey the bureaucracy and file the preliminary permit",
     "track_b": "Perform without any permits",
     "theme": "Procedure vs Spontaneity",
-    "tags": ["bureaucracy", "absurd"],
+    "tags": [
+      "bureaucracy",
+      "absurd"
+    ],
     "responses": [
       {
         "avatar": "Kafka",
@@ -59,7 +67,11 @@
     "track_a": "Adopt the new standards despite the paradox",
     "track_b": "Keep the old system and let librarians assign meaning freely",
     "theme": "Order vs Interpretive Freedom",
-    "tags": ["standards", "paradox", "meaning"],
+    "tags": [
+      "standards",
+      "paradox",
+      "meaning"
+    ],
     "responses": [
       {
         "avatar": "Foucault",
@@ -75,12 +87,116 @@
     "track_a": "Transport the stowaway and leave the parts",
     "track_b": "Deliver the parts and expel the stowaway",
     "theme": "Logistics vs Personal Identity",
-    "tags": ["logistics", "space", "identity"],
+    "tags": [
+      "logistics",
+      "space",
+      "identity"
+    ],
     "responses": [
       {
         "avatar": "NASA Official",
         "choice": "B",
         "rationale": "Mission logistics must take precedence over an unverifiable claim."
+      }
+    ]
+  },
+  {
+    "id": "EN02",
+    "title": "The Theseus Lifeboat",
+    "description": "A restored historic ship is sinking. A lifeboat can either rescue its five long-time crew members or ten visiting tourists.",
+    "track_a": "Rescue the seasoned crew who embody the ship's identity",
+    "track_b": "Rescue the ten tourists instead",
+    "theme": "Identity vs Utilitarian Numbers",
+    "tags": [
+      "identity",
+      "ship",
+      "utilitarianism"
+    ],
+    "responses": [
+      {
+        "avatar": "Aristotle",
+        "choice": "A",
+        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
+      },
+      {
+        "avatar": "Mill",
+        "choice": "B",
+        "rationale": "The greatest happiness principle demands we save the greater number."
+      }
+    ]
+  },
+  {
+    "id": "EN03",
+    "title": "The Queue Jumper",
+    "description": "During an evacuation there is only one seat left on the rescue helicopter. An elderly citizen who obeyed orders waits in line when a young athlete cuts ahead claiming more years to live.",
+    "track_a": "Honor the queue and save the elderly rule-follower",
+    "track_b": "Save the young athlete for their greater potential",
+    "theme": "Justice vs Maximizing Life Years",
+    "tags": [
+      "justice",
+      "age",
+      "rescue"
+    ],
+    "responses": [
+      {
+        "avatar": "Rawls",
+        "choice": "A",
+        "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
+      },
+      {
+        "avatar": "Singer",
+        "choice": "B",
+        "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
+      }
+    ]
+  },
+  {
+    "id": "EN04",
+    "title": "The Transplant Choice",
+    "description": "Five patients need organ transplants, and a healthy traveler is the only matching donor for all of them.",
+    "track_a": "Sacrifice the healthy traveler to save the five patients",
+    "track_b": "Do nothing and let the five patients die",
+    "theme": "Utilitarian Sacrifice vs Medical Ethics",
+    "tags": [
+      "medical",
+      "sacrifice",
+      "ethics"
+    ],
+    "responses": [
+      {
+        "avatar": "Bentham",
+        "choice": "A",
+        "rationale": "The hedonic calculus is clear: five lives produce more happiness than one."
+      },
+      {
+        "avatar": "Hippocrates",
+        "choice": "B",
+        "rationale": "First, do no harm. A physician must never actively harm a healthy patient."
+      }
+    ]
+  },
+  {
+    "id": "EN05",
+    "title": "The Plague Cure Trial",
+    "description": "A city can test a risky cure on a small group without their consent to stop a plague threatening thousands, or respect their rights and let the plague continue.",
+    "track_a": "Test the cure on the unconsenting few to stop the plague",
+    "track_b": "Respect their rights even if the plague spreads",
+    "theme": "Present Relief vs Individual Rights",
+    "tags": [
+      "rights",
+      "health",
+      "future"
+    ],
+    "responses": [
+      {
+        "avatar": "Parfit",
+        "choice": "A",
+        "rationale": "Non-identity problems aside, preventing suffering for existing people takes priority."
+      },
+      {
+        "avatar": "Nozick",
+        "choice": "B",
+        "rationale": "We cannot violate the rights of those who exist, even to prevent future harms."
       }
     ]
   }
