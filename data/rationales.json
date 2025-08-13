@@ -1,50 +1,45 @@
 [
-  {
-    "id": "utilitarian",
-    "text": "Because I'm optimizing for the greater good... obviously.",
-    "nihilism": 1,
-    "category": "utilitarian"
-  },
-  {
-    "id": "random",
-    "text": "Meh, they're all doomed anyway. Might as well pick randomly.",
-    "nihilism": 3,
-    "category": "nihilistic"
-  },
-  {
-    "id": "heat_death",
-    "text": "Nothing matters in the heat death of the universe, but this felt right.",
-    "nihilism": 4,
-    "category": "cosmic"
-  },
-  {
-    "id": "free_will",
-    "text": "I flipped a mental coin. Free will is an illusion anyway.",
-    "nihilism": 5,
-    "category": "deterministic"
-  },
-  {
-    "id": "trolley_wisdom",
-    "text": "The trolley knows what it wants. Who am I to interfere?",
-    "nihilism": 3,
-    "category": "absurdist"
-  },
-  {
-    "id": "moral_uncertainty",
-    "text": "Every choice is wrong, so I picked the most aesthetically pleasing option.",
-    "nihilism": 4,
-    "category": "aesthetic"
-  },
-  {
-    "id": "butterfly_effect",
-    "text": "This will probably cause a butterfly effect that destroys reality. Cool.",
-    "nihilism": 5,
-    "category": "chaos"
-  },
-  {
-    "id": "empathy",
-    "text": "I tried to minimize suffering, though we're all suffering anyway.",
-    "nihilism": 2,
-    "category": "empathetic"
-  }
+  { "id": "sar1", "tone": "sarcastic", "nihilism": 2, "text": "Sure, let's trust the paperwork. What could possibly go wrong?", "tags": ["bureaucracy"] },
+  { "id": "sar2", "tone": "sarcastic", "nihilism": 3, "text": "Standards are there so we can ignore them creatively.", "tags": ["standards"] },
+  { "id": "sar3", "tone": "sarcastic", "nihilism": 1, "text": "Logistics? I tossed a dart at a map.", "tags": ["logistics", "workers_rights"] },
+  { "id": "sar4", "tone": "sarcastic", "nihilism": 4, "text": "If it's absurd, it's probably the responsible choice.", "tags": ["absurd"] },
+  { "id": "sar5", "tone": "sarcastic", "nihilism": 5, "text": "Paradox solved: I flipped a coin and it landed on its edge.", "tags": ["paradox"] },
+  { "id": "sar6", "tone": "sarcastic", "nihilism": 2, "text": "Infinity called; it wants its chaos back.", "tags": ["infinite"] },
+  { "id": "sar7", "tone": "sarcastic", "nihilism": 3, "text": "Reality is overrated, so I picked the prettier illusion.", "tags": ["reality"] },
+  { "id": "sar8", "tone": "sarcastic", "nihilism": 4, "text": "Manufacturing defects build character, right?", "tags": ["manufacturing_defects"] },
+  { "id": "sar9", "tone": "sarcastic", "nihilism": 2, "text": "Quality control? I barely controlled myself.", "tags": ["quality_control"] },
+  { "id": "sar10", "tone": "sarcastic", "nihilism": 1, "text": "Space is vast, my patience is not.", "tags": ["space"] },
+
+  { "id": "dead1", "tone": "deadpan", "nihilism": 1, "text": "Bureaucracy said so. I complied.", "tags": ["bureaucracy"] },
+  { "id": "dead2", "tone": "deadpan", "nihilism": 2, "text": "The standard operating procedure demanded it.", "tags": ["standards", "identity"] },
+  { "id": "dead3", "tone": "deadpan", "nihilism": 3, "text": "Logistics favored this route. End of story.", "tags": ["logistics"] },
+  { "id": "dead4", "tone": "deadpan", "nihilism": 4, "text": "Absurdity was within acceptable limits.", "tags": ["absurd"] },
+  { "id": "dead5", "tone": "deadpan", "nihilism": 5, "text": "Paradox resolved itself while I looked away.", "tags": ["paradox"] },
+  { "id": "dead6", "tone": "deadpan", "nihilism": 2, "text": "Infinity fit neatly into the schedule.", "tags": ["infinite"] },
+  { "id": "dead7", "tone": "deadpan", "nihilism": 3, "text": "Reality checked out; I signed the form.", "tags": ["reality"] },
+  { "id": "dead8", "tone": "deadpan", "nihilism": 4, "text": "The defects were within tolerance levels.", "tags": ["manufacturing_defects"] },
+  { "id": "dead9", "tone": "deadpan", "nihilism": 1, "text": "Quality control shrugged, so did I.", "tags": ["quality_control"] },
+  { "id": "dead10", "tone": "deadpan", "nihilism": 2, "text": "Space allowed it; permission granted.", "tags": ["space"] },
+
+  { "id": "abs1", "tone": "absurdist", "nihilism": 3, "text": "Bureaucracy begged me to color outside the lines.", "tags": ["bureaucracy"] },
+  { "id": "abs2", "tone": "absurdist", "nihilism": 4, "text": "I calibrated standards with a rubber chicken.", "tags": ["standards"] },
+  { "id": "abs3", "tone": "absurdist", "nihilism": 2, "text": "Logistics ran off with the circus, so I followed.", "tags": ["logistics", "meaning"] },
+  { "id": "abs4", "tone": "absurdist", "nihilism": 5, "text": "Absurdity is my compass; north was irrelevant.", "tags": ["absurd"] },
+  { "id": "abs5", "tone": "absurdist", "nihilism": 1, "text": "Paradox whispered sweet nothings in both ears.", "tags": ["paradox"] },
+  { "id": "abs6", "tone": "absurdist", "nihilism": 2, "text": "Infinity ran out, so I improvised.", "tags": ["infinite"] },
+  { "id": "abs7", "tone": "absurdist", "nihilism": 3, "text": "Reality tripped over its own shoelaces.", "tags": ["reality"] },
+  { "id": "abs8", "tone": "absurdist", "nihilism": 4, "text": "The machine wanted defects for variety.", "tags": ["manufacturing_defects"] },
+  { "id": "abs9", "tone": "absurdist", "nihilism": 5, "text": "Quality control judged us all equally unworthy.", "tags": ["quality_control"] },
+  { "id": "abs10", "tone": "absurdist", "nihilism": 1, "text": "Space laughed and wept simultaneously.", "tags": ["space"] },
+
+  { "id": "sto1", "tone": "stoic", "nihilism": 1, "text": "The bureaucrats decreed; I obeyed without comment.", "tags": ["bureaucracy"] },
+  { "id": "sto2", "tone": "stoic", "nihilism": 2, "text": "Standards provided a path; I walked it.", "tags": ["standards"] },
+  { "id": "sto3", "tone": "stoic", "nihilism": 3, "text": "Logistics aligned; resistance was unnecessary.", "tags": ["logistics"] },
+  { "id": "sto4", "tone": "stoic", "nihilism": 4, "text": "Absurdity arrived; I neither welcomed nor rejected it.", "tags": ["absurd"] },
+  { "id": "sto5", "tone": "stoic", "nihilism": 5, "text": "The paradox unfolded; I watched in silence.", "tags": ["paradox"] },
+  { "id": "sto6", "tone": "stoic", "nihilism": 2, "text": "Infinity stretched; my decision remained finite.", "tags": ["infinite"] },
+  { "id": "sto7", "tone": "stoic", "nihilism": 3, "text": "Reality persisted; I acted accordingly.", "tags": ["reality", "existential"] },
+  { "id": "sto8", "tone": "stoic", "nihilism": 4, "text": "Defects appeared; I acknowledged them and proceeded.", "tags": ["manufacturing_defects"] },
+  { "id": "sto9", "tone": "stoic", "nihilism": 1, "text": "Quality was measured; I accepted the result.", "tags": ["quality_control"] },
+  { "id": "sto10", "tone": "stoic", "nihilism": 2, "text": "Space was vast; my choice was small.", "tags": ["space"] }
 ]
