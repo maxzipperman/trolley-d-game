@@ -3,6 +3,7 @@ import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
+import InlineError from "./InlineError";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -11,7 +12,7 @@ interface ScenarioCardProps {
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
-  const { personas } = usePersonas();
+  const { personas, error, retry } = usePersonas();
   const [picked, setPicked] = useState<"A" | "B" | null>(null);
 
   const handlePick = (choice: "A" | "B") => {
@@ -62,7 +63,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           Math.floor(Math.random() * (per.example_lines?.length ?? 0))
         ],
     }));
-  }, [scenario, personas]);
+  }, [scenario.id, personas]);
 
   return (
     <article className="space-y-6">
@@ -76,10 +77,12 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         )}
       </header>
 
+      {error && <InlineError message={error} onRetry={retry} />}
+
       {/* Trolley Diagram */}
       <div className="py-4">
-        <TrolleyDiagram 
-          trackALabel="A" 
+        <TrolleyDiagram
+          trackALabel="A"
           trackBLabel="B"
           className="animate-fade-in"
         />
@@ -131,8 +134,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             <div className="mt-4 space-y-3 animate-fade-in">
               {samples.map((r, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
+                  <NPCAvatar
+                    name={r.avatar ?? "NPC"}
                     size="md"
                     className="mt-0.5"
                   />
@@ -141,8 +144,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
                       <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
                       <span className="text-xs text-muted-foreground">•</span>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        r.choice === "A" 
-                          ? "bg-primary/10 text-primary" 
+                        r.choice === "A"
+                          ? "bg-primary/10 text-primary"
                           : "bg-secondary/50 text-secondary-foreground"
                       }`}>
                         Track {r.choice ?? "?"}
