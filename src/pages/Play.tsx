@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
+import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import type { Scenario } from "@/types";
@@ -12,7 +13,7 @@ const ANSWERS_KEY = "trolleyd-answers";
 const Play = () => {
   useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
-  const { scenarios, loading } = useScenarios();
+  const { scenarios, loading, error, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
 
@@ -37,6 +38,14 @@ const Play = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   });
+
+  if (error) {
+    return (
+      <main className="min-h-screen container py-10">
+        <InlineError message={error} onRetry={retry} />
+      </main>
+    );
+  }
 
   if (loading || !scenarios) {
     return (

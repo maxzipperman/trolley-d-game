@@ -3,6 +3,7 @@ import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
+import InlineError from "./InlineError";
 
 interface ScenarioCardProps {
   scenario: Scenario;
@@ -11,7 +12,7 @@ interface ScenarioCardProps {
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
-  const { personas } = usePersonas();
+  const { personas, error, retry } = usePersonas();
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -42,6 +43,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           <p className="text-base text-foreground/90">{scenario.description}</p>
         )}
       </header>
+
+      {error && <InlineError message={error} onRetry={retry} />}
 
       {/* Trolley Diagram */}
       <div className="py-4">

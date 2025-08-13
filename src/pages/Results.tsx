@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
+import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
@@ -11,13 +12,21 @@ const ANSWERS_KEY = "trolleyd-answers";
 const Results = () => {
   useEffect(() => { document.title = "Trolley’d · Results"; }, []);
   const navigate = useNavigate();
-  const { scenarios } = useScenarios();
+  const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
 
-  if (!scenarios) return (
+  if (error) {
+    return (
+      <main className="min-h-screen container py-10">
+        <InlineError message={error} onRetry={retry} />
+      </main>
+    );
+  }
+
+  if (loading || !scenarios) return (
     <main className="min-h-screen container py-10" />
   );
 
