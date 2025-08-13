@@ -1,9 +1,10 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
+import { fetchOverallStats } from "@/lib/api";
 import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -13,9 +14,20 @@ const Results = () => {
   const navigate = useNavigate();
   const { scenarios } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [global, setGlobal] = useState<{ percentA: number; percentB: number } | null>(null);
 
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+
+  useEffect(() => {
+    fetchOverallStats()
+      .then(setGlobal)
+      .catch(() => setGlobal(null));
+  }, []);
+
+  const totalAnswers = scoreA + scoreB;
+  const percentA = totalAnswers ? Math.round((scoreA / totalAnswers) * 100) : 0;
+  const percentB = totalAnswers ? 100 - percentA : 0;
 
   if (!scenarios) return (
     <main className="min-h-screen container py-10" />
@@ -48,6 +60,12 @@ const Results = () => {
               <div className="text-xs text-muted-foreground uppercase tracking-wide">Track B</div>
               <div className="text-3xl font-bold text-secondary-foreground mt-1">{scoreB}</div>
             </div>
+          </div>
+          <div className="mt-4 space-y-1 text-sm text-muted-foreground">
+            <p>Your alignment: Track A {percentA}% · Track B {percentB}%</p>
+            {global && (
+              <p>Global average: Track A {global.percentA}% · Track B {global.percentB}%</p>
+            )}
           </div>
           <div className="mt-6 flex gap-3">
             <button
