@@ -6,204 +6,23 @@
     "track_a": "Pull the lever (save 5, kill 1)",
     "track_b": "Do nothing (kill 5, save 1)",
     "theme": "Utilitarian vs. Deontological Ethics",
-    "tags": ["classic", "numbers", "action_vs_inaction"],
+    "tags": ["logistics"],
     "responses": [
-      {
-        "avatar": "Socrates",
-        "choice": "A",
-        "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
-      },
-      {
-        "avatar": "Kant",
-        "choice": "B", 
-        "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
-      }
-    ]
-  },
-  {
-    "id": "EN02",
-    "title": "The Ship of Theseus",
-    "description": "A passenger ship is sinking. You can save either the ship's original hull with 3 crew members, or the modernized engine room with 5 passengers.",
-    "track_a": "Save the original hull (3 crew)",
-    "track_b": "Save the engine room (5 passengers)",
-    "theme": "Identity vs. Utility",
-    "tags": ["identity", "numbers", "preservation"],
-    "responses": [
-      {
-        "avatar": "Aristotle",
-        "choice": "A",
-        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
-      },
-      {
-        "avatar": "Mill",
-        "choice": "B",
-        "rationale": "The greatest happiness principle demands we save the greater number."
-      }
-    ]
-  },
-  {
-    "id": "EN03",
-    "title": "The Self-Driving Car",
-    "description": "An autonomous vehicle must choose between hitting an elderly person crossing legally or swerving to hit a young person jaywalking.",
-    "track_a": "Stay course (hit elderly legal crosser)",
-    "track_b": "Swerve (hit young jaywalker)",
-    "theme": "Legal vs. Utilitarian Calculation",
-    "tags": ["modern", "age", "law", "technology"],
-    "responses": [
-      {
-        "avatar": "Rawls",
-        "choice": "A",
-        "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
-      },
-      {
-        "avatar": "Singer",
-        "choice": "B",
-        "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
-      }
-    ]
-  },
-  {
-    "id": "EN04",
-    "title": "The Organ Transplant",
-    "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
-    "track_a": "Harvest organs (save 5, kill 1)",
-    "track_b": "Let nature take its course (5 die, 1 lives)",
-    "theme": "Active vs. Passive Harm",
-    "tags": ["medical", "active_harm", "numbers"],
-    "responses": [
-      {
-        "avatar": "Hippocrates",
-        "choice": "B",
-        "rationale": "First, do no harm. A physician must never actively harm a healthy patient."
-      },
       {
         "avatar": "Bentham",
         "choice": "A",
-        "rationale": "The hedonic calculus is clear: five lives produce more happiness than one."
-      }
-    ]
-  },
-  {
-    "id": "EN05",
-    "title": "The Time Traveler's Dilemma",
-    "description": "You can prevent a natural disaster that kills 1000 people, but doing so will erase the existence of 100 people who were born because of that tragedy.",
-    "track_a": "Prevent disaster (save 1000, erase 100)",
-    "track_b": "Allow disaster (1000 die, 100 exist)",
-    "theme": "Temporal Ethics and Existence",
-    "tags": ["time_travel", "existence", "large_numbers"],
-    "responses": [
-      {
-        "avatar": "Parfit",
-        "choice": "A",
-        "rationale": "Non-identity problems aside, preventing suffering for existing people takes priority."
+        "rationale": "The greatest good for the greatest number demands we pull the lever."
       },
       {
-        "avatar": "Nozick",
+        "avatar": "Kant",
         "choice": "B",
-        "rationale": "We cannot violate the rights of those who exist, even to prevent future harms."
-      }
-    ]
-  }
-,
-  {
-    "id": "EN06",
-    "title": "The Permit Pileup",
-    "description": "A factory's loading dock is blocked because the supervisor insists on completing a lengthy safety form before unloading medicine destined for clinics.",
-    "track_a": "Insist on paperwork before unloading",
-    "track_b": "Skip paperwork and unload immediately",
-    "theme": "Bureaucracy vs Urgency",
-    "tags": ["bureaucracy", "logistics"],
-    "responses": [
-      {
-        "avatar": "Weber",
-        "choice": "A",
-        "rationale": "Without proper procedure, the system dissolves into chaos."
-      }
-    ]
-  },
-  {
-    "id": "EN07",
-    "title": "The Rushed Recall",
-    "description": "A batch of smartwatches shows slight deviations from calibration. Shipping now meets contractual standards, but delaying allows a full quality review.",
-    "track_a": "Ship immediately to satisfy standards",
-    "track_b": "Delay shipment for quality control",
-    "theme": "Deadlines vs Reliability",
-    "tags": ["standards", "quality_control"],
-    "responses": [
-      {
-        "avatar": "Deming",
-        "choice": "B",
-        "rationale": "Quality must come before schedule or the system will fail."
-      }
-    ]
-  },
-  {
-    "id": "EN08",
-    "title": "The Sisyphus Experiment",
-    "description": "Researchers ask volunteers to roll a boulder uphill endlessly to study commitment. Stopping early lets subjects pursue personal meaning.",
-    "track_a": "Continue the absurd task for data",
-    "track_b": "End the trial so volunteers seek meaning",
-    "theme": "Absurd Duty vs Personal Meaning",
-    "tags": ["absurd", "meaning"],
-    "responses": [
-      {
-        "avatar": "Camus",
-        "choice": "A",
-        "rationale": "We must imagine Sisyphus happy in his endless labor."
-      }
-    ]
-  },
-  {
-    "id": "EN09",
-    "title": "The Teleporter Twins",
-    "description": "A teleportation accident creates an exact clone. Only one can stay aboard the ship.",
-    "track_a": "Retain the original and disintegrate the clone",
-    "track_b": "Keep the clone and dissolve the original",
-    "theme": "Identity Paradox",
-    "tags": ["paradox", "identity"],
-    "responses": [
-      {
-        "avatar": "Derrida",
-        "choice": "B",
-        "rationale": "The copy questions the primacy of the original; why privilege one?"
-      }
-    ]
-  },
-  {
-    "id": "EN10",
-    "title": "The Infinite Airlock",
-    "description": "An experiment opens an airlock to infinite space. Closing it requires ejecting either valuable data cores or a shuttle of explorers.",
-    "track_a": "Jettison the data cores into space",
-    "track_b": "Eject the explorers' shuttle",
-    "theme": "Knowledge vs Lives in Space",
-    "tags": ["infinite", "space"],
-    "responses": [
-      {
-        "avatar": "Hawking",
-        "choice": "A",
-        "rationale": "Data can be recollected; lost lives cannot."
-      }
-    ]
-  },
-  {
-    "id": "EN11",
-    "title": "The Overtime Ultimatum",
-    "description": "A toy factory finds a defect just before holiday season. Fixing it requires mandatory overtime, straining workers.",
-    "track_a": "Enforce overtime to fix manufacturing defects",
-    "track_b": "Ship toys with minor defects to respect workers' rights",
-    "theme": "Defects vs Labor Welfare",
-    "tags": ["manufacturing_defects", "workers_rights"],
-    "responses": [
-      {
-        "avatar": "Marx",
-        "choice": "B",
-        "rationale": "The health of workers outweighs the market's demands."
+        "rationale": "We cannot use one person as a mere means to save others."
       }
     ]
   },
   {
     "id": "EN12",
-    "title": "The Simulation Reveal",
+    "title": "The Reality Revelation",
     "description": "Scientists can prove reality is a simulation, but unveiling the truth may plunge society into existential despair.",
     "track_a": "Reveal the simulated nature of reality",
     "track_b": "Keep the discovery secret",

@@ -1,35 +1,107 @@
 import React, { useMemo, useState } from "react";
 import type { Scenario } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
+import { useDecisions } from "@/hooks/useDecisions";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
+import InlineError from "./InlineError";
 
 interface ScenarioCardProps {
   scenario: Scenario;
   onPick: (choice: "A" | "B") => void;
+  onNext: () => void;
+  choice: "A" | "B" | null;
+  stats: { A: number; B: number } | null;
 }
 
-const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
+const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, choice, stats }) => {
   const [showNPC, setShowNPC] = useState(false);
-  const { personas } = usePersonas();
+  const [copied, setCopied] = useState(false);
+  const { personas, error: personasError } = usePersonas();
+  const { decisions, error: decisionsError, retry: retryDecisions } = useDecisions();
+  const [picked, setPicked] = useState<"A" | "B" | null>(null);
+
+  const scenarioResponses = decisions?.filter(d => d.scenarioId === scenario.id) ?? [];
+
+  const handlePick = (choice: "A" | "B") => {
+    setPicked(choice);
+    onPick(choice);
+
+    const aligned = scenarioResponses
+      .filter((r) => r.choice === choice)
+      .map((r) => r.persona);
+
+    if (typeof window !== "undefined") {
+      let counts: Record<string, number> = {};
+      try {
+        counts = JSON.parse(window.localStorage.getItem("alignmentCounts") ?? "{}");
+      } catch {
+        counts = {};
+      }
+      aligned.forEach((name) => {
+        counts[name] = (counts[name] || 0) + 1;
+      });
+      window.localStorage.setItem("alignmentCounts", JSON.stringify(counts));
+    }
+  };
+
+  const alignedPersonas = useMemo(() => {
+    if (!picked) return [];
+    const alignedNames = scenarioResponses
+      .filter((r) => r.choice === picked)
+      .map((r) => r.persona);
+    return (personas ?? []).filter((p) => alignedNames.includes(p.name));
+  }, [picked, scenarioResponses, personas]);
+
+  const shareUrl = useMemo(() => {
+    if (!choice) return "";
+    const url = new URL(window.location.href);
+    url.pathname = "/play";
+    url.search = `?jump=${scenario.id}&choice=${choice}`;
+    return url.toString();
+  }, [scenario.id, choice]);
+
+  async function share() {
+    if (!choice) return;
+    const data = {
+      title: scenario.title,
+      text: `I chose Track ${choice} in "${scenario.title}". What would you pick?`,
+      url: shareUrl,
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        await navigator.clipboard.writeText(shareUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   const samples = useMemo(() => {
-    const r = scenario.responses ?? [];
-    const fromScenario = [...r].sort(() => Math.random() - 0.5).slice(0, 3);
+    const fromScenario = [...scenarioResponses].sort(() => Math.random() - 0.5).slice(0, 3);
     if (fromScenario.length > 0) return fromScenario;
 
     const p = personas ?? [];
     if (p.length === 0) return [];
-    const picked = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
-    return picked.map((per) => ({
-      avatar: per.name,
-      choice: Math.random() < 0.5 ? "A" : "B",
+    const pickedPersonas = [...p].sort(() => Math.random() - 0.5).slice(0, 3);
+    return pickedPersonas.map((per) => ({
+      persona: per.name,
+      choice: (Math.random() < 0.5 ? "A" : "B") as const,
       rationale:
         per.example_lines?.[
           Math.floor(Math.random() * (per.example_lines?.length ?? 0))
         ],
     }));
-  }, [scenario, personas]);
+  }, [scenarioResponses, personas]);
+
+  const error = personasError || decisionsError;
+  const retry = () => {
+    retryDecisions();
+  };
 
   return (
     <article className="space-y-6">
@@ -43,71 +115,118 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         )}
       </header>
 
+      {error && <InlineError message={error} onRetry={retry} />}
+
       {/* Trolley Diagram */}
       <div className="py-4">
-        <TrolleyDiagram 
-          trackALabel="A" 
+        <TrolleyDiagram
+          trackALabel="A"
           trackBLabel="B"
           className="animate-fade-in"
         />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
-          aria-label="Choose Track A"
-        >
-          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
-          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
-        </button>
-        <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
-          aria-label="Choose Track B"
-        >
-          <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
-          <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
-        </button>
-      </div>
+      {choice == null ? (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button
+              className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => handlePick("A")}
+              aria-label="Choose Track A"
+              aria-keyshortcuts="a"
+            >
+              <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
+              <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
+            </button>
+            <button
+              className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
+              onClick={() => handlePick("B")}
+              aria-label="Choose Track B"
+              aria-keyshortcuts="b"
+            >
+              <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
+              <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_b}</div>
+            </button>
+          </div>
 
-      {samples.length > 0 && (
-        <div className="pt-2">
-          <button
-            className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
-            onClick={() => setShowNPC(v => !v)}
-            aria-expanded={showNPC}
-          >
-            {showNPC ? "Hide" : "See"} sample NPC takes
-          </button>
-          {showNPC && (
-            <div className="mt-4 space-y-3 animate-fade-in">
-              {samples.map((r, i) => (
-                <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
-                    size="md"
-                    className="mt-0.5"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
-                      <span className="text-xs text-muted-foreground">•</span>
-                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        r.choice === "A" 
-                          ? "bg-primary/10 text-primary" 
-                          : "bg-secondary/50 text-secondary-foreground"
-                      }`}>
-                        Track {r.choice ?? "?"}
-                      </span>
-                    </div>
-                    {r.rationale && (
-                      <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
-                    )}
+          {picked && alignedPersonas.length > 0 && (
+            <div className="mt-4">
+              <h3 className="text-sm font-medium mb-2">Philosophers aligned with you</h3>
+              <div className="flex flex-wrap gap-4">
+                {alignedPersonas.map((p) => (
+                  <div className="flex items-center gap-2" key={p.name}>
+                    <NPCAvatar name={p.name} size="sm" />
+                    <span className="text-sm">{p.name}</span>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          )}
+
+          {samples.length > 0 && (
+            <div className="pt-2">
+              <button
+                className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
+                onClick={() => setShowNPC(v => !v)}
+                aria-expanded={showNPC}
+              >
+                {showNPC ? "Hide" : "See"} sample NPC takes
+              </button>
+              {showNPC && (
+                <div className="mt-4 space-y-3 animate-fade-in">
+                  {samples.map((r, i) => (
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50" key={i}>
+                      <NPCAvatar
+                        name={r.persona ?? "NPC"}
+                        size="md"
+                        className="mt-0.5"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium truncate">{r.persona ?? "NPC"}</span>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                            r.choice === "A"
+                              ? "bg-primary/10 text-primary"
+                              : "bg-secondary/50 text-secondary-foreground"
+                          }`}>
+                            Track {r.choice ?? "?"}
+                          </span>
+                        </div>
+                        {r.rationale && (
+                          <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="space-y-4">
+          {stats && (
+            <p className="text-sm text-muted-foreground">
+              {stats.A}% chose Track A · {stats.B}% chose Track B
+            </p>
+          )}
+          <div className="flex gap-3">
+            <button
+              onClick={share}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >
+              Share
+            </button>
+            <button
+              onClick={onNext}
+              className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
+            >
+              Next
+            </button>
+          </div>
+          {copied && (
+            <p className="text-xs text-muted-foreground">Link copied!</p>
           )}
         </div>
       )}
