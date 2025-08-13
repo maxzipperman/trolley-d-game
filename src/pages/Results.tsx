@@ -5,7 +5,7 @@ import TrolleyDiagram from "@/components/TrolleyDiagram";
 import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import { Choice, computeAxes_legacy as computeAxes, computeBaseCounts } from "@/utils/scoring";
+import { Choice, computeAxes_legacy, computeBaseCounts } from "@/utils/scoring";
 import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -20,7 +20,7 @@ const Results = () => {
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
-  const axes = useMemo(() => computeAxes(scenarios ?? [], answers), [scenarios, answers]);
+  const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
 
   if (error) {
     return (
@@ -61,17 +61,23 @@ const Results = () => {
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Ethical Profile</h2>
           <div className="space-y-4">
-            <AxisVisualization 
-              label="Utilitarian vs Deontological" 
-              value={axes.utilitarian} 
+            <AxisVisualization
+              label="Order vs Chaos"
+              value={axes.orderChaos}
+              leftLabel="Order"
+              rightLabel="Chaos"
             />
-            <AxisVisualization 
-              label="Individual vs Collective" 
-              value={axes.individual} 
+            <AxisVisualization
+              label="Material vs Social"
+              value={axes.materialSocial}
+              leftLabel="Material"
+              rightLabel="Social"
             />
-            <AxisVisualization 
-              label="Action vs Inaction" 
-              value={axes.action} 
+            <AxisVisualization
+              label="Mercy vs Mischief"
+              value={axes.mercyMischief}
+              leftLabel="Mercy"
+              rightLabel="Mischief"
             />
           </div>
         </div>
