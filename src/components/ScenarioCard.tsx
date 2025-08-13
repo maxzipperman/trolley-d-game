@@ -26,17 +26,17 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
 
   const handlePick = (choice: "A" | "B") => {
     setPicked(choice);
-
+    
     // Save choice with rationale to localStorage
     const choiceWithRationale = {
       choice,
       rationale: rationale.trim() || undefined
     };
-
+    
     const existingChoices = JSON.parse(localStorage.getItem('userChoices') || '{}');
     existingChoices[scenario.id] = choiceWithRationale;
     localStorage.setItem('userChoices', JSON.stringify(existingChoices));
-
+    
     onPick(choice);
 
     const aligned = scenarioResponses
@@ -80,142 +80,124 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
 
   if (personasError || decisionsError) {
     return (
-      <InlineError
-        error={personasError || decisionsError}
-        retry={() => {
-          if (personasError) location.reload();
-          if (decisionsError) retryDecisions();
-        }}
-      />
+      <div className="p-6 border rounded-lg bg-card">
+        <InlineError
+          message={personasError || decisionsError || "Unknown error"}
+          onRetry={retryDecisions}
+        />
+      </div>
     );
   }
 
   return (
-    <article className="space-y-6">
-      <header className="space-y-2">
-        <h2 className="text-2xl font-bold leading-tight">{scenario.title}</h2>
-        {scenario.theme && (
-          <p className="text-sm uppercase tracking-wide text-muted-foreground">{scenario.theme}</p>
-        )}
-        {scenario.description && (
-          <p className="text-base text-foreground/90">{scenario.description}</p>
-        )}
-      </header>
-
-      {/* Trolley Diagram */}
-      <div className="py-4">
-        <TrolleyDiagram
-          trackALabel="A"
-          trackBLabel="B"
-          className="motion-safe:animate-fade-in"
-        />
+    <div className="max-w-4xl mx-auto p-6 border rounded-lg bg-card space-y-6">
+      <div className="text-center space-y-2">
+        <h2 className="text-2xl font-bold">{scenario.title}</h2>
+        <p className="text-muted-foreground leading-relaxed">{scenario.description}</p>
       </div>
 
-      {!picked && (
+      <TrolleyDiagram scenario={scenario} />
+
+      {!choice ? (
         <div className="space-y-4">
-          <div className="space-y-2">
+          <div className="space-y-3">
+            <label className="block text-sm font-medium">Your rationale (optional):</label>
             <textarea
-              placeholder="Why would you choose this? (optional)"
               value={rationale}
               onChange={(e) => setRationale(e.target.value)}
-              className="w-full p-3 rounded-lg border border-border bg-card text-sm resize-none"
-              rows={3}
+              placeholder="Why would you make this choice?"
+              className="w-full p-3 border rounded-lg bg-background min-h-[100px] resize-none"
             />
           </div>
-
           <div className="flex gap-3">
             <button
               onClick={() => handlePick("A")}
               className="flex-1 px-4 py-3 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
             >
-              <div className="space-y-1">
-                <div className="font-semibold">Track A</div>
-                <div className="text-sm text-muted-foreground">
-                  {scenario.trackA?.description || "Choose Track A"}
-                </div>
-              </div>
+              Choose Track A
             </button>
-
             <button
               onClick={() => handlePick("B")}
               className="flex-1 px-4 py-3 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
             >
-              <div className="space-y-1">
-                <div className="font-semibold">Track B</div>
-                <div className="text-sm text-muted-foreground">
-                  {scenario.trackB?.description || "Choose Track B"}
-                </div>
-              </div>
+              Choose Track B
             </button>
           </div>
         </div>
-      )}
-
-      {picked && (
-        <div className="space-y-6">
-          <div className="rounded-lg border border-border bg-card/50 p-4">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold">You chose Track {picked}</h3>
-              <button
-                onClick={() => setShowNPC(!showNPC)}
-                className="text-sm text-primary hover:text-primary/80"
-              >
-                {showNPC ? "Hide" : "Show"} NPCs ({alignedPersonas.length} aligned)
-              </button>
-            </div>
-
-            {alignedPersonas.length > 0 && showNPC && (
-              <div className="space-y-3 animate-fade-in">
-                {alignedPersonas.map((persona) => (
-                  <div key={persona.name} className="flex items-center gap-3 p-3 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                    <NPCAvatar
-                      name={persona.name}
-                      size="md"
-                      className="mt-0.5"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium truncate">{persona.name}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-muted-foreground truncate">{persona.description}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+      ) : (
+        <>
+          <div className="text-center space-y-2">
+            <h3 className="text-lg font-semibold">You chose Track {choice}</h3>
+            <p className="text-sm text-muted-foreground">
+              You aligned with {alignedPersonas.length} persona{alignedPersonas.length !== 1 ? 's' : ''}
+            </p>
           </div>
 
-          {samples.length > 0 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-center">Sample responses:</h3>
-              <div className="space-y-3 motion-safe:animate-fade-in">
-                {samples.map((r, i) => (
-                  <div className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50" key={i}>
+          {alignedPersonas.length > 0 && (
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-center">Aligned personas:</h4>
+              <div className="flex flex-wrap justify-center gap-3">
+                {alignedPersonas.map((persona) => (
+                  <div key={persona.name} className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">
                     <NPCAvatar
-                      name={r.persona ?? "NPC"}
-                      size="md"
-                      className="mt-0.5"
+                      name={persona.name}
+                      alt={`${persona.name} avatar`}
+                      size="sm"
                     />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium truncate">{r.persona ?? "NPC"}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                          r.choice === "A"
-                            ? "bg-primary/10 text-primary"
-                            : "bg-secondary/50 text-secondary-foreground"
-                        }`}>
-                          Track {r.choice ?? "?"}
-                        </span>
-                      </div>
-                      {r.rationale && (
-                        <p className="text-sm text-muted-foreground leading-relaxed">{r.rationale}</p>
-                      )}
-                    </div>
+                    <span>{persona.name}</span>
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {samples.length > 0 && (
+            <div className="pt-2">
+              <button
+                className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
+                onClick={() => setShowNPC(v => !v)}
+                aria-expanded={showNPC}
+              >
+                {showNPC ? "Hide" : "See"} sample NPC takes
+              </button>
+              {showNPC && (
+                <div className="mt-4 space-y-3 animate-fade-in">
+                  {samples.map((r, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
+                      <NPCAvatar
+                        name={r.persona ?? "NPC"}
+                        alt={`${r.persona ?? "NPC"} avatar`}
+                        size="md"
+                        className="mt-0.5"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-medium truncate">{r.persona ?? "NPC"}</span>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span
+                            className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                              r.choice === "A"
+                                ? "bg-primary/10 text-primary"
+                                : "bg-secondary/50 text-secondary-foreground"
+                            }`}
+                            aria-live="polite"
+                          >
+                            Track {r.choice ?? "?"}
+                          </span>
+                        </div>
+                        {r.rationale && (
+                          <p
+                            className="text-sm text-muted-foreground leading-relaxed"
+                            aria-live="polite"
+                          >
+                            {r.rationale}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -228,13 +210,13 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
             <div className="flex gap-3">
               <button
                 onClick={share}
-                className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent motion-safe:transition-all motion-safe:duration-200 font-medium"
+                className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
               >
                 Share
               </button>
               <button
                 onClick={onNext}
-                className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent motion-safe:transition-all motion-safe:duration-200 font-medium"
+                className="flex-1 px-4 py-2 rounded-lg border border-border bg-card hover:bg-accent transition-all duration-200 font-medium"
               >
                 Next
               </button>
@@ -243,9 +225,9 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
               <p className="text-xs text-muted-foreground text-center">Link copied!</p>
             )}
           </div>
-        </div>
+        </>
       )}
-    </article>
+    </div>
   );
 };
 
