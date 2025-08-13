@@ -1,0 +1,13 @@
+{
+  "id": "EN02",
+  "title": "The Ship of Theseus",
+  "description": "A passenger ship is sinking. You can save either the ship's original hull with 3 crew members, or the modernized engine room with 5 passengers.",
+  "track_a": "Save the original hull (3 crew)",
+  "track_b": "Save the engine room (5 passengers)",
+  "theme": "Identity vs. Utility",
+  "tags": [
+    "identity",
+    "numbers",
+    "preservation"
+  ]
+}

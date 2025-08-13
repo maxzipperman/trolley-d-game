@@ -1,0 +1,13 @@
+{
+  "id": "EN04",
+  "title": "The Organ Transplant",
+  "description": "A healthy person visits the hospital. You could harvest their organs to save five dying patients.",
+  "track_a": "Harvest organs (save 5, kill 1)",
+  "track_b": "Let nature take its course (5 die, 1 lives)",
+  "theme": "Active vs. Passive Harm",
+  "tags": [
+    "medical",
+    "active_harm",
+    "numbers"
+  ]
+}

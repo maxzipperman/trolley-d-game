@@ -52,7 +52,7 @@ const Play = () => {
   if (total === 0) {
     return (
       <main className="min-h-screen container max-w-2xl py-8">
-        <p className="text-muted-foreground">No scenarios available. Please add data/scenarios.json.</p>
+        <p className="text-muted-foreground">No scenarios available. Please add data/answers.json.</p>
       </main>
     );
   }

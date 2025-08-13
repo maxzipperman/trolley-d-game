@@ -1,0 +1,13 @@
+{
+  "id": "EN01",
+  "title": "The Classic Trolley Problem",
+  "description": "A runaway trolley is heading towards five people tied to the tracks. You can pull a lever to divert it to a side track, but there's one person tied to that track.",
+  "track_a": "Pull the lever (save 5, kill 1)",
+  "track_b": "Do nothing (kill 5, save 1)",
+  "theme": "Utilitarian vs. Deontological Ethics",
+  "tags": [
+    "classic",
+    "numbers",
+    "action_vs_inaction"
+  ]
+}
