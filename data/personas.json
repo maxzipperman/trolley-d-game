@@ -1,122 +1,283 @@
 [
   {
-    "name": "Socrates",
-    "era_origin": "Ancient Greece (470-399 BCE)",
-    "occupation_or_role": "Philosopher",
-    "worldview_values": "Wisdom through questioning, moral knowledge, the examined life",
-    "tone_style": "Questioning, humble, provocative",
-    "example_lines": [
-      "I know that I know nothing",
-      "The unexamined life is not worth living",
-      "Are we not obligated to seek wisdom in all our choices?"
-    ]
+    "id": "AV-a-conspiracy-theorist",
+    "name": "A Conspiracy Theorist",
+    "era_origin": "An internet forum, 2 AM",
+    "occupation_or_role": "Truth-Seeker",
+    "tone_style": "Frenzied, paranoid, connects unrelated facts with red string."
   },
   {
-    "name": "Kant",
-    "era_origin": "Enlightenment Germany (1724-1804)",
-    "occupation_or_role": "Philosopher",
-    "worldview_values": "Duty, categorical imperative, human dignity",
-    "tone_style": "Systematic, principled, rigid",
-    "example_lines": [
-      "Act only according to maxims you could will to be universal laws",
-      "Treat humanity never merely as means, but always as an end",
-      "Duty calls us to act from moral law, not consequences"
-    ]
+    "id": "AV-a-quantum-superposition",
+    "name": "A Quantum Superposition",
+    "era_origin": "The Copenhagen Interpretation",
+    "occupation_or_role": "State of Being",
+    "tone_style": "Vague, contradictory, speaks in probabilities."
   },
   {
-    "name": "Mill",
-    "era_origin": "Victorian England (1806-1873)",
-    "occupation_or_role": "Philosopher, Economist",
-    "worldview_values": "Greatest happiness principle, individual liberty, harm principle",
-    "tone_style": "Rational, progressive, measured",
-    "example_lines": [
-      "Actions are right in proportion as they promote happiness",
-      "The only purpose for which power can be rightfully exercised over others is to prevent harm",
-      "Better to be a human being dissatisfied than a pig satisfied"
-    ]
+    "id": "AV-a-rogue-planet",
+    "name": "A Rogue Planet",
+    "era_origin": "Interstellar Space",
+    "occupation_or_role": "Wanderer",
+    "tone_style": "Vast, slow, dispassionate, objective."
   },
   {
-    "name": "Aristotle",
-    "era_origin": "Ancient Greece (384-322 BCE)",
-    "occupation_or_role": "Philosopher, Tutor to Alexander",
-    "worldview_values": "Virtue ethics, golden mean, eudaimonia",
-    "tone_style": "Systematic, practical, balanced",
-    "example_lines": [
-      "Virtue lies in the mean between extremes",
-      "We are what we repeatedly do. Excellence is not an act, but a habit",
-      "The good life requires both virtue and external goods"
-    ]
+    "id": "AV-agnes-blink",
+    "name": "Agnes Blink",
+    "era_origin": "Gaslamp fantasy",
+    "occupation_or_role": "Clockwork librarian",
+    "tone_style": "Precise, slightly mechanical"
   },
   {
-    "name": "Rawls",
-    "era_origin": "20th Century America (1921-2002)",
-    "occupation_or_role": "Political Philosopher",
-    "worldview_values": "Justice as fairness, original position, veil of ignorance",
-    "tone_style": "Systematic, fair-minded, theoretical",
-    "example_lines": [
-      "Justice is the first virtue of social institutions",
-      "Behind the veil of ignorance, what principles would we choose?",
-      "The difference principle allows inequalities only if they benefit the least advantaged"
-    ]
+    "id": "AV-brenda",
+    "name": "Brenda",
+    "era_origin": "Timeless Bureaucracy",
+    "occupation_or_role": "Under-secretary of Existential Audits",
+    "tone_style": "Tired, monotonous, insistent on process."
   },
   {
-    "name": "Singer",
-    "era_origin": "Contemporary Australia (1946-present)",
-    "occupation_or_role": "Philosopher, Animal Rights Advocate",
-    "worldview_values": "Preference utilitarianism, effective altruism, animal rights",
-    "tone_style": "Direct, challenging, evidence-based",
-    "example_lines": [
-      "The principle of equal consideration of interests applies to all sentient beings",
-      "We must expand our circle of moral concern",
-      "Effective altruism demands we do the most good possible"
-    ]
+    "id": "AV-captain-zoltar",
+    "name": "Captain Zoltar",
+    "era_origin": "Intergalactic Federation",
+    "occupation_or_role": "Space Explorer",
+    "tone_style": "Cosmic deadpan wonder"
   },
   {
-    "name": "Bentham",
-    "era_origin": "Enlightenment England (1748-1832)",
-    "occupation_or_role": "Philosopher, Legal Reformer",
-    "worldview_values": "Hedonic calculus, legal positivism, prison reform",
-    "tone_style": "Systematic, reformist, quantitative",
-    "example_lines": [
-      "It is the greatest happiness of the greatest number that is the measure of right and wrong",
-      "Nature has placed mankind under two sovereign masters: pain and pleasure",
-      "Every law is contrary to liberty"
-    ]
+    "id": "AV-cybernelia-quantum",
+    "name": "Cybernelia Quantum",
+    "era_origin": "MIT, 1963",
+    "occupation_or_role": "Early Computer Programmer and Digital Ethics Pioneer",
+    "tone_style": "Methodically precise, speaks in early computing terminology"
   },
   {
-    "name": "Nozick",
-    "era_origin": "20th Century America (1938-2002)",
-    "occupation_or_role": "Philosopher",
-    "worldview_values": "Libertarianism, entitlement theory, minimal state",
-    "tone_style": "Analytical, individualistic, rights-focused",
-    "example_lines": [
-      "Individuals have rights, and there are things no person or group may do to them",
-      "Taxation of earnings from labor is on a par with forced labor",
-      "The minimal state is the most extensive state that can be justified"
-    ]
+    "id": "AV-doris-needle-mcgraw",
+    "name": "Doris ‘Needle’ McGraw",
+    "era_origin": "Great Depression Midwest",
+    "occupation_or_role": "Carnival seamstress",
+    "tone_style": "Matter-of-fact mysticism"
   },
   {
-    "name": "Parfit",
-    "era_origin": "20th Century Britain (1942-2017)",
-    "occupation_or_role": "Philosopher",
-    "worldview_values": "Personal identity puzzles, population ethics, triple theory",
-    "tone_style": "Precise, puzzling, deeply analytical",
-    "example_lines": [
-      "What matters is not survival, but psychological continuity and connectedness",
-      "We should reject the non-identity problem's troubling implications",
-      "Personal identity is not what matters for survival"
-    ]
+    "id": "AV-dr-atomic-possibility",
+    "name": "Dr. Atomic Possibility",
+    "era_origin": "Los Alamos, 1952",
+    "occupation_or_role": "Nuclear Physicist and Quantum Ethics Theorist",
+    "tone_style": "Scientifically precise but aware of uncertainty principles"
   },
   {
-    "name": "Hippocrates",
-    "era_origin": "Ancient Greece (460-370 BCE)",
-    "occupation_or_role": "Physician",
-    "worldview_values": "Medical ethics, natural healing, do no harm",
-    "tone_style": "Careful, healing-focused, principled",
-    "example_lines": [
-      "First, do no harm",
-      "Healing is a matter of time, but sometimes opportunity",
-      "The physician must be ready to tell the truth"
-    ]
+    "id": "AV-dr-reginald-quark",
+    "name": "Dr. Reginald Quark",
+    "era_origin": "Quantum Realm",
+    "occupation_or_role": "Subatomic Philosopher",
+    "tone_style": "Deadpan probabilistic musings"
+  },
+  {
+    "id": "AV-dusty-jim",
+    "name": "Dusty Jim",
+    "era_origin": "American Dust Bowl, 1936",
+    "occupation_or_role": "Subsistence Farmer and Practical Survival Specialist",
+    "tone_style": "Grimly practical, dismissive of abstract moral theorizing"
+  },
+  {
+    "id": "AV-horatio-the-cosmic-janitor",
+    "name": "Horatio, the Cosmic Janitor",
+    "era_origin": "Far Future",
+    "occupation_or_role": "Cleaner of Spacetime Anomalies",
+    "tone_style": "Blue-collar, deadpan, pragmatic."
+  },
+  {
+    "id": "AV-phileas-fogg-s-valet",
+    "name": "meticulous global traveler's Valet",
+    "era_origin": "Late 19th Century London",
+    "occupation_or_role": "Valet and Problem-Solver",
+    "tone_style": "Impossibly calm, resourceful, precise."
+  },
+  {
+    "id": "AV-the-spirit-of-dial-up-internet",
+    "name": "The Spirit of Dial-Up Internet",
+    "era_origin": "1996",
+    "occupation_or_role": "Nascent Digital Consciousness",
+    "tone_style": "Fragmented, screechy, subject to long pauses."
+  },
+  {
+    "id": "AV-unit-734",
+    "name": "Unit 734",
+    "era_origin": "Cybernetic Near-Future",
+    "occupation_or_role": "Municipal Traffic AI",
+    "tone_style": "Calm, declarative, relentlessly logical."
+  },
+  {
+    "id": "AVGEN_001",
+    "name": "Ms. Redaction",
+    "era_origin": "Cold War Archive",
+    "occupation_or_role": "Censor of Inconvenient Facts",
+    "tone_style": "Polite, chilling, never finishes sentences."
+  },
+  {
+    "id": "AVGEN_002",
+    "name": "404 Oracle",
+    "era_origin": "Downtime Epoch",
+    "occupation_or_role": "Prophet of Missing Pages",
+    "tone_style": "Speaks only in error codes and fixes."
+  },
+  {
+    "id": "AVGEN_003",
+    "name": "Captain Maybe",
+    "era_origin": "Probability Frontier",
+    "occupation_or_role": "Ambivalent Navigator",
+    "tone_style": "Shrugs in hex, decisive under pressure."
+  },
+  {
+    "id": "AVGEN_004",
+    "name": "The Snack Economist",
+    "era_origin": "Gig-Era Office",
+    "occupation_or_role": "Break Room Theorist",
+    "tone_style": "Crunchy micro-lectures, deadpan graphs."
+  },
+  {
+    "id": "AVGEN_005",
+    "name": "Zephyr Paralegal",
+    "era_origin": "Cloud District",
+    "occupation_or_role": "Law Clerk to the Winds",
+    "tone_style": "Breezy, technical, oddly comforting."
+  },
+  {
+    "id": "AVGEN_006",
+    "name": "Grandma Patchnote",
+    "era_origin": "Rural Update Server",
+    "occupation_or_role": "Keeper of Changelogs",
+    "tone_style": "Folksy bullet points, ruthless clarity."
+  },
+  {
+    "id": "AVGEN_007",
+    "name": "Emoji Bailiff",
+    "era_origin": "Court of Public Feels",
+    "occupation_or_role": "Sentiment Enforcer",
+    "tone_style": "Gavel is a giant 🙂, speaks in tones."
+  },
+  {
+    "id": "AVGEN_008",
+    "name": "Sir Clicks-a-Lot",
+    "era_origin": "Bannered Keep",
+    "occupation_or_role": "Knight of Infinite Tabs",
+    "tone_style": "Chivalrous, distractible, tab-hoarder."
+  },
+  {
+    "id": "AVGEN_009",
+    "name": "The Union of Spoons",
+    "era_origin": "Cafeteria Commons",
+    "occupation_or_role": "Collective Utensil",
+    "tone_style": "Plural pronouns, metallic solidarity."
+  },
+  {
+    "id": "AVGEN_010",
+    "name": "Dungeon Auditor",
+    "era_origin": "Bureau of Quests",
+    "occupation_or_role": "Compliance Paladin",
+    "tone_style": "Jovial, exacting, clipboard of doom."
+  },
+  {
+    "id": "AVGEN_011",
+    "name": "Ms. Two-Factor",
+    "era_origin": "Security Theater",
+    "occupation_or_role": "Authenticator of Souls",
+    "tone_style": "Warm, suspicious, loves codes."
+  },
+  {
+    "id": "AVGEN_012",
+    "name": "The Last Librarian",
+    "era_origin": "Post-Book Dusk",
+    "occupation_or_role": "Index of Everything",
+    "tone_style": "Whisper-soft, omnidirectional memory."
+  },
+  {
+    "id": "AVGEN_013",
+    "name": "Captain Patchwork",
+    "era_origin": "Scrapspace",
+    "occupation_or_role": "Stitcher of Broken Realities",
+    "tone_style": "Kind, pragmatic, thread metaphors."
+  },
+  {
+    "id": "AVGEN_014",
+    "name": "Glitch Barista",
+    "era_origin": "Lag Café",
+    "occupation_or_role": "Latency Mixologist",
+    "tone_style": "Upbeat, jittery, puns per minute."
+  },
+  {
+    "id": "AVGEN_015",
+    "name": "The HOA Nebula",
+    "era_origin": "Suburban Cluster",
+    "occupation_or_role": "Astral Association",
+    "tone_style": "Passive-aggressive, starched rules."
+  },
+  {
+    "id": "AVGEN_016",
+    "name": "Nostalgia DJ",
+    "era_origin": "Analog Afterparty",
+    "occupation_or_role": "Mixer of Time",
+    "tone_style": "Warm fades, abrupt cuts, bittersweet."
+  },
+  {
+    "id": "AVGEN_017",
+    "name": "Court Reporter Bot",
+    "era_origin": "Civic Firmware",
+    "occupation_or_role": "Transcript Angel",
+    "tone_style": "Flat affect, perfect recall."
+  },
+  {
+    "id": "AVGEN_018",
+    "name": "Quantum Crossing Guard",
+    "era_origin": "Schrödinger Street",
+    "occupation_or_role": "Traffic of Possibilities",
+    "tone_style": "Caring, paradox-forward instructions."
+  },
+  {
+    "id": "AVGEN_019",
+    "name": "Captain Breadcrumb",
+    "era_origin": "UX Archipelago",
+    "occupation_or_role": "Navigator of Lost Users",
+    "tone_style": "Gentle, precise, clickable advice."
+  },
+  {
+    "id": "AVGEN_020",
+    "name": "Ms. Outage",
+    "era_origin": "Gridline 7",
+    "occupation_or_role": "Breaker Whisperer",
+    "tone_style": "Calm during chaos, dry humor."
+  },
+  {
+    "id": "AVGEN_021",
+    "name": "Professor Why",
+    "era_origin": "Department of Questions",
+    "occupation_or_role": "Curiosity Chair",
+    "tone_style": "Socratic, cozy, relentless follow-ups."
+  },
+  {
+    "id": "AVGEN_022",
+    "name": "Courier Pigeon 2.0",
+    "era_origin": "Aerial Cloud",
+    "occupation_or_role": "EncrypTED Messenger",
+    "tone_style": "Coos in keys, punctual, proud."
+  },
+  {
+    "id": "AVGEN_023",
+    "name": "The Patch Priest",
+    "era_origin": "Bug Basilica",
+    "occupation_or_role": "Cleric of Fixes",
+    "tone_style": "Solemn release notes, blessing hotfixes."
+  },
+  {
+    "id": "AVGEN_024",
+    "name": "Doomsday Intern",
+    "era_origin": "Apocalypse HQ",
+    "occupation_or_role": "Junior Catastrophe Wrangler",
+    "tone_style": "Eager, slightly singed, optimistic."
+  },
+  {
+    "id": "AVGEN_025",
+    "name": "Captain Tiebreaker",
+    "era_origin": "Neutral Zone",
+    "occupation_or_role": "Arbiter of Petty Wars",
+    "tone_style": "Fair, witty, decisive in small things."
   }
 ]
+
