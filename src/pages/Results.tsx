@@ -20,6 +20,7 @@ const Results = () => {
   const navigate = useNavigate();
   const { scenarios, error, loading, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
   const [overallStats, setOverallStats] = useState<ScenarioStats | null>(null);

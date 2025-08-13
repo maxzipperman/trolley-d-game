@@ -15,43 +15,43 @@ const Play = () => {
   
   const { scenarios, loading } = useScenarios();
   const { answers, setAnswers } = useAnswers();
-  
+
   const [progressAnnouncement, setProgressAnnouncement] = useState("");
-  
+
   const total = scenarios?.length || 0;
   const answered = Object.keys(answers).length;
   const progress = total > 0 ? answered / total : 0;
-  
+
   // Current scenario logic
   const currentIndex = useMemo(() => {
     if (!scenarios?.length) return 0;
-    
+
     if (jump) {
       const jumpIndex = scenarios.findIndex(s => s.id === jump);
       return jumpIndex >= 0 ? jumpIndex : 0;
     }
-    
+
     // Find first unanswered scenario
     const unanswered = scenarios.find(s => !(s.id in answers));
     if (unanswered) {
       return scenarios.findIndex(s => s.id === unanswered.id);
     }
-    
+
     // All answered, go to results
     return scenarios.length - 1;
   }, [scenarios, jump, answers]);
-  
+
   const s = scenarios?.[currentIndex];
   const index = currentIndex;
-  
+
   // Skipped scenarios for review
   const skippedScenarios = useMemo(() => {
     if (!scenarios) return [];
     return scenarios.filter(scenario => answers[scenario.id] === "skip");
   }, [scenarios, answers]);
-  
+
   const firstSkipped = skippedScenarios[0];
-  
+
   // Progress announcement for screen readers
   useEffect(() => {
     if (total > 0) {
@@ -59,26 +59,26 @@ const Play = () => {
       setProgressAnnouncement(announcement);
     }
   }, [index, total, progress]);
-  
+
   // Auto-redirect to results if all scenarios are complete and none are skipped
   useEffect(() => {
     if (scenarios && total > 0 && answered === total && skippedScenarios.length === 0) {
       navigate("/results");
     }
   }, [scenarios, total, answered, skippedScenarios.length, navigate]);
-  
+
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === "s" && e.target === document.body) {
       e.preventDefault();
       skip();
     }
   }, []);
-  
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
-  
+
   if (loading || !scenarios) {
     return (
       <main className="min-h-screen container py-10">
@@ -86,7 +86,7 @@ const Play = () => {
       </main>
     );
   }
-  
+
   if (total === 0) {
     return (
       <main className="min-h-screen container max-w-2xl py-8">
@@ -94,26 +94,11 @@ const Play = () => {
       </main>
     );
   }
-  
+
   const pick = (choice: Choice) => {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
 
-    // Send choice to backend and show aggregated stats. Errors are ignored so
-    // gameplay isn't blocked if the API is unreachable.
-    submitChoice(s.id, choice).catch(() => {});
-    if (choice !== "skip") {
-      fetchScenarioStats(s.id)
-        .then(stats => {
-          toast({
-            title: "Community choices",
-            description: `A ${Math.round(stats.percentA)}% · B ${Math.round(stats.percentB)}%`,
-            duration: 4000,
-          });
-        })
-        .catch(() => {});
-    }
-
     // Auto-advance to next scenario or results
     if (index < total - 1) {
       const nextId = scenarios[index + 1].id;
@@ -122,14 +107,11 @@ const Play = () => {
       navigate("/results");
     }
   };
-  
+
   const skip = () => {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: "skip" });
 
-    // Still report skips so backend totals remain accurate.
-    submitChoice(s.id, "skip").catch(() => {});
-
     // Auto-advance to next scenario or results
     if (index < total - 1) {
       const nextId = scenarios[index + 1].id;
@@ -138,17 +120,18 @@ const Play = () => {
       navigate("/results");
     }
   };
-  
+
   function reviewSkipped() {
     if (!firstSkipped) return;
     navigate(`/play?jump=${firstSkipped.id}`);
   }
-  
+
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
       <div aria-live="polite" className="sr-only" data-testid="progress-announcer">
         {progressAnnouncement}
       </div>
+      
       <section className="space-y-4 animate-fade-in">
         <div className="flex items-center justify-between">
           <div
@@ -164,6 +147,7 @@ const Play = () => {
             View Progress
           </button>
         </div>
+        
         <div className="space-y-2">
           <div className="h-2 animate-scale-in">
             <Progress value={progress * 100} />
@@ -178,11 +162,17 @@ const Play = () => {
           </div>
         </div>
       </section>
-      
+
       {s && (
-        <ScenarioCard scenario={s} onPick={pick} />
+        <ScenarioCard
+          scenario={s}
+          onPick={pick}
+          choice={null}
+          stats={null}
+          onNext={() => {}}
+        />
       )}
-      
+
       <div className="flex items-center justify-between pt-4">
         <button
           onClick={skip}
