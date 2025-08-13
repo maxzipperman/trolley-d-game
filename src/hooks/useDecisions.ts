@@ -1,9 +1,18 @@
+
 import { useCallback, useEffect, useState } from "react";
-import { ScenarioResponseSchema, type ScenarioResponse } from "@/types";
 import { fetchWithRetry } from "@/utils/fetchWithRetry";
+import type { Decision } from "@/types";
+import { z } from "zod";
+
+const DecisionSchema = z.object({
+  scenarioId: z.string(),
+  persona: z.string(),
+  choice: z.enum(["A", "B"]),
+  rationale: z.string().optional(),
+});
 
 export function useDecisions() {
-  const [decisions, setDecisions] = useState<ScenarioResponse[] | null>(null);
+  const [decisions, setDecisions] = useState<Decision[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,9 +22,9 @@ export function useDecisions() {
     try {
       const url = new URL("../../data/decisions.json", import.meta.url);
       const json = await fetchWithRetry(url.href);
-      const parsed = ScenarioResponseSchema.array().safeParse(json);
+      const parsed = DecisionSchema.array().safeParse(json);
       if (parsed.success) {
-        setDecisions(parsed.data);
+        setDecisions(parsed.data as Decision[]);
       } else {
         console.warn("Decision schema validation failed", parsed.error);
         setError("Failed to load decisions");

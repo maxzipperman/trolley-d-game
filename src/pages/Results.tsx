@@ -57,7 +57,7 @@ const Results = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Ethical Profile</h2>
           <div className="space-y-4">
@@ -84,26 +84,16 @@ const Results = () => {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold">Visual Summary</h2>
+        <h2 className="text-2xl font-semibold">Visual Breakdown</h2>
         <TrolleyDiagram />
-      </div>
-
-      <div className="flex justify-center space-x-4">
-        <Link 
-          className="px-6 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90" 
-          to="/play"
-        >
-          Play Again
-        </Link>
-        <button
-          onClick={() => {
-            setAnswers({});
-            navigate("/play");
-          }}
-          className="px-6 py-2 border rounded hover:bg-accent"
-        >
-          Reset & Play Again
-        </button>
+        <div className="text-center">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium rounded-md px-6 py-2 hover:bg-primary/90 transition-colors"
+          >
+            Start Over
+          </Link>
+        </div>
       </div>
     </main>
   );
