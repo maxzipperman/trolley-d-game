@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AxisVisualization from "@/components/AxisVisualization";
 import TrolleyDiagram from "@/components/TrolleyDiagram";
@@ -6,6 +6,7 @@ import InlineError from "@/components/InlineError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
 import { Choice, computeAxes_legacy, computeBaseCounts } from "@/utils/scoring";
+import { fetchOverallStats, type ScenarioStats } from "@/lib/api";
 import { results_viewed } from "@/utils/analytics";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -21,6 +22,13 @@ const Results = () => {
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const { scoreA, scoreB } = useMemo(() => computeBaseCounts(answers), [answers]);
   const axes = useMemo(() => computeAxes_legacy(scenarios ?? [], answers), [scenarios, answers]);
+  const [overallStats, setOverallStats] = useState<ScenarioStats | null>(null);
+
+  useEffect(() => {
+    fetchOverallStats()
+      .then(setOverallStats)
+      .catch(() => {});
+  }, []);
 
   if (error) {
     return (
@@ -49,12 +57,24 @@ const Results = () => {
           <div className="space-y-2">
             <div className="flex justify-between">
               <span>Choice A: {scoreA}</span>
-              <span>{scoreA + scoreB > 0 ? Math.round((scoreA / (scoreA + scoreB)) * 100) : 0}%</span>
+              <span>
+                {scoreA + scoreB > 0 ? Math.round((scoreA / (scoreA + scoreB)) * 100) : 0}%
+              </span>
             </div>
             <div className="flex justify-between">
               <span>Choice B: {scoreB}</span>
-              <span>{scoreA + scoreB > 0 ? Math.round((scoreB / (scoreA + scoreB)) * 100) : 0}%</span>
+              <span>
+                {scoreA + scoreB > 0 ? Math.round((scoreB / (scoreA + scoreB)) * 100) : 0}%
+              </span>
             </div>
+            {overallStats && (
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Global Average</span>
+                <span>
+                  A {Math.round(overallStats.percentA)}% · B {Math.round(overallStats.percentB)}%
+                </span>
+              </div>
+            )}
           </div>
         </div>
 

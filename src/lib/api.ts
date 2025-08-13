@@ -1,7 +1,14 @@
+// Base URL for the optional analytics API. When undefined the requests
+// fall back to relative paths which is useful during development or in
+// test environments where the backend may not exist yet.
 export const API_BASE_URL = import.meta.env.VITE_API_URL ?? "";
 
+// Response shape returned from the analytics endpoints. Percentages are in
+// the 0-100 range representing how many players chose option A vs B.
 export interface ScenarioStats {
+  /** Percentage of players who picked option A */
   percentA: number;
+  /** Percentage of players who picked option B */
   percentB: number;
 }
 
