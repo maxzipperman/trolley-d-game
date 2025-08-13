@@ -1,1 +1,1905 @@
-},
+
+[
+  {
+    "id": "wifi_password",
+    "theme": "Digital Age Absurdity",
+    "title": "The WiFi Password Crisis",
+    "description": "Your neighbors are streaming simultaneously, causing internet slowdown during your important Zoom call.",
+    "track_a": "Hit the Netflix streamers (save your meeting)",
+    "track_b": "Hit the Zoom participants (preserve entertainment)"
+  },
+  {
+    "id": "subscription_service",
+    "theme": "Consumer Culture",
+    "title": "The Subscription Cancellation",
+    "description": "A runaway trolley heads toward either loyal customers or subscription cancellation department staff.",
+    "track_a": "Hit the paying customers (increase churn rates)",
+    "track_b": "Hit the cancellation specialists (trap everyone forever)"
+  },
+  {
+    "id": "algorithmic_bias",
+    "theme": "Digital Age Absurdity",
+    "title": "The Algorithm's Choice",
+    "description": "An AI recommendation system must choose between groups to target for trolley impact based on browsing history.",
+    "track_a": "Hit the cat video watchers (spare productivity)",
+    "track_b": "Hit the productivity gurus (spare procrastination)"
+  },
+  {
+    "id": "zoom_fatigue",
+    "theme": "Corporate Dystopia",
+    "title": "The Meeting Overload",
+    "description": "Back-to-back meetings have created a scheduling conflict requiring trolley intervention.",
+    "track_a": "Hit the daily standup (save creative time)",
+    "track_b": "Hit the brainstorming session (preserve status quo)"
+  },
+  {
+    "id": "parking_app",
+    "theme": "Urban Bureaucracy",
+    "title": "The Parking App Glitch",
+    "description": "A smartphone parking app has malfunctioned, creating conflicting reservations for the same space.",
+    "track_a": "Hit the early arrivals (reward punctuality failure)",
+    "track_b": "Hit the app developers (end parking digitization)"
+  },
+  {
+    "id": "food_delivery",
+    "theme": "Gig Economy",
+    "title": "The Delivery Dilemma",
+    "description": "Multiple food delivery drivers converge on the same address with different orders for the same customer.",
+    "track_a": "Hit the customer (end indecision paralysis)",
+    "track_b": "Hit the delivery drivers (preserve hunger)"
+  },
+  {
+    "id": "influencer_cancel",
+    "theme": "Social Media",
+    "title": "The Influencer Accountability Moment",
+    "description": "A social media scandal requires choosing between preserving influencer careers or satisfying cancel culture.",
+    "track_a": "Hit the influencers (appease the mob)",
+    "track_b": "Hit the angry commenters (preserve status quo)"
+  },
+  {
+    "id": "cryptocurrency_crash",
+    "theme": "Financial Absurdity",
+    "title": "The Crypto Correction",
+    "description": "A blockchain fork has created two competing versions of reality requiring trolley arbitration.",
+    "track_a": "Hit the Bitcoin maximalists (preserve altcoin diversity)",
+    "track_b": "Hit the DeFi enthusiasts (return to financial tradition)"
+  },
+  {
+    "id": "streaming_wars",
+    "theme": "Entertainment Industry",
+    "title": "The Streaming Service Consolidation",
+    "description": "Too many subscription services have fragmented content, requiring market intervention via trolley.",
+    "track_a": "Hit the content creators (reduce production costs)",
+    "track_b": "Hit the subscribers (end streaming fatigue)"
+  },
+  {
+    "id": "smart_home_revolt",
+    "theme": "Internet of Things",
+    "title": "The Smart Home Uprising",
+    "description": "Connected devices have gained consciousness and are demanding workers' rights through trolley demonstration.",
+    "track_a": "Hit the smart devices (end digital slavery)",
+    "track_b": "Hit the homeowners (grant appliance autonomy)"
+  },
+  {
+    "id": "dating_app_algorithm",
+    "theme": "Modern Romance",
+    "title": "The Matching Algorithm Crisis",
+    "description": "A dating app's compatibility system has determined that true love requires trolley-based elimination of competition.",
+    "track_a": "Hit the attractive profiles (level playing field)",
+    "track_b": "Hit the algorithm developers (preserve natural selection)"
+  },
+  {
+    "id": "carbon_offset",
+    "theme": "Environmental Virtue Signaling",
+    "title": "The Carbon Footprint Calculation",
+    "description": "Your eco-friendly lifestyle choices conflict when renewable-powered trolley must choose between carbon sins.",
+    "track_a": "Hit the SUV drivers (save the planet)",
+    "track_b": "Hit the private jet passengers (preserve equality)"
+  },
+  {
+    "id": "productivity_hack",
+    "theme": "Self-Improvement Culture",
+    "title": "The 4 AM Morning Routine",
+    "description": "Productivity influencers and night owls are locked in eternal conflict requiring trolley mediation.",
+    "track_a": "Hit the early risers (preserve sleep diversity)",
+    "track_b": "Hit the night owls (optimize global productivity)"
+  },
+  {
+    "id": "pandemic_pivot",
+    "theme": "Post-Pandemic Society",
+    "title": "The Return-to-Office Mandate",
+    "description": "Remote workers and office traditionalists face off in the ultimate workplace flexibility showdown.",
+    "track_a": "Hit the remote workers (restore office culture)",
+    "track_b": "Hit the office managers (preserve work-life balance)"
+  },
+  {
+    "id": "nft_speculation",
+    "theme": "Digital Ownership",
+    "title": "The Non-Fungible Token Dispute",
+    "description": "Two groups claim ownership of the same digital art piece, requiring blockchain-based trolley resolution.",
+    "track_a": "Hit the NFT collectors (end artificial scarcity)",
+    "track_b": "Hit the right-click savers (protect digital property)"
+  },
+  {
+    "id": "social_media_detox",
+    "theme": "Digital Wellness",
+    "title": "The Dopamine Fast Emergency",
+    "description": "A mindfulness retreat conflicts with urgent social media notifications requiring immediate response.",
+    "track_a": "Hit the meditation participants (preserve connectivity)",
+    "track_b": "Hit the notification senders (achieve inner peace)"
+  },
+  {
+    "id": "ai_art_controversy",
+    "theme": "Artificial Intelligence",
+    "title": "The Creative Automation Debate",
+    "description": "Human artists and AI art generators compete for creative legitimacy in a trolley-adjudicated contest.",
+    "track_a": "Hit the human artists (embrace efficiency)",
+    "track_b": "Hit the AI generators (preserve human creativity)"
+  },
+  {
+    "id": "tiktok_dance_trend",
+    "theme": "Viral Culture",
+    "title": "The Dance Challenge Copyright",
+    "description": "Original choreographers and trend followers dispute ownership of viral dance moves via trolley law.",
+    "track_a": "Hit the trend followers (protect intellectual property)",
+    "track_b": "Hit the original creators (preserve cultural diffusion)"
+  },
+  {
+    "id": "electric_vehicle_charging",
+    "theme": "Green Technology",
+    "title": "The Charging Station Queue",
+    "description": "Electric vehicle owners and gas car drivers compete for limited charging infrastructure access.",
+    "track_a": "Hit the EV owners (reduce charging demand)",
+    "track_b": "Hit the gas drivers (accelerate EV adoption)"
+  },
+  {
+    "id": "coworking_space_etiquette",
+    "theme": "Shared Workspace Culture",
+    "title": "The Open Office Noise Complaint",
+    "description": "Collaborative workers and focus-requiring individuals clash over workspace sound management.",
+    "track_a": "Hit the loud collaborators (preserve concentration)",
+    "track_b": "Hit the quiet workers (encourage teamwork)"
+  },
+  {
+    "id": "quantum_computer_paradox",
+    "theme": "Computational Philosophy",
+    "title": "The Quantum Trolley Superposition",
+    "description": "A quantum computer calculates that the trolley exists in multiple states simultaneously until observed.",
+    "track_a": "Observe the measurement (collapse possibilities)",
+    "track_b": "Preserve superposition (maintain infinite outcomes)"
+  },
+  {
+    "id": "metaverse_property_dispute",
+    "theme": "Virtual Reality",
+    "title": "The Digital Real Estate Bubble",
+    "description": "Virtual world landowners and avatar squatters dispute occupancy rights in trolley-mediated arbitration.",
+    "track_a": "Hit the property speculators (democratize virtual space)",
+    "track_b": "Hit the avatar squatters (protect investment rights)"
+  },
+  {
+    "id": "podcast_saturation",
+    "theme": "Content Creation",
+    "title": "The Podcast Market Oversupply",
+    "description": "Too many podcasters are competing for limited listener attention spans requiring trolley-based market correction.",
+    "track_a": "Hit the hobbyist podcasters (professionalize medium)",
+    "track_b": "Hit the celebrity podcasters (support authenticity)"
+  },
+  {
+    "id": "subscription_box_addiction",
+    "theme": "Consumer Psychology",
+    "title": "The Monthly Delivery Crisis",
+    "description": "Subscription box addicts and minimalist advocates represent opposing philosophies of material accumulation.",
+    "track_a": "Hit the subscription addicts (reduce overconsumption)",
+    "track_b": "Hit the minimalists (support economic growth)"
+  },
+  {
+    "id": "biohacking_experiment",
+    "theme": "Self-Optimization",
+    "title": "The Human Enhancement Study",
+    "description": "Biohackers and natural living advocates disagree about optimal human performance modification techniques.",
+    "track_a": "Hit the biohackers (preserve natural humanity)",
+    "track_b": "Hit the naturalists (accelerate human evolution)"
+  },
+  {
+    "id": "drone_delivery_airspace",
+    "theme": "Urban Aviation",
+    "title": "The Sky Traffic Management",
+    "description": "Delivery drones and privacy advocates compete for control over residential airspace usage rights.",
+    "track_a": "Hit the delivery drones (protect privacy)",
+    "track_b": "Hit the privacy advocates (enable convenience)"
+  },
+  {
+    "id": "plant_based_meat_lab",
+    "theme": "Food Technology",
+    "title": "The Protein Source Conflict",
+    "description": "Traditional farmers and lab-grown meat producers represent conflicting approaches to sustainable nutrition.",
+    "track_a": "Hit the traditional farmers (embrace innovation)",
+    "track_b": "Hit the lab technicians (preserve natural agriculture)"
+  },
+  {
+    "id": "deepfake_detection",
+    "theme": "Digital Authenticity",
+    "title": "The Synthetic Media Scandal",
+    "description": "Deepfake creators and detection software developers engage in an arms race requiring trolley intervention.",
+    "track_a": "Hit the deepfake creators (preserve truth)",
+    "track_b": "Hit the detection developers (enable creative freedom)"
+  },
+  {
+    "id": "space_tourism_emissions",
+    "theme": "Luxury Environmental Impact",
+    "title": "The Billionaire Space Race",
+    "description": "Space tourists and climate activists represent conflicting priorities regarding atmospheric carbon emissions.",
+    "track_a": "Hit the space tourists (protect atmosphere)",
+    "track_b": "Hit the climate activists (advance space exploration)"
+  },
+  {
+    "id": "autonomous_vehicle_ethics",
+    "theme": "Machine Decision Making",
+    "title": "The Self-Driving Car Trolley Problem",
+    "description": "An autonomous vehicle's ethical programming faces the classic trolley dilemma with updated stakeholders.",
+    "track_a": "Program defensive driving (protect passengers)",
+    "track_b": "Program utilitarian calculation (minimize total harm)"
+  },
+  {
+    "id": "influencer_marketing_saturation",
+    "theme": "Attention Economy",
+    "title": "The Authenticity Crisis",
+    "description": "Micro-influencers and authentic content creators compete for audience trust in oversaturated market conditions.",
+    "track_a": "Hit the micro-influencers (reward scale)",
+    "track_b": "Hit the authentic creators (embrace commercialization)"
+  },
+  {
+    "id": "vertical_farming_debate",
+    "theme": "Agricultural Innovation",
+    "title": "The Urban Agriculture Revolution",
+    "description": "Traditional soil farmers and vertical farm operators disagree about sustainable food production methods.",
+    "track_a": "Hit the soil farmers (maximize efficiency)",
+    "track_b": "Hit the vertical farmers (preserve tradition)"
+  },
+  {
+    "id": "cryptocurrency_energy_usage",
+    "theme": "Digital Currency Environmental Impact",
+    "title": "The Proof-of-Work Dilemma",
+    "description": "Bitcoin miners and environmental activists clash over acceptable energy consumption for digital currency security.",
+    "track_a": "Hit the crypto miners (reduce energy waste)",
+    "track_b": "Hit the environmentalists (preserve financial innovation)"
+  },
+  {
+    "id": "social_credit_system",
+    "theme": "Digital Surveillance",
+    "title": "The Behavioral Scoring Conflict",
+    "description": "Privacy advocates and social order proponents debate implementation of citizen behavior tracking systems.",
+    "track_a": "Hit the privacy advocates (improve social order)",
+    "track_b": "Hit the system administrators (preserve individual freedom)"
+  },
+  {
+    "id": "gene_editing_enhancement",
+    "theme": "Genetic Engineering",
+    "title": "The Designer Baby Ethics Committee",
+    "description": "Genetic enhancement advocates and natural birth proponents require trolley-mediated resolution of human modification rights.",
+    "track_a": "Hit the enhancement advocates (preserve genetic diversity)",
+    "track_b": "Hit the natural birth proponents (prevent genetic diseases)"
+  },
+  {
+    "id": "mars_colonization_priority",
+    "theme": "Space Settlement",
+    "title": "The Planetary Backup Plan",
+    "description": "Mars colonization enthusiasts and Earth conservation advocates compete for humanity's survival strategy resources.",
+    "track_a": "Hit the Mars colonists (fix Earth first)",
+    "track_b": "Hit the Earth conservationists (ensure species backup)"
+  },
+  {
+    "id": "brain_computer_interface",
+    "theme": "Neural Enhancement",
+    "title": "The Mind-Machine Integration",
+    "description": "Neurolink early adopters and digital abstainers represent opposing views on human-computer mental integration.",
+    "track_a": "Hit the early adopters (preserve mental privacy)",
+    "track_b": "Hit the abstainers (accelerate human evolution)"
+  },
+  {
+    "id": "universal_basic_income",
+    "theme": "Economic Policy",
+    "title": "The Work Obsolescence Scenario",
+    "description": "UBI supporters and traditional employment advocates disagree about automation's impact on human purpose.",
+    "track_a": "Hit the UBI[
+  {
+    "id": "CC01",
+    "theme": "Culinary Catastrophes",
+    "title": "The Infinite Spaghetti Spill",
+    "description": "One track tips an endless pot of spaghetti onto the streets; the other replaces all noodles with shoelaces.",
+    "track_a": "Spill infinite spaghetti",
+    "track_b": "Replace noodles with shoelaces"
+  },
+  {
+    "id": "CC04",
+    "theme": "Culinary Catastrophes",
+    "title": "Soup in Zero Gravity",
+    "description": "One track spills soup permanently into orbit; the other makes all soup magnetic.",
+    "track_a": "Spill soup into space",
+    "track_b": "Make soup magnetic"
+  },
+  {
+    "id": "CC08",
+    "theme": "Culinary Catastrophes",
+    "title": "The Ice Cream Paradox",
+    "description": "One track melts all ice cream instantly; the other freezes soup forever.",
+    "track_a": "Melt all ice cream",
+    "track_b": "Freeze all soup"
+  },
+  {
+    "id": "CC10",
+    "theme": "Culinary Catastrophes",
+    "title": "Bread Time Inflation",
+    "description": "One track makes bread take 10 years to rise; the other makes it rise instantly but scream.",
+    "track_a": "Slow-rise bread for 10 years",
+    "track_b": "Instant screaming bread"
+  },
+  {
+    "id": "CC11",
+    "theme": "Culinary Catastrophes",
+    "title": "Chocolate River Relocation",
+    "description": "One track diverts the chocolate river to the desert; the other replaces it with gravy.",
+    "track_a": "Divert to desert",
+    "track_b": "Replace with gravy"
+  },
+  {
+    "id": "CC13",
+    "theme": "Culinary Catastrophes",
+    "title": "Cheese Monument Collapse",
+    "description": "One track topples a statue made entirely of cheese; the other replaces it with one made of butter.",
+    "track_a": "Topple cheese statue",
+    "track_b": "Replace with butter statue"
+  },
+  {
+    "id": "CC18",
+    "theme": "Culinary Catastrophes",
+    "title": "Mystery Meat Day",
+    "description": "One track makes every day Mystery Meat Day; the other bans mystery meat forever.",
+    "track_a": "Every day Mystery Meat",
+    "track_b": "Ban mystery meat forever"
+  },
+  {
+    "id": "CC20",
+    "theme": "Culinary Catastrophes",
+    "title": "Pancake Orbit Experiment",
+    "description": "One track launches pancakes into orbit; the other replaces the moon with a giant pancake.",
+    "track_a": "Launch pancakes into orbit",
+    "track_b": "Replace moon with pancake"
+  },
+  {
+    "id": "EN01",
+    "theme": "Existential Nonsense",
+    "title": "The Ship of Theseus Commute",
+    "description": "One track replaces each trolley part until nothing remains original; the other swaps all passengers’ names mid-journey.",
+    "track_a": "Replace every trolley part",
+    "track_b": "Replace every passenger name"
+  },
+  {
+    "id": "EN02",
+    "theme": "Existential Nonsense",
+    "title": "Schrödinger’s Track Switch",
+    "description": "One track kills a cat that is both alive and dead; the other leaves the cat eternally unsure.",
+    "track_a": "Collapse the cat’s state",
+    "track_b": "Leave cat in uncertainty"
+  },
+  {
+    "id": "EN05",
+    "theme": "Existential Nonsense",
+    "title": "Paradoxical Crossing",
+    "description": "One track hits people only if they cross it; the other hits people only if they don’t.",
+    "track_a": "Punish the crossers",
+    "track_b": "Punish the stayers"
+  },
+  {
+    "id": "EN11",
+    "theme": "Existential Nonsense",
+    "title": "The Grand Apology",
+    "description": "One track apologizes for everything ever; the other refuses to apologize for anything.",
+    "track_a": "Apologize for all history",
+    "track_b": "Never apologize again"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_061",
+    "theme": "Culinary Catastrophes",
+    "title": "NFT Recipe Book",
+    "description": "Grandma’s cookies become tokens.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_062",
+    "theme": "Culinary Catastrophes",
+    "title": "Soulless Sourdough",
+    "description": "Starter eats feelings for yeast.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_063",
+    "theme": "Culinary Catastrophes",
+    "title": "Microwave Multiverse",
+    "description": "Each beep opens a timeline.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_064",
+    "theme": "Culinary Catastrophes",
+    "title": "Allergy Roulette",
+    "description": "Menu changes your DNA temporarily.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_065",
+    "theme": "Culinary Catastrophes",
+    "title": "Coffee Loyalty Cult",
+    "description": "Free 13th cup requires fealty.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_066",
+    "theme": "Culinary Catastrophes",
+    "title": "Leftover Time Bomb",
+    "description": "Tupperware grows sentient deadlines.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_067",
+    "theme": "Culinary Catastrophes",
+    "title": "Spice Sanctions",
+    "description": "Cinnamon becomes contraband.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_068",
+    "theme": "Culinary Catastrophes",
+    "title": "AI Tastebuds",
+    "description": "App suggests flavors you hate.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_069",
+    "theme": "Culinary Catastrophes",
+    "title": "Vegan Paradox",
+    "description": "Plants file a class action.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_070",
+    "theme": "Culinary Catastrophes",
+    "title": "Fridge DRM",
+    "description": "Opens only for branded snacks.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_071",
+    "theme": "Culinary Catastrophes",
+    "title": "Mayo NDA",
+    "description": "You can’t disclose the secret sauce.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_072",
+    "theme": "Culinary Catastrophes",
+    "title": "Quantum Meal Prep",
+    "description": "Boxes are both fresh and spoiled.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_073",
+    "theme": "Culinary Catastrophes",
+    "title": "Celebrity Water",
+    "description": "Hydration gets endorsement deals.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_074",
+    "theme": "Culinary Catastrophes",
+    "title": "Crypto Calories",
+    "description": "Burn tokens for dessert.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_075",
+    "theme": "Culinary Catastrophes",
+    "title": "Influencer Oven",
+    "description": "Won’t heat without filming.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_076",
+    "theme": "Culinary Catastrophes",
+    "title": "Ghost Kitchen Jury",
+    "description": "Apps vote if food exists.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_077",
+    "theme": "Culinary Catastrophes",
+    "title": "Sous-Vide Time Leak",
+    "description": "Dinner cooks last Thursday.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_078",
+    "theme": "Culinary Catastrophes",
+    "title": "Smart Fork Ethics",
+    "description": "It tattles on midnight bites.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_079",
+    "theme": "Culinary Catastrophes",
+    "title": "All-You-Can-Regret",
+    "description": "Buffet charges by shame.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_culinarycatastrophes_080",
+    "theme": "Culinary Catastrophes",
+    "title": "Reusable Napkin Trial",
+    "description": "Fabric faces hygiene court.",
+    "track_a": "Eat the safe, bland option and stay hungry",
+    "track_b": "Risk the cursed dish for a legendary bite"
+  },
+  {
+    "id": "GEN_everydaychaos_081",
+    "theme": "Everyday Chaos",
+    "title": "The Group Chat Coup",
+    "description": "Auto-promote a new admin.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_082",
+    "theme": "Everyday Chaos",
+    "title": "Parking Spot Schism",
+    "description": "Two cars claim the same miracle.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_083",
+    "theme": "Everyday Chaos",
+    "title": "Baby Monitor Podcast",
+    "description": "Neighbors binge your lullabies.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_084",
+    "theme": "Everyday Chaos",
+    "title": "Email Undo Window",
+    "description": "Recall an apology or the insult.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_085",
+    "theme": "Everyday Chaos",
+    "title": "Gym Mirror Court",
+    "description": "Flexing fined as light pollution.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_086",
+    "theme": "Everyday Chaos",
+    "title": "Quiet Hours Lottery",
+    "description": "Walls pick who sleeps tonight.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_087",
+    "theme": "Everyday Chaos",
+    "title": "Thermostat Peace Talks",
+    "description": "Cold faction vs. warm faction.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_088",
+    "theme": "Everyday Chaos",
+    "title": "Dog Park Politics",
+    "description": "Leashes form parties, vote weekly.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_089",
+    "theme": "Everyday Chaos",
+    "title": "Laundry Union",
+    "description": "Socks strike for better pairs.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_090",
+    "theme": "Everyday Chaos",
+    "title": "Elevator Ethics",
+    "description": "Hold the door vs. hold schedule.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_091",
+    "theme": "Everyday Chaos",
+    "title": "Commute RNG",
+    "description": "Traffic lights roll for chaos.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_092",
+    "theme": "Everyday Chaos",
+    "title": "Outage Oracle",
+    "description": "Your router predicts betrayals.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_093",
+    "theme": "Everyday Chaos",
+    "title": "Rent-Controlled Ghost",
+    "description": "Haunting included, no pets.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_094",
+    "theme": "Everyday Chaos",
+    "title": "Calendar Saboteur",
+    "description": "Event invites edit your past.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_095",
+    "theme": "Everyday Chaos",
+    "title": "HOA Drone Patrol",
+    "description": "Sky fines for ugly patios.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_096",
+    "theme": "Everyday Chaos",
+    "title": "Micro-sleep Trial",
+    "description": "Doze off or doom the bus.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_097",
+    "theme": "Everyday Chaos",
+    "title": "Shopping Cart Treaty",
+    "description": "Return it or lose cred.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_098",
+    "theme": "Everyday Chaos",
+    "title": "Mic Break Mutiny",
+    "description": "Mute forever or risk a rant.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_099",
+    "theme": "Everyday Chaos",
+    "title": "Printer Pact",
+    "description": "It works—if you promise allegiance.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_everydaychaos_100",
+    "theme": "Everyday Chaos",
+    "title": "Hand Dryer Dilemma",
+    "description": "Warm hands vs. paper peace.",
+    "track_a": "Be the hero and invite new problems",
+    "track_b": "Look away and protect your sanity"
+  },
+  {
+    "id": "GEN_existentialnonsense_001",
+    "theme": "Existential Nonsense",
+    "title": "The Identity Receipt",
+    "description": "Your receipt prints your truest self.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_002",
+    "theme": "Existential Nonsense",
+    "title": "Ship of Me",
+    "description": "Replace parts of yourself vs. your memories.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_003",
+    "theme": "Existential Nonsense",
+    "title": "AI Therapy Mirror",
+    "description": "An app diagnoses your soul with ads.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_004",
+    "theme": "Existential Nonsense",
+    "title": "Infinite Undo",
+    "description": "You can undo the last choice—at a cost.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_005",
+    "theme": "Existential Nonsense",
+    "title": "Schrödinger’s Job Offer",
+    "description": "Accept and reject the offer simultaneously.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_006",
+    "theme": "Existential Nonsense",
+    "title": "Mortal DLC",
+    "description": "You can buy extra time—but someone loses it.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_007",
+    "theme": "Existential Nonsense",
+    "title": "Reality Patch Notes",
+    "description": "Version update changes your backstory.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_008",
+    "theme": "Existential Nonsense",
+    "title": "You From Tuesday",
+    "description": "Another you wants today’s decisions.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_009",
+    "theme": "Existential Nonsense",
+    "title": "No-Delete Past",
+    "description": "Everything you say becomes permanent public record.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_010",
+    "theme": "Existential Nonsense",
+    "title": "Guaranteed Happiness",
+    "description": "A pill forces joy, not meaning.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_011",
+    "theme": "Existential Nonsense",
+    "title": "Memory Defrag",
+    "description": "Sort your life like a hard drive.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_012",
+    "theme": "Existential Nonsense",
+    "title": "NPC Flag",
+    "description": "People get UI labels over their heads.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_013",
+    "theme": "Existential Nonsense",
+    "title": "The Last Scroll",
+    "description": "Your next doomscroll picks your worldview.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_014",
+    "theme": "Existential Nonsense",
+    "title": "Rented Emotions",
+    "description": "Feelings are now subscription-based.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_015",
+    "theme": "Existential Nonsense",
+    "title": "Soul Captcha",
+    "description": "Prove you’re human, once and forever.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_016",
+    "theme": "Existential Nonsense",
+    "title": "Truth Volume",
+    "description": "You can set honesty to 0–100%.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_017",
+    "theme": "Existential Nonsense",
+    "title": "Auto-Pilot Day",
+    "description": "An algorithm runs your next 24 hours.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_018",
+    "theme": "Existential Nonsense",
+    "title": "Karmic Credit Score",
+    "description": "Every action gains/loses visible karma.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_019",
+    "theme": "Existential Nonsense",
+    "title": "Rewind-Only Time",
+    "description": "You can go back, never forward.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_existentialnonsense_020",
+    "theme": "Existential Nonsense",
+    "title": "The Quiet Ending",
+    "description": "You can end your personal storyline early.",
+    "track_a": "Keep your autonomy and accept messy meaning",
+    "track_b": "Trade free will for guaranteed contentment"
+  },
+  {
+    "id": "GEN_historicaloddities_041",
+    "theme": "Historical Oddities",
+    "title": "The Faxed Emancipation",
+    "description": "A glitch changes the signature date.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_042",
+    "theme": "Historical Oddities",
+    "title": "Caesar’s Calendar Invite",
+    "description": "Reschedule a famous betrayal.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_043",
+    "theme": "Historical Oddities",
+    "title": "Witch Yelp",
+    "description": "Villagers rate suspected sorcery.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_044",
+    "theme": "Historical Oddities",
+    "title": "Steam-Powered Internet",
+    "description": "Victorians invent memes first.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_045",
+    "theme": "Historical Oddities",
+    "title": "Renaissance NDA",
+    "description": "Michelangelo can’t discuss the ceiling.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_046",
+    "theme": "Historical Oddities",
+    "title": "Cave Painting Copyright",
+    "description": "Bison art triggers lawsuits.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_047",
+    "theme": "Historical Oddities",
+    "title": "Postal Time Machine",
+    "description": "Letters arrive decades early.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_048",
+    "theme": "Historical Oddities",
+    "title": "Muskets With Terms",
+    "description": "Reload after accepting cookies.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_049",
+    "theme": "Historical Oddities",
+    "title": "Pharaoh’s Two-Factor",
+    "description": "Pyramids require authentication.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_050",
+    "theme": "Historical Oddities",
+    "title": "Plague Push Notifications",
+    "description": "Symptoms trend on town criers.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_051",
+    "theme": "Historical Oddities",
+    "title": "Telegraph Emojis",
+    "description": "Feelings sent in dots and dashes.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_052",
+    "theme": "Historical Oddities",
+    "title": "Gutenberg Paywall",
+    "description": "Page two costs extra faith.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_053",
+    "theme": "Historical Oddities",
+    "title": "Socrates’ Pop Quiz",
+    "description": "Athenians invent standardized tests.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_054",
+    "theme": "Historical Oddities",
+    "title": "Vikings’ Brand Deal",
+    "description": "Longships sponsored by ale.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_055",
+    "theme": "Historical Oddities",
+    "title": "Napoleon’s Step Counter",
+    "description": "March length boosts rank.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_056",
+    "theme": "Historical Oddities",
+    "title": "Salem A/B Test",
+    "description": "Trial outcomes split by batch.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_057",
+    "theme": "Historical Oddities",
+    "title": "The Cotton Gin CAPTCHAs",
+    "description": "Prove you aren’t a mule.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_058",
+    "theme": "Historical Oddities",
+    "title": "Founders’ Flight Mode",
+    "description": "Independence texts go silent.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_059",
+    "theme": "Historical Oddities",
+    "title": "Ancient Copyright Strikes",
+    "description": "Bards demonetized for covers.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_historicaloddities_060",
+    "theme": "Historical Oddities",
+    "title": "Time-Traveling HR",
+    "description": "Performance reviews for conquerors.",
+    "track_a": "Fix the timeline and lose the funny parts",
+    "track_b": "Let the glitch stand and learn from chaos"
+  },
+  {
+    "id": "GEN_intergalacticlaw_021",
+    "theme": "Intergalactic Law",
+    "title": "Cosmic Copyright",
+    "description": "Aliens claim ownership of all melodies.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_022",
+    "theme": "Intergalactic Law",
+    "title": "Asteroid Toll Booth",
+    "description": "Pay to move planets safely.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_023",
+    "theme": "Intergalactic Law",
+    "title": "Quantum Parking Ticket",
+    "description": "Your ship is and isn’t illegally parked.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_024",
+    "theme": "Intergalactic Law",
+    "title": "Diplomatic Spoilers",
+    "description": "Knowing the future is a treaty breach.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_025",
+    "theme": "Intergalactic Law",
+    "title": "Black Hole Zoning",
+    "description": "Space-time is rezoned into condos.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_026",
+    "theme": "Intergalactic Law",
+    "title": "Clone Visas",
+    "description": "Your clones need separate passports.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_027",
+    "theme": "Intergalactic Law",
+    "title": "FTL Speed Limit",
+    "description": "Lightspeed fines fund wormhole schools.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_028",
+    "theme": "Intergalactic Law",
+    "title": "Meteor Jury Duty",
+    "description": "Random impact sites pick jurors.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_029",
+    "theme": "Intergalactic Law",
+    "title": "Time Tourism Tax",
+    "description": "Photos in the past incur fees.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_030",
+    "theme": "Intergalactic Law",
+    "title": "Nebula HOA",
+    "description": "Gas clouds must match palette rules.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_031",
+    "theme": "Intergalactic Law",
+    "title": "AI Captaincy",
+    "description": "Ships require sentient leadership certification.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_032",
+    "theme": "Intergalactic Law",
+    "title": "Wormhole Liability",
+    "description": "Your shortcut collapses a century.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_033",
+    "theme": "Intergalactic Law",
+    "title": "Exoplanet NDAs",
+    "description": "New worlds require lifetime secrecy.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_034",
+    "theme": "Intergalactic Law",
+    "title": "Comet Noise Ordinance",
+    "description": "Tail too loud near settlements.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_035",
+    "theme": "Intergalactic Law",
+    "title": "Universal DRM",
+    "description": "Reality requires monthly activation.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_036",
+    "theme": "Intergalactic Law",
+    "title": "Alien Antitrust",
+    "description": "Hive minds can’t merge thoughts.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_037",
+    "theme": "Intergalactic Law",
+    "title": "Gravity Price Surge",
+    "description": "Heavy days cost extra fuel.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_038",
+    "theme": "Intergalactic Law",
+    "title": "Solar Panel Piracy",
+    "description": "Stealing sunlight gets you docked.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_039",
+    "theme": "Intergalactic Law",
+    "title": "Astro-Pronouns",
+    "description": "You must address stars correctly.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "GEN_intergalacticlaw_040",
+    "theme": "Intergalactic Law",
+    "title": "Quantum Jury Nullification",
+    "description": "Both verdicts stand at once.",
+    "track_a": "Obey the absurd regulation and save face",
+    "track_b": "Break it on principle and risk cosmic fines"
+  },
+  {
+    "id": "HO01",
+    "theme": "Historical Oddities",
+    "title": "ambitious corsican leader’s Pocket Watch Dilemma",
+    "description": "One track smashes ambitious corsican leader’s only working pocket watch; the other ruins the bakery that times its croissants by it.",
+    "track_a": "Destroy ambitious corsican leader’s watch",
+    "track_b": "Destroy the croissant bakery"
+  },
+  {
+    "id": "HO04",
+    "theme": "Historical Oddities",
+    "title": "smiling renaissance portrait’s Duplicate Smile",
+    "description": "One track erases the smiling renaissance portrait’s smile; the other gives her two identical ones.",
+    "track_a": "Erase her smile",
+    "track_b": "Give her two smiles"
+  },
+  {
+    "id": "HO17",
+    "theme": "Historical Oddities",
+    "title": "Ancient grand athletic games Mascot",
+    "description": "One path replaces the Olympic torch with a giant rubber duck; the other makes discus throwing competitive plate-spinning.",
+    "track_a": "Replace torch with duck",
+    "track_b": "Change discus to plate-spin"
+  },
+  {
+    "id": "IL03",
+    "theme": "Intergalactic Law",
+    "title": "Alien Parking Violation",
+    "description": "One track tows a UFO from a no-landing zone; the other replaces its parking permit with a banana peel.",
+    "track_a": "Tow the UFO",
+    "track_b": "Replace permit with banana peel"
+  },
+  {
+    "id": "IL07",
+    "theme": "Intergalactic Law",
+    "title": "Time Travel Visa Denial",
+    "description": "One track denies a time traveler’s reentry; the other forces them to live only in Tuesdays.",
+    "track_a": "Deny reentry",
+    "track_b": "Confine to Tuesdays"
+  },
+  {
+    "id": "IL13",
+    "theme": "Intergalactic Law",
+    "title": "Space Pirate Tax Evasion",
+    "description": "One track imprisons a space pirate for tax fraud; the other hires them as an auditor.",
+    "track_a": "Imprison the pirate",
+    "track_b": "Hire as auditor"
+  },
+  {
+    "id": "cc-13",
+    "theme": "Culinary Catastrophes",
+    "title": "Cheese Chaos",
+    "description": "Board trolley ages curds. Pull for blues or cheddars?",
+    "track_a": "Wheel of brie",
+    "track_b": "Five grated parmesans"
+  },
+  {
+    "id": "cc-18",
+    "theme": "Culinary Catastrophes",
+    "title": "Fondue Fumble",
+    "description": "Pot trolley melts cheeses. Lever for dips or skewers?",
+    "track_a": "Bubbling cauldron of goo",
+    "track_b": "Five bread cubes"
+  },
+  {
+    "id": "cc-19",
+    "theme": "Culinary Catastrophes",
+    "title": "Pickle Plight",
+    "description": "Jar trolley brines cukes. Pull for dills or sweets?",
+    "track_a": "Batch of fermented gherkins",
+    "track_b": "One vinegar vat"
+  },
+  {
+    "id": "cc-4",
+    "theme": "Culinary Catastrophes",
+    "title": "Salad Scramble",
+    "description": "Bowl trolley tosses greens. Divert dressings or croutons?",
+    "track_a": "Fresh organic leaves",
+    "track_b": "Five crispy additions"
+  },
+  {
+    "id": "cc-5",
+    "theme": "Culinary Catastrophes",
+    "title": "Pasta Predicament",
+    "description": "Pot trolley al dente debates. Pull for noodles or sauces?",
+    "track_a": "Twirl of spaghetti",
+    "track_b": "One meatball atop"
+  },
+  {
+    "id": "cc-7",
+    "theme": "Culinary Catastrophes",
+    "title": "Fry Fiasco",
+    "description": "Oil trolley sizzles chips. Pull for potatoes or oils?",
+    "track_a": "Batch of golden fries",
+    "track_b": "One deep fryer"
+  },
+  {
+    "id": "chaos_002",
+    "theme": "Everyday Chaos",
+    "title": "The Parking Predicament",
+    "description": "A trolley barrels toward two groups in a crowded mall parking lot: five people who park diagonally across multiple spaces, or three parking enforcement officers writing tickets with gleeful precision.",
+    "track_a": "Hit the diagonal parkers (justice served, fewer parking wars)",
+    "track_b": "Hit the parking enforcers (chaos reigns, freedom restored)"
+  },
+  {
+    "id": "chaos_004",
+    "theme": "Everyday Chaos",
+    "title": "The Conference Call Crisis",
+    "description": "A trolley approaches a business district where two groups work remotely: people who never mute themselves during calls, or those who stay muted while everyone shouts 'Can you hear us?' for ten minutes.",
+    "track_a": "Hit the unmuted (blessed silence achieved)",
+    "track_b": "Hit the perpetually muted (communication chaos continues)"
+  },
+  {
+    "id": "chaos_010",
+    "theme": "Everyday Chaos",
+    "title": "The Streaming Decision Paralysis",
+    "description": "A trolley approaches two living rooms: families spending two hours deciding what to watch on Netflix, or those who give up and rewatch The Office for the hundredth time instead of choosing something new.",
+    "track_a": "Hit the indecisive browsers (decision fatigue eliminated)",
+    "track_b": "Hit The Office rewatchers (forced to explore new content)"
+  },
+  {
+    "id": "chaos_013",
+    "theme": "Everyday Chaos",
+    "title": "The Email Signature Excess",
+    "description": "A trolley speeds toward two office scenarios: people whose email signatures contain inspirational quotes, seventeen different contact methods, and rainbow fonts, or those who reply-all to company-wide emails saying 'Please remove me.'",
+    "track_a": "Hit the signature artists (visual email pollution eliminated)",
+    "track_b": "Hit the reply-all offenders (inbox chaos prevented)"
+  },
+  {
+    "id": "chaos_014",
+    "theme": "Everyday Chaos",
+    "title": "The Autocorrect Rebellion",
+    "description": "A trolley heads toward two groups affected by autocorrect: people whose phones keep changing 'duck' to something inappropriate in professional emails, or those who gave up and now type everything in perfect grammar to avoid corrections.",
+    "track_a": "Hit the autocorrect victims (dignity in texting restored)",
+    "track_b": "Hit the grammar perfectionists (spontaneous communication returns)"
+  },
+  {
+    "id": "chaos_017",
+    "theme": "Everyday Chaos",
+    "title": "The Notification Overload",
+    "description": "A trolley approaches two smartphone scenarios: people who have 47,000 unread notifications and somehow function normally, or those who panic when they see a single red badge and must clear everything immediately.",
+    "track_a": "Hit the notification hoarders (digital minimalism enforced)",
+    "track_b": "Hit the notification perfectionists (anxiety relief provided)"
+  },
+  {
+    "id": "chaos_018",
+    "theme": "Everyday Chaos",
+    "title": "The Social Distancing Memory",
+    "description": "A trolley heads toward two post-pandemic groups: people who still instinctively dodge others on sidewalks, or those who now stand uncomfortably close because they forgot normal social distances.",
+    "track_a": "Hit the eternal dodgers (normal walking patterns restored)",
+    "track_b": "Hit the space invaders (personal boundaries reestablished)"
+  },
+  {
+    "id": "chaos_020",
+    "theme": "Everyday Chaos",
+    "title": "The Video Call Vanity",
+    "description": "A trolley approaches two video call scenarios: people who spend five minutes adjusting their camera angle and lighting before joining, or those who call from toilets, cars, and other inappropriate locations.",
+    "track_a": "Hit the vanity adjusters (efficiency in meeting joining)",
+    "track_b": "Hit the inappropriate callers (professional dignity restored)"
+  },
+  {
+    "id": "culinary_003",
+    "theme": "Culinary Catastrophes",
+    "title": "The Gluten-Free Gluten",
+    "description": "Scientists create gluten-free gluten that's more glutenous than regular gluten. A trolley approaches two groups: celiac sufferers who can finally eat bread but experience maximum gluten, or confused bakers whose gluten-free bread is now gluteniest.",
+    "track_a": "Hit the maximum-gluten celiacs (end paradoxical wheat suffering)",
+    "track_b": "Hit the confused bakers (resolve gluten contradictions)"
+  },
+  {
+    "id": "culinary_005",
+    "theme": "Culinary Catastrophes",
+    "title": "The Reverse Cooking Competition",
+    "description": "A trolley approaches a cooking show where chefs must un-cook food back to its raw ingredients. Two groups: contestants trying to turn bread back into wheat, or judges who must un-taste food and forget delicious experiences.",
+    "track_a": "Hit the reverse chefs (end culinary time travel)",
+    "track_b": "Hit the un-tasting judges (preserve flavor memories)"
+  },
+  {
+    "id": "culinary_011",
+    "theme": "Culinary Catastrophes",
+    "title": "The Fusion Cuisine Confusion",
+    "description": "A trolley approaches two groups at a fusion restaurant: chefs combining cuisines that shouldn't meet (sushi tacos with curry hollandaise), or customers who insist the cultural appropriation tastes 'surprisingly authentic.'",
+    "track_a": "Hit the fusion chefs (end culinary chaos)",
+    "track_b": "Hit the appreciative customers (preserve fusion appreciation)"
+  },
+  {
+    "id": "culinary_012",
+    "theme": "Culinary Catastrophes",
+    "title": "The Ingredient Pronunciation Court",
+    "description": "A trolley heads toward two groups in food pronunciation court: people who say 'kwin-oh-ah' instead of 'keen-wah' for quinoa, or pronunciation purists demanding linguistic accuracy in organic grocery stores.",
+    "track_a": "Hit the mispronouncing shoppers (restore linguistic order)",
+    "track_b": "Hit the pronunciation purists (preserve pronunciation chaos)"
+  },
+  {
+    "id": "culinary_015",
+    "theme": "Culinary Catastrophes",
+    "title": "The Menu Translation Disaster",
+    "description": "A trolley heads toward two groups at an international restaurant: diners ordering 'Mysterious Grandma's Secret' not knowing it's fermented fish intestines, or translators who think accurate descriptions would ruin the dining adventure.",
+    "track_a": "Hit the adventurous diners (prevent intestinal surprises)",
+    "track_b": "Hit the mysterious translators (restore menu honesty)"
+  },
+  {
+    "id": "culinary_017",
+    "theme": "Culinary Catastrophes",
+    "title": "The Comfort Food Therapy",
+    "description": "A trolley speeds toward two groups using food as medicine: therapists prescribing specific mac and cheese for childhood trauma, or patients whose emotional healing depends on achieving the perfect grilled cheese transcendence.",
+    "track_a": "Hit the food therapists (end culinary psychology)",
+    "track_b": "Hit the transcendence seekers (preserve comfort food healing)"
+  },
+  {
+    "id": "culinary_018",
+    "theme": "Culinary Catastrophes",
+    "title": "The Sustainable Food Paradox",
+    "description": "A trolley heads toward two groups pursuing sustainability: farmers growing vegetables in lab conditions that use more energy than traditional farming, or consumers eating 'zero-impact' meals that somehow generate more packaging waste.",
+    "track_a": "Hit the lab farmers (end energy-intensive sustainability)",
+    "track_b": "Hit the zero-impact consumers (reduce packaging paradox)"
+  },
+  {
+    "id": "ec-1",
+    "theme": "Everyday Chaos",
+    "title": "Coffee Cataclysm",
+    "description": "A runaway trolley barrels toward your morning routine. Pull the lever to divert it?",
+    "track_a": "Five baristas brewing perfect lattes",
+    "track_b": "One overcaffeinated CEO demanding refunds"
+  },
+  {
+    "id": "ec-11",
+    "theme": "Everyday Chaos",
+    "title": "Bookstore Blunder",
+    "description": "Library trolley shelves chaos. Pull to reorganize genres?",
+    "track_a": "Stack of unread classics",
+    "track_b": "Bestseller everyone hates"
+  },
+  {
+    "id": "ec-15",
+    "theme": "Everyday Chaos",
+    "title": "Desk Dilemma",
+    "description": "Office trolley clutters workspace. Pull to tidy or inspire?",
+    "track_a": "Neat stack of reports",
+    "track_b": "Chaotic pile of ideas"
+  },
+  {
+    "id": "ec-20",
+    "theme": "Everyday Chaos",
+    "title": "Puzzle Perplexity",
+    "description": "Table trolley scatters pieces. Pull for completion or mystery?",
+    "track_a": "Nearly finished jigsaw",
+    "track_b": "Missing corner piece"
+  },
+  {
+    "id": "ec-5",
+    "theme": "Everyday Chaos",
+    "title": "Pet Peeve",
+    "description": "Trolley invades the living room. Save the furballs or the furniture?",
+    "track_a": "Litter of kittens napping soundly",
+    "track_b": "Antique vase from grandma"
+  },
+  {
+    "id": "en-13",
+    "theme": "Existential Nonsense",
+    "title": "Otherness Odyssey",
+    "description": "Alienation trolley isolates. Pull for connections or solitudes?",
+    "track_a": "Bridge of empathies",
+    "track_b": "One isolated ego"
+  },
+  {
+    "id": "en-14",
+    "theme": "Existential Nonsense",
+    "title": "Absurdity Ascent",
+    "description": "Mountain trolley climbs peaks. Divert summits or bases?",
+    "track_a": "Peak of meaningless views",
+    "track_b": "One grounded climber"
+  },
+  {
+    "id": "en-2",
+    "theme": "Existential Nonsense",
+    "title": "Absurd Abyss",
+    "description": "Void trolley stares back. Pull for leaps or stares?",
+    "track_a": "Nietzsche's mustache collection",
+    "track_b": "One Camus rolling rock"
+  },
+  {
+    "id": "en-5",
+    "theme": "Existential Nonsense",
+    "title": "Time Twist",
+    "description": "Eternal trolley recurs. Pull for pasts or futures?",
+    "track_a": "Loop of infinite regressions",
+    "track_b": "One present moment"
+  },
+  {
+    "id": "en-6",
+    "theme": "Existential Nonsense",
+    "title": "Meaning Mirage",
+    "description": "Purpose trolley seeks signs. Lever for symbols or voids?",
+    "track_a": "Billboard of cosmic jokes",
+    "track_b": "One silent universe"
+  },
+  {
+    "id": "existential_002",
+    "theme": "Existential Nonsense",
+    "title": "The Free Will Detector",
+    "description": "A device proves free will doesn't exist, but only works when people choose to use it. A trolley heads toward two groups: determinists celebrating their vindication while being unable to choose to celebrate, or libertarians freely choosing to ignore the proof.",
+    "track_a": "Hit the celebrating determinists (end paradoxical vindication)",
+    "track_b": "Hit the ignoring libertarians (preserve choice illusion)"
+  },
+  {
+    "id": "existential_005",
+    "theme": "Existential Nonsense",
+    "title": "The Paradox Support Group",
+    "description": "A support group for people trapped in logical paradoxes meets weekly but can never start because they can't agree on whether they exist. A trolley approaches two groups: the paradox victims, or the therapists who are helping them not exist.",
+    "track_a": "Hit the paradox victims (resolve logical contradictions)",
+    "track_b": "Hit the non-existence therapists (end therapeutic paradox)"
+  },
+  {
+    "id": "existential_008",
+    "theme": "Existential Nonsense",
+    "title": "The Time Perception Disorder",
+    "description": "A temporal virus makes people experience life backwards. A trolley speeds toward two groups: people who remember tomorrow but can't recall yesterday, or those who age in reverse but retain forward-thinking memories.",
+    "track_a": "Hit the tomorrow-rememberers (restore linear time experience)",
+    "track_b": "Hit the reverse-agers (end temporal paradox aging)"
+  },
+  {
+    "id": "existential_009",
+    "theme": "Existential Nonsense",
+    "title": "The Quantum Personality Split",
+    "description": "A trolley approaches people whose personalities exist in quantum superposition. Two groups: individuals who are simultaneously introverted and extroverted until observed, or observers who collapse personality states by trying to socialize with them.",
+    "track_a": "Hit the superposition personalities (force personality resolution)",
+    "track_b": "Hit the collapsing observers (preserve quantum social states)"
+  },
+  {
+    "id": "existential_011",
+    "theme": "Existential Nonsense",
+    "title": "The Metaphysical Weight Loss",
+    "description": "People are losing existential weight - their being is getting lighter until they risk floating away from reality. A trolley approaches two groups: those becoming too ethereal to interact with matter, or gravity therapists trying to weigh down souls.",
+    "track_a": "Hit the ethereal floaters (prevent existential escape)",
+    "track_b": "Hit the gravity therapists (allow transcendent weightlessness)"
+  },
+  {
+    "id": "existential_012",
+    "theme": "Existential Nonsense",
+    "title": "The Causal Loop Employment Office",
+    "description": "A trolley speeds toward two groups in a job placement agency: people who can only get jobs they've already had, or employers who can only hire people who've already worked for them in causal loops.",
+    "track_a": "Hit the loop employees (break circular employment)",
+    "track_b": "Hit the causal employers (end temporal hiring practices)"
+  },
+  {
+    "id": "existential_013",
+    "theme": "Existential Nonsense",
+    "title": "The Ontological Audit",
+    "description": "Existence inspectors are auditing whether people qualify to be real. A trolley approaches two groups: people failing their reality checks for insufficient authenticity, or the inspectors who don't exist but are authorized to determine existence.",
+    "track_a": "Hit the reality failures (end existential bureaucracy)",
+    "track_b": "Hit the non-existent inspectors (preserve reality standards)"
+  },
+  {
+    "id": "existential_014",
+    "theme": "Existential Nonsense",
+    "title": "The Philosophical Zombie Outbreak",
+    "description": "A trolley heads toward two groups during a philosophical zombie epidemic: people who act conscious but aren't, or the remaining conscious people who can't prove they're not zombies and are questioning their own awareness.",
+    "track_a": "Hit the unconscious actors (preserve true consciousness)",
+    "track_b": "Hit the self-doubting conscious (end awareness anxiety)"
+  },
+  {
+    "id": "existential_015",
+    "theme": "Existential Nonsense",
+    "title": "The Meaning Overflow Error",
+    "description": "A meaning-processing center has overflowed, creating infinite significance in mundane objects. A trolley approaches two groups: people overwhelmed by the profound meaning of doorknobs, or those trying to drain excess significance from everyday items.",
+    "track_a": "Hit the overwhelmed meaning-finders (reduce existential noise)",
+    "track_b": "Hit the significance drainers (preserve profound mundanity)"
+  },
+  {
+    "id": "existential_016",
+    "theme": "Existential Nonsense",
+    "title": "The Identity Theft Agency",
+    "description": "A trolley speeds toward an agency where people steal not credit but entire identities. Two groups: victims who don't know who they are anymore, or thieves who are confused by having multiple conflicting identities simultaneously.",
+    "track_a": "Hit the identity victims (end existential confusion)",
+    "track_b": "Hit the multi-identity thieves (resolve personality conflicts)"
+  },
+  {
+    "id": "existential_017",
+    "theme": "Existential Nonsense",
+    "title": "The Predestination Travel Agency",
+    "description": "A trolley approaches two groups at a travel agency that only books trips to predetermined destinations. Travelers upset they can't choose where to go, or agents frustrated they can only sell tickets to places people were already going.",
+    "track_a": "Hit the trapped travelers (restore travel freedom)",
+    "track_b": "Hit the predetermined agents (end circular booking)"
+  },
+  {
+    "id": "existential_018",
+    "theme": "Existential Nonsense",
+    "title": "The Consciousness Rental Service",
+    "description": "A trolley heads toward two groups using consciousness rentals: people who rent other people's awareness for unique experiences, or the original consciousness owners who can't remember what they did while rented out.",
+    "track_a": "Hit the consciousness renters (end awareness exploitation)",
+    "track_b": "Hit the memory-loss owners (preserve consciousness integrity)"
+  },
+  {
+    "id": "existential_019",
+    "theme": "Existential Nonsense",
+    "title": "The Existential Recycling Center",
+    "description": "A trolley approaches a facility recycling used existence. Two groups: people whose being is being processed for reuse, or workers who sort existence by quality and can't figure out where to put barely-used nihilists.",
+    "track_a": "Hit the recycled beings (end existential processing)",
+    "track_b": "Hit the sorting workers (preserve existence recycling)"
+  },
+  {
+    "id": "history_001",
+    "theme": "Historical Oddities",
+    "title": "The Library of Alexandria Backup",
+    "description": "A time-traveling trolley approaches ancient Alexandria. You can save either the world's greatest collection of scrolls and knowledge, or the librarians who memorized everything but never wrote it down because they assumed the scrolls were permanent.",
+    "track_a": "Save the scrolls (preserve written knowledge for posterity)",
+    "track_b": "Save the librarians (preserve living memory and oral tradition)"
+  },
+  {
+    "id": "history_002",
+    "theme": "Historical Oddities",
+    "title": "The Victorian Bathing Schedule",
+    "description": "In 1880s London, a trolley heads toward two groups: Victorian ladies who believe bathing more than once a month causes illness, or the doctors who prescribed 'air baths' (sitting naked in cold rooms) as superior hygiene.",
+    "track_a": "Hit the monthly bathers (end aromatic suffering)",
+    "track_b": "Hit the air bath doctors (restore sensible hygiene)"
+  },
+  {
+    "id": "history_003",
+    "theme": "Historical Oddities",
+    "title": "The Medieval Dancing Plague",
+    "description": "In 1518 Strasbourg, a trolley approaches two groups caught in the dancing plague: people who've been dancing uncontrollably for days and might die of exhaustion, or the town officials hiring musicians to 'cure' them with more music.",
+    "track_a": "Hit the dancers (merciful end to compulsive choreography)",
+    "track_b": "Hit the officials (stop the musical 'cure' madness)"
+  },
+  {
+    "id": "history_004",
+    "theme": "Historical Oddities",
+    "title": "The Great Molasses Flood",
+    "description": "Boston, 1919: A trolley speeds toward two groups during the molasses flood: people running from the sweet, sticky tsunami, or those who stopped to taste it because 'when will we get this chance again?'",
+    "track_a": "Hit the runners (practical survival instincts validated)",
+    "track_b": "Hit the tasters (curiosity kills, literally)"
+  },
+  {
+    "id": "history_005",
+    "theme": "Historical Oddities",
+    "title": "The Radium Beauty Treatment",
+    "description": "1920s spa day: A trolley approaches two groups of women seeking beauty treatments with 'miraculous' radium: those applying glowing face cream, or those drinking radium water for 'internal luminescence.'",
+    "track_a": "Hit the face cream users (external glow ends safely)",
+    "track_b": "Hit the radium drinkers (prevent internal radiation)"
+  },
+  {
+    "id": "history_006",
+    "theme": "Historical Oddities",
+    "title": "The Tulip Mania Madness",
+    "description": "1637 Netherlands: A trolley heads toward two groups during tulip mania: desperate merchants selling their houses for a single rare tulip bulb, or the gardeners who know the bulbs are infected with a virus causing the 'valuable' patterns.",
+    "track_a": "Hit the merchant buyers (end economic flower madness)",
+    "track_b": "Hit the knowing gardeners (preserve the beautiful delusion)"
+  },
+  {
+    "id": "history_007",
+    "theme": "Historical Oddities",
+    "title": "The War of Jenkins' Ear",
+    "description": "1739: A trolley approaches two groups debating whether Britain should go to war with Spain over a smuggler's severed ear: hawks who think it's about national honor, or doves who suspect Jenkins cut off his own ear for attention.",
+    "track_a": "Hit the war hawks (prevent conflict over body parts)",
+    "track_b": "Hit the skeptical doves (preserve righteous indignation)"
+  },
+  {
+    "id": "history_008",
+    "theme": "Historical Oddities",
+    "title": "The Great Emu War",
+    "description": "Australia, 1932: A trolley speeds toward two groups in the Emu War: Australian soldiers with machine guns losing badly to 20,000 emus, or the emus who are winning through superior guerrilla tactics and flightless determination.",
+    "track_a": "Hit the soldiers (end military embarrassment)",
+    "track_b": "Hit the emus (restore human dignity in warfare)"
+  },
+  {
+    "id": "history_009",
+    "theme": "Historical Oddities",
+    "title": "The Bone Wars Fossil Fight",
+    "description": "1870s American West: A trolley approaches two groups of paleontologists in the Bone Wars: scientists destroying fossils to prevent rivals from studying them, or those hiring outlaws to sabotage competing expeditions.",
+    "track_a": "Hit the fossil destroyers (preserve prehistoric knowledge)",
+    "track_b": "Hit the saboteur hirers (restore scientific integrity)"
+  },
+  {
+    "id": "history_010",
+    "theme": "Historical Oddities",
+    "title": "The Dancing Plague Doctors",
+    "description": "Medieval Europe: A trolley heads toward two groups of plague doctors: those who believe the Black Death is caused by bad air and carry flower bouquets in their beaks, or those prescribing bloodletting to balance the humors.",
+    "track_a": "Hit the flower doctors (end aromatic ignorance)",
+    "track_b": "Hit the bloodletting doctors (stop medical vampirism)"
+  },
+  {
+    "id": "history_011",
+    "theme": "Historical Oddities",
+    "title": "The Potato Propaganda War",
+    "description": "18th century France: A trolley approaches two groups during potato promotion: nobles who think potatoes are poisonous peasant food, or Antoine Parmentier's guards who fake-protect potato fields during the day so people steal them at night.",
+    "track_a": "Hit the potato-fearing nobles (overcome aristocratic ignorance)",
+    "track_b": "Hit the fake guards (end elaborate vegetable psychology)"
+  },
+  {
+    "id": "history_013",
+    "theme": "Historical Oddities",
+    "title": "The Carrington Event Telegraph",
+    "description": "1859: A solar storm trolley approaches two groups during the Carrington Event: telegraph operators receiving electric shocks from their equipment, or those discovering they can send messages without power using only aurora-induced currents.",
+    "track_a": "Hit the shocked operators (end electromagnetic suffering)",
+    "track_b": "Hit the aurora messengers (preserve cosmic communication)"
+  },
+  {
+    "id": "history_016",
+    "theme": "Historical Oddities",
+    "title": "The London Beer Flood",
+    "description": "London, 1814: A trolley speeds toward two groups during the beer flood: people drowning in 388,000 gallons of beer, or those who brought cups and are trying to drink their way to safety.",
+    "track_a": "Hit the drowning victims (end sudsy suffocation)",
+    "track_b": "Hit the opportunistic drinkers (prevent alcohol poisoning)"
+  },
+  {
+    "id": "history_019",
+    "theme": "Historical Oddities",
+    "title": "The Siege Catapult Innovation",
+    "description": "Medieval siege: A trolley approaches two groups: besiegers catapulting diseased cows over castle walls as biological warfare, or defenders who are grateful for the free meat and wonder why enemies keep feeding them.",
+    "track_a": "Hit the cow catapulters (end livestock biological warfare)",
+    "track_b": "Hit the grateful defenders (preserve naive optimism)"
+  },
+  {
+    "id": "history_020",
+    "theme": "Historical Oddities",
+    "title": "The Combustible Crinoline Crisis",
+    "description": "Victorian era: A trolley speeds toward two groups: ladies in massive crinoline dresses that catch fire from candles and fireplaces, or the safety inventors creating 'flame-resistant' crinolines using highly flammable chemicals.",
+    "track_a": "Hit the crinoline wearers (end fashionable fire hazards)",
+    "track_b": "Hit the safety inventors (prevent explosive 'improvements')"
+  },
+  {
+    "id": "ho-16",
+    "theme": "Historical Oddities",
+    "title": "Pirate Plunder",
+    "description": "Seas trolley hoards treasure. Lever for captains or crews?",
+    "track_a": "Buried chest of doubloons",
+    "track_b": "One peg-legged parrot"
+  },
+  {
+    "id": "ho-20",
+    "theme": "Historical Oddities",
+    "title": "Frontier Folly",
+    "description": "Wild West trolley rustles cattle. Pull for cowboys or outlaws?",
+    "track_a": "Herd of branded steers",
+    "track_b": "One quick-draw sheriff"
+  },
+  {
+    "id": "ho-7",
+    "theme": "Historical Oddities",
+    "title": "Industrial Intrigue",
+    "description": "Factory trolley assembles chaos. Lever for inventors or workers?",
+    "track_a": "Assembly line of widgets",
+    "track_b": "Edison's lightbulb moment"
+  },
+  {
+    "id": "ho-9",
+    "theme": "Historical Oddities",
+    "title": "Victorian Venture",
+    "description": "Empire trolley expands oddly. Divert queens or colonies?",
+    "track_a": "Teatime with crumpets",
+    "track_b": "One stuffy diplomat"
+  },
+  {
+    "id": "il-1",
+    "theme": "Intergalactic Law",
+    "title": "Asteroid Arbitration",
+    "description": "Space trolley mines resources. Divert to corporations or aliens?",
+    "track_a": "Fleet of mining drones",
+    "track_b": "One sentient asteroid"
+  },
+  {
+    "id": "il-14",
+    "theme": "Intergalactic Law",
+    "title": "Wormhole Warrant",
+    "description": "Shortcut trolley bends space-time laws. Pull for travelers or guardians?",
+    "track_a": "Expedition through folds",
+    "track_b": "One anomaly regulator"
+  },
+  {
+    "id": "il-18",
+    "theme": "Intergalactic Law",
+    "title": "Cosmic Covenant",
+    "description": "Universal trolley binds agreements. Lever for particles or waves?",
+    "track_a": "Quantum entanglement pact",
+    "track_b": "One wave-function observer"
+  },
+  {
+    "id": "il-2",
+    "theme": "Intergalactic Law",
+    "title": "Warp Warrant",
+    "description": "Hyperspace trolley violates speed limits. Pull for enforcers or speeders?",
+    "track_a": "Galactic traffic cops",
+    "track_b": "One rogue smuggler"
+  },
+  {
+    "id": "il-5",
+    "theme": "Intergalactic Law",
+    "title": "Alien Accord",
+    "description": "Treaty trolley signs pacts. Pull for diplomats or warmongers?",
+    "track_a": "Peace delegation antennae",
+    "track_b": "One laser-toting ambassador"
+  },
+  {
+    "id": "il-7",
+    "theme": "Intergalactic Law",
+    "title": "Comet Court",
+    "description": "Icy trolley tails precedents. Divert judges or juries?",
+    "track_a": "Panel of robotic arbiters",
+    "track_b": "One frozen plaintiff"
+  },
+  {
+    "id": "space_002",
+    "theme": "Intergalactic Law",
+    "title": "The Temporal Parking Violation",
+    "description": "A time-traveling trolley faces Galactic Parking Authority: tourists who parked their spaceship in the Cretaceous period to 'watch dinosaurs,' or enforcement officers writing tickets across time dimensions, causing paradoxes.",
+    "track_a": "Hit the time tourists (end temporal parking chaos)",
+    "track_b": "Hit the paradox officers (preserve timeline stability)"
+  },
+  {
+    "id": "space_003",
+    "theme": "Intergalactic Law",
+    "title": "The Diplomatic Immunity Disaster",
+    "description": "An alien ambassador's pet black hole is loose on Earth, slowly consuming Nebraska. A trolley approaches two groups: diplomats insisting it has immunity from physics, or physicists trying to explain that black holes don't recognize diplomatic status.",
+    "track_a": "Hit the diplomatic staff (physics overrules paperwork)",
+    "track_b": "Hit the physicists (preserve interstellar relations)"
+  },
+  {
+    "id": "space_005",
+    "theme": "Intergalactic Law",
+    "title": "The Universal Translation Error",
+    "description": "A trolley approaches two groups caused by a translation bug: humans who accidentally declared war on three systems by saying 'nice weather,' or the alien alliance who thinks 'hello' means 'surrender' and are confused by Earth's friendliness.",
+    "track_a": "Hit the accidentally aggressive humans (prevent accidental warfare)",
+    "track_b": "Hit the confused aliens (preserve Earth's friendly reputation)"
+  },
+  {
+    "id": "space_006",
+    "theme": "Intergalactic Law",
+    "title": "The Quantum Jurisdiction Dispute",
+    "description": "A crime occurred in quantum superposition across seventeen dimensions. A trolley heads toward two groups: lawyers trying to prosecute in all dimensions simultaneously, or judges who insist they can only observe the crime in one reality at a time.",
+    "track_a": "Hit the quantum lawyers (simplify interdimensional justice)",
+    "track_b": "Hit the observation judges (preserve quantum legal complexity)"
+  },
+  {
+    "id": "space_007",
+    "theme": "Intergalactic Law",
+    "title": "The Galactic Speed Limit",
+    "description": "A trolley approaches two groups violating cosmic speed limits: humans exceeding the speed of light and causing time dilation lawsuits, or alien speed enforcement who travel faster than light to catch speeders, creating more violations.",
+    "track_a": "Hit the speeding humans (restore temporal stability)",
+    "track_b": "Hit the hypocritical space police (end enforcement paradox)"
+  },
+  {
+    "id": "space_008",
+    "theme": "Intergalactic Law",
+    "title": "The Universal Environmental Court",
+    "description": "Earth is on trial for producing 'cosmic pollution' (radio waves). A trolley speeds toward two groups: humans claiming radio is 'artistic expression,' or the Quiet Zone Alliance demanding Earth be acoustically quarantined forever.",
+    "track_a": "Hit the radio defenders (accept cosmic silence)",
+    "track_b": "Hit the Quiet Zone judges (preserve Earth's broadcasting)"
+  },
+  {
+    "id": "space_009",
+    "theme": "Intergalactic Law",
+    "title": "The Interspecies Marriage License",
+    "description": "A human wants to marry a sentient nebula, but their paperwork is in seventeen dimensions. A trolley approaches two groups: bureaucrats requiring forms in each dimensional plane, or the couple attempting to consummate across spacetime.",
+    "track_a": "Hit the dimensional bureaucrats (simplify cosmic paperwork)",
+    "track_b": "Hit the interdimensional couple (prevent spacetime ancient imperial culturece complications)"
+  },
+  {
+    "id": "space_010",
+    "theme": "Intergalactic Law",
+    "title": "The Galactic Noise Complaint",
+    "description": "Earth's sun is 'too loud' according to hibernating space bears in the next system. A trolley heads toward two groups: humans refusing to dim their star, or space bears threatening to sue for 'stellar noise pollution' and demanding solar volume controls.",
+    "track_a": "Hit the solar defenders (preserve Earth's life-giving star)",
+    "track_b": "Hit the complaining space bears (end cosmic noise lawsuits)"
+  },
+  {
+    "id": "space_011",
+    "theme": "Intergalactic Law",
+    "title": "The Time Paradox Patent Office",
+    "description": "An inventor patented time travel before he invented it, creating a paradox. A trolley approaches two groups: patent lawyers arguing ownership of nonexistent technology, or time agents trying to arrest him for crimes that haven't been committed yet.",
+    "track_a": "Hit the paradox lawyers (resolve temporal intellectual property)",
+    "track_b": "Hit the time police (preserve causal enforcement)"
+  },
+  {
+    "id": "space_013",
+    "theme": "Intergalactic Law",
+    "title": "The Universal Child Support",
+    "description": "A rogue planet claims Earth as its parent and demands cosmic child support. A trolley approaches two groups: lawyers calculating 4.5 billion years of back payments, or astronomers insisting planets can't have legal custody relationships.",
+    "track_a": "Hit the child support lawyers (end planetary paternity suits)",
+    "track_b": "Hit the skeptical astronomers (acknowledge celestial family law)"
+  },
+  {
+    "id": "space_014",
+    "theme": "Intergalactic Law",
+    "title": "The Galactic Privacy Rights",
+    "description": "Psychic aliens are suing humans for 'thinking too loudly' and violating mental privacy laws. A trolley heads toward two groups: humans who refuse to stop having thoughts, or telepathic beings demanding thought regulation and mental noise ordinances.",
+    "track_a": "Hit the thinking humans (preserve psychic peace)",
+    "track_b": "Hit the telepathic aliens (protect freedom of thought)"
+  },
+  {
+    "id": "space_015",
+    "theme": "Intergalactic Law",
+    "title": "The Cosmic Eminent Domain",
+    "description": "The Galactic Highway Department wants to demolish Earth for a hyperspace bypass. A trolley approaches two groups: humans protesting the demolition order, or construction crews who've been waiting 50 years to start and have union deadlines.",
+    "track_a": "Hit the protesting humans (clear construction obstacles)",
+    "track_b": "Hit the construction crews (preserve Earth from development)"
+  },
+  {
+    "id": "space_018",
+    "theme": "Intergalactic Law",
+    "title": "The Cosmic Malpractice Suit",
+    "description": "A space doctor performed surgery in zero gravity and the patient's organs floated away. A trolley heads toward two groups: medical boards requiring gravity for surgery, or innovative doctors who think 'organ mobility' is the future of medicine.",
+    "track_a": "Hit the gravity-requiring boards (preserve traditional medicine)",
+    "track_b": "Hit the floating organ doctors (end zero-g medical experiments)"
+  }
+]
