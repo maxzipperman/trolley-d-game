@@ -10,7 +10,7 @@ export function usePersonas() {
   const load = () => {
     setError(null);
     setPersonas(null);
-    const url = new URL("../../data/personas.json", import.meta.url);
+    const url = "/data/personas.json"; // Use simple string path
     fetch(url)
       .then((r) => r.json())
       .then((json: unknown) => {

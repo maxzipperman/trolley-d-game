@@ -13,7 +13,7 @@ export function useScenarios() {
   const loadStatic = useCallback(() => {
     setError(null);
     setStaticScenarios(null);
-    const url = new URL("../../data/scenarios.json", import.meta.url);
+    const url = "/data/scenarios.json"; // Use simple string path instead of URL object
     fetch(url)
       .then(r => r.json())
       .then((json: unknown) => {

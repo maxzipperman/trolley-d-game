@@ -26,8 +26,8 @@ export function useDecisions() {
     setLoading(true);
     setError(null);
     try {
-      const url = new URL("../../data/decisions.json", import.meta.url);
-      const json = await fetchWithRetry(url.href);
+      const url = "/data/decisions.json"; // Use simple string path
+      const json = await fetchWithRetry(url);
       const parsed = DecisionSchema.array().safeParse(json);
       if (parsed.success) {
         setDecisions(parsed.data as Decision[]);
