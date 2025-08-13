@@ -1,19 +1,23 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useScenarios } from "@/hooks/useScenarios";
-import { useProgress } from "@/hooks/useProgress";
 import { useAnswers } from "@/hooks/useAnswers";
 import ScenarioCard from "@/components/ScenarioCard";
 import Progress from "@/components/Progress";
+import { usePersonalityProfile } from "@/hooks/usePersonalityProfile";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const Play = () => {
   const navigate = useNavigate();
-  const { scenarios, loading } = useScenarios();
+  const { scenarios, loading, generateMore } = useScenarios();
   const { answers, setAnswers } = useAnswers();
   const [progressAnnouncement, setProgressAnnouncement] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const personalityProfile = usePersonalityProfile(scenarios || []);
 
-  const total = scenarios?.length ?? 0;
   const answered = Object.values(answers).filter(a => a !== "skip").length;
+  const total = scenarios?.length ?? 0;
   const progress = total > 0 ? answered / total : 0;
 
   // Get jump parameter from URL
@@ -29,26 +33,25 @@ const Play = () => {
       return jumpIndex >= 0 ? jumpIndex : 0;
     }
 
-    // Find first unanswered scenario
+    // Find first unanswered scenario (no skips allowed)
     const unanswered = scenarios.find(s => !(s.id in answers));
     if (unanswered) {
       return scenarios.findIndex(s => s.id === unanswered.id);
     }
 
-    // All answered, go to results
+    // All answered - generate more or go to results
     return scenarios.length - 1;
   }, [scenarios, jump, answers]);
 
   const s = scenarios?.[currentIndex];
   const index = currentIndex;
 
-  // Skipped scenarios for review
-  const skippedScenarios = useMemo(() => {
-    if (!scenarios) return [];
-    return scenarios.filter(scenario => answers[scenario.id] === "skip");
-  }, [scenarios, answers]);
-
-  const firstSkipped = skippedScenarios[0];
+  // Check if we need to generate more scenarios
+  const needsMoreScenarios = useMemo(() => {
+    if (!scenarios) return false;
+    const remaining = scenarios.length - answered;
+    return remaining <= 3; // Generate when 3 or fewer remain
+  }, [scenarios, answered]);
 
   // Progress announcement for screen readers
   useEffect(() => {
@@ -58,18 +61,14 @@ const Play = () => {
     }
   }, [index, total, progress]);
 
-  // Auto-redirect to results if all scenarios are complete and none are skipped
+  // Auto-generate more scenarios when running low
   useEffect(() => {
-    if (scenarios && total > 0 && answered === total && skippedScenarios.length === 0) {
-      navigate("/results");
+    if (needsMoreScenarios && !isGenerating && scenarios && answered > 5) {
+      handleGenerateMore();
     }
-  }, [scenarios, total, answered, skippedScenarios.length, navigate]);
+  }, [needsMoreScenarios, isGenerating, scenarios, answered]);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === "s" && e.target === document.body) {
-      e.preventDefault();
-      skip();
-    }
     if (e.key === "ArrowLeft") {
       pick("A");
     }
@@ -103,32 +102,34 @@ const Play = () => {
     if (!s) return;
     setAnswers({ ...answers, [s.id]: choice });
 
-    // Auto-advance to next scenario or results
+    // Auto-advance to next scenario
     if (index < total - 1) {
       const nextId = scenarios[index + 1].id;
       navigate(`/play?jump=${nextId}`);
     } else {
-      navigate("/results");
+      // Generate more scenarios or go to results
+      if (answered >= 10) {
+        navigate("/results");
+      } else {
+        handleGenerateMore();
+      }
     }
   };
 
-  const skip = () => {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: "skip" });
-
-    // Auto-advance to next scenario or results
-    if (index < total - 1) {
-      const nextId = scenarios[index + 1].id;
-      navigate(`/play?jump=${nextId}`);
-    } else {
-      navigate("/results");
+  const handleGenerateMore = async () => {
+    if (isGenerating) return;
+    
+    setIsGenerating(true);
+    try {
+      await generateMore(personalityProfile);
+      toast.success("Generated new scenarios!");
+    } catch (error) {
+      console.error("Failed to generate scenarios:", error);
+      toast.error("Failed to generate more scenarios");
+    } finally {
+      setIsGenerating(false);
     }
   };
-
-  function reviewSkipped() {
-    if (!firstSkipped) return;
-    navigate(`/play?jump=${firstSkipped.id}`);
-  }
 
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
@@ -177,24 +178,23 @@ const Play = () => {
         />
       )}
 
-      <div className="flex items-center justify-between pt-4">
-        <button
-          onClick={skip}
-          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 motion-safe:transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
-          aria-keyshortcuts="s"
-        >
-          Skip this scenario
-        </button>
-
-        {skippedScenarios.length > 0 && (
-          <button
-            onClick={reviewSkipped}
-            className="text-sm text-primary hover:text-primary/80 underline underline-offset-4 motion-safe:transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
+      {needsMoreScenarios && !isGenerating && (
+        <div className="flex items-center justify-center pt-4">
+          <Button 
+            onClick={handleGenerateMore}
+            variant="outline"
+            disabled={isGenerating}
           >
-            Review {skippedScenarios.length} skipped
-          </button>
-        )}
-      </div>
+            {isGenerating ? "Generating..." : "Generate More Scenarios"}
+          </Button>
+        </div>
+      )}
+
+      {isGenerating && (
+        <div className="text-center text-sm text-muted-foreground pt-4">
+          Generating new scenarios based on your choices...
+        </div>
+      )}
     </main>
   );
 };

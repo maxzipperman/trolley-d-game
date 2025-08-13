@@ -55,10 +55,10 @@ const Index = () => {
           </button>
 
           <button
-            onClick={() => navigate("/generate")}
+            onClick={() => navigate("/settings")}
             className="px-8 py-4 w-full rounded-lg border border-border bg-secondary hover:bg-secondary/80 motion-safe:transition-all motion-safe:duration-200 focus:outline-none focus:ring-2 focus:ring-ring motion-safe:transform motion-safe:hover:scale-105 motion-safe:active:scale-95 font-medium text-lg"
           >
-            Generate Custom Scenarios
+            Settings & Spicy Mode
           </button>
         </div>
 

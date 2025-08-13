@@ -42,6 +42,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, onNext, c
     
     onPick(choicePicked);
 
+    // Map both "A"/"B" and "track_a"/"track_b" formats
     const aligned = scenarioResponses
       .filter((r) => r.choice === choicePicked)
       .map((r) => r.persona);

@@ -5,11 +5,17 @@ import type { Decision } from "@/types";
 import { z } from "zod";
 
 const DecisionSchema = z.object({
-  scenarioId: z.string(),
+  "scenario id": z.string().optional(),
+  scenarioId: z.string().optional(),
   persona: z.string(),
-  choice: z.enum(["A", "B"]),
+  choice: z.union([z.enum(["A", "B"]), z.enum(["track_a", "track_b"])]),
   rationale: z.string().optional(),
-});
+}).transform(data => ({
+  scenarioId: data.scenarioId || data["scenario id"] || "",
+  persona: data.persona,
+  choice: data.choice === "track_a" ? "A" as const : data.choice === "track_b" ? "B" as const : data.choice,
+  rationale: data.rationale
+}));
 
 export function useDecisions() {
   const [decisions, setDecisions] = useState<Decision[] | null>(null);
