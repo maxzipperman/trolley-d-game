@@ -1,3 +1,3 @@
-
 export type { Scenario, Persona, Tag } from "./utils/tags.schema";
-export type { Decision } from "./utils/decisions.schema";
+export type { Decision } from "./wherever/you/define/it"; // once created
+
