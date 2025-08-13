@@ -44,7 +44,7 @@ const TrolleyDiagram: React.FC<TrolleyDiagramProps> = ({
         />
         
         {/* Trolley */}
-        <g className="animate-trolley-move">
+        <g className="motion-safe:animate-trolley-move">
           <rect
             x="40"
             y="88"

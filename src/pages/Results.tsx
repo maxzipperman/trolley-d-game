@@ -27,7 +27,7 @@ const Results = () => {
         <h1 className="text-3xl font-bold">Your Results</h1>
       </header>
 
-      <div className="mb-8 animate-fade-in">
+      <div className="mb-8 motion-safe:animate-fade-in">
         <TrolleyDiagram 
           trackALabel="Your Journey" 
           trackBLabel="Complete"
@@ -36,7 +36,7 @@ const Results = () => {
       </div>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <article className="p-6 rounded-lg border border-border bg-card animate-scale-in">
+        <article className="p-6 rounded-lg border border-border bg-card motion-safe:animate-scale-in">
           <h2 className="font-semibold mb-2">Your Choices</h2>
           <p className="text-sm text-muted-foreground mb-4">Track A vs Track B selections</p>
           <div className="grid grid-cols-2 gap-4 text-center">

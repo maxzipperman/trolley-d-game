@@ -45,16 +45,16 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
       {/* Trolley Diagram */}
       <div className="py-4">
-        <TrolleyDiagram 
-          trackALabel="A" 
+        <TrolleyDiagram
+          trackALabel="A"
           trackBLabel="B"
-          className="animate-fade-in"
+          className="motion-safe:animate-fade-in"
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
+          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] motion-safe:transition-all motion-safe:duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left motion-safe:transform motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98]"
           onClick={() => onPick("A")}
           aria-label="Choose Track A"
         >
@@ -62,7 +62,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
         </button>
         <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
+          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] motion-safe:transition-all motion-safe:duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left motion-safe:transform motion-safe:hover:scale-[1.02] motion-safe:active:scale-[0.98]"
           onClick={() => onPick("B")}
           aria-label="Choose Track B"
         >
@@ -81,7 +81,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             {showNPC ? "Hide" : "See"} sample NPC takes
           </button>
           {showNPC && (
-            <div className="mt-4 space-y-3 animate-fade-in">
+            <div className="mt-4 space-y-3 motion-safe:animate-fade-in">
               {samples.map((r, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
                   <NPCAvatar 

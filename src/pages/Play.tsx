@@ -42,7 +42,7 @@ const Play = () => {
     return (
       <main className="min-h-screen container py-10">
         <div className="h-2 w-full bg-muted rounded-md overflow-hidden">
-          <div className="h-full w-1/3 bg-foreground/60 animate-pulse" />
+          <div className="h-full w-1/3 bg-foreground/60 motion-safe:animate-pulse" />
         </div>
       </main>
     );
@@ -85,7 +85,7 @@ const Play = () => {
 
   return (
     <main className="min-h-screen container max-w-2xl py-8 space-y-6">
-      <section className="space-y-4 animate-fade-in">
+      <section className="space-y-4 motion-safe:animate-fade-in">
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground font-medium">
             Question {index + 1} of {total}
@@ -98,7 +98,7 @@ const Play = () => {
           </button>
         </div>
         <div className="space-y-2">
-          <div className="h-2 animate-scale-in">
+          <div className="h-2 motion-safe:animate-scale-in">
             <Progress value={progress * 100} />
           </div>
           <div className="flex justify-between text-xs text-muted-foreground">

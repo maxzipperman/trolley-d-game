@@ -7,25 +7,34 @@ import Index from "./pages/Index";
 import Play from "./pages/Play";
 import Results from "./pages/Results";
 import NotFound from "./pages/NotFound";
+import SettingsDialog from "@/components/SettingsDialog";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/play" element={<Play />} />
-          <Route path="/results" element={<Results />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [reducedMotion, setReducedMotion] = useReducedMotion();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <SettingsDialog
+            reducedMotion={reducedMotion}
+            setReducedMotion={setReducedMotion}
+          />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/play" element={<Play />} />
+            <Route path="/results" element={<Results />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

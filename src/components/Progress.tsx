@@ -9,7 +9,7 @@ const Progress: React.FC<ProgressProps> = ({ value }) => {
   return (
     <div className="w-full h-2 rounded-md bg-muted overflow-hidden" aria-hidden>
       <div
-        className="h-full bg-foreground/80 transition-all"
+        className="h-full bg-foreground/80 motion-safe:transition-all"
         style={{ width: `${pct}%` }}
       />
     </div>
