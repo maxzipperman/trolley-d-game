@@ -12,3 +12,9 @@ export interface Scenario {
     rationale?: string;
   }>;
 }
+
+export interface Settings {
+  sound: boolean;
+  haptics: boolean;
+  animations: boolean;
+}

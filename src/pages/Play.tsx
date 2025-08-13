@@ -2,9 +2,10 @@ import { useEffect, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Progress from "@/components/Progress";
 import ScenarioCard from "@/components/ScenarioCard";
+import SettingsModal from "@/components/SettingsModal";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useScenarios } from "@/hooks/useScenarios";
-import type { Scenario } from "@/types";
+import type { Scenario, Settings } from "@/types";
 import type { Choice } from "@/utils/scoring";
 
 const ANSWERS_KEY = "trolleyd-answers";
@@ -14,6 +15,11 @@ const Play = () => {
   const navigate = useNavigate();
   const { scenarios, loading } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
+  const [settings, setSettings] = useLocalStorage<Settings>("trolleyd-settings", {
+    sound: true,
+    haptics: true,
+    animations: true,
+  });
   const [params] = useSearchParams();
 
   const index = useMemo(() => {
@@ -90,12 +96,15 @@ const Play = () => {
           <div className="text-sm text-muted-foreground font-medium">
             Question {index + 1} of {total}
           </div>
-          <button 
-            onClick={() => navigate("/results")} 
-            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-          >
-            End & See Results
-          </button>
+          <div className="flex items-center gap-2">
+            <SettingsModal settings={settings} onChange={setSettings} />
+            <button
+              onClick={() => navigate("/results")}
+              className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+            >
+              End & See Results
+            </button>
+          </div>
         </div>
         <div className="space-y-2">
           <div className="h-2 animate-scale-in">
@@ -110,7 +119,7 @@ const Play = () => {
       </section>
 
       {s && (
-        <ScenarioCard scenario={s} onPick={pick} />
+        <ScenarioCard scenario={s} onPick={pick} settings={settings} />
       )}
 
       <div className="flex items-center justify-between pt-4">

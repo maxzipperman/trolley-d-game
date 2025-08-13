@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import type { Scenario } from "@/types";
+import type { Scenario, Settings } from "@/types";
 import { usePersonas } from "@/hooks/usePersonas";
 import NPCAvatar from "./NPCAvatar";
 import TrolleyDiagram from "./TrolleyDiagram";
@@ -7,9 +7,10 @@ import TrolleyDiagram from "./TrolleyDiagram";
 interface ScenarioCardProps {
   scenario: Scenario;
   onPick: (choice: "A" | "B") => void;
+  settings: Settings;
 }
 
-const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
+const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick, settings }) => {
   const [showNPC, setShowNPC] = useState(false);
   const { personas } = usePersonas();
 
@@ -31,6 +32,26 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
     }));
   }, [scenario, personas]);
 
+  function handlePick(choice: "A" | "B") {
+    if (settings.sound) {
+      try {
+        const ctx = new AudioContext();
+        const osc = ctx.createOscillator();
+        osc.type = "sine";
+        osc.frequency.value = 440;
+        osc.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+      } catch {
+        /* ignore */
+      }
+    }
+    if (settings.haptics && "vibrate" in navigator) {
+      navigator.vibrate(100);
+    }
+    onPick(choice);
+  }
+
   return (
     <article className="space-y-6">
       <header className="space-y-2">
@@ -45,25 +66,33 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
 
       {/* Trolley Diagram */}
       <div className="py-4">
-        <TrolleyDiagram 
-          trackALabel="A" 
+        <TrolleyDiagram
+          trackALabel="A"
           trackBLabel="B"
-          className="animate-fade-in"
+          className={settings.animations ? "animate-fade-in" : undefined}
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("A")}
+          className={`group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] focus:outline-none focus:ring-2 focus:ring-ring text-left ${
+            settings.animations
+              ? "transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+              : ""
+          }`}
+          onClick={() => handlePick("A")}
           aria-label="Choose Track A"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track A</div>
           <div className="text-sm text-muted-foreground group-hover:text-foreground/80">{scenario.track_a}</div>
         </button>
         <button
-          className="group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring text-left transform hover:scale-[1.02] active:scale-[0.98]"
-          onClick={() => onPick("B")}
+          className={`group w-full py-4 px-4 rounded-lg border border-border bg-card hover:bg-[hsl(var(--choice-hover))] focus:outline-none focus:ring-2 focus:ring-ring text-left ${
+            settings.animations
+              ? "transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+              : ""
+          }`}
+          onClick={() => handlePick("B")}
           aria-label="Choose Track B"
         >
           <div className="font-semibold mb-2 text-primary group-hover:text-primary/90">Track B</div>
@@ -81,10 +110,10 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             {showNPC ? "Hide" : "See"} sample NPC takes
           </button>
           {showNPC && (
-            <div className="mt-4 space-y-3 animate-fade-in">
+            <div className={`mt-4 space-y-3 ${settings.animations ? "animate-fade-in" : ""}`}>
               {samples.map((r, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
+                  <NPCAvatar
                     name={r.avatar ?? "NPC"} 
                     size="md"
                     className="mt-0.5"
