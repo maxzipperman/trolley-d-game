@@ -12,7 +12,7 @@ const ANSWERS_KEY = "trolleyd-answers";
 const Play = () => {
   useEffect(() => { document.title = "Trolley’d · Play"; }, []);
   const navigate = useNavigate();
-  const { scenarios, loading } = useScenarios();
+  const { scenarios, loading, error, reload } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
   const [params] = useSearchParams();
 
@@ -37,6 +37,20 @@ const Play = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   });
+
+  if (error) {
+    return (
+      <main className="min-h-screen container max-w-2xl py-8 space-y-4">
+        <p className="text-muted-foreground">{error}</p>
+        <button
+          onClick={() => (reload ? reload() : window.location.reload())}
+          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4"
+        >
+          Retry
+        </button>
+      </main>
+    );
+  }
 
   if (loading || !scenarios) {
     return (

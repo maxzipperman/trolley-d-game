@@ -11,7 +11,7 @@ interface ScenarioCardProps {
 
 const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
   const [showNPC, setShowNPC] = useState(false);
-  const { personas } = usePersonas();
+  const { personas, error: personasError } = usePersonas();
 
   const samples = useMemo(() => {
     const r = scenario.responses ?? [];
@@ -71,7 +71,7 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
         </button>
       </div>
 
-      {samples.length > 0 && (
+      {samples.length > 0 ? (
         <div className="pt-2">
           <button
             className="text-sm underline underline-offset-4 text-foreground/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring rounded"
@@ -84,8 +84,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             <div className="mt-4 space-y-3 animate-fade-in">
               {samples.map((r, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 rounded-lg bg-[hsl(var(--npc-bg))] border border-border/50">
-                  <NPCAvatar 
-                    name={r.avatar ?? "NPC"} 
+                  <NPCAvatar
+                    name={r.avatar ?? "NPC"}
                     size="md"
                     className="mt-0.5"
                   />
@@ -94,8 +94,8 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
                       <span className="text-sm font-medium truncate">{r.avatar ?? "NPC"}</span>
                       <span className="text-xs text-muted-foreground">•</span>
                       <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                        r.choice === "A" 
-                          ? "bg-primary/10 text-primary" 
+                        r.choice === "A"
+                          ? "bg-primary/10 text-primary"
                           : "bg-secondary/50 text-secondary-foreground"
                       }`}>
                         Track {r.choice ?? "?"}
@@ -110,6 +110,10 @@ const ScenarioCard: React.FC<ScenarioCardProps> = ({ scenario, onPick }) => {
             </div>
           )}
         </div>
+      ) : (
+        personasError && (
+          <p className="pt-2 text-sm text-destructive">{personasError}</p>
+        )
       )}
     </article>
   );
