@@ -11,7 +11,7 @@ import type { Choice } from "@/utils/scoring";
 const ANSWERS_KEY = "trolleyd-answers";
 
 const Play = () => {
-  useEffect(() => { document.title = "Trolley’d · Play"; }, []);
+  useEffect(() => { document.title = "Trolley'd · Play"; }, []);
   const navigate = useNavigate();
   const { scenarios, loading, error, retry } = useScenarios();
   const [answers, setAnswers] = useLocalStorage<Record<string, Choice>>(ANSWERS_KEY, {});
@@ -29,11 +29,15 @@ const Play = () => {
     return i >= 0 ? i : 0;
   }, [scenarios, params, answers]);
 
+  const total = scenarios?.length ?? 0;
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") { pick("A"); }
-      if (e.key === "ArrowRight") { pick("B"); }
-      if (e.key.toLowerCase() === "s") { skip(); }
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        onPick("A");
+      } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        onPick("B");
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -50,14 +54,11 @@ const Play = () => {
   if (loading || !scenarios) {
     return (
       <main className="min-h-screen container py-10">
-        <div className="h-2 w-full bg-muted rounded-md overflow-hidden">
-          <div className="h-full w-1/3 bg-foreground/60 animate-pulse" />
-        </div>
+        <div className="animate-pulse">Loading scenarios...</div>
       </main>
     );
   }
 
-  const total = scenarios.length;
   if (total === 0) {
     return (
       <main className="min-h-screen container max-w-2xl py-8">
@@ -65,72 +66,83 @@ const Play = () => {
       </main>
     );
   }
-  const s = scenarios[index] as Scenario;
-  const progress = (index + 1) / total;
 
-  function advance() {
-    // next unanswered or end
-    const nextIdx = scenarios.findIndex((sc, i) => i > index && answers[sc.id] == null);
-    if (nextIdx >= 0) {
-      navigate(`/play?jump=${scenarios[nextIdx].id}`);
-    } else if (index + 1 < total) {
-      navigate(`/play?jump=${scenarios[index + 1].id}`);
-    } else {
+  const current = scenarios[index];
+  const hasAnswered = answers[current.id] != null;
+  const progress = Object.keys(answers).length;
+  const isLast = index === total - 1;
+
+  const onPick = (choice: Choice) => {
+    setAnswers({ ...answers, [current.id]: choice });
+    if (isLast) {
       navigate("/results");
+    } else {
+      // auto-advance
+      const nextIndex = index + 1;
+      if (nextIndex < total) {
+        const nextId = scenarios[nextIndex].id;
+        navigate(`/play?jump=${nextId}`);
+      }
     }
-  }
-
-  function pick(choice: "A" | "B") {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: choice });
-    advance();
-  }
-
-  function skip() {
-    if (!s) return;
-    setAnswers({ ...answers, [s.id]: "skip" });
-    advance();
-  }
+  };
 
   return (
-    <main className="min-h-screen container max-w-2xl py-8 space-y-6">
-      <section className="space-y-4 animate-fade-in">
-        <div className="flex items-center justify-between">
-          <div className="text-sm text-muted-foreground font-medium">
-            Question {index + 1} of {total}
-          </div>
-          <button 
-            onClick={() => navigate("/results")} 
-            className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+    <main className="min-h-screen container max-w-2xl py-8">
+      <div className="space-y-8">
+        <Progress current={progress} total={total} />
+        <ScenarioCard scenario={current} onPick={onPick} />
+        
+        {/* Navigation */}
+        <div className="flex justify-between pt-4">
+          <button
+            onClick={() => {
+              if (index > 0) {
+                const prevId = scenarios[index - 1].id;
+                navigate(`/play?jump=${prevId}`);
+              }
+            }}
+            disabled={index === 0}
+            className="px-4 py-2 text-sm border rounded disabled:opacity-50"
           >
-            End & See Results
+            Previous
           </button>
-        </div>
-        <div className="space-y-2">
-          <div className="h-2 animate-scale-in">
-            <Progress value={progress * 100} />
+          
+          <div className="flex gap-4">
+            <button
+              onClick={() => onPick("A")}
+              className={`px-6 py-2 rounded font-medium ${
+                hasAnswered && answers[current.id] === "A"
+                  ? "bg-primary text-primary-foreground"
+                  : "border border-input hover:bg-accent"
+              }`}
+            >
+              Choice A
+            </button>
+            <button
+              onClick={() => onPick("B")}
+              className={`px-6 py-2 rounded font-medium ${
+                hasAnswered && answers[current.id] === "B"
+                  ? "bg-primary text-primary-foreground"
+                  : "border border-input hover:bg-accent"
+              }`}
+            >
+              Choice B
+            </button>
           </div>
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Start</span>
-            <span>{Math.round(progress * 100)}% Complete</span>
-            <span>Finish</span>
-          </div>
-        </div>
-      </section>
-
-      {s && (
-        <ScenarioCard scenario={s} onPick={pick} />
-      )}
-
-      <div className="flex items-center justify-between pt-4">
-        <button 
-          onClick={skip} 
-          className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-        >
-          Skip this scenario
-        </button>
-        <div className="text-xs text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
-          Shortcuts: ← A · → B · S Skip
+          
+          <button
+            onClick={() => {
+              if (index < total - 1) {
+                const nextId = scenarios[index + 1].id;
+                navigate(`/play?jump=${nextId}`);
+              } else {
+                navigate("/results");
+              }
+            }}
+            className="px-4 py-2 text-sm border rounded"
+          >
+            {isLast ? "View Results" : "Next"}
+          </button>
         </div>
       </div>
     </main>
