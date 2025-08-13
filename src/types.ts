@@ -1,3 +1,9 @@
+export interface Response {
+  avatar: string;
+  choice: "A" | "B";
+  rationale?: string;
+}
+
 export interface Scenario {
   id: string;
   title: string;
@@ -6,9 +12,8 @@ export interface Scenario {
   track_b: string;
   theme?: string;
   tags?: string[];
-  responses?: Array<{
-    avatar: string;
-    choice: "A" | "B";
-    rationale?: string;
-  }>;
+}
+
+export interface Decision extends Scenario {
+  responses: Response[];
 }
