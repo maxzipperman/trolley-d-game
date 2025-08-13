@@ -10,18 +10,6 @@
       "classic",
       "numbers",
       "action_vs_inaction"
-    ],
-    "responses": [
-      {
-        "avatar": "Socrates",
-        "choice": "A",
-        "rationale": "The examined life requires us to act with wisdom. Saving five lives demonstrates care for the greater good."
-      },
-      {
-        "avatar": "Kant",
-        "choice": "B",
-        "rationale": "We cannot use one person as a mere means to save others. The moral law forbids such instrumentalization."
-      }
     ]
   },
   {
@@ -35,18 +23,6 @@
       "identity",
       "numbers",
       "preservation"
-    ],
-    "responses": [
-      {
-        "avatar": "Aristotle",
-        "choice": "A",
-        "rationale": "The essence of the ship lies in its form and purpose. The crew maintains this continuity."
-      },
-      {
-        "avatar": "Mill",
-        "choice": "B",
-        "rationale": "The greatest happiness principle demands we save the greater number."
-      }
     ]
   },
   {
@@ -61,18 +37,6 @@
       "age",
       "law",
       "technology"
-    ],
-    "responses": [
-      {
-        "avatar": "Rawls",
-        "choice": "A",
-        "rationale": "Justice requires respecting legal frameworks. The elderly person followed the rules."
-      },
-      {
-        "avatar": "Singer",
-        "choice": "B",
-        "rationale": "Years of potential life matter. The utilitarian calculus favors saving the younger person."
-      }
     ]
   }
 ]

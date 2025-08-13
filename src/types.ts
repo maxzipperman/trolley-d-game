@@ -25,6 +25,8 @@ export const ScenarioSchema = z.object({
   // Optional image URL for scenario visualization
   // Should be a valid URL pointing to scenario-related imagery
   imageUrl: z.string().url().optional(),
+  // @deprecated - responses are now handled separately via useDecisions hook
+  // This field is optional but unused - use useDecisions instead
   responses: z
     .array(
       z.object({
@@ -65,3 +67,41 @@ export const PersonaSchema = z.object({
 });
 
 export type Persona = z.infer<typeof PersonaSchema>;
+
+/**
+ * SCENARIO RESPONSE SCHEMA
+ * Represents philosopher responses to scenarios (now stored in decisions.json)
+ */
+export const ScenarioResponseSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string().optional(),
+  track_a: z.string(),
+  track_b: z.string(),
+  theme: z.string().optional(),
+  tags: z.array(z.string()).optional(),
+  responses: z.array(
+    z.object({
+      avatar: z.string(),
+      choice: z.enum(["A", "B"]),
+      rationale: z.string().optional(),
+    })
+  ).optional(),
+});
+
+export type ScenarioResponse = z.infer<typeof ScenarioResponseSchema>;
+
+/**
+ * DECISION TYPE SCHEMA
+ * Represents a user's decision in the trolley problem game
+ */
+export const DecisionSchema = z.object({
+  id: z.string(),
+  scenarioId: z.string(),
+  choice: z.enum(["A", "B"]),
+  timestamp: z.date(),
+  rationale: z.string().optional(),
+  userId: z.string().optional(),
+});
+
+export type Decision = z.infer<typeof DecisionSchema>;
