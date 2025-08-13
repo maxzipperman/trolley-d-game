@@ -7,6 +7,10 @@
     "track_b": "Do nothing (kill 5, save 1)",
     "theme": "Utilitarian vs. Deontological Ethics",
     "tags": ["classic", "numbers", "action_vs_inaction"],
+    "axes": {
+      "orderChaos": { "A": 1, "B": -1 },
+      "mercyMischief": { "A": 1, "B": -1 }
+    },
     "responses": [
       {
         "avatar": "Socrates",
@@ -28,6 +32,10 @@
     "track_b": "Save the engine room (5 passengers)",
     "theme": "Identity vs. Utility",
     "tags": ["identity", "numbers", "preservation"],
+    "axes": {
+      "orderChaos": { "A": 1, "B": -1 },
+      "materialSocial": { "A": -1, "B": 1 }
+    },
     "responses": [
       {
         "avatar": "Aristotle",
@@ -49,6 +57,10 @@
     "track_b": "Swerve (hit young jaywalker)",
     "theme": "Legal vs. Utilitarian Calculation",
     "tags": ["modern", "age", "law", "technology"],
+    "axes": {
+      "orderChaos": { "A": 1, "B": -1 },
+      "mercyMischief": { "A": 1, "B": -1 }
+    },
     "responses": [
       {
         "avatar": "Rawls",
@@ -70,6 +82,11 @@
     "track_b": "Let nature take its course (5 die, 1 lives)",
     "theme": "Active vs. Passive Harm",
     "tags": ["medical", "active_harm", "numbers"],
+    "axes": {
+      "orderChaos": { "A": -1, "B": 1 },
+      "materialSocial": { "A": 1, "B": -1 },
+      "mercyMischief": { "A": -1, "B": 1 }
+    },
     "responses": [
       {
         "avatar": "Hippocrates",
@@ -91,6 +108,11 @@
     "track_b": "Allow disaster (1000 die, 100 exist)",
     "theme": "Temporal Ethics and Existence",
     "tags": ["time_travel", "existence", "large_numbers"],
+    "axes": {
+      "orderChaos": { "A": -1, "B": 1 },
+      "materialSocial": { "A": 1, "B": -1 },
+      "mercyMischief": { "A": 1, "B": -1 }
+    },
     "responses": [
       {
         "avatar": "Parfit",

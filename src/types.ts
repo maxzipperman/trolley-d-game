@@ -6,9 +6,12 @@ export interface Scenario {
   track_b: string;
   theme?: string;
   tags?: string[];
+  axes?: Partial<Record<AxisName, { A?: number; B?: number }>>;
   responses?: Array<{
     avatar: string;
     choice: "A" | "B";
     rationale?: string;
   }>;
 }
+
+export type AxisName = "orderChaos" | "materialSocial" | "mercyMischief";
